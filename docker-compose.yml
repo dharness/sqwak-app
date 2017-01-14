@@ -1,12 +1,10 @@
 version: '2'
 services:
-  frontend:
-    image: sqwak/frontend
+  web:
+    image: sqwak/web
     ports:
-      - "8082:3000"
+      - "3000:3000"
     command: npm start
-    environment:
-      - REACT_APP_API_URL=localhost:8080
 
   mongo:
     image: mongo:3
@@ -16,7 +14,7 @@ services:
   nginx:
     image: sqwak/nginx
     links:
-      - frontend:frontend
+      - web:web
     ports:
       - "80:80"
       - "443:443"
