@@ -21,6 +21,8 @@ services:
 
   feature_extractor:
     image: sqwak/feature_extractor
-    ports:
-      - '50051:50051'
+    command: python greeter_server.py
+
+  model_manager:
+    image: sqwak/model_manager
     command: python greeter_server.py

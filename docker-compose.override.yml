@@ -13,6 +13,10 @@ services:
     build: ./feature_extractor
     volumes: 
       - ./feature_extractor:/usr/src/app
-    ports:
-      - '50051:50051'
+    command: python greeter_server.py
+
+  model_manager:
+    build: ./model_manager
+    volumes: 
+      - ./model_manager:/usr/src/app
     command: python greeter_server.py
