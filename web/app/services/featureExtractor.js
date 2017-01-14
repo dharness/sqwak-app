@@ -15,6 +15,9 @@ function main(cb) {
   }
 
   client.sayHello({name: user}, function(err, response) {
+    if (err) {
+      return cb(err)
+    }
     cb(response.message);
   });
 }

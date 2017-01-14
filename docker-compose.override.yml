@@ -12,7 +12,7 @@ services:
   feature_extractor:
     build: ./feature_extractor
     volumes: 
-      - ./feature_extractor:/usr/src/app
+      - ./feature_extractor/app:/usr/src/app
     command: python greeter_server.py
 
   model_manager:
