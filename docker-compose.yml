@@ -18,3 +18,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+
+  feature_extractor:
+    image: sqwak/feature_extractor
+    ports:
+      - '50051:50051'
+    command: python greeter_server.py

@@ -8,11 +8,11 @@ services:
 
   nginx:
     build: ./nginx
-  
+
   feature_extractor:
     build: ./feature_extractor
     volumes: 
       - ./feature_extractor:/usr/src/app
-    command: python greeter_server.py
     ports:
       - '50051:50051'
+    command: python greeter_server.py

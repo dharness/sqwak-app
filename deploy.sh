@@ -1,9 +1,3 @@
-export REACT_APP_API_URL=sqwak.kingofthestack.com
-
-rm -rf ./nginx/www
-mkdir ./nginx/www
-cp -r ./frontend/app/index.html ./nginx/www/index.html
-
 scp ./docker-compose.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.yml
 scp ./docker-compose.prod.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.prod.yml
 scp ./docker-compose.override.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.override.yml
