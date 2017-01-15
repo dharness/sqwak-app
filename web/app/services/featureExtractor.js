@@ -1,4 +1,4 @@
-var PROTO_PATH = __dirname + '/feature_extractor.proto';
+var PROTO_PATH = __dirname + '/../protos/FeatureExtractor.proto';
 var grpc = require('grpc');
 var sqwak = grpc.load(PROTO_PATH).sqwak;
 

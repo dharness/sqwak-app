@@ -4,6 +4,7 @@ services:
     build: ./web
     volumes:
       - ./web/app:/usr/src/app
+      - ./protos:/usr/src/app/protos
       - /usr/src/app/node_modules
 
   nginx:
