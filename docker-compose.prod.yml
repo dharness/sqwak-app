@@ -21,7 +21,7 @@ services:
 
   feature_extractor:
     image: sqwak/feature_extractor
-    command: python greeter_server.py
+    command: python feature_extractor.py
 
   model_manager:
     image: sqwak/model_manager

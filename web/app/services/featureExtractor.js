@@ -1,9 +1,9 @@
-var PROTO_PATH = __dirname + '/helloworld.proto';
+var PROTO_PATH = __dirname + '/../protos/FeatureExtractor.proto';
 var grpc = require('grpc');
-var hello_proto = grpc.load(PROTO_PATH).helloworld;
+var sqwak = grpc.load(PROTO_PATH).sqwak;
 
 
-var client = new hello_proto.Greeter('feature_extractor:50051', grpc.credentials.createInsecure());
+var client = new sqwak.Feature_Extractor('feature_extractor:50051', grpc.credentials.createInsecure());
 
 function main(cb) {
 
@@ -14,7 +14,10 @@ function main(cb) {
     user = 'world';
   }
 
-  client.sayHello({name: user}, function(err, response) {
+  client.getFeatures({name: user}, function(err, response) {
+    if (err) {
+      return cb(err)
+    }
     cb(response.message);
   });
 }
