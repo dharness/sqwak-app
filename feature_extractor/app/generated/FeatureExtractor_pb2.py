@@ -19,22 +19,22 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='FeatureExtractor.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2L\n\x11\x46\x65\x61ture_Extractor\x12\x37\n\x0bGetFeatures\x12\x13.sqwak.HelloRequest\x1a\x11.sqwak.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\"\n\x12\x46\x65\x61tureListRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x13\x46\x65\x61tureListResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2[\n\x11\x46\x65\x61ture_Extractor\x12\x46\n\x0bGetFeatures\x12\x19.sqwak.FeatureListRequest\x1a\x1a.sqwak.FeatureListResponse\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
 
-_HELLOREQUEST = _descriptor.Descriptor(
-  name='HelloRequest',
-  full_name='sqwak.HelloRequest',
+_FEATURELISTREQUEST = _descriptor.Descriptor(
+  name='FeatureListRequest',
+  full_name='sqwak.FeatureListRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='sqwak.HelloRequest.name', index=0,
+      name='name', full_name='sqwak.FeatureListRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -53,19 +53,19 @@ _HELLOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=33,
-  serialized_end=61,
+  serialized_end=67,
 )
 
 
-_HELLOREPLY = _descriptor.Descriptor(
-  name='HelloReply',
-  full_name='sqwak.HelloReply',
+_FEATURELISTRESPONSE = _descriptor.Descriptor(
+  name='FeatureListResponse',
+  full_name='sqwak.FeatureListResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='sqwak.HelloReply.message', index=0,
+      name='message', full_name='sqwak.FeatureListResponse.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -83,26 +83,26 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=63,
-  serialized_end=92,
+  serialized_start=69,
+  serialized_end=107,
 )
 
-DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
-DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['FeatureListRequest'] = _FEATURELISTREQUEST
+DESCRIPTOR.message_types_by_name['FeatureListResponse'] = _FEATURELISTRESPONSE
 
-HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), dict(
-  DESCRIPTOR = _HELLOREQUEST,
+FeatureListRequest = _reflection.GeneratedProtocolMessageType('FeatureListRequest', (_message.Message,), dict(
+  DESCRIPTOR = _FEATURELISTREQUEST,
   __module__ = 'FeatureExtractor_pb2'
-  # @@protoc_insertion_point(class_scope:sqwak.HelloRequest)
+  # @@protoc_insertion_point(class_scope:sqwak.FeatureListRequest)
   ))
-_sym_db.RegisterMessage(HelloRequest)
+_sym_db.RegisterMessage(FeatureListRequest)
 
-HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Message,), dict(
-  DESCRIPTOR = _HELLOREPLY,
+FeatureListResponse = _reflection.GeneratedProtocolMessageType('FeatureListResponse', (_message.Message,), dict(
+  DESCRIPTOR = _FEATURELISTRESPONSE,
   __module__ = 'FeatureExtractor_pb2'
-  # @@protoc_insertion_point(class_scope:sqwak.HelloReply)
+  # @@protoc_insertion_point(class_scope:sqwak.FeatureListResponse)
   ))
-_sym_db.RegisterMessage(HelloReply)
+_sym_db.RegisterMessage(FeatureListResponse)
 
 
 DESCRIPTOR.has_options = True
@@ -118,8 +118,6 @@ try:
 
 
   class Feature_ExtractorStub(object):
-    """The greeting service definition.
-    """
 
     def __init__(self, channel):
       """Constructor.
@@ -129,18 +127,14 @@ try:
       """
       self.GetFeatures = channel.unary_unary(
           '/sqwak.Feature_Extractor/GetFeatures',
-          request_serializer=HelloRequest.SerializeToString,
-          response_deserializer=HelloReply.FromString,
+          request_serializer=FeatureListRequest.SerializeToString,
+          response_deserializer=FeatureListResponse.FromString,
           )
 
 
   class Feature_ExtractorServicer(object):
-    """The greeting service definition.
-    """
 
     def GetFeatures(self, request, context):
-      """Sends a greeting
-      """
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -150,8 +144,8 @@ try:
     rpc_method_handlers = {
         'GetFeatures': grpc.unary_unary_rpc_method_handler(
             servicer.GetFeatures,
-            request_deserializer=HelloRequest.FromString,
-            response_serializer=HelloReply.SerializeToString,
+            request_deserializer=FeatureListRequest.FromString,
+            response_serializer=FeatureListResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -165,11 +159,7 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    """The greeting service definition.
-    """
     def GetFeatures(self, request, context):
-      """Sends a greeting
-      """
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
@@ -179,11 +169,7 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    """The greeting service definition.
-    """
     def GetFeatures(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-      """Sends a greeting
-      """
       raise NotImplementedError()
     GetFeatures.future = None
 
@@ -195,10 +181,10 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): HelloRequest.FromString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListRequest.FromString,
     }
     response_serializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): HelloReply.SerializeToString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListResponse.SerializeToString,
     }
     method_implementations = {
       ('sqwak.Feature_Extractor', 'GetFeatures'): face_utilities.unary_unary_inline(servicer.GetFeatures),
@@ -214,10 +200,10 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): HelloRequest.SerializeToString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListRequest.SerializeToString,
     }
     response_deserializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): HelloReply.FromString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListResponse.FromString,
     }
     cardinalities = {
       'GetFeatures': cardinality.Cardinality.UNARY_UNARY,

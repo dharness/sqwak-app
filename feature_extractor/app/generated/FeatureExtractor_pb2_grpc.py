@@ -7,8 +7,6 @@ import FeatureExtractor_pb2 as FeatureExtractor__pb2
 
 
 class Feature_ExtractorStub(object):
-  """The greeting service definition.
-  """
 
   def __init__(self, channel):
     """Constructor.
@@ -18,18 +16,14 @@ class Feature_ExtractorStub(object):
     """
     self.GetFeatures = channel.unary_unary(
         '/sqwak.Feature_Extractor/GetFeatures',
-        request_serializer=FeatureExtractor__pb2.HelloRequest.SerializeToString,
-        response_deserializer=FeatureExtractor__pb2.HelloReply.FromString,
+        request_serializer=FeatureExtractor__pb2.FeatureListRequest.SerializeToString,
+        response_deserializer=FeatureExtractor__pb2.FeatureListResponse.FromString,
         )
 
 
 class Feature_ExtractorServicer(object):
-  """The greeting service definition.
-  """
 
   def GetFeatures(self, request, context):
-    """Sends a greeting
-    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -39,8 +33,8 @@ def add_Feature_ExtractorServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetFeatures': grpc.unary_unary_rpc_method_handler(
           servicer.GetFeatures,
-          request_deserializer=FeatureExtractor__pb2.HelloRequest.FromString,
-          response_serializer=FeatureExtractor__pb2.HelloReply.SerializeToString,
+          request_deserializer=FeatureExtractor__pb2.FeatureListRequest.FromString,
+          response_serializer=FeatureExtractor__pb2.FeatureListResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

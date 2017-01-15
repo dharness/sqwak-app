@@ -7,18 +7,14 @@ option objc_class_prefix = "HLW";
 
 package sqwak;
 
-// The greeting service definition.
 service Feature_Extractor {
-  // Sends a greeting
-  rpc GetFeatures (HelloRequest) returns (HelloReply) {}
+  rpc GetFeatures (FeatureListRequest) returns (FeatureListResponse) {}
 }
 
-// The request message containing the user's name.
-message HelloRequest {
+message FeatureListRequest {
   string name = 1;
 }
 
-// The response message containing the greetings
-message HelloReply {
+message FeatureListResponse {
   string message = 1;
 }
