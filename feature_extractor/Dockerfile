@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 COPY ./app /usr/src/app
 
+RUN pip install supervisor
+
 RUN pip install -r requirements.txt
 
-EXPOSE 50051
+EXPOSE 50051 9001

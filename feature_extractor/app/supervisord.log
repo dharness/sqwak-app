@@ -1,0 +1,29 @@
+2017-01-16 18:07:54,862 CRIT Supervisor running as root (no user in config file)
+2017-01-16 18:07:54,879 INFO RPC interface 'supervisor' initialized
+2017-01-16 18:07:54,881 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2017-01-16 18:07:54,894 INFO supervisord started with pid 1
+2017-01-16 18:07:55,897 INFO spawnerr: can't find command '/usr/local/bin/pythonw2.7-32'
+2017-01-16 18:07:56,900 INFO spawnerr: can't find command '/usr/local/bin/pythonw2.7-32'
+2017-01-16 18:07:58,908 INFO spawnerr: can't find command '/usr/local/bin/pythonw2.7-32'
+2017-01-16 18:08:01,915 INFO spawnerr: can't find command '/usr/local/bin/pythonw2.7-32'
+2017-01-16 18:08:01,916 INFO gave up: feature_extractor entered FATAL state, too many start retries too quickly
+2017-01-16 18:08:17,327 WARN received SIGTERM indicating exit request
+2017-01-16 18:09:28,743 CRIT Supervisor running as root (no user in config file)
+2017-01-16 18:09:28,755 INFO RPC interface 'supervisor' initialized
+2017-01-16 18:09:28,756 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2017-01-16 18:09:28,759 INFO supervisord started with pid 1
+2017-01-16 18:09:29,763 INFO spawned: 'feature_extractor' with pid 7
+2017-01-16 18:09:30,792 INFO success: feature_extractor entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2017-01-16 18:24:28,656 WARN received SIGTERM indicating exit request
+2017-01-16 18:24:28,656 INFO waiting for feature_extractor to die
+2017-01-16 18:24:28,658 INFO stopped: feature_extractor (terminated by SIGTERM)
+2017-01-16 18:24:54,670 CRIT Supervisor running as root (no user in config file)
+2017-01-16 18:24:54,686 INFO RPC interface 'supervisor' initialized
+2017-01-16 18:24:54,688 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2017-01-16 18:24:54,694 INFO supervisord started with pid 1
+2017-01-16 18:24:55,699 INFO spawned: 'feature_extractor' with pid 7
+2017-01-16 18:24:56,702 INFO success: feature_extractor entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2017-01-16 18:26:19,426 INFO waiting for feature_extractor to stop
+2017-01-16 18:26:19,428 INFO stopped: feature_extractor (terminated by SIGTERM)
+2017-01-16 18:26:19,438 INFO spawned: 'feature_extractor' with pid 17
+2017-01-16 18:26:20,441 INFO success: feature_extractor entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

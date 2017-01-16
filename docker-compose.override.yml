@@ -10,12 +10,18 @@ services:
   nginx:
     build: ./nginx
 
+  mongo:
+    logging:
+      driver: "none"
+
   feature_extractor:
     build: ./feature_extractor
     volumes: 
       - ./feature_extractor/app:/usr/src/app
       - ./protos:/usr/src/app/protos
-    command: python feature_extractor.py
+    command: supervisord -c ./supervisord.conf
+    ports:
+      - "9001:9001"
 
   model_manager:
     build: ./model_manager
