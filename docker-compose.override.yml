@@ -26,5 +26,6 @@ services:
   model_manager:
     build: ./model_manager
     volumes: 
-      - ./model_manager:/usr/src/app
-    command: python greeter_server.py
+      - ./model_manager/app:/usr/src/app
+      - ./protos:/usr/src/app/protos
+    command: supervisord -c ./supervisord.conf
