@@ -1,11 +1,13 @@
 FROM python:2.7.13
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app /var/log/supervisor
 
 WORKDIR /usr/src/app
 
-COPY ./ /usr/src/app
+COPY ./app /usr/src/app
+
+RUN pip install supervisor
 
 RUN pip install -r requirements.txt
 
-EXPOSE 50051
+EXPOSE 50051 9001
