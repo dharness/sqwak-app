@@ -1,6 +1,6 @@
 FROM python:2.7.13
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app /var/log/supervisor
 
 WORKDIR /usr/src/app
 

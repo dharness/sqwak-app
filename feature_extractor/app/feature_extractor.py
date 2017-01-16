@@ -12,7 +12,7 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
 
   def GetFeatures(self, request, context):
-    return FeatureExtractor_pb2.FeatureListResponse(message='Hello Node, I am The greatest man that ever lived, %s!' % request.name)
+    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting, %s!' % request.name)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
