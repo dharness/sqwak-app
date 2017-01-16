@@ -1,9 +1,7 @@
 """The Python implementation of the GRPC helloworld.Greeter server."""
-
 from concurrent import futures
 import time
 import grpc
-import server_reloader
 from generated import FeatureExtractor_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
