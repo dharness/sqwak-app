@@ -2,6 +2,7 @@
 from concurrent import futures
 import time
 import grpc
+import sys
 from generated import FeatureExtractor_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -10,7 +11,17 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
 
   def GetFeatures(self, request, context):
-    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting, %s!' % request.name)
+    sys.stdout.write("GetFeatures1\n")
+    sys.stdout.flush()
+    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting')
+
+  def GetFeatures2(self, request_iterator, context):
+      sys.stdout.write("GetFeatures2\n")
+      sys.stdout.flush()
+      for request in request_iterator:
+        sys.stdout.write(request.data)
+        sys.stdout.flush()
+      return FeatureExtractor_pb2.FeatureListResponse(message='Get Features 2 ')
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

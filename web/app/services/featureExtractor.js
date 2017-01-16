@@ -22,6 +22,21 @@ function main(cb) {
   });
 }
 
+function extract2(cb) {
+  // client.getFeatures({name: "user"}, function(err, response) {
+  //   if (err) {
+  //     return cb(err)
+  //   }
+  //   cb(response.message);
+  // });
+  const writeStream = client.getFeatures2(function(err, response) {
+    if (err) { return cb(err)}
+    cb("Success");
+  });
+  return writeStream;
+}
+
 module.exports = {
-  extract: main
+  extract: main,
+  extract2: extract2
 };

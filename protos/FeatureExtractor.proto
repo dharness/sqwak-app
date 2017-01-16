@@ -9,6 +9,11 @@ package sqwak;
 
 service Feature_Extractor {
   rpc GetFeatures (FeatureListRequest) returns (FeatureListResponse) {}
+  rpc GetFeatures2 (stream AudioFileChunk) returns (FeatureListResponse) {}
+}
+
+message AudioFileChunk {
+  string data = 1;
 }
 
 message FeatureListRequest {
