@@ -13,7 +13,7 @@ service Feature_Extractor {
 }
 
 message AudioFileChunk {
-  string data = 1;
+  bytes data = 1;
 }
 
 message FeatureListRequest {

@@ -27,15 +27,18 @@ app.get('/model_manager', (req, res) => {
 });
 
 app.get('/transfer', (req, res) => {
-  // const readStream = fs.createReadStream('./uploads/sample.htm');
+  const readStream = fs.createReadStream('./uploads/sample.htm');
   const writeStream = featureExtractor.extract2((message) => {
     res.send(message);
   });
 
-  writeStream.write({
-    data: "Lemmonade"
+  readStream.on('data', (chunk) => {
+    writeStream.write({ data: new Uint8Array(chunk) });
   });
-  writeStream.end();
+
+  readStream.on('end', code => {
+    writeStream.end()
+  });
 });
 
 app.post('/upload', function(req, res){

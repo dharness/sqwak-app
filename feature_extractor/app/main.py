@@ -16,12 +16,15 @@ class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
     return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting')
 
   def GetFeatures2(self, request_iterator, context):
-      sys.stdout.write("GetFeatures2\n")
+    file_contents = ""
+    for request in request_iterator:
+      file_contents += request.data
+      sys.stdout.write(file_contents)
+      sys.stdout.write("--\n")
       sys.stdout.flush()
-      for request in request_iterator:
-        sys.stdout.write(request.data)
-        sys.stdout.flush()
-      return FeatureExtractor_pb2.FeatureListResponse(message='Get Features 2 ')
+
+    file_contents += "<style>h1 {color: green;}</style>"
+    return FeatureExtractor_pb2.FeatureListResponse(message=file_contents)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
