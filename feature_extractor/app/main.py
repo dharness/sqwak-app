@@ -2,15 +2,25 @@
 from concurrent import futures
 import time
 import grpc
+import sys
 from generated import FeatureExtractor_pb2
+from extract import extract
+import struct
+import tempfile
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
 class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
 
-  def GetFeatures(self, request, context):
-    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting, %s!' % request.name)
+  def GetFeatures(self, request_iterator, context):
+    temp = tempfile.NamedTemporaryFile()
+    for chunk in request_iterator:
+      temp.write(chunk.data)
+    temp.seek(0)
+    feature_vector = [str(i) for i in extract(temp.name)]
+    temp.close()
+    return FeatureExtractor_pb2.FeatureListResponse(feature_vector=feature_vector)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

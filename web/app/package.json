@@ -8,8 +8,11 @@
   "dependencies": {
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
+    "ejs": "^2.5.5",
     "express": "~4.14.0",
+    "formidable": "^1.1.1",
     "grpc": "^1.0.1",
+    "multer": "^1.2.1",
     "nodemon": "^1.11.0"
   }
 }

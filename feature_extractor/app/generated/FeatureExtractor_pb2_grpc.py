@@ -14,16 +14,16 @@ class Feature_ExtractorStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.GetFeatures = channel.unary_unary(
+    self.GetFeatures = channel.stream_unary(
         '/sqwak.Feature_Extractor/GetFeatures',
-        request_serializer=FeatureExtractor__pb2.FeatureListRequest.SerializeToString,
+        request_serializer=FeatureExtractor__pb2.AudioFileChunk.SerializeToString,
         response_deserializer=FeatureExtractor__pb2.FeatureListResponse.FromString,
         )
 
 
 class Feature_ExtractorServicer(object):
 
-  def GetFeatures(self, request, context):
+  def GetFeatures(self, request_iterator, context):
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -31,9 +31,9 @@ class Feature_ExtractorServicer(object):
 
 def add_Feature_ExtractorServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'GetFeatures': grpc.unary_unary_rpc_method_handler(
+      'GetFeatures': grpc.stream_unary_rpc_method_handler(
           servicer.GetFeatures,
-          request_deserializer=FeatureExtractor__pb2.FeatureListRequest.FromString,
+          request_deserializer=FeatureExtractor__pb2.AudioFileChunk.FromString,
           response_serializer=FeatureExtractor__pb2.FeatureListResponse.SerializeToString,
       ),
   }
