@@ -13,18 +13,13 @@ class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
   def GetFeatures(self, request, context):
     sys.stdout.write("GetFeatures1\n")
     sys.stdout.flush()
-    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting')
+    return FeatureExtractor_pb2.FeatureListResponse(message='Testing testing, im just suggesting, %s!' % request.name)
 
   def GetFeatures2(self, request_iterator, context):
-    file_contents = ""
-    for request in request_iterator:
-      file_contents += request.data
-      sys.stdout.write(file_contents)
-      sys.stdout.write("--\n")
-      sys.stdout.flush()
-
-    file_contents += "<style>h1 {color: green;}</style>"
-    return FeatureExtractor_pb2.FeatureListResponse(message=file_contents)
+    with open('out.wav','wb') as f:
+      for chunk in request_iterator:
+        f.write(chunk.data)
+    return FeatureExtractor_pb2.FeatureListResponse(message='Get Features 2 ')
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

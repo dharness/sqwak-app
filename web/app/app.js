@@ -27,7 +27,7 @@ app.get('/model_manager', (req, res) => {
 });
 
 app.get('/transfer', (req, res) => {
-  const readStream = fs.createReadStream('./uploads/sample.htm');
+  const readStream = fs.createReadStream('./uploads/audio.wav');
   const writeStream = featureExtractor.extract2((message) => {
     res.send(message);
   });
