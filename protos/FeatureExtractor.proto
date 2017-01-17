@@ -8,19 +8,13 @@ option objc_class_prefix = "HLW";
 package sqwak;
 
 service Feature_Extractor {
-  rpc GetFeatures (FeatureListRequest) returns (FeatureListResponse) {}
-  rpc GetFeatures2 (stream AudioFileChunk) returns (FeatureListResponse) {}
+  rpc GetFeatures (stream AudioFileChunk) returns (FeatureListResponse) {}
 }
 
 message AudioFileChunk {
   bytes data = 1;
 }
 
-message FeatureListRequest {
-  string name = 1;
-}
-
 message FeatureListResponse {
-  string message = 1;
   repeated string feature_vector = 4;
 }

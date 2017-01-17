@@ -7,8 +7,8 @@ import scipy.stats
 from math import floor
 
 
-def extract(slice_file_name):
-    sample_rate, amps = scipy.io.wavfile.read(slice_file_name)
+def extract(file_name):
+    sample_rate, amps = scipy.io.wavfile.read(file_name)
     if amps.ndim is 2:
         amps = amps[:,0]
     else:

@@ -14,12 +14,6 @@ app.get('/', (req, res) => {
   res.render('upload');
 });
 
-app.get('/features', (req, res) => {
-  featureExtractor.extract((message) => {
-    res.send(message);
-  });
-});
-
 app.get('/model_manager', (req, res) => {
   modelManager.extract((message) => {
     res.send(message);
@@ -28,7 +22,7 @@ app.get('/model_manager', (req, res) => {
 
 app.get('/transfer', (req, res) => {
   const readStream = fs.createReadStream('./uploads/audio.wav');
-  const writeStream = featureExtractor.extract2((featureVector) => {
+  const writeStream = featureExtractor.extract((featureVector) => {
     res.send(featureVector);
   });
 

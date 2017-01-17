@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='FeatureExtractor.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\x1e\n\x0e\x41udioFileChunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"\"\n\x12\x46\x65\x61tureListRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\">\n\x13\x46\x65\x61tureListResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x16\n\x0e\x66\x65\x61ture_vector\x18\x04 \x03(\t2\xa2\x01\n\x11\x46\x65\x61ture_Extractor\x12\x46\n\x0bGetFeatures\x12\x19.sqwak.FeatureListRequest\x1a\x1a.sqwak.FeatureListResponse\"\x00\x12\x45\n\x0cGetFeatures2\x12\x15.sqwak.AudioFileChunk\x1a\x1a.sqwak.FeatureListResponse\"\x00(\x01\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\x1e\n\x0e\x41udioFileChunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"-\n\x13\x46\x65\x61tureListResponse\x12\x16\n\x0e\x66\x65\x61ture_vector\x18\x04 \x03(\t2Y\n\x11\x46\x65\x61ture_Extractor\x12\x44\n\x0bGetFeatures\x12\x15.sqwak.AudioFileChunk\x1a\x1a.sqwak.FeatureListResponse\"\x00(\x01\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -57,37 +57,6 @@ _AUDIOFILECHUNK = _descriptor.Descriptor(
 )
 
 
-_FEATURELISTREQUEST = _descriptor.Descriptor(
-  name='FeatureListRequest',
-  full_name='sqwak.FeatureListRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='sqwak.FeatureListRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=65,
-  serialized_end=99,
-)
-
-
 _FEATURELISTRESPONSE = _descriptor.Descriptor(
   name='FeatureListResponse',
   full_name='sqwak.FeatureListResponse',
@@ -96,14 +65,7 @@ _FEATURELISTRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='sqwak.FeatureListResponse.message', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='feature_vector', full_name='sqwak.FeatureListResponse.feature_vector', index=1,
+      name='feature_vector', full_name='sqwak.FeatureListResponse.feature_vector', index=0,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -121,12 +83,11 @@ _FEATURELISTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=101,
-  serialized_end=163,
+  serialized_start=65,
+  serialized_end=110,
 )
 
 DESCRIPTOR.message_types_by_name['AudioFileChunk'] = _AUDIOFILECHUNK
-DESCRIPTOR.message_types_by_name['FeatureListRequest'] = _FEATURELISTREQUEST
 DESCRIPTOR.message_types_by_name['FeatureListResponse'] = _FEATURELISTRESPONSE
 
 AudioFileChunk = _reflection.GeneratedProtocolMessageType('AudioFileChunk', (_message.Message,), dict(
@@ -135,13 +96,6 @@ AudioFileChunk = _reflection.GeneratedProtocolMessageType('AudioFileChunk', (_me
   # @@protoc_insertion_point(class_scope:sqwak.AudioFileChunk)
   ))
 _sym_db.RegisterMessage(AudioFileChunk)
-
-FeatureListRequest = _reflection.GeneratedProtocolMessageType('FeatureListRequest', (_message.Message,), dict(
-  DESCRIPTOR = _FEATURELISTREQUEST,
-  __module__ = 'FeatureExtractor_pb2'
-  # @@protoc_insertion_point(class_scope:sqwak.FeatureListRequest)
-  ))
-_sym_db.RegisterMessage(FeatureListRequest)
 
 FeatureListResponse = _reflection.GeneratedProtocolMessageType('FeatureListResponse', (_message.Message,), dict(
   DESCRIPTOR = _FEATURELISTRESPONSE,
@@ -171,13 +125,8 @@ try:
       Args:
         channel: A grpc.Channel.
       """
-      self.GetFeatures = channel.unary_unary(
+      self.GetFeatures = channel.stream_unary(
           '/sqwak.Feature_Extractor/GetFeatures',
-          request_serializer=FeatureListRequest.SerializeToString,
-          response_deserializer=FeatureListResponse.FromString,
-          )
-      self.GetFeatures2 = channel.stream_unary(
-          '/sqwak.Feature_Extractor/GetFeatures2',
           request_serializer=AudioFileChunk.SerializeToString,
           response_deserializer=FeatureListResponse.FromString,
           )
@@ -185,12 +134,7 @@ try:
 
   class Feature_ExtractorServicer(object):
 
-    def GetFeatures(self, request, context):
-      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-      context.set_details('Method not implemented!')
-      raise NotImplementedError('Method not implemented!')
-
-    def GetFeatures2(self, request_iterator, context):
+    def GetFeatures(self, request_iterator, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -198,13 +142,8 @@ try:
 
   def add_Feature_ExtractorServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        'GetFeatures': grpc.unary_unary_rpc_method_handler(
+        'GetFeatures': grpc.stream_unary_rpc_method_handler(
             servicer.GetFeatures,
-            request_deserializer=FeatureListRequest.FromString,
-            response_serializer=FeatureListResponse.SerializeToString,
-        ),
-        'GetFeatures2': grpc.stream_unary_rpc_method_handler(
-            servicer.GetFeatures2,
             request_deserializer=AudioFileChunk.FromString,
             response_serializer=FeatureListResponse.SerializeToString,
         ),
@@ -220,9 +159,7 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetFeatures(self, request, context):
-      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
-    def GetFeatures2(self, request_iterator, context):
+    def GetFeatures(self, request_iterator, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
@@ -232,12 +169,9 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetFeatures(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+    def GetFeatures(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     GetFeatures.future = None
-    def GetFeatures2(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
-      raise NotImplementedError()
-    GetFeatures2.future = None
 
 
   def beta_create_Feature_Extractor_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -247,16 +181,13 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListRequest.FromString,
-      ('sqwak.Feature_Extractor', 'GetFeatures2'): AudioFileChunk.FromString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): AudioFileChunk.FromString,
     }
     response_serializers = {
       ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListResponse.SerializeToString,
-      ('sqwak.Feature_Extractor', 'GetFeatures2'): FeatureListResponse.SerializeToString,
     }
     method_implementations = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): face_utilities.unary_unary_inline(servicer.GetFeatures),
-      ('sqwak.Feature_Extractor', 'GetFeatures2'): face_utilities.stream_unary_inline(servicer.GetFeatures2),
+      ('sqwak.Feature_Extractor', 'GetFeatures'): face_utilities.stream_unary_inline(servicer.GetFeatures),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -269,16 +200,13 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
-      ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListRequest.SerializeToString,
-      ('sqwak.Feature_Extractor', 'GetFeatures2'): AudioFileChunk.SerializeToString,
+      ('sqwak.Feature_Extractor', 'GetFeatures'): AudioFileChunk.SerializeToString,
     }
     response_deserializers = {
       ('sqwak.Feature_Extractor', 'GetFeatures'): FeatureListResponse.FromString,
-      ('sqwak.Feature_Extractor', 'GetFeatures2'): FeatureListResponse.FromString,
     }
     cardinalities = {
-      'GetFeatures': cardinality.Cardinality.UNARY_UNARY,
-      'GetFeatures2': cardinality.Cardinality.STREAM_UNARY,
+      'GetFeatures': cardinality.Cardinality.STREAM_UNARY,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
     return beta_implementations.dynamic_stub(channel, 'sqwak.Feature_Extractor', cardinalities, options=stub_options)
