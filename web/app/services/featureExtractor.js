@@ -24,8 +24,12 @@ function main(cb) {
 
 function extract2(cb) {
   const writeStream = client.getFeatures2(function(err, response) {
-    if (err) { return cb(err)}
-    cb(response.message);
+    if (err) {
+      console.log(err)
+      return cb(err)
+    }
+    var featureVector = response.feature_vector.map(item => parseFloat(item, 10));
+    cb(featureVector);
   });
   return writeStream;
 }

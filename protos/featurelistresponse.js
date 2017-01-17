@@ -21,12 +21,19 @@ goog.require('jspb.Message');
  * @constructor
  */
 proto.sqwak.FeatureListResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sqwak.FeatureListResponse.repeatedFields_, null);
 };
 goog.inherits(proto.sqwak.FeatureListResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.sqwak.FeatureListResponse.displayName = 'proto.sqwak.FeatureListResponse';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sqwak.FeatureListResponse.repeatedFields_ = [4];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -55,7 +62,8 @@ proto.sqwak.FeatureListResponse.prototype.toObject = function(opt_includeInstanc
  */
 proto.sqwak.FeatureListResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    message: jspb.Message.getFieldWithDefault(msg, 1, "")
+    message: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    featureVectorList: jspb.Message.getField(msg, 4)
   };
 
   if (includeInstance) {
@@ -78,6 +86,37 @@ proto.sqwak.FeatureListResponse.prototype.getMessage = function() {
 /** @param {string} value */
 proto.sqwak.FeatureListResponse.prototype.setMessage = function(value) {
   jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * repeated string feature_vector = 4;
+ * If you change this array by adding, removing or replacing elements, or if you
+ * replace the array itself, then you must call the setter to update it.
+ * @return {!Array.<string>}
+ */
+proto.sqwak.FeatureListResponse.prototype.getFeatureVectorList = function() {
+  return /** @type {!Array.<string>} */ (jspb.Message.getField(this, 4));
+};
+
+
+/** @param {!Array.<string>} value */
+proto.sqwak.FeatureListResponse.prototype.setFeatureVectorList = function(value) {
+  jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {!string} value
+ * @param {number=} opt_index
+ */
+proto.sqwak.FeatureListResponse.prototype.addFeatureVector = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+proto.sqwak.FeatureListResponse.prototype.clearFeatureVectorList = function() {
+  this.setFeatureVectorList([]);
 };
 
 

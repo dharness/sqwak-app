@@ -28,8 +28,8 @@ app.get('/model_manager', (req, res) => {
 
 app.get('/transfer', (req, res) => {
   const readStream = fs.createReadStream('./uploads/audio.wav');
-  const writeStream = featureExtractor.extract2((message) => {
-    res.send(message);
+  const writeStream = featureExtractor.extract2((featureVector) => {
+    res.send(featureVector);
   });
 
   readStream.on('data', (chunk) => {

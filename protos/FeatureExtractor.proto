@@ -22,4 +22,5 @@ message FeatureListRequest {
 
 message FeatureListResponse {
   string message = 1;
+  repeated string feature_vector = 4;
 }

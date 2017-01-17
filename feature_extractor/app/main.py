@@ -4,6 +4,8 @@ import time
 import grpc
 import sys
 from generated import FeatureExtractor_pb2
+from extract import extract
+import struct
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
@@ -19,7 +21,8 @@ class Feature_Extractor(FeatureExtractor_pb2.Feature_ExtractorServicer):
     with open('out.wav','wb') as f:
       for chunk in request_iterator:
         f.write(chunk.data)
-    return FeatureExtractor_pb2.FeatureListResponse(message='Get Features 2 ')
+    feature_vector = [str(i) for i in extract('out.wav')]
+    return FeatureExtractor_pb2.FeatureListResponse(message='Get Features 2', feature_vector=feature_vector)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
