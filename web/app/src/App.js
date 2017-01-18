@@ -4,18 +4,25 @@ import getFeatures from './services/api';
 
 class App extends Component {
 
-  getBlogs() {
-    getFeatures().then(e => {
-      console.log(e);
-    }).catch(r => {
-      console.log(r);
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  testApi() {
+    getFeatures().then(res => {
+      this.setState({message: res.data})
+    }).catch(err => {
+      console.log(err);
     });
   }
 
   render() {
     return (
       <div className="App">
-        <button onClick={this.getBlogs}>Get Blogs</button>
+        <button onClick={this.testApi.bind(this)}>Test API</button>
+        <br />
+        {this.state.message}
       </div>
     );
   }
