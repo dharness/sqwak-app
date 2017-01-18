@@ -20,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1> Welcom to sqwak </h1>
         <button onClick={this.testApi.bind(this)}>Test API</button>
         <br />
         {this.state.message}

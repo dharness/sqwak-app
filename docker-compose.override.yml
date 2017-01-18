@@ -6,12 +6,16 @@ services:
       - ./api/app:/usr/src/app
       - ./protos:/usr/src/app/protos
       - /usr/src/app/node_modules
+    ports:
+      - "8080:8080"
 
   web:
     build: ./web
     volumes:
       - ./web/app:/usr/src/app
       - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
 
   nginx:
     build: ./nginx
