@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import getFeatures from './services/api';
+import Upload from './Upload'
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
         <button onClick={this.testApi.bind(this)}>Test API</button>
         <br />
         {this.state.message}
+        <Upload/>
       </div>
     );
   }

@@ -1,15 +1,17 @@
 const uploadController = require('express').Router();
 const formidable = require('formidable');
-
+const path = require('path');
+const fs = require('fs');
 
 uploadController.get('/', (req, res) => {
-    res.render('uplaod')
+    res.render('upload')
 });
 
-app.post('/upload', function(req, res){
+uploadController.post('/', function(req, res){
+  console.log(req.body);
   var form = new formidable.IncomingForm();
   form.multiples = true;
-  form.uploadDir = path.join(__dirname, '/uploads');
+  form.uploadDir = path.join(__dirname, '/../uploads');
   form.on('file', function(field, file) {
     fs.rename(file.path, path.join(form.uploadDir, file.name));
   });

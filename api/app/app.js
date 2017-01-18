@@ -5,8 +5,10 @@ const modelManager = require('./services/modelManager');
 const path = require('path');
 const fs = require('fs');
 const userController = require('./api/userController');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+const uploadController = require('./api/uploadController');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const PORT = process.env.PORT || 8080;
 
@@ -17,13 +19,15 @@ app.use(cookieParser('secret'));
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
 
-app.use('/login', userController);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.use('/login', userController);
+app.use('/api/v0/upload', uploadController);
 
 app.get('/', (req, res) => {
   res.render('landing');
