@@ -1,3 +1,4 @@
+numpy==1.12.0
 argh==0.26.2
 audioread==2.1.4
 cycler==0.10.0
@@ -12,7 +13,6 @@ joblib==0.10.3
 librosa==0.4.3
 matplotlib==2.0.0
 meld3==1.0.2
-numpy==1.12.0
 pandas==0.19.2
 pathtools==0.1.2
 protobuf==3.1.0.post1
