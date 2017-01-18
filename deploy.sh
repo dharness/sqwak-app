@@ -7,7 +7,7 @@ cp -r ./web/app/build/ ./nginx/www/
 scp ./docker-compose.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.yml
 scp ./docker-compose.prod.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.prod.yml
 scp ./docker-compose.override.yml root@sqwak.kingofthestack.com:/usr/src/app/docker-compose.override.yml
-scp ./protos root@sqwak.kingofthestack.com:/usr/src/app/protos
+scp -r ./protos root@sqwak.kingofthestack.com:/usr/src/app/protos/
 
 docker-compose build nginx
 docker push sqwak/nginx

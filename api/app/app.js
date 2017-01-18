@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-// const featureExtractor = require('./services/featureExtractor');
-// const modelManager = require('./services/modelManager');
+const featureExtractor = require('./services/featureExtractor');
+const modelManager = require('./services/modelManager');
 const path = require('path');
 const fs = require('fs');
 const userController = require('./api/userController');
@@ -39,28 +39,28 @@ app.get('/api/v0', (req, res) => {
   });
 });
 
-// app.get('/dashboard', (req, res) => res.render('dashboard'));
+app.get('/dashboard', (req, res) => res.render('dashboard'));
 
-// app.get('/model_manager', (req, res) => {
-//   modelManager.extract((message) => {
-//     res.send(message);
-//   });
-// });
+app.get('/model_manager', (req, res) => {
+  modelManager.extract((message) => {
+    res.send(message);
+  });
+});
 
-// app.get('/transfer', (req, res) => {
-//   const readStream = fs.createReadStream('./uploads/audio.wav');
-//   const writeStream = featureExtractor.extract((featureVector) => {
-//     res.send(featureVector);
-//   });
+app.get('/transfer', (req, res) => {
+  const readStream = fs.createReadStream('./uploads/audio.wav');
+  const writeStream = featureExtractor.extract((featureVector) => {
+    res.send(featureVector);
+  });
 
-//   readStream.on('data', (chunk) => {
-//     writeStream.write({ data: new Uint8Array(chunk) });
-//   });
+  readStream.on('data', (chunk) => {
+    writeStream.write({ data: new Uint8Array(chunk) });
+  });
 
-//   readStream.on('end', code => {
-//     writeStream.end()
-//   });
-// });
+  readStream.on('end', code => {
+    writeStream.end()
+  });
+});
 
 app.listen(PORT, function() {
     console.log(`listening at ${PORT}`)

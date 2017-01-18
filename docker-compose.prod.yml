@@ -3,6 +3,8 @@ services:
   api:
     image: sqwak/api
     command: npm start
+    volumes:
+      - ./protos:/usr/src/app/protos
     environment:
       - PORT=8080
 
