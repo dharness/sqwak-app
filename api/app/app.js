@@ -5,9 +5,12 @@ const modelManager = require('./services/modelManager');
 const path = require('path');
 const fs = require('fs');
 const userController = require('./api/userController');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+const uploadController = require('./api/uploadController');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const PORT = process.env.PORT || 8080;
 
 
 app.set('view engine', 'ejs');
@@ -16,10 +19,28 @@ app.use(cookieParser('secret'));
 app.use(session({cookie: { maxAge: 60000 }}));
 app.use(flash());
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use('/login', userController);
+app.use('/api/v0/upload', uploadController);
 
 app.get('/', (req, res) => {
   res.render('landing');
+});
+
+app.get('/api', (req, res) => {
+  res.send("This guys is key...");
+});
+
+app.get('/api/v0', (req, res) => {
+  res.send({
+    data: "All is well, pal"
+  });
 });
 
 app.get('/dashboard', (req, res) => res.render('dashboard'));
@@ -45,6 +66,6 @@ app.get('/transfer', (req, res) => {
   });
 });
 
-app.listen(3000, function() {
-    console.log('listening at 3000')
+app.listen(PORT, function() {
+    console.log(`listening at ${PORT}`)
 })
