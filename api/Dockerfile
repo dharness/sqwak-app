@@ -9,4 +9,4 @@ WORKDIR /usr/src/app
 # Bundle app source
 COPY ./app /usr/src/app
 
-EXPOSE 3000
+EXPOSE 8080
