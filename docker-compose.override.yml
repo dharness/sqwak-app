@@ -6,8 +6,6 @@ services:
       - ./api/app:/usr/src/app
       - ./protos:/usr/src/app/protos
       - /usr/src/app/node_modules
-    ports:
-      - "8080:8080"
 
   web:
     build: ./web
@@ -30,8 +28,6 @@ services:
       - ./feature_extractor/app:/usr/src/app
       - ./protos:/usr/src/app/protos
     command: supervisord -c ./supervisord.conf
-    ports:
-      - "9001:9001"
 
   model_manager:
     build: ./model_manager
