@@ -39,7 +39,7 @@ app.get('/api', (req, res) => {
 
 app.get('/api/v0', (req, res) => {
   res.send({
-    data: "All is well, pal"
+    data: "All is well, pal. But you may want to check the microservices..."
   });
 });
 

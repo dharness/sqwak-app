@@ -14,4 +14,7 @@ docker push sqwak/nginx
 
 ssh root@sqwak.kingofthestack.com "cd /usr/src/app && 
     docker pull sqwak/nginx &&
+    docker pull sqwak/api &&
+    docker pull sqwak/feature_extractor &&
+    docker pull sqwak/model_manager &&
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
