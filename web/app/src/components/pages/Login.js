@@ -1,23 +1,19 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import AuthService from './../../services/AuthService';
 
 class LoginPage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.authService = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack.auth0.com');
+    static propTypes = {
+        location: PropTypes.object,
+        auth: PropTypes.instanceOf(AuthService)
     }
 
     componentDidMount() {
-        this.authService.login();
+        this.props.auth.login();
     }
 
     render () {
-        return (
-            <div>
-                Login:
-            </div>
-        )
+        return (<div></div>)
     }
 }
 

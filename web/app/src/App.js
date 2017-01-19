@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import getFeatures from './services/api';
 import Upload from './Upload';
-import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import LandingPage from './components/pages/Landing';
 import LoginPage from './components/pages/Login';
 import DashboardPage from './components/pages/Dashboard';
@@ -33,10 +33,9 @@ class App extends Component {
 
   render() {
     return (
-      <Router history={hashHistory}>
-        <IndexRedirect to="/" />
+      <Router history={browserHistory}>
         <Route path="/" component={LandingPage}/>
-        <Route path="/login" component={LoginPage}/>
+        <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
         <Route path="/dashboard" component={DashboardPage} onEnter={requireAuth}/>
       </Router>
     );
