@@ -34,18 +34,6 @@ uploadController.post('/', function(req, res){
     });
   }
 
-  // form.on('file', (field, file) => {
-  //   res.send(200);
-  //   fs.rename(file.path, path.join(form.uploadDir, file.name));
-  //   console.log(readStream)
-  // });
-
-  // form.on('error', (err) => {
-  //   console.log('An error has occured: \n' + err);
-  // });
-
-  // form.on('end', () => res.end('success'));
-
   form.parse(req);
 });
 
