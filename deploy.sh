@@ -1,5 +1,4 @@
-export REACT_APP_API_URL=https://sqwak.kingofthestack.com/api/v0
-(cd ./web/app; npm run build)
+docker-compose exec web bash -c "export REACT_APP_BASE_URL=https://sqwak.kingofthestack.com && export REACT_APP_API_URL=https://sqwak.kingofthestack.com/api/v0 && npm run build"
 rm -rf ./nginx/www
 mkdir ./nginx/www
 cp -r ./web/app/build/ ./nginx/www/
