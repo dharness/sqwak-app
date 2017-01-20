@@ -1,23 +1,10 @@
 const express = require('express');
 const app = express();
-const featureExtractor = require('./services/featureExtractor');
-const modelManager = require('./services/modelManager');
 const path = require('path');
 const fs = require('fs');
-const userController = require('./api/userController');
-const uploadController = require('./api/uploadController');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const flash = require('connect-flash');
+const api = require('./api');
 const PORT = process.env.PORT || 8080;
 
-
-app.set('view engine', 'ejs');
-app.use(express.static('assets'));
-app.use(cookieParser('secret'));
-app.use(session({cookie: { maxAge: 60000 }}));
-app.use(flash());
 
 
 app.use(function(req, res, next) {
@@ -26,43 +13,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/login', userController);
-app.use('/api/v0/upload', uploadController);
-
-app.get('/', (req, res) => {
-  res.render('landing');
-});
-
-app.get('/api', (req, res) => {
-  res.send("This guys is key...");
-});
-
-app.get('/api/v0', (req, res) => {
-  res.send({
-    data: "All is well, pal. But you may want to check the microservices..."
-  });
-});
-
-app.get('/dashboard', (req, res) => res.render('dashboard'));
+app.use('/api/v0', api);
 
 app.get('/model_manager', (req, res) => {
   modelManager.extract((message) => {
     res.send(message);
-  });
-});
-
-app.get('/transfer', (req, res) => {
-  const readStream = fs.createReadStream('./uploads/audio.wav');
-  const writeStream = featureExtractor.extract((featureVector) => {
-    res.send(featureVector);
-  });
-
-  readStream.on('data', (chunk) => {
-    writeStream.write({ data: new Uint8Array(chunk) });
-  });
-
-  readStream.on('end', code => {
-    writeStream.end()
   });
 });
 

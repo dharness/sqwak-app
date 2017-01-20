@@ -3,6 +3,8 @@ services:
   api:
     image: sqwak/api
     command: npm start
+    ports:
+      - "8080:8080"
 
   web:
     image: sqwak/web
