@@ -3,6 +3,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import LandingPage from './components/pages/Landing';
 import LoginPage from './components/pages/Login';
 import DashboardPage from './components/pages/Dashboard';
+import NotFoundPage from './components/pages/NotFound';
 import AuthService from './services/AuthService';
 
 const auth = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack.auth0.com');
@@ -30,6 +31,7 @@ class App extends Component {
         <Route path="/" component={LandingPage}/>
         <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
         <Route path="/dashboard" component={DashboardPage} onEnter={requireAuth}/>
+        <Route path="*" component={NotFoundPage} />
       </Router>
     );
   }
