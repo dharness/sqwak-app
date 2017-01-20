@@ -4,13 +4,14 @@ import { browserHistory } from 'react-router'
 
 export default class AuthService {
   constructor(clientId, domain) {
+    console.log(`${process.env.REACT_APP_BASE_URL}/dashboard`);
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:3000/dashboard',
+        redirectUrl: `${process.env.REACT_APP_BASE_URL}/dashboard`,
         responseType: 'token'
       }
-    })
+    });
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
     // binds login functions to keep this context

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import getFeatures from './services/api';
-import Upload from './Upload';
 import { Router, Route, browserHistory } from 'react-router';
 import LandingPage from './components/pages/Landing';
 import LoginPage from './components/pages/Login';
@@ -11,25 +9,20 @@ const auth = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack
 
 // validate authentication for private routes
 const requireAuth = (nextState, replace) => {
+
+  const hashString = nextState.location.hash;
+  const idString = '&id_token';
+  const firstIndex = hashString.indexOf(idString) + idString.length + 1;
+  const lastIndex = hashString.indexOf('&token_type=');
+  console.log(hashString.substring(firstIndex, lastIndex));
+  localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex));
+
   if (!auth.loggedIn()) {
     replace({ pathname: '/login' })
   }
 }
 
 class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  testApi() {
-    getFeatures().then(res => {
-      this.setState({message: res.data})
-    }).catch(err => {
-      console.log(err);
-    });
-  }
 
   render() {
     return (
@@ -41,10 +34,4 @@ class App extends Component {
     );
   }
 }
-
-        // <h1> Welcom to sqwak </h1>
-        // <button onClick={this.testApi.bind(this)}>Test API</button>
-        // <br />
-        // {this.state.message}
-        // <Upload/>
 export default App;
