@@ -1,78 +1,41 @@
 const fs = require( 'fs' );
-const app = require('./app');
-const winston = require('winston');
+const server = require('./server');
 const PORT = process.env.PORT || 8080;
-var sqwak = { app };
-const logs = [];
-
-winston.level = 'debug';
+var sqwak = { server };
 
 /**
- * Loads every file in the config directory and makes it available
- * on the gloabl sqwak object
+ * Asynchronously loads every module in the config directory
  */
 function loadConfig(sqwak) {
-    sqwak.config = {};
+    const baseDir = './config';
+    const promises = [];
+
     return new Promise((resolve, reject) => {
-        const baseDir = './config'
-        const files = fs.readdirSync(baseDir);
-        files.forEach((fileName) => {
-            const module = require(`${baseDir}/${fileName}`);
-            const moduleName = fileName.split('.')[0];
-            sqwak.config[moduleName] = module;
-            logs.push(`Loaded: ${fileName}`);
+        fs.readdir(baseDir, (err, files) => {
+            files.forEach((fileName) => {
+                const currentModule = require(`${baseDir}/${fileName}`);
+                const unresolved = currentModule(sqwak);
+                promises.push(unresolved);
+            });
+            resolve(promises);
         });
-        resolve(sqwak);
     });
 }
 
 /**
- * Connect and initialize the db
+ * Initializes the gloabl sqwak object and resolves all dependencies
  */
-function initDB (sqwak) {
-    const MongoClient = require('mongodb').MongoClient;
-    const url = 'mongodb://mongo:27017/sqwak';
-
-    return new Promise((resolve, reject) => {
-        MongoClient.connect(url, (err, db) => {
-            if (err) { return reject(err); }
-            sqwak.db = db;
-            logs.push(`Initialized databse at: ${url}`);
-            resolve(sqwak);
+function bootstrap(promises) {
+    Promise.all(promises).then(results => {
+        sqwak = results.reduce((merged, config) => Object.assign(merged, config), sqwak);
+        global.sqwak = sqwak;
+        sqwak.server.listen(PORT, () => {
+            const message = sqwak._message;
+            delete sqwak._message;
+            console.log(` ${message}\n       Server listening on ${PORT}`);
         });
-    });
+    })
+    .catch(error => console.log(error));
 }
 
-const duck = `
-                   ..
-                  ( '\`<
-                   ) (
-            ( ----'  '.
-            (         ;
-            (_______,'
-        ~^~^~^~^~^~^~^~^~^~^~   
-`;
-
-const title = `
-   _____                     _    
-  / ____|                   | |   
- | (___   __ ___      ____ _| | __
-  \\___ \\ / _\` \\ \\ /\\ / / _\` | |/ /
-  ____) | (_| |\ V  V | (_| |   < 
- |_____/ \\__, | \\_/\\_/ \\__,_|_|\\_\\
-            | |                   
-            |_|                   
-`;
-
-loadConfig(sqwak)
-    .then(sqwak => initDB(sqwak))
-    .then(sqwak => {
-        global.sqwak = sqwak;
-        global.sqwak.app.listen(PORT, () => {
-            console.log(`
-            ${title}
-            ${duck}
-            Server listening on ${PORT}`);
-            console.log(logs);
-        });
-    });
+loadConfig(sqwak).then(promises => bootstrap(promises));
