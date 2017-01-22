@@ -28,37 +28,40 @@ Any time you'd like to restart the grpc server
 
 ### API
 
-``` javascript
-var class = {
-    
-    lastUpdated: "",
-    created: "",
-    classID: 123
+
+__POST__ `/class`
+
+Creates a new class from a set of audio files.
+Example Post Body:
+
+``` json
+{
+    "className": "car_horn"
 }
 
-var sample = {
-    classID: 123,
-    label: "Dog Barking",
-    features: [1,2,3.4],
-    original_filename: "ok.wav",
-    extraction_method: "urban_sound_1"
-}
-
-var model = {
-
-}
 ```
+
+
+
+
+
+
+
+
+
+
+
 
 ``` javascript
 var class = {
     type: "public",
-    name: "Dog barking",
+    package: "Urban Sound"
+    label: "Dog barking",
     lastUpdated: "",
     created: "",
     classID: 1,
     samples:[{
         features: [1,2,3.4],
-        label: "Dog Barking",
         original_filename: "ok.wav",
         extraction_method: "urban_sound_1"
     }]
@@ -69,7 +72,6 @@ var app = {}
 
 var model = {
     classIds: [],
-
 }
 
 ```

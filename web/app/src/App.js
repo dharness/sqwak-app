@@ -15,8 +15,10 @@ const requireAuth = (nextState, replace) => {
   const idString = '&id_token';
   const firstIndex = hashString.indexOf(idString) + idString.length + 1;
   const lastIndex = hashString.indexOf('&token_type=');
-  console.log(hashString.substring(firstIndex, lastIndex));
-  localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex));
+  const idToken = hashString.substring(firstIndex, lastIndex);
+  if (idToken && idToken !== "") {
+    localStorage.setItem('id_token', hashString.substring(firstIndex, lastIndex));
+  }
 
   if (!auth.loggedIn()) {
     replace({ pathname: '/login' })

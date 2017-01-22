@@ -3,9 +3,12 @@ const path = require('path');
 const fs = require('fs');
 const api = require('./api');
 const server = express();
+const bodyParser = require('body-parser');
 require('./index.js');
 
 
+
+server.use(bodyParser.urlencoded({ extended: false }))
 server.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
