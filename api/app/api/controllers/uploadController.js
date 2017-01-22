@@ -1,7 +1,6 @@
 const uploadController = require('express').Router();
 const formidable = require('formidable');
 const path = require('path');
-const fs = require('fs');
 const featureExtractor = require('./../services/featureExtractor');
 
 

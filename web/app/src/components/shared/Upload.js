@@ -30,13 +30,19 @@ class Upload extends Component {
     render () {
         return (
             <div style={{margin: "auto", width: "80%", display: "flex", justifyContent: "space-around"}}>
-                <input
-                    ref={(el) => this.fileInput = el}
-                    type="file"
-                    name="uploads[]"
-                    multiple="multiple"
-                    onClick={() => {this.setState({features: ""});}}
-                    onChange={this.uplaodAudio.bind(this)}/>
+                <div style={{display: "flex", flexDirection: "column"}}>
+                    <label>
+                    Class Name
+                    </label>
+                    <input type="text" value={this.state.audioClass} />
+                    <input
+                        ref={(el) => this.fileInput = el}
+                        type="file"
+                        name="uploads[]"
+                        multiple="multiple"
+                        onClick={() => {this.setState({features: ""});}}/>
+                    <button onClick={this.uplaodAudio.bind(this)}>Upload</button>
+                </div>
                 <div style={{width: 400, border: "solid 1px black", wordWrap: "break-word"}}>{this.state.features}</div>
             </div>
         )
