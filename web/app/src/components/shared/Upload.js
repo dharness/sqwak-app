@@ -14,8 +14,9 @@ class Upload extends Component {
         const formData = new FormData();
         const file = this.fileInput.files[0];
         formData.append('uploads[]', file, file.name);
+        formData.set("className", "car_honker")
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', `${process.env.REACT_APP_API_URL}/upload`, true);
+        xhr.open('POST', `${process.env.REACT_APP_API_URL}/class?access_token=${localStorage.getItem('id_token')}`, true);
         xhr.upload.onprogress = function(e) {
             console.log(e);
         };
