@@ -15,7 +15,7 @@ classController.get('/', (req, res) => {
   })
   .catch(err => {
     console.log(err);
-    res.send(err);
+    res.send(err.message);
   });
 });
 
@@ -60,6 +60,8 @@ classController.post('/', (req, res) => {
       if (err) { return reject(err); }
       if (fields.className) {
         resolve(fields.className)
+      } else {
+        res.send(400);
       }
     });
 

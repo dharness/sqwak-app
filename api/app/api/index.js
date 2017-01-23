@@ -1,6 +1,5 @@
 const api = require('express').Router();
 const fs = require('fs');
-const uploadController = require('./controllers/uploadController');
 const classController = require('./controllers/classController');
 const bearerToken = require('express-bearer-token');
 const responses = require('./responses');
@@ -20,7 +19,6 @@ api.use(function(req, res, next) {
   next();
 });
 
-api.use('/upload', uploadController);
 api.use('/class', classController);
 
 api.get('/', (req, res) => {
