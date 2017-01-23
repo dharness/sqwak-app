@@ -16,4 +16,13 @@ function getAll() {
     });
 }
 
-module.exports = { create, getAll };
+const MlClass = sqwak.mongoose.model('ModelClass', {
+    id: String,
+    className: String,
+    package: String,
+    numSamples: Number,
+    updatedAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = { create, getAll, MlClass };

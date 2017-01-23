@@ -3,14 +3,14 @@ const hasValidToken = require('./../policies/hasValidToken');
 const loadUser = require('./../policies/loadUser');
 const formidable = require('formidable');
 const featureExtractor = require('./../services/featureExtractor');
-const classModel = require('./../models/class');
+const MlClass = require('./../models/MlClass');
 
 
 classController.use(hasValidToken);
 classController.use(loadUser);
 
 classController.get('/', (req, res) => {
-  classModel.getAll().then((classList) => {
+  MlClass.getAll().then((classList) => {
     res.send(classList);
   })
   .catch(err => {
@@ -32,7 +32,7 @@ classController.post('/', (req, res) => {
           samples: [{featureVector}],
           createdBy: req.userId
         };
-        classModel.create(newClass).then((newObject) => {
+        MlClass.create(newClass).then((newObject) => {
           res.send(newObject);
         });
       })
