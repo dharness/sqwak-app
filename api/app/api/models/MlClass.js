@@ -16,7 +16,7 @@ function getAll() {
     });
 }
 
-const MlClass = sqwak.mongoose.model('ModelClass', {
+const MlClass = sqwak.mongoose.model('MlClass', {
     id: String,
     className: String,
     package: String,
