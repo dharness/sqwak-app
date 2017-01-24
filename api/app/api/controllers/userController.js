@@ -10,6 +10,10 @@ userController.get('/:id', (req, res) => {
     });
 });
 
+/**
+ * This route should only be called bu Auth0
+ * rules to propogate signup from their end.
+ */
 userController.post('/', validators.create, (req, res) => {
     const userId = req.body.user_id.split('|')[1];
     const user = new User({ _id: userId });
