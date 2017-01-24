@@ -6,4 +6,4 @@ userController.post('/', (req, res) => {
     res.send(200);
 });
 
-module.exports = mlAppController;
+module.exports = userController;
