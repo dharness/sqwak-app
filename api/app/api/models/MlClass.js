@@ -16,7 +16,7 @@ function getAll() {
     });
 }
 
-const MlClass = sqwak.mongoose.model('MlClass', {
+const mlClassSchema = new sqwak.mongoose.Schema({
     id: String,
     className: String,
     package: String,
@@ -24,5 +24,7 @@ const MlClass = sqwak.mongoose.model('MlClass', {
     updatedAt: { type: Date, default: Date.now },
     createdAt: { type: Date, default: Date.now }
 });
+
+const MlClass = sqwak.mongoose.model('MlClass', mlClassSchema);
 
 module.exports = { create, getAll, MlClass };

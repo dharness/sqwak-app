@@ -1,5 +1,9 @@
-const User = sqwak.mongoose.model('User', {
-    userId: { type: String, unique : true, required: true }
-});
+const MlApp = require('./MlApp');
+
+const userSchema = new sqwak.mongoose.Schema({
+    apps: [MlApp]
+}, { versionKey: false });
+
+const User = sqwak.mongoose.model('User', userSchema);
 
 module.exports = User;

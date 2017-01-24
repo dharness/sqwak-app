@@ -1,4 +1,4 @@
-const MlApp = sqwak.mongoose.model('MlApp', {
+const MlApp = new sqwak.mongoose.Schema({
     userId: { type: String, required: true },
     appName: { type: String, required: true },
     updatedAt: { type: Date, default: Date.now },
