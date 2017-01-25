@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import ClassCardGrid from './ClassCardGrid';
 Tabs.setUseDefaultStyles(false);
 
 
@@ -14,9 +15,11 @@ class Sidebar extends Component {
                     </TabList>
                     <TabPanel>
                         <h2>Custom</h2>
+                        <ClassCardGrid />
                     </TabPanel>
                     <TabPanel>
                         <h2>Premade</h2>
+                        <ClassCardGrid />
                     </TabPanel>
                 </Tabs>
             </div>
