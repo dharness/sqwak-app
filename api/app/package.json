@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "nodemon ./index.js",
+    "test": "mocha --timeout 10000 \"api/**/*.test.js\""
   },
   "dependencies": {
     "body-parser": "~1.15.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.5",
@@ -17,7 +20,9 @@
     "grpc": "^1.0.1",
     "joi": "^10.2.0",
     "jsonwebtoken": "^7.2.1",
+    "mocha": "^3.2.0",
     "mongodb": "^2.2.21",
+    "mongoose": "^4.7.7",
     "multer": "^1.2.1",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",

@@ -1,7 +1,7 @@
 const fs = require( 'fs' );
-const server = require('./server');
 const PORT = process.env.PORT || 8080;
-var sqwak = { server };
+var sqwak = {};
+
 
 /**
  * Asynchronously loads every module in the config directory
@@ -26,16 +26,27 @@ function loadConfig(sqwak) {
  * Initializes the gloabl sqwak object and resolves all dependencies
  */
 function bootstrap(promises) {
-    Promise.all(promises).then(results => {
+    return Promise.all(promises).then(results => {
         sqwak = results.reduce((merged, config) => Object.assign(merged, config), sqwak);
         global.sqwak = sqwak;
-        sqwak.server.listen(PORT, () => {
-            const message = sqwak._message;
-            delete sqwak._message;
-            console.log(` ${message}\n       Server listening on ${PORT}`);
-        });
+        return sqwak;
     })
-    .catch(error => console.log(error));
 }
 
-loadConfig(sqwak).then(promises => bootstrap(promises));
+function start(sqwak) {
+    sqwak.server = require('./server');
+    sqwak.server.listen(PORT, () => {
+        const message = sqwak._message;
+        delete sqwak._message;
+        console.log(` ${message}\n       Server listening on ${PORT}`);
+    });
+}
+
+if (require.main === module) {
+    loadConfig(sqwak)
+        .then(promises => bootstrap(promises))
+        .then((sqwak) => {start(sqwak);})
+        .catch(error => console.log(error));
+}
+
+module.exports = { loadConfig, bootstrap };
