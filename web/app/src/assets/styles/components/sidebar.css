@@ -18,7 +18,6 @@
 .sq-side-bar--tab-panel .ReactTabs__Tab {
     flex: 1;
     border-right: 1px solid var(--grey-3);
-    border-top: 1px solid var(--grey-3);
     border-bottom: 1px solid var(--grey-3);
     display: flex;
     flex-direction: column;

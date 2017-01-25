@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Upload from './../../shared/Upload';
 import getFeatures from './../../../services/api';
 import Sidebar from './sidebar/Sidebar';
+import Nav from './Nav';
 
 class DashboardPage extends Component {
 
@@ -22,6 +23,7 @@ class DashboardPage extends Component {
     render () {
         return (
             <div>
+                <Nav></Nav>
                 <Sidebar></Sidebar>
                 {/*
                     <h1> Welcom to sqwak </h1>
