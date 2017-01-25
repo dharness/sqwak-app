@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
-import LandingPage from './components/pages/Landing';
-import LoginPage from './components/pages/Login';
-import DashboardPage from './components/pages/Dashboard';
-import NotFoundPage from './components/pages/NotFound';
-import AuthService from './services/AuthService';
+import LandingPage from './pages/Landing';
+import LoginPage from './pages/Login';
+import DashboardPage from './pages/Dashboard';
+import NotFoundPage from './pages/NotFound';
+import AuthService from './../services/AuthService';
 
 const auth = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack.auth0.com');
 

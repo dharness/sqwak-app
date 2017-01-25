@@ -1,0 +1,23 @@
+.sq-landing {
+    background: #BEF4F4;
+}
+
+.sq-landing--nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+}
+
+.sq-landing--login-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 35px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sq-landing--hero {
+    display: flex;
+    justify-content: center;
+}

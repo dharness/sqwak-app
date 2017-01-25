@@ -1,0 +1,27 @@
+.sq-button--squishy {
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 8px 0 var(--button-color-primary-dark), 0 12px 10px rgba(0, 0, 0, .3);
+    transition: box-shadow .1s ease-in-out;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sq-button--squishy span {
+    display: inline-block;
+    padding: 7px 30px;
+    background-color: var(--button-color-primary);
+    border-radius: 8px;
+    text-shadow: 0 -1px 1px var(--button-color-primary-dark);
+    color: #fff;
+    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+}
+
+.sq-button--squishy:active, .sq-button--squishy:focus {
+    box-shadow: 0 8px 0 var(--button-color-primary-dark), 0 12px 10px rgba(0, 0, 0, .3);
+}
+
+.sq-button--squishy:active span {
+    transform: translate(0, 4px);
+}
