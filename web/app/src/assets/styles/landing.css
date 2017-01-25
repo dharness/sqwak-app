@@ -1,0 +1,25 @@
+.sq-landing--above-fold {
+    background: #AAF7F5;
+}
+
+.sq-landing--nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+}
+
+.sq-landing--login-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--font-color-primary-dark);
+}
+
+.sq-landing--hero {
+    display: flex;
+    justify-content: center;
+}

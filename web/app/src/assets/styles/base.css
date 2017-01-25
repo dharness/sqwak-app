@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One');
+
+:root {
+  --button-color-primary: #FF7373;
+  --button-color-primary-dark: #F75155;
+  --font-color-primary-dark: #545454;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Concert One', cursive;
+}
+
+p, div, h1, h2, h3, h4, h5, span {
+    font-family: 'Concert One', cursive;
+    color: var(--font-color-primary-dark);
+}
