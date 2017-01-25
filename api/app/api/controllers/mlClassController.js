@@ -10,14 +10,12 @@ classController.use(hasValidToken);
 classController.use(loadUser);
 
 classController.get('/', (req, res) => {
-  MlClass.getAll().then((classList) => {
-    res.send(classList);
-  })
-  .catch(err => {
-    console.log(err);
-    res.send(err.message);
+  MlClass.find({}, 'className', (err, docs) => {
+    if (err) { return err; }
+    res.send(docs);
   });
 });
+
 
 classController.post('/', (req, res) => {
   const form = new formidable.IncomingForm();
@@ -32,9 +30,7 @@ classController.post('/', (req, res) => {
           samples: [{featureVector}],
           createdBy: req.userId
         };
-        MlClass.create(newClass).then((newObject) => {
-          res.send(newObject);
-        });
+        res.send(newClass);
       })
       .catch(err => {
         console.log(err);

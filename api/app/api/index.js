@@ -1,6 +1,6 @@
 const api = require('express').Router();
 const fs = require('fs');
-const classController = require('./controllers/classController');
+const mlClassController = require('./controllers/mlClassController');
 const mlAppController = require('./controllers/mlAppController');
 const userController = require('./controllers/userController');
 const bearerToken = require('express-bearer-token');
@@ -25,7 +25,7 @@ api.use(function(req, res, next) {
   next();
 });
 
-api.use('/class', classController);
+api.use('/class', mlClassController);
 api.use('/app', mlAppController);
 api.use('/user', userController);
 
