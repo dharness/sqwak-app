@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import LandingPage from './pages/Landing';
 import LoginPage from './pages/Login';
-import DashboardPage from './pages/Dashboard';
+import DashboardPage from './pages/dashboard/Dashboard';
 import NotFoundPage from './pages/NotFound';
 import AuthService from './../services/AuthService';
 

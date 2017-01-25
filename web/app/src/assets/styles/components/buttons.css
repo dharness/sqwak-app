@@ -1,7 +1,7 @@
 .sq-button--squishy {
     display: inline-block;
     border-radius: 8px;
-    box-shadow: 0 8px 0 var(--button-color-primary-dark), 0 12px 10px rgba(0, 0, 0, .3);
+    box-shadow: 0 8px 0 var(--red-1), 0 12px 10px rgba(0, 0, 0, .3);
     transition: box-shadow .1s ease-in-out;
     font-size: 20px;
     color: #fff;
@@ -11,15 +11,15 @@
 .sq-button--squishy span {
     display: inline-block;
     padding: 7px 30px;
-    background-color: var(--button-color-primary);
+    background-color: var(--red-2);
     border-radius: 8px;
-    text-shadow: 0 -1px 1px var(--button-color-primary-dark);
+    text-shadow: 0 -1px 1px var(--red-1);
     color: #fff;
     transition: background-color .2s ease-in-out, transform .1s ease-in-out;
 }
 
 .sq-button--squishy:active, .sq-button--squishy:focus {
-    box-shadow: 0 8px 0 var(--button-color-primary-dark), 0 12px 10px rgba(0, 0, 0, .3);
+    box-shadow: 0 8px 0 var(--red-1), 0 12px 10px rgba(0, 0, 0, .3);
 }
 
 .sq-button--squishy:active span {
