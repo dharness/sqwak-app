@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Upload from './../shared/Upload';
-import getFeatures from './../../services/api';
+import Upload from './../../shared/Upload';
+import getFeatures from './../../../services/api';
+import Sidebar from './sidebar/Sidebar';
 
 class DashboardPage extends Component {
 
@@ -21,11 +22,14 @@ class DashboardPage extends Component {
     render () {
         return (
             <div>
-                <h1> Welcom to sqwak </h1>
+                <Sidebar></Sidebar>
+                {/*
+                    <h1> Welcom to sqwak </h1>
                 <button onClick={this.testApi.bind(this)}>Test API</button>
                 <br />
                 {this.state.message}
                 <Upload/>
+                */}
             </div>
         )
     }
