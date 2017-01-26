@@ -14,6 +14,7 @@ class FullPageModal extends Component {
                 <div className="sq-full-page-modal--header">
                     <img role="presentation" src={deleteIcon} className="sq-full-page-modal--cancel-button" onClick={this.props.onCloseEvent}/>
                 </div>
+                {this.props.children}
             </div>
         )
     }
