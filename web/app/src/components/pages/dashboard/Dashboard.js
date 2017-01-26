@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import getFeatures from './../../../services/api';
+import {getFeatures} from './../../../services/api';
 import Sidebar from './sidebar/Sidebar';
 import Nav from './../../shared/Nav';
 

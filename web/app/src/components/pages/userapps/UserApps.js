@@ -4,6 +4,7 @@ import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
+import {createApp} from './../../../services/api';
 
 
 class UserApps extends Component {
@@ -25,7 +26,11 @@ class UserApps extends Component {
     }
 
     newAppFormSubmited(formData) {
-        console.log(formData);
+        createApp({appName: formData.newAppName}).then((data) => {
+            if(data) {
+                this.closeModal();
+            }
+        });
     }
 
     render () {
