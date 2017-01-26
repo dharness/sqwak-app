@@ -3,6 +3,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import LandingPage from './pages/Landing';
 import LoginPage from './pages/Login';
 import DashboardPage from './pages/dashboard/Dashboard';
+import UserApps from './pages/userapps/UserApps';
 import NotFoundPage from './pages/NotFound';
 import AuthService from './../services/AuthService';
 
@@ -33,6 +34,7 @@ class App extends Component {
         <Route path="/" component={LandingPage}/>
         <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
         <Route path="/dashboard" component={DashboardPage} onEnter={requireAuth}/>
+        <Route path="/apps" component={UserApps} onEnter={requireAuth}/>
         <Route path="*" component={NotFoundPage} />
       </Router>
     );

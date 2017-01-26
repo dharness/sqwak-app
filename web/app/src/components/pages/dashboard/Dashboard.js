@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Upload from './../../shared/Upload';
 import getFeatures from './../../../services/api';
 import Sidebar from './sidebar/Sidebar';
-import Nav from './Nav';
+import Nav from './../../shared/Nav';
 
 class DashboardPage extends Component {
 
