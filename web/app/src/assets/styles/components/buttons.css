@@ -10,7 +10,7 @@
 
 .sq-button--squishy span {
     display: inline-block;
-    padding: 9.5px 30px;
+    padding: 13.5px 30px;
     border-radius: 5px;
     color: #fff;
     transition: background-color .2s ease-in-out, transform .1s ease-in-out;
@@ -24,7 +24,7 @@
 
 /** Red version */
 .sq-button--squishy_red {
-    box-shadow: 0 8px 0 var(--red-1);
+    box-shadow: 0 15px 0 var(--red-1);
 }
 
 .sq-button--squishy_red span {
@@ -32,12 +32,12 @@
 }
 
 .sq-button--squishy_red:active, .sq-button--squishy_red:focus {
-    box-shadow: 0 8px 0 var(--red-1);
+    box-shadow: 0 15px 0 var(--red-1);
 }
 
 /** Red version */
 .sq-button--squishy_green {
-    box-shadow: 0 8px 0 var(--green-1);
+    box-shadow: 0 15px 0 var(--green-1);
 }
 
 .sq-button--squishy_green span {
@@ -45,5 +45,5 @@
 }
 
 .sq-button--squishy_green:active, .sq-button--squishy_red:focus {
-    box-shadow: 0 8px 0 var(--green-1);
+    box-shadow: 0 15px 0 var(--green-1);
 }

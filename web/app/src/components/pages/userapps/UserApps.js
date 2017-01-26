@@ -10,7 +10,7 @@ class UserApps extends Component {
                 <Nav/>
                 <div className="sq-apps-page--content">
                     <div className="sq-apps-page--header">
-                        <h2>All apps</h2>
+                        <div>All apps</div>
                         <PlushButton buttonText="New app"/>
                     </div>
                     <AppPreviewCard/>

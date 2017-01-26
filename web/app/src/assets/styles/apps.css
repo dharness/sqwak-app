@@ -12,6 +12,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 40px 0px;
 }
 
 .sq-apps-page--header .sq-button--squishy {
