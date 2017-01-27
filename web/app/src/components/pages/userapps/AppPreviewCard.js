@@ -10,7 +10,9 @@ class AppPreviewCard extends Component {
                         <div className="sq-app-preview-card--status-indicator unpublished"></div>
                         unpublished
                     </div>
-                    <img src={deleteIcon} className="sq-app-preview-card--delete" onClick={()=> {alert('Delete!')}} role="presentation"/>
+                    <img src={deleteIcon} className="sq-app-preview-card--delete" onClick={()=> {
+                        this.props.onDeleteClicked(this.props.appId)
+                    }} role="presentation"/>
                 </div>
                 <div className="sq-app-preview-card--content">
                     {this.props.name}

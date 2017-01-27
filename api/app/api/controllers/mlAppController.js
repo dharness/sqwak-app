@@ -18,15 +18,24 @@ mlAppController.post('/', validators.create,  (req, res) => {
     });
     req.user.save((err, user) => {
         if (err) { return console.log(err);}
-        res.send(user.apps);
+        res.send(user.apps.pop());
     });
 });
 
 mlAppController.put('/:appId', validators.create,  (req, res) => {
-    const app = req.user.apps.find(app => app._id === req.params.appId);
+    const app = req.user.apps.find(app => app._id.toString() === req.params.appId);
     req.user.save((err, user) => {
         if (err) { return console.log(err);}
         res.send(user.apps);
+    });
+});
+
+mlAppController.delete('/:appId', (req, res) => {
+    const app = req.user.apps.find(app => app._id.toString() === req.params.appId);
+    app.remove();
+    req.user.save((err, msg)=> {
+        if (err) { return res.send(err); }
+        res.send(msg);
     });
 });
 
