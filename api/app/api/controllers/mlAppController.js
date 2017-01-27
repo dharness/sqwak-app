@@ -22,6 +22,15 @@ mlAppController.post('/', validators.create,  (req, res) => {
     });
 });
 
+mlAppController.get('/:appId', (req, res) => {
+    const app = req.user.apps.find(app => app._id.toString() === req.params.appId);
+    if (app) {
+        res.send(app);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
 mlAppController.put('/:appId', validators.create,  (req, res) => {
     const app = req.user.apps.find(app => app._id.toString() === req.params.appId);
     req.user.save((err, user) => {
