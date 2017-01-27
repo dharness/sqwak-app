@@ -23,11 +23,11 @@
 .sq-app-preview-card--header {
     display: flex;
     justify-content: space-between;
+    height: 20px;
 }
 
 .sq-app-preview-card--status {
     display: flex;
-    color: var(--grey-2);
     font-size: 14px;
     font-weight: lighter;
 }
@@ -40,17 +40,31 @@
     align-self: center;
 }
 
+.sq-app-preview-card--status-message {
+    align-self: center;
+    color: var(--grey-2);
+}
+
 .sq-app-preview-card--status-indicator.unpublished { background: var(--yellow-1);}
 .sq-app-preview-card--status-indicator.running { background: var(--green-2); }
 .sq-app-preview-card--status-indicator.stopped { background: var(--red-2); }
 
 .sq-app-preview-card--delete {
     display: none;
-    height: 15px;
+    height: 20px;
 }
 
 .sq-app-preview-card:hover .sq-app-preview-card--delete {
     display: flex;
+    background-image: url('./../../../assets/images/icons/delete.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+
+.sq-app-preview-card:hover .sq-app-preview-card--delete:hover {
+    background-image: url('./../../../assets/images/icons/red-delete.svg');
 }
 
 .sq-app-preview-card--content {
