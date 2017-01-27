@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
@@ -34,6 +35,7 @@ class UserApps extends Component {
     }
 
     render () {
+        console.log(this.props.store.getState().userApps);
         return (
             <div className="sq-apps-page">
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
@@ -46,10 +48,36 @@ class UserApps extends Component {
                         <PlushButton buttonText="New app" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
                     </div>
                     <AppPreviewCard />
+                    <button onClick={this.props.onClick}> Add Todo </button>
+                    {this.props.userApps.map(e => {
+                        console.log(e);
+                        return <li key={e.id}> e </li>
+                    })}
                 </div>
             </div>
         )
     }
 }
 
-export default UserApps
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userApps: state.userApps
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: () => {
+        dispatch({
+            type: 'ADD_TODO',
+            text: 'test',
+            id: Math.random()
+        })
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserApps)

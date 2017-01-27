@@ -7,6 +7,7 @@ import UserApps from './pages/userapps/UserApps';
 import NotFoundPage from './pages/NotFound';
 import AuthService from './../services/AuthService';
 
+
 const auth = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack.auth0.com');
 
 // validate authentication for private routes
@@ -26,15 +27,17 @@ const requireAuth = (nextState, replace) => {
   }
 }
 
+
 class App extends Component {
 
   render() {
+    console.log(this.props.store)
     return (
       <Router history={browserHistory}>
         <Route path="/" component={LandingPage}/>
         <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
         <Route path="/dashboard" component={DashboardPage} onEnter={requireAuth}/>
-        <Route path="/apps" component={UserApps} onEnter={requireAuth}/>
+        <Route path="/apps" component={() => (<UserApps store={this.props.store} />)} onEnter={requireAuth}/>
         <Route path="*" component={NotFoundPage} />
       </Router>
     );
