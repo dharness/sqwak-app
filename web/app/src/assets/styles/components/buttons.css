@@ -25,16 +25,11 @@
 }
 
 .sq-button--squishy:active span {
-    transform: translate(0, 4px);
+    /*transform: translate(0, 4px);*/
 }
 
 .sq-button--squishy.disabled:active span {
     transform: none;
-}
-
-/** Red version */
-.sq-button--squishy_red {
-    box-shadow: 0 15px 0 var(--red-1);
 }
 
 .sq-button--squishy_red span {
@@ -45,15 +40,10 @@
     box-shadow: 0 15px 0 var(--red-1);
 }
 
-/** Red version */
-.sq-button--squishy_green {
-    box-shadow: 0 15px 0 var(--green-1);
-}
-
 .sq-button--squishy_green span {
     background-color: var(--green-2);
 }
 
-.sq-button--squishy_green:active, .sq-button--squishy_red:focus {
-    box-shadow: 0 15px 0 var(--green-1);
+.sq-button--squishy_green:active, .sq-button--squishy_green:focus, .sq-button--squishy_green:hover span {
+    background-color: var(--green-1);
 }
