@@ -8,3 +8,4 @@ import './components/new-app-form.css';
 import './components/basic-input.css';
 import './landing.css';
 import './apps.css';
+import './loading.css';

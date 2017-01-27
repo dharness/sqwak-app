@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
-import {createApp} from './../../../services/api';
+import {createApp, fetchApps} from './../../../services/api';
 
 
 class UserApps extends Component {
@@ -33,6 +34,14 @@ class UserApps extends Component {
         });
     }
 
+    componentWillMount() {
+        fetchApps().then(userAppsList => {
+            userAppsList.forEach(userApp => {
+                this.props.addApp(userApp);
+            });
+        });
+    }
+
     render () {
         return (
             <div className="sq-apps-page">
@@ -45,11 +54,36 @@ class UserApps extends Component {
                         <div>All apps</div>
                         <PlushButton buttonText="New app" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
                     </div>
-                    <AppPreviewCard />
+                    <div className="sq-apps-page--app-grid">
+                        {this.props.userApps.map((userApp, i) => {
+                            return <AppPreviewCard key={userApp.id} name={userApp.appName}/>
+                        })}
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default UserApps
+const mapStateToProps = (state, ownProps) => {
+  return {
+    userApps: state.userApps
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addApp(userApp) {
+        dispatch({
+            type: 'ADD_APP',
+            appName: userApp.appName,
+            id: userApp._id
+        })
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserApps)

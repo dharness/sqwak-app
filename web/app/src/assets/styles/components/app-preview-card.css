@@ -1,6 +1,7 @@
 .sq-app-preview-card {
     background: white;
     width: 210px;
+    min-width: 210px;
     height: 150px;
     border-radius: 3px;
     border: solid 1px var(--grey-3);
@@ -12,6 +13,7 @@
     box-shadow: 0 1px 3px 0 rgba(225,225,225,0.50);
     cursor: pointer;
     transition: transform 0.04s ease-in-out;
+    margin: 40px;
 }
 
 .sq-app-preview-card:hover {

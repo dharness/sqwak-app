@@ -31,6 +31,7 @@ html, body, div[data-reactroot], #root {
     margin: 0;
     font-family: 'Helvetica';
     overflow: hidden;
+    display: none;
 }
 
 p, div, h1, h2, h3, h4, h5, span {
