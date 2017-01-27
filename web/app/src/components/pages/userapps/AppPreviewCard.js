@@ -13,7 +13,7 @@ class AppPreviewCard extends Component {
                     <img src={deleteIcon} className="sq-app-preview-card--delete" onClick={()=> {alert('Delete!')}} role="presentation"/>
                 </div>
                 <div className="sq-app-preview-card--content">
-                    The Zoo App
+                    {this.props.name}
                 </div>
                 <div className="sq-app-preview-card--footer">
                     <div>10 classes</div>

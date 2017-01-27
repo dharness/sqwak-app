@@ -31,7 +31,6 @@ const requireAuth = (nextState, replace) => {
 class App extends Component {
 
   render() {
-    console.log(this.props.store)
     return (
       <Router history={browserHistory}>
         <Route path="/" component={LandingPage}/>

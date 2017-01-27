@@ -5,7 +5,7 @@ import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
-import {createApp} from './../../../services/api';
+import {createApp, fetchApps} from './../../../services/api';
 
 
 class UserApps extends Component {
@@ -34,8 +34,15 @@ class UserApps extends Component {
         });
     }
 
+    componentWillMount() {
+        fetchApps().then(userAppsList => {
+            userAppsList.forEach(userApp => {
+                this.props.addApp(userApp);
+            });
+        });
+    }
+
     render () {
-        console.log(this.props.store.getState().userApps);
         return (
             <div className="sq-apps-page">
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
@@ -47,12 +54,11 @@ class UserApps extends Component {
                         <div>All apps</div>
                         <PlushButton buttonText="New app" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
                     </div>
-                    <AppPreviewCard />
-                    <button onClick={this.props.onClick}> Add Todo </button>
-                    {this.props.userApps.map(e => {
-                        console.log(e);
-                        return <li key={e.id}> e </li>
-                    })}
+                    <div className="sq-apps-page--app-grid">
+                        {this.props.userApps.map(userApp => {
+                            return <AppPreviewCard key={userApp.id} name={userApp.appName}/>
+                        })}
+                    </div>
                 </div>
             </div>
         )
@@ -67,11 +73,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => {
+    addApp(userApp) {
         dispatch({
-            type: 'ADD_TODO',
-            text: 'test',
-            id: Math.random()
+            type: 'ADD_APP',
+            appName: userApp.appName,
+            id: userApp._id
         })
     }
   }

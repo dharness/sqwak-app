@@ -1,6 +1,7 @@
 .sq-app-preview-card {
     background: white;
     width: 210px;
+    min-width: 210px;
     height: 150px;
     border-radius: 3px;
     border: solid 1px var(--grey-3);
