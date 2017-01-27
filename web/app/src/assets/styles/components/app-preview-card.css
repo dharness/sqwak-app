@@ -13,6 +13,7 @@
     box-shadow: 0 1px 3px 0 rgba(225,225,225,0.50);
     cursor: pointer;
     transition: transform 0.04s ease-in-out;
+    margin: 40px;
 }
 
 .sq-app-preview-card:hover {

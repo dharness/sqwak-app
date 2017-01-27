@@ -22,4 +22,17 @@
 .sq-apps-page--app-grid {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sq-apps-page--app-grid .sq-app-preview-card:nth-child(1) {
+    margin-left: 0px;
+}
+
+.sq-apps-page--app-grid .sq-app-preview-card:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.sq-apps-page--app-grid .sq-app-preview-card:nth-child(3n+1) {
+    margin-left: 0px;
 }

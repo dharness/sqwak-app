@@ -55,7 +55,7 @@ class UserApps extends Component {
                         <PlushButton buttonText="New app" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
                     </div>
                     <div className="sq-apps-page--app-grid">
-                        {this.props.userApps.map(userApp => {
+                        {this.props.userApps.map((userApp, i) => {
                             return <AppPreviewCard key={userApp.id} name={userApp.appName}/>
                         })}
                     </div>
