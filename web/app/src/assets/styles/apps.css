@@ -1,0 +1,21 @@
+.sq-apps-page {
+    background: var(--grey-5);
+}
+
+.sq-apps-page--content {
+    width: 1020px;
+    height: 100%;
+    margin: auto;
+}
+
+.sq-apps-page--header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0px;
+}
+
+.sq-apps-page--header .sq-button--squishy {
+    align-self: center;
+    margin-bottom: 5px;
+}

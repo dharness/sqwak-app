@@ -13,7 +13,7 @@ class LandingPage extends Component {
                         <Link to="/login" className="sq-landing--login-link">
                             Login
                         </Link>                    
-                        <a href="#" className="sq-button--squishy">
+                        <a href="#" className="sq-button--squishy sq-button--squishy_red">
                             <span>Signup</span>
                         </a>
                     </div>
@@ -22,7 +22,7 @@ class LandingPage extends Component {
                         <div>
                             <img src={sqwakWord} role="presentation"/>
                             <p>Teach your apps to listen with your personal machine learning dashboard</p>
-                            <a href="#" className="sq-button--squishy">
+                            <a href="#" className="sq-button--squishy sq-button--squishy_red">
                                 <span>Try it free!</span>
                             </a>
                         </div>

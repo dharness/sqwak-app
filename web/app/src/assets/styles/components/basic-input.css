@@ -1,0 +1,19 @@
+.sq-basic-input {
+    font-size: 14px;
+    font-weight: 100;
+    color: var(--grey-1);
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px var(--grey-3);
+}
+
+.sq-basic-input:focus, .sq-basic-input:active {
+    border: solid 1px var(--blue-1);
+    outline: none;
+}
+
+.sq-basic-input::placeholder {
+    font-weight: lighter;
+    color: var(--grey-3);
+    font-size: 14px;
+}

@@ -1,0 +1,27 @@
+.sq-new-app-form {
+    width: 100%;
+    height: 100%;
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sq-new-app-form--container {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.sq-new-app-form--title {
+    font-size: 24px;
+    padding: 40px 0px;
+}
+
+.sq-new-app-form--button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 0px;
+}
