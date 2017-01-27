@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
@@ -49,6 +50,10 @@ class UserApps extends Component {
         });
     }
 
+    openApp(appId) {
+        browserHistory.push(`/dashboard/${appId}`);
+    }
+
     render () {
         return (
             <div className="sq-apps-page">
@@ -63,7 +68,14 @@ class UserApps extends Component {
                     </div>
                     <div className="sq-apps-page--app-grid">
                         {this.props.userApps.map((userApp, i) => {
-                            return <AppPreviewCard key={userApp.id} appId={userApp.id} name={userApp.appName} onDeleteClicked={this.deleteApp.bind(this)}/>
+                            return (
+                            <AppPreviewCard
+                                onCardSelected={()=> {this.openApp(userApp.id);}}
+                                key={userApp.id}
+                                appId={userApp.id}
+                                name={userApp.appName}
+                                onDeleteClicked={this.deleteApp.bind(this)}
+                            />)
                         })}
                     </div>
                 </div>

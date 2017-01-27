@@ -19,10 +19,10 @@
     align-self: center;
     margin-bottom: 5px;
 }
+
 .sq-apps-page--app-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .sq-apps-page--app-grid .sq-app-preview-card:nth-child(1) {

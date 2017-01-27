@@ -35,7 +35,7 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path="/" component={LandingPage}/>
         <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
-        <Route path="/dashboard" component={DashboardPage} onEnter={requireAuth}/>
+        <Route path="/dashboard/:appId" component={DashboardPage} onEnter={requireAuth}/>
         <Route path="/apps" component={() => (<UserApps store={this.props.store} />)} onEnter={requireAuth}/>
         <Route path="*" component={NotFoundPage} />
       </Router>
