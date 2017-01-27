@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
+import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import {createApp, fetchApps, deleteApp} from './../../../services/api';
@@ -15,7 +16,8 @@ class UserApps extends Component {
         super(props);
         this.state = {
             newAppModalOpen: false,
-            newAppFormStatus: 0
+            newAppFormStatus: 0,
+            warnings: []
         };
     }
     
@@ -45,9 +47,18 @@ class UserApps extends Component {
     }
 
     deleteApp(appId) {
-        deleteApp(appId).then(() => {
-            this.props.removeApp(appId);
-        });
+        this.setState({
+            warnings: [1]
+        })
+    }
+
+    confirmDelete() {
+        this.setState({
+            warnings: []
+        })
+        // deleteApp(appId).then(() => {
+        //     this.props.removeApp(appId);
+        // });
     }
 
     openApp(appId) {
@@ -57,6 +68,7 @@ class UserApps extends Component {
     render () {
         return (
             <div className="sq-apps-page">
+                <Warning isOpen={this.state.warnings.length > 0} warnings={this.state.warnings} onConfirm={this.confirmDelete.bind(this)} onDeny={this.denyDelete}/>
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
                     <NewAppForm
                         formStatus={this.state.newAppFormStatus}

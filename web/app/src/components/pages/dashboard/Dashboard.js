@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {getFeatures} from './../../../services/api';
 import { connect } from 'react-redux';
-import Sidebar from './sidebar/Sidebar';
 import Nav from './../../shared/Nav';
+import Warning from './../../shared/Warning';
 import SubNav from './SubNav';
-import {fetchApp} from './../../../services/api';
+import Sidebar from './sidebar/Sidebar';
+import {getFeatures, fetchApp} from './../../../services/api';
+
 
 class DashboardPage extends Component {
 
@@ -35,6 +36,7 @@ class DashboardPage extends Component {
     render () {
         return (
             <div>
+                <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar></Sidebar>
