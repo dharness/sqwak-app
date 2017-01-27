@@ -47,12 +47,6 @@ class UserApps extends Component {
     }
 
     deleteApp(appId) {
-        this.setState({
-            warnings: [1]
-        })
-    }
-
-    confirmDelete() {
         deleteApp(appId).then(() => {
             this.props.removeApp(appId);
         });
@@ -65,7 +59,7 @@ class UserApps extends Component {
     render () {
         return (
             <div className="sq-apps-page">
-                <Warning isOpen={this.state.warnings.length > 0} warnings={this.state.warnings} onConfirm={this.confirmDelete.bind(this)} onDeny={this.denyDelete}/>
+                <Warning isOpen={false}/>
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
                     <NewAppForm
                         formStatus={this.state.newAppFormStatus}
