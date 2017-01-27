@@ -58,7 +58,11 @@ class UserApps extends Component {
         return (
             <div className="sq-apps-page">
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
-                    <NewAppForm key={this.state.newAppFormStatus} onSumbit={this.newAppFormSubmited.bind(this)}/>
+                    <NewAppForm
+                        formStatus={this.state.newAppFormStatus}
+                        key={this.state.newAppFormStatus}
+                        onSumbit={this.newAppFormSubmited.bind(this)}
+                    />
                 </FullPageModal>
                 <Nav/>
                 <div className="sq-apps-page--content">
