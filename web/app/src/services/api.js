@@ -29,8 +29,20 @@ function fetchApps() {
     .then((data) => data.json())
 }
 
+function deleteApp(appId) {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((data) => data.json())
+}
+
 export {
     getFeatures,
     createApp,
-    fetchApps
+    fetchApps,
+    deleteApp
 }

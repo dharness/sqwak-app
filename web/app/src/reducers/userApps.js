@@ -8,6 +8,8 @@ const userApps = (state = [], action) => {
           appName: action.appName
         }
       ]
+    case 'REMOVE_APP':
+      return state.filter(app => app.id !== action.id);
     default:
       return state
   }

@@ -5,7 +5,7 @@ import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
-import {createApp, fetchApps} from './../../../services/api';
+import {createApp, fetchApps, deleteApp} from './../../../services/api';
 
 
 class UserApps extends Component {
@@ -27,9 +27,10 @@ class UserApps extends Component {
     }
 
     newAppFormSubmited(formData) {
-        createApp({appName: formData.newAppName}).then((data) => {
-            if(data) {
+        createApp({appName: formData.newAppName}).then((newApp) => {
+            if(newApp) {
                 this.closeModal();
+                this.props.addApp(newApp);
             }
         });
     }
@@ -39,6 +40,12 @@ class UserApps extends Component {
             userAppsList.forEach(userApp => {
                 this.props.addApp(userApp);
             });
+        });
+    }
+
+    deleteApp(appId) {
+        deleteApp(appId).then(() => {
+            this.props.removeApp(appId);
         });
     }
 
@@ -56,7 +63,7 @@ class UserApps extends Component {
                     </div>
                     <div className="sq-apps-page--app-grid">
                         {this.props.userApps.map((userApp, i) => {
-                            return <AppPreviewCard key={userApp.id} name={userApp.appName}/>
+                            return <AppPreviewCard key={userApp.id} appId={userApp.id} name={userApp.appName} onDeleteClicked={this.deleteApp.bind(this)}/>
                         })}
                     </div>
                 </div>
@@ -78,6 +85,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             type: 'ADD_APP',
             appName: userApp.appName,
             id: userApp._id
+        })
+    },
+    removeApp(appId) {
+        dispatch({
+            type: 'REMOVE_APP',
+            id: appId
         })
     }
   }
