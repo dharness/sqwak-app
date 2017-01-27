@@ -8,6 +8,7 @@ import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import {createApp, fetchApps, deleteApp} from './../../../services/api';
+import brainImg from './../../../assets/images/brain.svg';
 
 
 class UserApps extends Component {
@@ -85,6 +86,9 @@ class UserApps extends Component {
                             />)
                         })}
                     </div>
+                <div className={"sq-apps-page--bg-img" + (this.props.userApps.length > 0 ? " hiddden" : "")} style={{
+                    transition: (this.props.userApps.length > 0 ? "none" : "")
+                }}></div>
                 </div>
             </div>
         )
