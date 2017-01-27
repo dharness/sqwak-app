@@ -4,11 +4,10 @@ import { browserHistory } from 'react-router'
 
 export default class AuthService {
   constructor(clientId, domain) {
-    console.log(`${process.env.REACT_APP_BASE_URL}/dashboard`);
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: `${process.env.REACT_APP_BASE_URL}/dashboard`,
+        redirectUrl: `${process.env.REACT_APP_BASE_URL}/apps`,
         responseType: 'token'
       }
     });
@@ -22,7 +21,7 @@ export default class AuthService {
     // Saves the user token
     this.setToken(authResult.idToken)
     // navigate to the home route
-    browserHistory.replace('/dashboard')
+    browserHistory.replace('/apps')
   }
 
   login() {

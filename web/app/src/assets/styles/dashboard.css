@@ -1,0 +1,9 @@
+.sq-dashboard--content {
+    height: 100%;
+    display: flex;
+}
+
+.sq-dashboard--workspace {
+    display: flex;
+    flex-direction: column;
+}

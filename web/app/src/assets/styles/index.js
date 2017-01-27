@@ -9,3 +9,4 @@ import './components/basic-input.css';
 import './landing.css';
 import './apps.css';
 import './loading.css';
+import './dashboard.css';

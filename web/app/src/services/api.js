@@ -17,6 +17,18 @@ function createApp(options) {
     }).then((data) => data.json())
 }
 
+function fetchApp(appId) {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((data) => data.json())
+}
+
 function fetchApps() {
     const token = localStorage.getItem('id_token');
     return fetch(`${process.env.REACT_APP_API_URL}/app`, {
@@ -43,6 +55,7 @@ function deleteApp(appId) {
 export {
     getFeatures,
     createApp,
+    fetchApp,
     fetchApps,
     deleteApp
 }
