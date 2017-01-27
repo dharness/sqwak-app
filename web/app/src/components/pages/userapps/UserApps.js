@@ -53,12 +53,9 @@ class UserApps extends Component {
     }
 
     confirmDelete() {
-        this.setState({
-            warnings: []
-        })
-        // deleteApp(appId).then(() => {
-        //     this.props.removeApp(appId);
-        // });
+        deleteApp(appId).then(() => {
+            this.props.removeApp(appId);
+        });
     }
 
     openApp(appId) {
