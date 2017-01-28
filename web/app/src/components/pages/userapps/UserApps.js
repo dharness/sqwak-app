@@ -4,9 +4,11 @@ import { browserHistory } from 'react-router';
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import FullPageModal from './../../shared/FullPageModal';
+import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import {createApp, fetchApps, deleteApp} from './../../../services/api';
+import brainImg from './../../../assets/images/brain.svg';
 
 
 class UserApps extends Component {
@@ -15,7 +17,8 @@ class UserApps extends Component {
         super(props);
         this.state = {
             newAppModalOpen: false,
-            newAppFormStatus: 0
+            newAppFormStatus: 0,
+            warnings: []
         };
     }
     
@@ -57,8 +60,13 @@ class UserApps extends Component {
     render () {
         return (
             <div className="sq-apps-page">
+                <Warning isOpen={false}/>
                 <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
-                    <NewAppForm key={this.state.newAppFormStatus} onSumbit={this.newAppFormSubmited.bind(this)}/>
+                    <NewAppForm
+                        formStatus={this.state.newAppFormStatus}
+                        key={this.state.newAppFormStatus}
+                        onSumbit={this.newAppFormSubmited.bind(this)}
+                    />
                 </FullPageModal>
                 <Nav/>
                 <div className="sq-apps-page--content">
@@ -78,6 +86,9 @@ class UserApps extends Component {
                             />)
                         })}
                     </div>
+                <div className={"sq-apps-page--bg-img" + (this.props.userApps.length > 0 ? " hiddden" : "")} style={{
+                    transition: (this.props.userApps.length > 0 ? "none" : "")
+                }}></div>
                 </div>
             </div>
         )

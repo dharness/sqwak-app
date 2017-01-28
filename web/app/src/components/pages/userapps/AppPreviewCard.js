@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import deleteIcon from './../../../assets/images/icons/delete.svg'
+import React, {Component} from 'react';
+
 
 class AppPreviewCard extends Component {
     render () {

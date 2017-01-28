@@ -21,8 +21,15 @@ class NewAppForm extends Component {
     }
 
     handleSubmit() {
-        if(this.props.onSumbit) {
+        let hasAppName = (this.state.newAppName !== "");
+        if(this.props.onSumbit && hasAppName) {
             this.props.onSumbit({newAppName: this.state.newAppName});
+        }
+    }
+
+    componentWillReceiveProps(props) {
+        if(props.formStatus === this.props.formStatus) {
+            this.nameInput.focus();
         }
     }
 
@@ -37,6 +44,7 @@ class NewAppForm extends Component {
                         type="text"
                         className="sq-basic-input"
                         placeholder="app name"
+                        onKeyPress={(e)=>{ if(e.key === 'Enter') {this.handleSubmit();} }}
                         onChange={this.userDidType.bind(this)} />
                     <div className="sq-new-app-form--button-wrapper">
                         <PlushButton buttonText="Create App" disabled={this.state.newAppName === ""} onClick={this.handleSubmit.bind(this)}/>

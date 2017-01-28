@@ -6,7 +6,6 @@
     cursor: pointer;
     height: 50px;
     width: 130px;
-
 }
 
 .sq-button:hover {
@@ -22,6 +21,7 @@
     cursor: default;
     opacity: 0.6;
 }
+
 
 .sq-button:active {
     transform: translate(0px, 1px);
