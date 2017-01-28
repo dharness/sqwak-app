@@ -39,7 +39,7 @@ class NewAppForm extends Component {
                         placeholder="app name"
                         onChange={this.userDidType.bind(this)} />
                     <div className="sq-new-app-form--button-wrapper">
-                        <PlushButton buttonText="New app" disabled={this.state.newAppName === ""} onClick={this.handleSubmit.bind(this)}/>
+                        <PlushButton buttonText="Create App" disabled={this.state.newAppName === ""} onClick={this.handleSubmit.bind(this)}/>
                     </div>
                 </div>
             </div>

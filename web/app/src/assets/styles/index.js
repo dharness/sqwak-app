@@ -1,4 +1,6 @@
+import './fonts.css';
 import './base.css';
+import './text.css';
 import './components/buttons.css';
 import './components/sidebar.css';
 import './components/nav.css';

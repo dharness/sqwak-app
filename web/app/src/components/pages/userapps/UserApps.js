@@ -62,9 +62,9 @@ class UserApps extends Component {
                 </FullPageModal>
                 <Nav/>
                 <div className="sq-apps-page--content">
-                    <div className="sq-apps-page--header">
+                    <div className="sq-apps-page--header sq-text__xlarge">
                         <div>All apps</div>
-                        <PlushButton buttonText="New app" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
+                        <PlushButton buttonText="Create App" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
                     </div>
                     <div className="sq-apps-page--app-grid">
                         {this.props.userApps.map((userApp, i) => {

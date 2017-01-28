@@ -10,9 +10,11 @@ class PlushButton extends Component {
 
     render () {
         return (
-            <a onClick={this.handleClick.bind(this)} className={"sq-button--squishy sq-button--squishy_green" + (this.props.disabled ? " disabled" : "")}>
-                <span>{this.props.buttonText}</span>
-            </a>
+            <button onClick={this.handleClick.bind(this)}
+                disabled={this.props.disabled}
+                className="sq-button sq-button__green sq-text__white">
+                {this.props.buttonText}
+            </button>
         )
     }
 }

@@ -7,14 +7,15 @@
   --grey-4: #F5F9FC;
   --grey-5: #F8FCFF;
 
-  --blue-1: #73D7E5;
-  --blue-2: #9DECEA;
-  --blue-3: #AAF7F5;
+  --blue-1: #5CD5FD;
+  --blue-2: #9DE5FE;
+  --blue-3: #C1ECFD;
   --blue-4: #DBF4FF;
 
   --green-1: #2CC494;
-  --green-2: #3ADE8D;
-  --green-3: #8AF0BE;
+  --green-2: #10D385;
+  --green-3: #3ADE8D;
+  --green-4: #8AF0BE;
 
   --yellow-1: #FFE664;
   --yellow-2: #FFF1A6;
@@ -29,12 +30,12 @@ html, body, div[data-reactroot], #root {
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: 'Helvetica';
+    font-family: 'FaktSoft';
     overflow: hidden;
     display: none;
 }
 
 p, div, h1, h2, h3, h4, h5, span {
-    font-family: 'Helvetica';
+    font-family: 'FaktSoft-Blond';
     color: var(--grey-1);
 }
