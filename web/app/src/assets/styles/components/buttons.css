@@ -1,49 +1,36 @@
-.sq-button--squishy {
+.sq-button {
     display: inline-block;
+    border: none;
     border-radius: 5px;
     transition: box-shadow .1s ease-in-out;
-    font-size: 20px;
-    color: #fff;
     cursor: pointer;
-    height: 34px;
+    height: 50px;
+    width: 130px;
 }
 
-.sq-button--squishy.disabled {
-    cursor: default;
-    opacity: 0.5;
-}
-
-.sq-button--squishy span {
-    display: inline-block;
-    padding: 13.5px 30px;
-    border-radius: 5px;
-    color: #fff;
-    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
-    font-weight: lighter;
-    font-size: 16px;
-    user-select: none;
-}
-
-.sq-button--squishy:active span {
-    /*transform: translate(0, 4px);*/
-}
-
-.sq-button--squishy.disabled:active span {
-    transform: none;
-}
-
-.sq-button--squishy_red span {
-    background-color: var(--red-2);
-}
-
-.sq-button--squishy_red:active, .sq-button--squishy_red:focus {
-    box-shadow: 0 15px 0 var(--red-1);
-}
-
-.sq-button--squishy_green span {
+.sq-button:hover {
     background-color: var(--green-2);
 }
 
-.sq-button--squishy_green:active, .sq-button--squishy_green:focus, .sq-button--squishy_green:hover span {
-    background-color: var(--green-1);
+.sq-button:focus {
+   outline: none;
+}
+
+.sq-button:disabled, .sq-button:disabled:hover {
+    background-color: var(--green-3);
+    cursor: default;
+    opacity: 0.6;
+}
+
+
+.sq-button:active {
+    transform: translate(0px, 1px);
+}
+
+.sq-button.disabled:active {
+    transform: none;
+}
+
+.sq-button__green {
+    background-color: var(--green-3);
 }

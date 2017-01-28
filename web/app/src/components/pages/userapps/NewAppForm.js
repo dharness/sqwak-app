@@ -47,7 +47,7 @@ class NewAppForm extends Component {
                         onKeyPress={(e)=>{ if(e.key === 'Enter') {this.handleSubmit();} }}
                         onChange={this.userDidType.bind(this)} />
                     <div className="sq-new-app-form--button-wrapper">
-                        <PlushButton buttonText="New app" disabled={this.state.newAppName === ""} onClick={this.handleSubmit.bind(this)}/>
+                        <PlushButton buttonText="Create App" disabled={this.state.newAppName === ""} onClick={this.handleSubmit.bind(this)}/>
                     </div>
                 </div>
             </div>
