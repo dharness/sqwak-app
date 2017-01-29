@@ -1,0 +1,26 @@
+.sq-subnav {
+    height: 70px;
+    background: white;
+    border-bottom: 1px solid var(--grey-4);
+    display: flex;
+    justify-content: space-between;
+}
+
+.sq-subnav--app-name {
+    align-self: center;
+    margin-left: 40px;
+}
+.sq-subnav--buttons {
+    display: flex;
+    align-self: center;
+}
+
+.sq-subnav--button {
+    display: flex;
+    margin: 0px 40px;
+    cursor: pointer;
+}
+
+.sq-subnav--icon {
+    padding-right: 15px;
+}
