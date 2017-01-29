@@ -35,7 +35,7 @@ class DashboardPage extends Component {
 
     render () {
         return (
-            <div>
+            <div className="sq-full-page">
                 <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
