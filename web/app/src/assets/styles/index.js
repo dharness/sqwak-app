@@ -9,6 +9,8 @@ import './components/full-page-modal.css';
 import './components/new-app-form.css';
 import './components/basic-input.css';
 import './components/warning-panel.css';
+import './components/class-card-grid.css';
+import './components/class-card.css';
 import './landing.css';
 import './apps.css';
 import './loading.css';

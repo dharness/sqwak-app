@@ -15,11 +15,11 @@ class Sidebar extends Component {
                     </TabList>
                     <TabPanel>
                         <h2>Custom</h2>
-                        <ClassCardGrid />
+                        <ClassCardGrid classes={[{},{},{}]}/>
                     </TabPanel>
                     <TabPanel>
                         <h2>Premade</h2>
-                        <ClassCardGrid />
+                        <ClassCardGrid classes={[]}/>
                     </TabPanel>
                 </Tabs>
             </div>
