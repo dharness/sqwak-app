@@ -15,13 +15,6 @@ class Sidebar extends Component {
     ))
   }
 
-  componentDidMount() {
-    this.props.showModal((
-      <ClassUploadForm/>
-    ))
-  }
-
-
   render() {
     return (
       <div className="sq-side-bar">

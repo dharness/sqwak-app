@@ -11,7 +11,7 @@ class ClassUploadForm extends Component {
           <div className="sq-text__xl sq-class-upload-form--title">Create Class</div>
           <input type="text" className="sq-basic-input" placeholder="class name"/>
           <div className="sq-class-upload-form--drop-zone">
-            <img src={fileUploadImg} role="presentation"/>
+            <img src={fileUploadImg} role="presentation" className="sq-class-upload-form--icon"/>
             <div className="sq-class-upload-form--sub-1 sq-text__lg">Drag & drop</div>
             <div className="sq-class-upload-form--sub-2 sq-text__pale">
               .wav files or
