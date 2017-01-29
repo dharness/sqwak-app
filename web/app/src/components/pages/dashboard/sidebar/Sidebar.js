@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PlushButton from './../../../shared/PlushButton'
+import ClassUploadForm from './../../../shared/ClassUploadForm'
 import ClassCardGrid from './ClassCardGrid';
 Tabs.setUseDefaultStyles(false);
 
@@ -10,7 +11,13 @@ class Sidebar extends Component {
 
   newClassButtonClicked() {
     this.props.showModal((
-      <div>I love the dishawasher</div>
+      <ClassUploadForm/>
+    ))
+  }
+
+  componentDidMount() {
+    this.props.showModal((
+      <ClassUploadForm/>
     ))
   }
 

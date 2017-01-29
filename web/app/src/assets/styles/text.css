@@ -1,11 +1,11 @@
 .sq-text {
     font-family: 'FaktSoft';
 }
-.sq-text__xlarge {
+.sq-text__xl {
     font-size: 24px;
 }
 
-.sq-text__large {
+.sq-text__lg {
     font-size: 16px;
 }
 
