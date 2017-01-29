@@ -4,6 +4,8 @@
 }
 
 .sq-dashboard--workspace {
+    width: 100%;
+    background: var(--grey-5);
     display: flex;
     flex-direction: column;
 }
