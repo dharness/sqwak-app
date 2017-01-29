@@ -1,36 +1,29 @@
-.sq-text__xlarge {
+.sq-text {
     font-family: 'FaktSoft';
+}
+.sq-text__xlarge {
     font-size: 24px;
-    color: var(--grey-1);
 }
 
 .sq-text__large {
-    font-family: 'FaktSoft';
     font-size: 16px;
-    color: var(--grey-1);
 }
 
 .sq-text__md {
-    font-family: 'FaktSoft-Blond';
     font-size: 14px;
-    color: var(--grey-1);
 }
 
 .sq-text__sm {
-    font-family: 'FaktSoft';
     font-size: 12px;
-    color: var(--grey-1);
 }
 
 .sq-text__white {
-    font-family: 'FaktSoft';
+    font-family: 'FaktSoft-Medium';
     font-size: 16px;
     color: white;
-    letter-spacing: 0.4px
 }
 
 .sq-text__warning {
-    font-family: 'FaktSoft';
     font-size: 12px;
     color: var(--red-2);
 }
