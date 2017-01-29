@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import userApps from './userApps';
+import modal from './modal';
 
 
 const sqwakApp = combineReducers({
-  userApps
+  userApps,
+  modal
 })
 
 export default sqwakApp

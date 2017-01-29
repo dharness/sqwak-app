@@ -2,6 +2,9 @@
     width: 320px;
     height: 100%;
     border-right: 1px solid var(--grey-3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sq-side-bar--tab-panel .ReactTabs__TabList {
@@ -42,4 +45,11 @@
     margin-bottom: -5px;
     background: var(--blue-2);
     top: -37px;
+}
+
+.sq-side-bar--footer {
+    background: white;
+    height: 25%;
+    display: flex;
+    justify-content: center;
 }

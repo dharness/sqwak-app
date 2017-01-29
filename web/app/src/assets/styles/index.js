@@ -1,3 +1,4 @@
+import './utils.css';
 import './fonts.css';
 import './base.css';
 import './text.css';

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
-import FullPageModal from './../../shared/FullPageModal';
 import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
@@ -16,7 +15,6 @@ class UserApps extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newAppModalOpen: false,
             newAppFormStatus: 0,
             warnings: []
         };
@@ -31,9 +29,8 @@ class UserApps extends Component {
     }
 
     newAppFormSubmited(formData) {
-        createApp({appName: formData.newAppName}).then((newApp) => {
+        return createApp({appName: formData.newAppName}).then((newApp) => {
             if(newApp) {
-                this.closeModal();
                 this.props.addApp(newApp);
             }
         });
@@ -57,22 +54,24 @@ class UserApps extends Component {
         browserHistory.push(`/dashboard/${appId}`);
     }
 
+    showCreateAppModal() {
+        this.props.showModal((
+            <NewAppForm onSumbit={(userData)=> {
+                this.newAppFormSubmited(userData)
+                    .then(()=> this.props.closeModal())
+            }
+        }/>));
+    }
+
     render () {
         return (
             <div className="sq-apps-page">
                 <Warning isOpen={false}/>
-                <FullPageModal isOpen={this.state.newAppModalOpen} onCloseEvent={this.closeModal.bind(this)}>
-                    <NewAppForm
-                        formStatus={this.state.newAppFormStatus}
-                        key={this.state.newAppFormStatus}
-                        onSumbit={this.newAppFormSubmited.bind(this)}
-                    />
-                </FullPageModal>
                 <Nav/>
                 <div className="sq-apps-page--content">
                     <div className="sq-apps-page--header sq-text__xlarge">
                         <div>All apps</div>
-                        <PlushButton buttonText="Create App" onClick={()=> {this.setState({newAppModalOpen: true})}}/>
+                        <PlushButton buttonText="Create App" onClick={this.showCreateAppModal.bind(this)}/>
                     </div>
                     <div className="sq-apps-page--app-grid">
                         {this.props.userApps.map((userApp, i) => {
@@ -103,6 +102,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    showModal(component) {
+        dispatch({
+            type: 'SHOW_MODAL',
+            component
+        })
+    },
+    closeModal() {
+        dispatch({ type: 'CLOSE_MODAL' })
+    },
     addApp(userApp) {
         dispatch({
             type: 'ADD_APP',
