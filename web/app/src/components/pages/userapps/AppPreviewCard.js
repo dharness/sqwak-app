@@ -18,9 +18,9 @@ class AppPreviewCard extends Component {
                 <div className="sq-app-preview-card--content">
                     {this.props.name}
                 </div>
-                <div className="sq-app-preview-card--footer sq-text__pale">
-                    <div>10 classes</div>
-                    <div>300 sounds</div>
+                <div className="sq-app-preview-card--footer">
+                    <div className="sq-text__pale">10 classes</div>
+                    <div className="sq-text__pale">300 sounds</div>
                 </div>
             </div>
         )

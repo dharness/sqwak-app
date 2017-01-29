@@ -33,9 +33,10 @@ html, body, div[data-reactroot], #root {
     font-family: 'FaktSoft';
     overflow: hidden;
     display: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 p, div, h1, h2, h3, h4, h5, span {
-    font-family: 'FaktSoft-Blond';
+    font-family: 'FaktSoft';
     color: var(--grey-1);
 }
