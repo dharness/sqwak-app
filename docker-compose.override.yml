@@ -18,9 +18,9 @@ services:
   nginx:
     build: ./nginx
 
-  mongo:
-    logging:
-      driver: "none"
+  # mongo:
+  #   logging:
+  #     driver: "none"
 
   feature_extractor:
     build: ./feature_extractor

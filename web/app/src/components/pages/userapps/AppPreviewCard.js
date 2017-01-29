@@ -8,7 +8,7 @@ class AppPreviewCard extends Component {
                 <div className="sq-app-preview-card--header">
                     <div className="sq-app-preview-card--status">
                         <div className="sq-app-preview-card--status-indicator unpublished"></div>
-                        <div className="sq-app-preview-card--status-message"> unpublished</div>
+                        <div className="sq-app-preview-card--status-message sq-text__pale"> unpublished</div>
                     </div>
                     <div className="sq-app-preview-card--delete" onClick={event => {
                         event.stopPropagation();
@@ -19,8 +19,8 @@ class AppPreviewCard extends Component {
                     {this.props.name}
                 </div>
                 <div className="sq-app-preview-card--footer">
-                    <div>10 classes</div>
-                    <div>300 sounds</div>
+                    <div className="sq-text__pale">10 classes</div>
+                    <div className="sq-text__pale">300 sounds</div>
                 </div>
             </div>
         )
