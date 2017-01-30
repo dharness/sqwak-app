@@ -25,7 +25,7 @@ api.use(function(req, res, next) {
   next();
 });
 
-api.use('/class', mlClassController);
+api.use('/app/:appId/class', mlClassController);
 api.use('/app', mlAppController);
 api.use('/user', userController);
 

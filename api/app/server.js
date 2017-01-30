@@ -14,6 +14,7 @@ server.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
+
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: false }));
 

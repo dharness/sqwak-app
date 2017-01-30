@@ -11,4 +11,4 @@ const mlClassSchema = new sqwak.mongoose.Schema({
 
 const MlClass = sqwak.mongoose.model('MlClass', mlClassSchema);
 
-module.exports = MlClass;
+module.exports = {MlClass, mlClassSchema};

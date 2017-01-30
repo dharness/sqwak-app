@@ -1,21 +1,20 @@
-const classController = require('express').Router();
+const classController = require('express').Router({mergeParams: true});
 const hasValidToken = require('./../policies/hasValidToken');
 const loadUser = require('./../policies/loadUser');
+const loadApp = require('./../policies/loadApp');
 const formidable = require('formidable');
 const featureExtractor = require('./../services/featureExtractor');
-const MlClass = require('./../models/MlClass');
+const fileUploadHandler = require('./../services/fileUploadHandler');
+const { MlClass } = require('./../models/MlClass');
 
 
 classController.use(hasValidToken);
 classController.use(loadUser);
+classController.use(loadApp);
 
 classController.get('/', (req, res) => {
-  MlClass.find({}, 'className', (err, docs) => {
-    if (err) { return err; }
-    res.send(docs);
-  });
+  res.send(req.currentApp.model.classes);
 });
-
 
 classController.post('/', (req, res) => {
   const form = new formidable.IncomingForm();
@@ -25,19 +24,27 @@ classController.post('/', (req, res) => {
   const writeStream = featureExtractor.extract((featureVector) => {
     if (formParsed.then) {
       return formParsed.then(className => {
-        const newClass = {
+
+        let mlClass = new MlClass({
           className,
-          samples: [{featureVector}],
-          createdBy: req.userId
-        };
-        res.send(newClass);
+          packageName: `${req.user._id}.${req.currentApp.appName}`,
+          samples: [{features: featureVector}]
+        });
+
+        mlClass = mlClass.toObject();
+        delete mlClass["_id"];
+
+        req.currentApp.model.classes.push(mlClass);
+        req.user.save((err, user)=>{
+          res.send(req.currentApp.model.classes.pop());
+        });
       })
       .catch(err => {
         console.log(err);
         res.send(err);
       });
     }
-    res.send(500);
+    res.sendStatus(500);
   });
 
   form.onPart = function(part) {

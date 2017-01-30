@@ -1,5 +1,6 @@
 .sq-apps-page {
     background-color: var(--grey-5);
+    height: 100%;
 }
 
 .sq-apps-page--bg-img {
