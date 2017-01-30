@@ -9,7 +9,9 @@ class ClassCard extends Component {
                 <div className="sq-class-card--icon">
                     <img src={shapeIcon} role="presentation"/>
                 </div>
-                <div className="sq-class-card--label sq-text__sm">Dog Barks</div>
+                <div className="sq-class-card--label sq-text__sm">
+                    {this.props.className}
+                </div>
             </div>
         )
     }

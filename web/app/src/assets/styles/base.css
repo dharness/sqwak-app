@@ -23,6 +23,12 @@
   --red-1: #F75155;
   --red-2: #FF7373;
   --red-3: #FFE5E5;
+
+  --inner-nav-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 * {

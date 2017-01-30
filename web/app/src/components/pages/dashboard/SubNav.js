@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 class SubNav extends Component {
 
-
   openPublishModal() {
     this.props.showModal((
       <PublishForm />
@@ -42,6 +41,7 @@ class SubNav extends Component {
     )
   }
 }
+
 const mapStateToProps = (state, ownProps) => {
   return {}
 }
