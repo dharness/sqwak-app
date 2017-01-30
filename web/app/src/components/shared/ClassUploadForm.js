@@ -25,7 +25,7 @@ class ClassUploadForm extends Component {
   }
 
   onFilesChanged() {
-    this.setState({files: this.fileInput.files});
+    this.setState({files: [...this.state.files, this.fileInput.files]});
   }
   
   handleClassNameChange(event) {
