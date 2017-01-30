@@ -20,7 +20,7 @@ class ClassUploadForm extends Component {
                 className="sq-class-upload-form--underline-text sq-text"> browse</pre>
             </div>
           </div>
-          <PlushButton buttonText="Creat class" disabled={true}/>
+          <PlushButton buttonText="Create class" disabled={true}/>
         </div>
       </div>
     )

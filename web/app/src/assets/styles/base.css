@@ -25,6 +25,10 @@
   --red-3: #FFE5E5;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body, div[data-reactroot], #root {
     width: 100%;
     height: 100%;
