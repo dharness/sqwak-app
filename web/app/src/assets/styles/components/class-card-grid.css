@@ -1,23 +1,10 @@
 .sq-class-card-grid {
-    width: 80%;
-    margin: auto;
+    height: 0px;
+    flex: 1;
+    width: 100%;
+    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
-}
-
-.sq-class-card-grid--card-wrapper {
-    width: 50%;
-    box-sizing: border-box;
-    padding-bottom: 25px;
-    display: flex;
-}
-
-.sq-class-card-grid--card-wrapper:nth-child(2) {
-    padding-left: 5px;
-    justify-content: flex-end;
-}
-
-.sq-class-card-grid--card-wrapper:first-of-type, .sq-class-card-grid--card-wrapper:nth-child(3n) {
-    padding-right: 5px;
-    justify-content: flex-start;
+    padding: 0px 10%;
+    justify-content: space-between;
 }

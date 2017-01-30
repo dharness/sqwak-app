@@ -26,14 +26,23 @@
     flex-direction: column;
 }
 
+.sq-class-upload-form--drop-zone.active {
+    background: var(--grey-5);
+    border: dashed 2px var(--blue-3);
+}
+
 .sq-class-upload-form--icon {
     width: 40%;
     align-self: center;
     margin: 20px 0px;
 }
 
-.sq-class-upload-form--sub-1, .sq-class-upload-form--sub-2 {
+.sq-class-upload-form--sub-1, .sq-class-upload-form--sub-2, .sq-class-upload-form--upload-message {
     text-align: center;
+}
+
+.sq-class-upload-form--upload-message {
+    margin-top: 15px;
 }
 
 .sq-class-upload-form--sub-2 {

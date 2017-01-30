@@ -12,15 +12,15 @@ class SubNav extends Component {
                 </div>
                 <div className="sq-subnav--buttons">
                     <div className="sq-subnav--button">
-                        <img className="sq-subnav--icon" src={trainIcon}/>  
+                        <img className="sq-subnav--icon" role="presentation" src={trainIcon}/>  
                         train
                     </div>
                     <div className="sq-subnav--button">
-                        <img className="sq-subnav--icon" src={testIcon}/>  
+                        <img className="sq-subnav--icon" role="presentation" src={testIcon}/>  
                         test
                     </div>
                     <div className="sq-subnav--button">
-                        <img className="sq-subnav--icon" src={publishIcon}/> 
+                        <img className="sq-subnav--icon" role="presentation" src={publishIcon}/>
                         publish
                     </div>
                 </div>

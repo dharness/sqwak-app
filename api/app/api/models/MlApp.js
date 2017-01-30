@@ -1,3 +1,5 @@
+const { mlClassSchema } = require('./MlClass')
+
 const MlApp = new sqwak.mongoose.Schema({
     appName: { type: String, required: true, unique: true },
     updatedAt: { type: Date, default: Date.now },
@@ -11,7 +13,7 @@ const MlApp = new sqwak.mongoose.Schema({
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
         trainedAt: { type: Date },
-        classes: [String],
+        classes: [mlClassSchema],
         untrained_classes: [String],
         modelFile: String
     },

@@ -1,5 +1,5 @@
 .sq-dashboard--content {
-    height: 100%;
+    height: calc(100% - var(--inner-nav-height));
     display: flex;
 }
 

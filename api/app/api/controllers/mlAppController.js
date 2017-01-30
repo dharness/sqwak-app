@@ -9,6 +9,7 @@ mlAppController.use(hasValidToken);
 mlAppController.use(loadUser);
 
 mlAppController.get('/', (req, res) => {
+    if (!req.user) { return res.sendStatus(404); }
     res.send(req.user.apps);
 });
 

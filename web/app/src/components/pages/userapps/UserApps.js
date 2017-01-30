@@ -7,7 +7,6 @@ import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import {createApp, fetchApps, deleteApp} from './../../../services/api';
-import brainImg from './../../../assets/images/brain.svg';
 
 
 class UserApps extends Component {
