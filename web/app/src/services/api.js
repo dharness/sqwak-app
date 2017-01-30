@@ -52,10 +52,32 @@ function deleteApp(appId) {
     .then((data) => data.json())
 }
 
+function createClass({className, file}) {
+    return new Promise((resolve, reject) => {
+        const token = localStorage.getItem('id_token');
+        const formData = new FormData();
+        formData.append('uploads[]', file, file.name);
+        formData.set("className", className);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', `${process.env.REACT_APP_API_URL}/class?access_token=${token}`, true);
+        xhr.upload.onprogress = function(e) {
+            console.log(e);
+        };
+        xhr.addEventListener("load", (response) => {
+            resolve(response);
+        });
+        xhr.addEventListener("error", (err) => {
+            reject(err);
+        });
+        xhr.send(formData);
+    });
+}
+
 export {
     getFeatures,
     createApp,
     fetchApp,
     fetchApps,
-    deleteApp
+    deleteApp,
+    createClass
 }

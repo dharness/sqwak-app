@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {createClass} from './../../services/api'
 
 
 class Upload extends Component {
@@ -10,22 +11,15 @@ class Upload extends Component {
         };
     }
 
-    uplaodAudio() {
+    uploadAudio() {
         const formData = new FormData();
         const file = this.fileInput.files[0];
-        formData.append('uploads[]', file, file.name);
-        formData.set("className", "car_honker")
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', `${process.env.REACT_APP_API_URL}/class?access_token=${localStorage.getItem('id_token')}`, true);
-        xhr.upload.onprogress = function(e) {
-            console.log(e);
-        };
-        xhr.addEventListener("load", (response) => {
-            console.log(response.srcElement.responseText);
-            this.setState({features: response.srcElement.responseText});
-            this.fileInput.value = "";
+        createClass({
+            className: "car_honker",
+            file
+        }).then((res)=> {
+            console.log(res.srcElement.responseText)
         });
-        xhr.send(formData);
     }
 
     render () {
@@ -42,7 +36,7 @@ class Upload extends Component {
                         name="uploads[]"
                         multiple="multiple"
                         onClick={() => {this.setState({features: ""});}}/>
-                    <button onClick={this.uplaodAudio.bind(this)}>Upload</button>
+                    <button onClick={this.uploadAudio.bind(this)}>Upload</button>
                 </div>
                 <div style={{width: 400, border: "solid 1px black", wordWrap: "break-word"}}>{this.state.features}</div>
             </div>
