@@ -23,17 +23,17 @@ class SubNav extends Component {
 
         <div className="sq-subnav--buttons">
           <div className="sq-subnav--button">
-            <img role="presentation" className="sq-subnav--icon" src={trainIcon} />
+            <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
             train
           </div>
 
           <div className="sq-subnav--button">
-            <img role="presentation" className="sq-subnav--icon" src={testIcon} />
+            <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
             test
            </div>
            
           <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
-            <img role="presentation" className="sq-subnav--icon" src={publishIcon} />
+            <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
             publish
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 import LandingPage from './pages/Landing';
 import LoginPage from './pages/Login';
 import ModalManager from './pages/ModalManager';
@@ -24,11 +25,12 @@ class App extends Component {
           <Route path="/" component={LandingPage}/>
           <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
           <Route path="/dashboard/:appId" component={DashboardPage} onEnter={requireAuth}/>
-          <Route path="/apps" component={() => (<UserApps store={this.props.store} />)} onEnter={requireAuth}/>
+          <Route path="/apps" component={UserApps} onEnter={requireAuth}/>
           <Route path="*" component={NotFoundPage} />
         </Router>
       </div>
     );
   }
 }
-export default App;
+
+export default App

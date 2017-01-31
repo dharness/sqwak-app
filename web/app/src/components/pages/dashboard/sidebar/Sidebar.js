@@ -4,7 +4,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
-import { fetchClasses } from './../../../../services/api';
 Tabs.setUseDefaultStyles(false);
 
 
@@ -12,23 +11,21 @@ class Sidebar extends Component {
 
   newClassButtonClicked() {
     this.props.showModal((
-      <ClassUploadForm/>
+      <ClassUploadForm currentAppId={this.props.currentAppId}/>
     ))
   }
 
-  componentDidMount() {
-    const appId = this.props.currentApp.id;
-    fetchClasses(appId).then(mlClasses => {
-      mlClasses.forEach(mlClass => {
-        this.props.addClass(appId, mlClass);
-      });
-    });
+  onCardSelected(classId) {
+    const selectedClass = this.props.mlClasses
+      .find(mlClass => classId === mlClass._id);
+    this.props.showModal((
+      <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentAppId}/>
+    ))
   }
 
   render() {
     return (
       <div className="sq-side-bar">
-
         {/* TABS PANEL */}
         <Tabs selectedIndex={0} className="sq-side-bar--tab-panel">
           <TabList>
@@ -38,9 +35,13 @@ class Sidebar extends Component {
 
           {/* PRE_MADE */}
           <TabPanel>
-            <div className="sq-side-bar--tab-panel--search-wrapper"></div>
+            <div className="sq-side-bar--tab-panel--search-wrapper">
+              <center><input type="text"/></center>
+            </div>
             <div className="sq-side-bar--tab-panel--content">
-              <ClassCardGrid classes={[1,1,1,1,1,1,1,1,1,1,1]} />
+              <ClassCardGrid 
+                mlClasses={this.props.mlClasses} 
+                onCardSelected={this.onCardSelected.bind(this)}/>
             </div>
             <div className="sq-side-bar--footer">
                 <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />
@@ -58,7 +59,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    modal: state.modal
+    modal: state.modal,
+    mlClasses: state.mlClasses
   }
 }
 

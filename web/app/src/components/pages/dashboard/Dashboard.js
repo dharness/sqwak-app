@@ -5,20 +5,21 @@ import Warning from './../../shared/Warning';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
 import {fetchApp} from './../../../services/api';
+import getCurrentMlApp from './../../../selectors/currentMlApp';
+import * as actions from './../../../actions';
 
 
 class DashboardPage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     componentWillMount() {
         const currentAppId = this.props.params.appId;
+        this.props.setCurrentMlApp(currentAppId);
         const currentApp = this.props.userApps.find(app => app.id === currentAppId);
         if (!currentApp) {
             fetchApp(currentAppId).then(userApp => {
+                userApp.model.classes.forEach(mlClass => {
+                    this.props.addMlClass(mlClass);    
+                });
                 this.props.addApp(userApp);
             });
         }
@@ -30,7 +31,7 @@ class DashboardPage extends Component {
                 <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
-                    <Sidebar currentApp={this.props.currentApp} />
+                    <Sidebar currentAppId={this.props.currentApp.id} />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
                         <h1>{this.props.currentApp.appName}</h1>
@@ -42,33 +43,20 @@ class DashboardPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const currentAppId = ownProps.params.appId;
-    let currentApp = state.userApps.find(app => app.id === currentAppId);
-    if (!currentApp) {
-        currentApp = {
+    let currentMlApp = getCurrentMlApp(state);
+    if (!currentMlApp) {
+        currentMlApp = {
             appName: "loading...",
             classes: []
         }
     }
     return {
         userApps: state.userApps,
-        currentApp
+        currentApp: currentMlApp
     }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    addApp(userApp) {
-        dispatch({
-            type: 'ADD_APP',
-            appName: userApp.appName,
-            id: userApp._id
-        })
-    }
-  }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(DashboardPage)
