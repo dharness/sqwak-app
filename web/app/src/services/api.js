@@ -68,14 +68,14 @@ function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
     .then((data) => data.json())
 }
 
-function createClass({className, file}) {
+function createClass({appId, className, file}) {
     return new Promise((resolve, reject) => {
         const token = localStorage.getItem('id_token');
         const formData = new FormData();
         formData.append('uploads[]', file, file.name);
         formData.set("className", className);
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', `${process.env.REACT_APP_API_URL}/class?access_token=${token}`, true);
+        xhr.open('POST', `${process.env.REACT_APP_API_URL}/app/${appId}/class?access_token=${token}`, true);
         xhr.upload.onprogress = function(e) {
             console.log(e);
         };

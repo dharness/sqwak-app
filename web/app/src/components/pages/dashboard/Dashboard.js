@@ -9,16 +9,14 @@ import {fetchApp} from './../../../services/api';
 
 class DashboardPage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     componentWillMount() {
         const currentAppId = this.props.params.appId;
         const currentApp = this.props.userApps.find(app => app.id === currentAppId);
         if (!currentApp) {
             fetchApp(currentAppId).then(userApp => {
+                userApp.model.classes.forEach(mlClass => {
+                    this.props.addMlClass(mlClass);    
+                });
                 this.props.addApp(userApp);
             });
         }
@@ -30,7 +28,7 @@ class DashboardPage extends Component {
                 <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
-                    <Sidebar currentApp={this.props.currentApp} />
+                    <Sidebar currentAppId={this.props.currentApp.id} />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
                         <h1>{this.props.currentApp.appName}</h1>
@@ -58,10 +56,17 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    addMlClass(mlClass) {
+        dispatch({
+            type: 'ADD_ML_CLASS',
+            mlClass
+        })
+    },
     addApp(userApp) {
         dispatch({
             type: 'ADD_APP',
             appName: userApp.appName,
+            classes: userApp.model.classes,
             id: userApp._id
         })
     }

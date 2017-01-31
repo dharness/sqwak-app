@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import PlushButton from './PlushButton';
 import fileUploadImg from './../../assets/images/file-upload.svg';
 import {createClass} from './../../services/api';
@@ -11,16 +12,21 @@ class ClassUploadForm extends Component {
     this.state = {
       files: [],
       className: ""
-    }
+    };
   }
 
   uploadAudio() {
     const file = this.fileInput.files[0];
     createClass({
-        className: "car_honker",
+        appId: this.props.currentAppId,
+        className: this.state.className,
         file
     }).then((res)=> {
-        console.log(res.srcElement.responseText)
+      if(res.srcElement.responseText) {
+        let newMlClass = JSON.parse(res.srcElement.responseText);
+        this.props.addClass(newMlClass);
+        this.props.closeModal();
+      }
     });
   }
 
@@ -36,12 +42,20 @@ class ClassUploadForm extends Component {
      this.fileInput.click();
   }
 
+  removeClass() {
+    this.props.removeClass(this.props.mlClass);
+    this.props.closeModal();
+  }
+
   render () {
     let formIsValid = (this.state.files.length > 0 && this.state.className !== "");
     return (
       <div className="sq-class-upload-form">
         <div className="sq-class-upload-form--container">
-          <div className="sq-text__xl sq-class-upload-form--title">Create Class</div>
+          <div className="sq-text__xl sq-class-upload-form--title">
+            {this.props.editMode ? "Edit Class" : "Create Class"}
+            <div className="sq-class-upload-form--delete" onClick={this.removeClass.bind(this)}></div>
+          </div>
           <input
             type="text"
             className="sq-basic-input"
@@ -83,4 +97,33 @@ class ClassUploadForm extends Component {
   }
 }
 
-export default ClassUploadForm
+const mapStateToProps = (state, ownProps) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    closeModal() {
+      dispatch({
+        type: 'CLOSE_MODAL'
+      })
+    },
+    addClass(mlClass) {
+      dispatch({
+        type: 'ADD_ML_CLASS',
+        mlClass
+      })
+    },
+    removeClass(mlClass) {
+      dispatch({
+        type: 'REMOVE_ML_CLASS',
+        mlClassId: mlClass._id
+      })
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ClassUploadForm)
