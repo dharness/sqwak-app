@@ -87,8 +87,9 @@ class ClassUploadForm extends Component {
               {this.state.files.length} file ready to upload!
             </div>
           </div>
+
           <PlushButton 
-            buttonText="Creat class" 
+            buttonText="Create class" 
             onClick={this.uploadAudio.bind(this)} 
             disabled={!formIsValid}/>
         </div>

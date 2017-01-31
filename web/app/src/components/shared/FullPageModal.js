@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import deleteIcon from './../../assets/images/icons/cancel.svg'
+import deleteIcon from './../../assets/images/icons/cancel-grey.svg'
 
 
 class FullPageModal extends Component {
@@ -12,7 +12,7 @@ class FullPageModal extends Component {
         return (
             <div className="sq-full-page-modal" style={style} ref={(el)=>{this.domNode = el;}}>
                 <div className="sq-full-page-modal--header">
-                    <img role="presentation" src={deleteIcon} className="sq-full-page-modal--cancel-button" onClick={this.props.onCloseEvent}/>
+                    <div className="sq-full-page-modal--cancel-button" onClick={this.props.onCloseEvent}/>
                 </div>
                 {this.props.component}
             </div>
