@@ -1,5 +1,4 @@
-import React, {Component} from 'react'
-import deleteIcon from './../../assets/images/icons/cancel-grey.svg'
+import React, {Component} from 'react';
 
 
 class FullPageModal extends Component {

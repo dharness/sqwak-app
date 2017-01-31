@@ -6,6 +6,7 @@ import PlushButton from './../../shared/PlushButton';
 import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
+import * as actions from './../../../actions';
 import {createApp, fetchApps, deleteApp} from './../../../services/api';
 
 
@@ -14,6 +15,7 @@ class UserApps extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading: true,
             newAppFormStatus: 0,
             warnings: []
         };
@@ -39,6 +41,7 @@ class UserApps extends Component {
         fetchApps().then(userAppsList => {
             userAppsList.forEach(userApp => {
                 this.props.addApp(userApp);
+                this.setState({isLoading: false})
             });
         });
     }
@@ -50,6 +53,7 @@ class UserApps extends Component {
     }
 
     openApp(appId) {
+        this.props.setCurrentMlApp(appId);
         browserHistory.push(`/dashboard/${appId}`);
     }
 
@@ -63,6 +67,7 @@ class UserApps extends Component {
     }
 
     render () {
+        let shouldHideBgImg = (this.props.userApps.length > 0);
         return (
             <div className="sq-apps-page">
                 <Warning isOpen={false}/>
@@ -84,8 +89,8 @@ class UserApps extends Component {
                             />)
                         })}
                     </div>
-                <div className={"sq-apps-page--bg-img" + (this.props.userApps.length > 0 ? " hiddden" : "")} style={{
-                    transition: (this.props.userApps.length > 0 ? "none" : "")
+                <div className={"sq-apps-page--bg-img" + (shouldHideBgImg ? " hiddden" : "")} style={{
+                    transition: (shouldHideBgImg ? "none" : "")
                 }}></div>
                 </div>
             </div>
@@ -97,35 +102,7 @@ const mapStateToProps = (state, ownProps) => {
   return { userApps: state.userApps }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    showModal(component) {
-        dispatch({
-            type: 'SHOW_MODAL',
-            component
-        })
-    },
-    closeModal() {
-        dispatch({ type: 'CLOSE_MODAL' })
-    },
-    addApp(userApp) {
-        dispatch({
-            type: 'ADD_APP',
-            appName: userApp.appName,
-            classes: userApp.model.classes,
-            id: userApp._id
-        })
-    },
-    removeApp(appId) {
-        dispatch({
-            type: 'REMOVE_APP',
-            id: appId
-        })
-    }
-  }
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(UserApps)
