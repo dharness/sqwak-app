@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from './../../actions';
 import FullPageModal from './../shared/FullPageModal';
 
 
@@ -21,19 +22,9 @@ class ModalManager extends Component {
 const mapStateToProps = (state, ownProps) => {
   let {modal} = state;
   return { modal }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    closeModal(component) {
-      dispatch({
-        type: 'CLOSE_MODAL'
-      })
-    }
-  }
-}
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+ actions
 )(ModalManager)

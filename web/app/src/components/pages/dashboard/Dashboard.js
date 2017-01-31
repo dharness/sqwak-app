@@ -5,12 +5,15 @@ import Warning from './../../shared/Warning';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
 import {fetchApp} from './../../../services/api';
+import getCurrentMlApp from './../../../selectors/currentMlApp';
+import * as actions from './../../../actions';
 
 
 class DashboardPage extends Component {
 
     componentWillMount() {
         const currentAppId = this.props.params.appId;
+        this.props.setCurrentMlApp(currentAppId);
         const currentApp = this.props.userApps.find(app => app.id === currentAppId);
         if (!currentApp) {
             fetchApp(currentAppId).then(userApp => {
@@ -40,40 +43,20 @@ class DashboardPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const currentAppId = ownProps.params.appId;
-    let currentApp = state.userApps.find(app => app.id === currentAppId);
-    if (!currentApp) {
-        currentApp = {
+    let currentMlApp = getCurrentMlApp(state);
+    if (!currentMlApp) {
+        currentMlApp = {
             appName: "loading...",
             classes: []
         }
     }
     return {
         userApps: state.userApps,
-        currentApp
+        currentApp: currentMlApp
     }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    addMlClass(mlClass) {
-        dispatch({
-            type: 'ADD_ML_CLASS',
-            mlClass
-        })
-    },
-    addApp(userApp) {
-        dispatch({
-            type: 'ADD_APP',
-            appName: userApp.appName,
-            classes: userApp.model.classes,
-            id: userApp._id
-        })
-    }
-  }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(DashboardPage)
