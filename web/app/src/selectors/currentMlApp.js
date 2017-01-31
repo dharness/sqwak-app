@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 
-const mlAppsList = state => state.userApps;
+const mlAppsList = state => state.mlApps;
 const currentMlAppId = state => state.currentMlAppId;
 
 const getCurrentApp = (mlAppsList, currentMlAppId) => {

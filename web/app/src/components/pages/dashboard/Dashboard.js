@@ -14,7 +14,7 @@ class DashboardPage extends Component {
     componentWillMount() {
         const currentAppId = this.props.params.appId;
         this.props.setCurrentMlApp(currentAppId);
-        const currentApp = this.props.userApps.find(app => app.id === currentAppId);
+        const currentApp = this.props.mlApps.find(app => app.id === currentAppId);
         if (!currentApp) {
             fetchApp(currentAppId).then(userApp => {
                 userApp.model.classes.forEach(mlClass => {
@@ -31,10 +31,13 @@ class DashboardPage extends Component {
                 <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
-                    <Sidebar currentAppId={this.props.currentApp.id} />
+                    <Sidebar
+                        customMlClasses={this.props.currentMlApp.mlClasses}
+                        premadeMlClasses={[]}
+                    />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
-                        <h1>{this.props.currentApp.appName}</h1>
+                        <h1>{this.props.currentMlApp.appName}</h1>
                     </div>
                 </div>
             </div>
@@ -47,12 +50,12 @@ const mapStateToProps = (state, ownProps) => {
     if (!currentMlApp) {
         currentMlApp = {
             appName: "loading...",
-            classes: []
+            mlClasses: []
         }
     }
     return {
-        userApps: state.userApps,
-        currentApp: currentMlApp
+        mlApps: state.mlApps,
+        currentMlApp
     }
 }
 
