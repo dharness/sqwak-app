@@ -2,7 +2,7 @@
     height: 0px;
     flex: 1;
     width: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
     padding: 0px 10%;

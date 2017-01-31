@@ -94,9 +94,7 @@ class UserApps extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    userApps: state.userApps
-  }
+  return { userApps: state.userApps }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -114,6 +112,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         dispatch({
             type: 'ADD_APP',
             appName: userApp.appName,
+            classes: userApp.model.classes,
             id: userApp._id
         })
     },

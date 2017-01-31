@@ -12,8 +12,23 @@
     flex-direction: column;
 }
 
+.sq-class-upload-form--delete {
+    background-image: url(./../../../assets/images/icons/delete.svg);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sq-class-upload-form--delete:hover {
+    background-image: url(./../../../assets/images/icons/red-delete.svg);
+}
+
 .sq-class-upload-form--title {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .sq-class-upload-form--drop-zone {
