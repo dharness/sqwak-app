@@ -13,11 +13,6 @@ import requireAuth from './../services/requireAuth';
 const auth = new AuthService('l4pxejOXhTOV32BHrZxASIHHuNq4urwh', 'kingofthestack.auth0.com');
 
 
-function loadApp(nextState, replace) {
-  console.log(nextState.params.appId);
-}
-
-
 class App extends Component {
 
   render() {
@@ -27,11 +22,8 @@ class App extends Component {
         <Router history={browserHistory}>
           <Route path="/" component={LandingPage}/>
           <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
-          <Route path="/dashboard/:appId" component={DashboardPage} onEnter={(nextState, replace) => {
-            loadApp(nextState, replace);
-            requireAuth(nextState, replace);
-          }}/>
-          <Route path="/apps" component={() => (<UserApps store={this.props.store} />)} onEnter={requireAuth}/>
+          <Route path="/dashboard/:appId" component={DashboardPage} onEnter={requireAuth}/>
+          <Route path="/apps" component={UserApps} onEnter={requireAuth}/>
           <Route path="*" component={NotFoundPage} />
         </Router>
       </div>
@@ -39,11 +31,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return { "lemmons": "pie" }
-};
-
-
-export default connect(
-  mapStateToProps
-)(App)
+export default App
