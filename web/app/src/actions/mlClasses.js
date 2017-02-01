@@ -1,4 +1,4 @@
-import { createClass, deleteClass } from './../services/api';
+import { createClass, deleteClass, moveClass } from './../services/api';
 
 
 export const createMlClass = (mlClassData) => {
@@ -11,6 +11,18 @@ export const createMlClass = (mlClassData) => {
         mlClass
       });
       dispatch({ type: 'CLOSE_MODAL' });
+    });
+  };
+}
+
+
+export const moveMlClass = ({appId, classId, to, from}) => {
+  return (dispatch) => {
+    moveClass({appId, classId, to, from}).then( mlApp => {
+      dispatch({
+        type: 'ADD_APP',
+        mlApp
+      });
     });
   };
 }

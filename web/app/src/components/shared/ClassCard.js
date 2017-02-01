@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import shapeIcon from './../../../../assets/images/shapes/blue/cube.svg';
+import shapeIcon from './../../assets/images/shapes/blue/cube.svg';
 
 class ClassCard extends Component {
 
@@ -8,7 +8,6 @@ class ClassCard extends Component {
     }
 
     onEditClick(event) {
-        console.log('edit')
         event.stopPropagation();
         this.props.onEditClick(this.props.mlClass._id);
     }

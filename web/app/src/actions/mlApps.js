@@ -1,4 +1,4 @@
-import {fetchApps, deleteApp} from './../services/api';
+import {fetchApps, deleteApp, createApp} from './../services/api';
 
 
 export const loadApps = () => {
@@ -8,12 +8,22 @@ export const loadApps = () => {
         mlApps.forEach(mlApp => {
             dispatch({
                 type: 'ADD_APP',
-                appName: mlApp.appName,
-                mlClasses: mlApp.model.classes,
-                id: mlApp._id
+                mlApp,
             });
         });
         dispatch({ type: 'FETCH_APPS_RESOLVED' });
+    });
+  }
+};
+
+export const addApp = (mlAppData) => {
+  return (dispatch) => {
+    createApp(mlAppData).then(mlApp => {
+      dispatch({
+          type: 'ADD_APP',
+          mlApp,
+      });
+      dispatch({ type: 'CLOSE_MODAL' });
     });
   }
 };

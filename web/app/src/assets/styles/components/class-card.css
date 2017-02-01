@@ -8,7 +8,6 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    margin: 10px 0px;
 }
 
 .sq-class-card:hover {
@@ -52,6 +51,11 @@
 .sq-class-card--icon {
     display: flex;
     justify-content: center;
+    user-select: none;
+}
+
+.sq-class-card--icon img {
+    user-drag: none; -moz-user-select: none; -webkit-user-drag: none;
 }
 
 .sq-class-card--label {

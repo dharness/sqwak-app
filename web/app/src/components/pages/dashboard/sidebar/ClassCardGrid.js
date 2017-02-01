@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ClassCard from './ClassCard';
+import ClassCard from './../../../shared/ClassCard';
 
 
 class ClassCardGrid extends Component {

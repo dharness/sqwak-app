@@ -15,6 +15,7 @@ import './components/warning-panel.css';
 import './components/class-card-grid.css';
 import './components/class-card.css';
 import './components/class-upload-form.css';
+import './components/model-view.css';
 import './landing.css';
 import './apps.css';
 import './loading.css';
