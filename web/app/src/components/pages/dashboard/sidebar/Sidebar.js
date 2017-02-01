@@ -27,7 +27,7 @@ class Sidebar extends Component {
   }
 
   onCardSelected(classId) {
-    console.log(classId)
+    console.log(classId);
   }
 
   render() {

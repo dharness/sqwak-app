@@ -13,7 +13,7 @@ classController.use(loadUser);
 classController.use(loadApp);
 
 classController.get('/', (req, res) => {
-  res.send(req.currentApp.model.classes);
+  res.send(req.currentApp.workingModel.mlClasses);
 });
 
 classController.post('/', (req, res) => {
@@ -34,9 +34,9 @@ classController.post('/', (req, res) => {
         mlClass = mlClass.toObject();
         delete mlClass["_id"];
 
-        req.currentApp.model.classes.push(mlClass);
+        req.currentApp.workingModel.mlClasses.push(mlClass);
         req.user.save((err, user)=>{
-          res.send(req.currentApp.model.classes.pop());
+          res.send(req.currentApp.workingModel.mlClasses.pop());
         });
       })
       .catch(err => {
@@ -72,7 +72,7 @@ classController.post('/', (req, res) => {
 });
 
 classController.delete('/:classId', (req, res) => {
-  const classToRemove = req.currentApp.model.classes
+  const classToRemove = req.currentApp.workingModel.mlClasses
     .find(mlClass => mlClass._id.toString() === req.params.classId);
 
   if (!classToRemove) { return res.send(404); }

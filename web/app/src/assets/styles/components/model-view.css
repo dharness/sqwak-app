@@ -1,0 +1,9 @@
+.sq-model-view {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.sq-model-view--card-wrapper {
+  margin: 30px;
+}

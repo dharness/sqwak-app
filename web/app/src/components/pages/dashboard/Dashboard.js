@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Nav from './../../shared/Nav';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
-import { fetchApp } from './../../../services/api';
+import ModelView from './modelView/ModelView';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
 import * as actions from './../../../actions';
+import { loadApps } from './../../../actions/mlApps';
 
 
 class DashboardPage extends Component {
@@ -13,12 +14,7 @@ class DashboardPage extends Component {
     componentWillMount() {
         const currentAppId = this.props.params.appId;
         this.props.setCurrentMlApp(currentAppId);
-        const currentApp = this.props.mlApps.find(app => app.id === currentAppId);
-        if (!currentApp) {
-            fetchApp(currentAppId).then(userApp => {
-                this.props.addApp(userApp);
-            });
-        }
+        this.props.loadApps();
     }
 
     render () {
@@ -27,12 +23,12 @@ class DashboardPage extends Component {
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
-                        customMlClasses={this.props.currentMlApp.mlClasses}
+                        customMlClasses={this.props.currentMlApp.workingModel.mlClasses}
                         premadeMlClasses={[]}
                     />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
-                        <h1>{this.props.currentMlApp.appName}</h1>
+                        <ModelView workingModel={this.props.currentMlApp.workingModel}/>
                     </div>
                 </div>
             </div>
@@ -45,7 +41,9 @@ const mapStateToProps = (state, ownProps) => {
     if (!currentMlApp) {
         currentMlApp = {
             appName: "loading...",
-            mlClasses: []
+            workingModel: {
+                mlClasses: []
+            }
         }
     }
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
@@ -57,5 +55,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  actions
+  {...actions, loadApps}
 )(DashboardPage)

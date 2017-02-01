@@ -1,5 +1,5 @@
 .sq-subnav {
-    height: 70px;
+    min-height: 70px;
     background: white;
     border-bottom: 1px solid var(--grey-4);
     display: flex;

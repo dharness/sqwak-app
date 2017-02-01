@@ -6,18 +6,13 @@ import PlushButton from './../../shared/PlushButton';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import * as actions from './../../../actions';
-import { loadApps, removeApp } from './../../../actions/mlApps';
-import { createApp } from './../../../services/api';
+import { loadApps, removeApp, addApp } from './../../../actions/mlApps';
 
 
 class MlAppsPage extends Component {
 
     newAppFormSubmited(formData) {
-        return createApp({ appName: formData.newAppName }).then((newApp) => {
-            if (newApp) {
-                this.props.addApp(newApp);
-            }
-        });
+        this.props.createApp({ appName: formData.newAppName })
     }
 
     componentWillMount() {
@@ -31,23 +26,22 @@ class MlAppsPage extends Component {
 
     showCreateAppModal() {
         this.props.showModal((
-            <NewAppForm onSumbit={(userData) => {
-                this.newAppFormSubmited(userData)
-                    .then(() => this.props.closeModal())
+            <NewAppForm onSumbit={(appData) => {
+                this.props.addApp({ appName: appData.newAppName })
             }
-            } />));
+        } />));
     }
 
     renderAppPreviewCards() {
         return this.props.mlApps.map((userApp, i) => {
             return (
                 <AppPreviewCard
-                    onCardSelected={() => { this.openApp(userApp.id); } }
-                    key={userApp.id}
-                    appId={userApp.id}
+                    onCardSelected={() => { this.openApp(userApp._id); } }
+                    key={userApp._id}
+                    appId={userApp._id}
                     name={userApp.appName}
                     onDeleteClicked={this.props.removeApp}
-                    />)
+                />)
         });
     }
 
@@ -79,7 +73,6 @@ class MlAppsPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const isFetchingApps = state.statuses.isFetchingApps;
-    console.log(isFetchingApps);
     return {
         mlApps,
         isFetchingApps
@@ -88,5 +81,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
     mapStateToProps,
-    { ...actions, loadApps, removeApp }
+    { ...actions, loadApps, removeApp, addApp }
 )(MlAppsPage)
