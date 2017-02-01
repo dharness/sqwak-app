@@ -3,12 +3,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .sq-new-app-form--container {
     width: 400px;
-    margin: auto;
+    margin: 100px auto 0px auto;
     display: flex;
     flex-direction: column;
 }
