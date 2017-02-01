@@ -62,6 +62,12 @@
     height: 20px;
 }
 
+/* loads the image to be shown on hover, to get rid of flickering */
+.sq-app-preview-card:hover .sq-app-preview-card--delete:after {
+    content: "";
+    background-image: url('./../../../assets/images/icons/red-delete.svg');
+}
+
 .sq-app-preview-card:hover .sq-app-preview-card--delete:hover {
     background-image: url('./../../../assets/images/icons/red-delete.svg');
 }

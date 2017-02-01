@@ -27,7 +27,9 @@ class WarningManager extends Component {
 
   onConfirmWarning(onConfirm, id) {
     onConfirm();
-    this.props.closeWarning(id);
+    setTimeout(()=>{
+      this.props.closeWarning(id);
+    }, 300)
   }
 
   render() {

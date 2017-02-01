@@ -12,7 +12,7 @@ class AppPreviewCard extends Component {
                     </div>
                     <div className="sq-app-preview-card--delete" onClick={event => {
                         event.stopPropagation();
-                        this.props.onDeleteClicked(this.props.appId)
+                        this.props.onDeleteClicked(this.props.appId);
                     }} role="presentation"/>
                 </div>
                 <div className="sq-app-preview-card--content">

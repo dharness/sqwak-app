@@ -6,7 +6,8 @@ class Warning extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isShaking: false
+            isShaking: false,
+            isTransitioning: false
         }
     }
 
@@ -20,18 +21,25 @@ class Warning extends Component {
 
     handleSelection(event, isConfirmed) {
         event.stopPropagation();
+        this.setState({isTransitioning: true});
+
         if (isConfirmed) {return this.props.onConfirm();}
         else {
-            this.props.onClose();
+            setTimeout(()=>{
+                this.props.onClose();
+            }, 300)
         }
     }
 
     render () {
          return (
             <div className="sq-warning-panel--wrapper" onClick={this.tryToAvoidIt.bind(this)} style={{display: "block"}}>
-                <div className={"sq-warning-panel" + (this.state.isShaking ? " shake" : "")} onClick={event => event.stopPropagation()} style={{top: 0}}>
+                <div 
+                    className={"sq-warning-panel" + (this.state.isShaking ? " shake" : "") + (this.state.isTransitioning ? " slide" : "")} 
+                    onClick={event => event.stopPropagation()}>
+                    
                     <div className="sq-warning-panel--header">
-                        <img src={alertCancelIcon} onClick={this.props.onClose} role="presentation" className="sq-warning-panel--close-icon"/>
+                        <img src={alertCancelIcon} onClick={(e)=> {this.handleSelection(e, false);}} role="presentation" className="sq-warning-panel--close-icon"/>
                     </div>
                     <div className="sq-warning-panel--message">
                         {this.props.message}

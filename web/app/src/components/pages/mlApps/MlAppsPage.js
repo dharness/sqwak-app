@@ -29,6 +29,14 @@ class MlAppsPage extends Component {
         browserHistory.push(`/dashboard/${mlAppId}`);
     }
 
+    showConfirmDeleteWarning(appName, id) {
+        const warning = {
+            message: `Are you sure you want to delete the app ${appName}?`,
+            onConfirm: () => {this.props.removeApp(id);}
+        }
+        this.props.showWarning(warning);
+    }
+
     showCreateAppModal() {
         this.props.showModal((
             <NewAppForm onSumbit={(userData) => {
@@ -46,7 +54,7 @@ class MlAppsPage extends Component {
                     key={userApp.id}
                     appId={userApp.id}
                     name={userApp.appName}
-                    onDeleteClicked={this.props.removeApp}
+                    onDeleteClicked={(id) => {this.showConfirmDeleteWarning(userApp.appName, id)}}
                     />)
         });
     }
@@ -75,6 +83,7 @@ class MlAppsPage extends Component {
         )
     }
 }
+
 
 const mapStateToProps = (state, ownProps) => {
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
