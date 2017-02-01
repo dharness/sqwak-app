@@ -37,6 +37,22 @@ class UserApps extends Component {
         });
     }
 
+    componentDidMount() {
+        this.props.showWarning({
+            message: 'haha',
+            onConfirm: () => {
+                console.log('confirm')
+            }
+        });
+
+        this.props.showWarning({
+            message: 'warning2',
+            onConfirm: () => {
+                console.log('2')
+            }
+        });
+    }
+
     componentWillMount() {
         fetchApps().then(userAppsList => {
             userAppsList.forEach(userApp => {
@@ -70,7 +86,6 @@ class UserApps extends Component {
         let shouldHideBgImg = (this.props.userApps.length > 0);
         return (
             <div className="sq-apps-page">
-                <Warning isOpen={false}/>
                 <Nav/>
                 <div className="sq-apps-page--content">
                     <div className="sq-apps-page--header sq-text__xlarge">

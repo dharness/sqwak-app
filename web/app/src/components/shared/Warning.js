@@ -5,7 +5,9 @@ class Warning extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isShaking: false}
+        this.state = {
+            isShaking: false
+        }
     }
 
     tryToAvoidIt() {
