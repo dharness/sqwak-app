@@ -22,19 +22,13 @@ export const setCurrentMlApp = mlAppId =>({
   mlAppId
 });
 
-export const addApp = mlApp =>({
-  type: 'ADD_APP',
-  appName: mlApp.appName,
-  classes: mlApp.model.classes,
-  id: mlApp._id
-});
-
-export const removeApp = mlappId =>({
-  type: 'REMOVE_APP',
-  id: mlappId
-});
-
-export const addMlClass = mlClass =>({
-  type: 'ADD_ML_CLASS',
-  mlClass
-});
+export const addApp = mlApp => {
+  return (dispatch) => {
+    dispatch({
+        type: 'ADD_APP',
+        appName: mlApp.appName,
+        mlClasses: mlApp.model.classes,
+        id: mlApp._id
+    });
+  }
+};

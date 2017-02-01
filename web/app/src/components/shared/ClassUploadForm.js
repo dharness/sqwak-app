@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PlushButton from './PlushButton';
 import fileUploadImg from './../../assets/images/file-upload.svg';
-import {createClass} from './../../services/api';
+import { createMlClass, deleteMlClass } from './../../actions/mlClasses';
 
 
 class ClassUploadForm extends Component {
@@ -17,17 +17,12 @@ class ClassUploadForm extends Component {
 
   uploadAudio() {
     const file = this.fileInput.files[0];
-    createClass({
-        appId: this.props.currentAppId,
-        className: this.state.className,
-        file
-    }).then((res)=> {
-      if(res.srcElement.responseText) {
-        let newMlClass = JSON.parse(res.srcElement.responseText);
-        this.props.addClass(newMlClass);
-        this.props.closeModal();
-      }
-    });
+    const mlClassData = {
+      appId: this.props.currentMlAppId,
+      className: this.state.className,
+      file
+    };
+    this.props.createMlClass(mlClassData);
   }
 
   onFilesChanged() {
@@ -43,8 +38,10 @@ class ClassUploadForm extends Component {
   }
 
   removeClass() {
-    this.props.removeClass(this.props.mlClass);
-    this.props.closeModal();
+    this.props.deleteMlClass({
+      mlAppId: this.props.currentMlAppId,
+      mlClassId: this.props.mlClass._id
+    });
   }
 
   render () {
@@ -99,32 +96,12 @@ class ClassUploadForm extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    closeModal() {
-      dispatch({
-        type: 'CLOSE_MODAL'
-      })
-    },
-    addClass(mlClass) {
-      dispatch({
-        type: 'ADD_ML_CLASS',
-        mlClass
-      })
-    },
-    removeClass(mlClass) {
-      dispatch({
-        type: 'REMOVE_ML_CLASS',
-        mlClassId: mlClass._id
-      })
-    }
+    currentMlAppId: state.currentMlAppId
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { createMlClass, deleteMlClass }
 )(ClassUploadForm)

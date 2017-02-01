@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
+import * as actions from './../../../../actions';
 Tabs.setUseDefaultStyles(false);
 
 
@@ -16,7 +17,7 @@ class Sidebar extends Component {
   }
 
   onCardSelected(classId) {
-    const selectedClass = this.props.mlClasses
+    const selectedClass = this.props.customMlClasses
       .find(mlClass => classId === mlClass._id);
     this.props.showModal((
       <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentAppId}/>
@@ -40,7 +41,7 @@ class Sidebar extends Component {
             </div>
             <div className="sq-side-bar--tab-panel--content">
               <ClassCardGrid 
-                mlClasses={this.props.mlClasses} 
+                mlClasses={this.props.customMlClasses} 
                 onCardSelected={this.onCardSelected.bind(this)}/>
             </div>
             <div className="sq-side-bar--footer">
@@ -57,32 +58,14 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    modal: state.modal,
-    mlClasses: state.mlClasses
-  }
-}
+Sidebar.propTypes = {
+  customMlClasses: React.PropTypes.array,
+  premadeMlClasses: React.PropTypes.array
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    showModal(component) {
-      dispatch({
-        type: 'SHOW_MODAL',
-        component
-      })
-    },
-    addClass(appId, mlClass) {
-      dispatch({
-        type: 'ADD_CLASS_TO_APP',
-        appId,
-        mlClass
-      })
-    }
-  }
-}
+const mapStateToProps = (state, ownProps) => ({});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(Sidebar)

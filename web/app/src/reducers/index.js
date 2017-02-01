@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
-import userApps from './userApps';
+import mlApps from './mlApps';
 import modal from './modal';
 import warnings from './warnings';
-import mlClasses from './mlClasses';
 import currentMlAppId from './currentMlAppId';
+import statuses from './statuses';
 
 
 const sqwakApp = combineReducers({
-  mlClasses,
   currentMlAppId,
-  userApps,
-  modal,
-  warnings
+  warnings,
+  mlApps,
+  statuses,
+  modal
 });
 
 export default sqwakApp

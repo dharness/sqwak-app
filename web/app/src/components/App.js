@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
-import { connect } from 'react-redux';
 import LandingPage from './pages/Landing';
 import LoginPage from './pages/Login';
 import ModalManager from './pages/ModalManager';
 import WarningManager from './pages/WarningManager';
 import DashboardPage from './pages/dashboard/Dashboard';
-import UserApps from './pages/userapps/UserApps';
+import MlAppsPage from './pages/mlApps/MlAppsPage';
 import NotFoundPage from './pages/NotFound';
 import AuthService from './../services/AuthService';
 import requireAuth from './../services/requireAuth';
@@ -25,7 +24,7 @@ class App extends Component {
           <Route path="/" component={LandingPage}/>
           <Route path="/login" component={() => (<LoginPage auth={auth} />)}/>
           <Route path="/dashboard/:appId" component={DashboardPage} onEnter={requireAuth}/>
-          <Route path="/apps" component={UserApps} onEnter={requireAuth}/>
+          <Route path="/apps" component={MlAppsPage} onEnter={requireAuth}/>
           <Route path="*" component={NotFoundPage} />
         </Router>
       </div>

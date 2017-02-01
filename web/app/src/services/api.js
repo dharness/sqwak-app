@@ -89,6 +89,17 @@ function createClass({appId, className, file}) {
     });
 }
 
+function deleteClass({appId, classId}) {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((data) => data.json())
+}
+
 export {
     getFeatures,
     createApp,
@@ -96,5 +107,6 @@ export {
     fetchApps,
     deleteApp,
     createClass,
+    deleteClass,
     fetchClasses
 }
