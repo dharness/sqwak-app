@@ -55,7 +55,7 @@ class MlAppsPage extends Component {
     render() {
         let shouldHideBgImg = (this.props.mlApps.length > 0) || this.props.isFetchingApps;
         return (
-            <div className="sq-apps-page">
+            <div className="sq-apps-page" style={{opacity: (this.props.isFetchingApps ? 0 : 1)}}>
                 <Nav />
                 <div className="sq-apps-page--content">
                     <div className="sq-apps-page--header sq-text__xlarge">

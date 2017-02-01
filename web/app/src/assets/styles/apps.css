@@ -1,6 +1,7 @@
 .sq-apps-page {
     background-color: var(--grey-5);
     height: 100%;
+    transition: opacity 500ms ease-in-out;
 }
 
 .sq-apps-page--bg-img {
