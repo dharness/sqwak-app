@@ -65,9 +65,32 @@
   flex-direction: column;
 }
 
-.sq-side-bar--tab-panel--search-wrapper {
+.sq-side-bar--header {
   height: 50px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sq-side-bar--search-wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sq-side-bar--search-icon {
+  width: 10%;
+  align-self: flex-end;
+}
+
+.sq-side-bar--search-field {
+  height: 20px;
+  width: 80%;
+  border: none;
+  color: var(--grey-2);
+  border-bottom: solid 1.5px var(--grey-3);
+  outline: none;
+  align-self: flex-end;
 }
 
 .sq-side-bar--footer {
