@@ -37,22 +37,6 @@ class UserApps extends Component {
         });
     }
 
-    componentDidMount() {
-        this.props.showWarning({
-            message: 'haha',
-            onConfirm: () => {
-                console.log('confirm')
-            }
-        });
-
-        this.props.showWarning({
-            message: 'warning2',
-            onConfirm: () => {
-                console.log('2')
-            }
-        });
-    }
-
     componentWillMount() {
         fetchApps().then(userAppsList => {
             userAppsList.forEach(userApp => {
