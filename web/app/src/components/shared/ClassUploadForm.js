@@ -24,17 +24,6 @@ class ClassUploadForm extends Component {
       file
     };
     this.props.createMlClass(mlClassData);
-    // createClass({
-    //     appId: this.props.currentMlAppId,
-    //     className: this.state.className,
-    //     file
-    // }).then((res)=> {
-    //   if(res.srcElement.responseText) {
-    //     let newMlClass = JSON.parse(res.srcElement.responseText);
-    //     this.props.addClass(newMlClass);
-    //     this.props.closeModal();
-    //   }
-    // });
   }
 
   onFilesChanged() {
