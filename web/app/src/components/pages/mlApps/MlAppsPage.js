@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
-import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import * as actions from './../../../actions';

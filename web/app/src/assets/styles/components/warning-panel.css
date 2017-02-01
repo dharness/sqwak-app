@@ -21,7 +21,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 200;
     background-color: rgba(255,255,255,0.6);
 }
 

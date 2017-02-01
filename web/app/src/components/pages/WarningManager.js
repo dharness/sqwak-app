@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Warning1 from './../shared/Warning1';
+import Warning from './../shared/Warning';
 import * as actions from './../../actions';
 
 
@@ -15,13 +15,13 @@ class WarningManager extends Component {
 
   getNextWarning() {
     const warnings = this.props.warnings
-    const id = warnings.length -1;
-    if (id >=0 ) {
-      return  <Warning1 
-                message={warnings[id].message} 
-                onConfirm={() => {this.onConfirmWarning(warnings[id].onConfirm, id)}} 
-                onClose={() => {this.props.closeWarning(id)}}>
-              </Warning1>
+    if (warnings.length > 0) {
+      const index = warnings.length -1;
+      return  <Warning 
+                message={warnings[index].message} 
+                onConfirm={() => {this.onConfirmWarning(warnings[index].onConfirm, index)}} 
+                onClose={() => {this.props.closeWarning(index)}}>
+              </Warning>
     }
   }
 

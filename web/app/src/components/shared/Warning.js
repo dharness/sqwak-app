@@ -21,23 +21,22 @@ class Warning extends Component {
     handleSelection(event, isConfirmed) {
         event.stopPropagation();
         if (isConfirmed) {return this.props.onConfirm();}
+        else {
+            this.props.onClose();
+        }
     }
 
     render () {
-        return (
-            <div className="sq-warning-panel--wrapper" onClick={this.tryToAvoidIt.bind(this)} style={{
-                    display: (this.props.isOpen ? "block" : "none")
-                }}>
-                <div className={"sq-warning-panel" + (this.state.isShaking ? " shake" : "")} onClick={event => event.stopPropagation()} style={{
-                    top: (this.props.isOpen ? 0 : "-100%")
-                }}>
+         return (
+            <div className="sq-warning-panel--wrapper" onClick={this.tryToAvoidIt.bind(this)} style={{display: "block"}}>
+                <div className={"sq-warning-panel" + (this.state.isShaking ? " shake" : "")} onClick={event => event.stopPropagation()} style={{top: 0}}>
                     <div className="sq-warning-panel--header">
-                        <img src={alertCancelIcon} role="presentation" className="sq-warning-panel--close-icon"/>
+                        <img src={alertCancelIcon} onClick={this.props.onClose} role="presentation" className="sq-warning-panel--close-icon"/>
                     </div>
                     <div className="sq-warning-panel--message">
-                        Are you sure you want to delete app 1?
+                        {this.props.message}
                     </div>
-                    <div className="sq-warning-panel--footer">
+                    <div className="sq-warning-panel--footer" style={{display: (this.props.onConfirm ? "flex" : "none")}}>
                         <div className="sq-warning-panel--button-bar">
                             <button onClick={(e)=> {this.handleSelection(e, false);}}>No</button>
                             <button onClick={(e)=> {this.handleSelection(e, true);}}>Yes</button>
@@ -45,7 +44,7 @@ class Warning extends Component {
                     </div>
                 </div>
             </div>
-        )
+         )
     }
 }
 

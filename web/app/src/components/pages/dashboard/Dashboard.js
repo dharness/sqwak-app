@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Nav from './../../shared/Nav';
-import Warning from './../../shared/Warning';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
 import { fetchApp } from './../../../services/api';
@@ -25,7 +24,6 @@ class DashboardPage extends Component {
     render () {
         return (
             <div className="sq-full-page">
-                <Warning/>
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
