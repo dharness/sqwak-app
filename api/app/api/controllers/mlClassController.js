@@ -74,12 +74,14 @@ classController.post('/', (req, res) => {
 classController.delete('/:classId', (req, res) => {
   const classToRemove = req.currentApp.model.classes
     .find(mlClass => mlClass._id.toString() === req.params.classId);
+
   if (!classToRemove) { return res.send(404); }
   classToRemove.remove();
-  req.user.save((err, user)=>{
+  req.user.save((err, user) => {
     if (err) { return res.send(err); }
     res.send(user);
-  })
+  });
+
 });
 
 module.exports = classController;

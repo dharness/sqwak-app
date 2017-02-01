@@ -26,6 +26,15 @@ const mlApps = (state = {}, action) => {
       return nextState;
     }
 
+    case 'REMOVE_ML_CLASS': {
+      const nextState = Object.assign({}, state);
+      const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.mlClasses = currentMlApp.mlClasses
+        .filter(mlClass => mlClass._id !== action.mlClassId);
+      nextState[action.mlAppId] = currentMlApp;
+      return nextState;
+    }
+
     default:
       return state
   }

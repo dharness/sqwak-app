@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PlushButton from './PlushButton';
 import fileUploadImg from './../../assets/images/file-upload.svg';
-import { createMlClass } from './../../actions/mlClasses';
+import { createMlClass, deleteMlClass } from './../../actions/mlClasses';
 
 
 class ClassUploadForm extends Component {
@@ -38,8 +38,10 @@ class ClassUploadForm extends Component {
   }
 
   removeClass() {
-    this.props.removeClass(this.props.mlClass);
-    this.props.closeModal();
+    this.props.deleteMlClass({
+      mlAppId: this.props.currentMlAppId,
+      mlClassId: this.props.mlClass._id
+    });
   }
 
   render () {
@@ -101,5 +103,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { createMlClass }
+  { createMlClass, deleteMlClass }
 )(ClassUploadForm)
