@@ -5,6 +5,7 @@ import ClassUploadForm from './../../../shared/ClassUploadForm'
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
 import * as actions from './../../../../actions';
+import searchIcon from '../../../../assets/images/icons/search.svg';
 Tabs.setUseDefaultStyles(false);
 
 
@@ -36,8 +37,11 @@ class Sidebar extends Component {
 
           {/* PRE_MADE */}
           <TabPanel>
-            <div className="sq-side-bar--tab-panel--search-wrapper">
-              <center><input type="text"/></center>
+            <div className="sq-side-bar--header">
+              <div className="sq-side-bar--search-wrapper">
+                <img src={searchIcon} role="presentation" className="sq-side-bar--search-icon"/>
+                <input type="text" className="sq-side-bar--search-field sq-text__lg"/>
+              </div>
             </div>
             <div className="sq-side-bar--tab-panel--content">
               <ClassCardGrid 
