@@ -7,7 +7,8 @@ import Warning from './../../shared/Warning';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
 import * as actions from './../../../actions';
-import {createApp, fetchApps, deleteApp} from './../../../services/api';
+import { loadApps, removeApp } from './../../../actions/mlApps';
+import { createApp } from './../../../services/api';
 
 
 class MlAppsPage extends Component {
@@ -22,12 +23,6 @@ class MlAppsPage extends Component {
 
     componentWillMount() {
         this.props.loadApps();
-    }
-
-    deleteApp(mlAppId) {
-        deleteApp(mlAppId).then(() => {
-            this.props.removeApp(mlAppId);
-        });
     }
 
     openApp(mlAppId) {
@@ -52,7 +47,7 @@ class MlAppsPage extends Component {
                     key={userApp.id}
                     appId={userApp.id}
                     name={userApp.appName}
-                    onDeleteClicked={this.deleteApp.bind(this)}
+                    onDeleteClicked={this.props.removeApp}
                 />)
         });
     }
@@ -84,10 +79,11 @@ class MlAppsPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { mlApps: state.mlApps }
+  const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
+  return { mlApps }
 }
 
 export default connect(
   mapStateToProps,
-  actions
+  { ...actions, loadApps, removeApp }
 )(MlAppsPage)

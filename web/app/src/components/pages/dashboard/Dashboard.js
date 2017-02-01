@@ -4,7 +4,7 @@ import Nav from './../../shared/Nav';
 import Warning from './../../shared/Warning';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
-import {fetchApp} from './../../../services/api';
+import { fetchApp } from './../../../services/api';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
 import * as actions from './../../../actions';
 
@@ -17,9 +17,6 @@ class DashboardPage extends Component {
         const currentApp = this.props.mlApps.find(app => app.id === currentAppId);
         if (!currentApp) {
             fetchApp(currentAppId).then(userApp => {
-                userApp.model.classes.forEach(mlClass => {
-                    this.props.addMlClass(mlClass);    
-                });
                 this.props.addApp(userApp);
             });
         }
@@ -53,8 +50,9 @@ const mapStateToProps = (state, ownProps) => {
             mlClasses: []
         }
     }
+    const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     return {
-        mlApps: state.mlApps,
+        mlApps,
         currentMlApp
     }
 }

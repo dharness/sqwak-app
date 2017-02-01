@@ -1,25 +1,21 @@
-const mlApps = (state = [], action) => {
+const mlApps = (state = {}, action) => {
   switch (action.type) {
 
     case 'ADD_APP':
-      var mlAppIndex = state.findIndex(app => app.id === action.id);
+      var nextState = Object.assign({}, state);
       var mlApp = {
         id: action.id,
         appName: action.appName,
         mlClasses: action.mlClasses
       };
-      // If the app already exists, just update it instead
-      if (mlAppIndex >= 0) {
-        var nextState = state.slice();
-        nextState[mlAppIndex] = mlApp;
-        return nextState;
-      }
-
-      // Otherwise, just add the app to the state
-      return [ ...state, mlApp ];
+      nextState[action.id] = mlApp;
+      return nextState;
 
     case 'REMOVE_APP':
-      return state.filter(mlApp => mlApp.id !== action.id);
+      var nextState = Object.assign({}, state);
+      delete nextState[action.id];
+      return nextState;
+
     default:
       return state
   }
