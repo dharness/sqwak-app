@@ -81,7 +81,6 @@ classController.delete('/:classId', (req, res) => {
     if (err) { return res.send(err); }
     res.send(user);
   });
-
 });
 
 module.exports = classController;

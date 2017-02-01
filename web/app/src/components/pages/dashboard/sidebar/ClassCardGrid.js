@@ -8,7 +8,13 @@ class ClassCardGrid extends Component {
         return (
             <div className="sq-class-card-grid">
                 {this.props.mlClasses.map((classInfo, i) => {
-                    return (<ClassCard key={i} mlClass={classInfo} onClick={this.props.onCardSelected}/>)
+                    return (
+                        <ClassCard
+                            key={i} 
+                            mlClass={classInfo} 
+                            onClick={this.props.onCardSelected}
+                            onEditClick={this.props.onEditCardSelected}
+                        />)
                 })}
             </div>
         )
