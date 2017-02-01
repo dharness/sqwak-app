@@ -12,8 +12,8 @@ export const loadApps = () => {
                 mlClasses: mlApp.model.classes,
                 id: mlApp._id
             });
-            dispatch({ type: 'FETCH_APPS_RESOLVED' });
         });
+        dispatch({ type: 'FETCH_APPS_RESOLVED' });
     });
   }
 };
