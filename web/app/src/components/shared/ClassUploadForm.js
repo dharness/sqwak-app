@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PlushButton from './PlushButton';
 import fileUploadImg from './../../assets/images/file-upload.svg';
-import {createClass} from './../../services/api';
 import { createMlClass } from './../../actions/mlClasses';
 
 
