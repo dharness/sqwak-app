@@ -23,12 +23,16 @@ class DashboardPage extends Component {
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
-                        customMlClasses={this.props.currentMlApp.workingModel.mlClasses}
+                        currentAppId={this.props.currentMlApp._id}
+                        customMlClasses={this.props.currentMlApp.mlClasses}
                         premadeMlClasses={[]}
                     />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
-                        <ModelView workingModel={this.props.currentMlApp.workingModel}/>
+                        <ModelView
+                            currentAppId={this.props.currentMlApp._id}
+                            mlModel={this.props.currentMlApp.mlModel}
+                        />
                     </div>
                 </div>
             </div>
@@ -37,15 +41,7 @@ class DashboardPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let currentMlApp = getCurrentMlApp(state);
-    if (!currentMlApp) {
-        currentMlApp = {
-            appName: "loading...",
-            workingModel: {
-                mlClasses: []
-            }
-        }
-    }
+    const currentMlApp = getCurrentMlApp(state);
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     return {
         mlApps,

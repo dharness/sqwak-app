@@ -16,7 +16,7 @@ const mlApps = (state = {}, action) => {
     case 'ADD_ML_CLASS': {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
-      currentMlApp.workingModel.mlClasses.push(action.mlClass);
+      currentMlApp.mlClasses.push(action.mlClass);
       nextState[action.mlAppId] = currentMlApp;
       return nextState;
     }
@@ -24,11 +24,12 @@ const mlApps = (state = {}, action) => {
     case 'REMOVE_ML_CLASS': {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
-      currentMlApp.workingModel.mlClasses = currentMlApp.workingModel.mlClasses
+      currentMlApp.mlClasses = currentMlApp.mlClasses
         .filter(mlClass => mlClass._id !== action.mlClassId);
       nextState[action.mlAppId] = currentMlApp;
       return nextState;
     }
+
 
     default:
       return state

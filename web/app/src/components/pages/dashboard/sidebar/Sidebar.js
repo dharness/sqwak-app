@@ -5,6 +5,7 @@ import ClassUploadForm from './../../../shared/ClassUploadForm'
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
 import * as actions from './../../../../actions';
+import { moveMlClass } from './../../../../actions/mlClasses';
 import searchIcon from '../../../../assets/images/icons/search.svg';
 Tabs.setUseDefaultStyles(false);
 
@@ -27,7 +28,12 @@ class Sidebar extends Component {
   }
 
   onCardSelected(classId) {
-    console.log(classId);
+    this.props.moveMlClass({
+      appId: this.props.currentAppId,
+      classId,
+      from: 'mlClasses',
+      to: 'mlModel'
+    });
   }
 
   render() {
@@ -77,5 +83,5 @@ const mapStateToProps = (state, ownProps) => ({});
 
 export default connect(
   mapStateToProps,
-  actions
+  { ...actions, moveMlClass }
 )(Sidebar)

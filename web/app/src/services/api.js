@@ -89,6 +89,22 @@ function createClass({appId, className, file}) {
     });
 }
 
+function moveClass({appId, classId, from, to}) {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}/move`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            from,
+            to
+        })
+    })
+    .then((data) => data.json())
+}
+
 function deleteClass({appId, classId}) {
     const token = localStorage.getItem('id_token');
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}`, {
@@ -108,5 +124,6 @@ export {
     deleteApp,
     createClass,
     deleteClass,
+    moveClass,
     fetchClasses
 }

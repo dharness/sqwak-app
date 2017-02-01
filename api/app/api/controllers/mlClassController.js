@@ -3,6 +3,7 @@ const hasValidToken = require('./../policies/hasValidToken');
 const loadUser = require('./../policies/loadUser');
 const loadApp = require('./../policies/loadApp');
 const formidable = require('formidable');
+const validators = require('./../validators/mlClass');
 const featureExtractor = require('./../services/featureExtractor');
 const fileUploadHandler = require('./../services/fileUploadHandler');
 const { MlClass } = require('./../models/MlClass');
@@ -13,7 +14,7 @@ classController.use(loadUser);
 classController.use(loadApp);
 
 classController.get('/', (req, res) => {
-  res.send(req.currentApp.workingModel.mlClasses);
+  res.send(req.currentApp.mlClasses);
 });
 
 classController.post('/', (req, res) => {
@@ -34,9 +35,9 @@ classController.post('/', (req, res) => {
         mlClass = mlClass.toObject();
         delete mlClass["_id"];
 
-        req.currentApp.workingModel.mlClasses.push(mlClass);
+        req.currentApp.mlClasses.push(mlClass);
         req.user.save((err, user)=>{
-          res.send(req.currentApp.workingModel.mlClasses.pop());
+          res.send(req.currentApp.mlClasses.pop());
         });
       })
       .catch(err => {
@@ -71,8 +72,33 @@ classController.post('/', (req, res) => {
   });
 });
 
+classController.put('/:classId/move', validators.move, (req, res) => {
+  const from = req.body.from;
+  const to = req.body.to;
+  let fromCollection = req.currentApp.mlModel.mlClasses;
+  let toCollection = req.currentApp.mlClasses;
+  if (from === 'mlClasses') {
+    toCollection = req.currentApp.mlModel.mlClasses;
+    fromCollection = req.currentApp.mlClasses;
+  }
+
+  const classToMove = fromCollection.find(mlClass => {
+    return mlClass._id.toString() === req.params.classId;
+  }); 
+
+  if (!classToMove) { return res.send(404); }
+
+  toCollection.push(classToMove.toObject());
+  classToMove.remove();
+  req.user.save((err, user) => {
+    if (err) { return res.send(err); }
+    res.send(req.currentApp);
+  });
+
+})
+
 classController.delete('/:classId', (req, res) => {
-  const classToRemove = req.currentApp.workingModel.mlClasses
+  const classToRemove = req.currentApp.mlClasses
     .find(mlClass => mlClass._id.toString() === req.params.classId);
 
   if (!classToRemove) { return res.send(404); }

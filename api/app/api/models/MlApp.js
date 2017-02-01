@@ -10,7 +10,7 @@ const MlApp = new sqwak.mongoose.Schema({
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
     },
-    workingModel: {
+    mlModel: {
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
         trainedAt: { type: Date },
