@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ModelManager.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"\"\n\x12\x46\x65\x61tureListRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x13\x46\x65\x61tureListResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x0b\x41udioSample\x12\x10\n\x08\x66\x65\x61tures\x18\x02 \x03(\x05\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"&\n\x13\x43reateModelResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9f\x01\n\rModel_Manager\x12\x46\n\x0bGetFeatures\x12\x19.sqwak.FeatureListRequest\x1a\x1a.sqwak.FeatureListResponse\"\x00\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"\"\n\x12\x46\x65\x61tureListRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x13\x46\x65\x61tureListResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"#\n\x0b\x41udioSample\x12\x14\n\x08\x66\x65\x61tures\x18\x02 \x03(\x02\x42\x02\x10\x01\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"&\n\x13\x43reateModelResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9f\x01\n\rModel_Manager\x12\x46\n\x0bGetFeatures\x12\x19.sqwak.FeatureListRequest\x1a\x1a.sqwak.FeatureListResponse\"\x00\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -97,11 +97,11 @@ _AUDIOSAMPLE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='features', full_name='sqwak.AudioSample.features', index=0,
-      number=2, type=5, cpp_type=1, label=3,
+      number=2, type=2, cpp_type=6, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=_descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\020\001'))),
   ],
   extensions=[
   ],
@@ -115,7 +115,7 @@ _AUDIOSAMPLE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=105,
-  serialized_end=136,
+  serialized_end=140,
 )
 
 
@@ -152,8 +152,8 @@ _MLCLASS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=138,
-  serialized_end=199,
+  serialized_start=142,
+  serialized_end=203,
 )
 
 
@@ -190,8 +190,8 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=201,
-  serialized_end=275,
+  serialized_start=205,
+  serialized_end=279,
 )
 
 
@@ -221,8 +221,8 @@ _CREATEMODELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=277,
-  serialized_end=315,
+  serialized_start=281,
+  serialized_end=319,
 )
 
 _MLCLASS.fields_by_name['samples'].message_type = _AUDIOSAMPLE
@@ -277,8 +277,8 @@ CreateModelResponse = _reflection.GeneratedProtocolMessageType('CreateModelRespo
 _sym_db.RegisterMessage(CreateModelResponse)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW'))
+_AUDIOSAMPLE.fields_by_name['features'].has_options = True
+_AUDIOSAMPLE.fields_by_name['features']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\020\001'))
 try:
   # THESE ELEMENTS WILL BE DEPRECATED.
   # Please use the generated *_pb2_grpc.py files instead.

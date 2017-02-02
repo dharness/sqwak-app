@@ -1,19 +1,18 @@
+from generated import ModelManager_pb2
 import random
 import numpy as np
 from sklearn import tree
 from math import floor
 
-
-def simple_classifier(mlClasses):
-  
+def create_model(ml_classes):
   X = []
   Y = []
-  for mlClass in mlClasses:
+  for ml_class in ml_classes:
     x = []
     y = []
-    for sample in mlClass.samples:
-      x.append(sample['features'])
-      y.append(mlClass['label'])
+    for sample in ml_class.samples:
+      x.append(sample.features)
+      y.append(ml_class.label)
     X = X + x
     Y = Y + y
 
@@ -34,22 +33,12 @@ def simple_classifier(mlClasses):
 
   count = (np.array(Y_test) == predictions).sum()
   results = str((count/float(len(Y_test))) * 100.) + "%"
-  print(results)
   return results
 
+if (__name__ == "__main__"):
+  f = open('reqest.p', "r")
+  create_model_request = ModelManager_pb2.CreateModelRequest()
+  create_model_request.ParseFromString(f.read())
 
-# with open('currentApp.json') as data_file:    
-#     data = json.load(data_file)
-
-# class_1 = Bunch(data["mlModel"]["mlClasses"][0])
-# class_2 = Bunch(data["mlModel"]["mlClasses"][1])
-
-# class_1['label'] = 1
-# class_2['label'] = 2
-
-# classes = [
-#   class_1,
-#   class_2
-# ]
-
-# simple_classifier(classes)
+  model = create_model(create_model_request.ml_classes)
+  print(model)

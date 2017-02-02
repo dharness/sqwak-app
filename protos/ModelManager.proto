@@ -1,28 +1,13 @@
 syntax = "proto3";
-
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.helloworld";
-option java_outer_classname = "HelloWorldProto";
-option objc_class_prefix = "HLW";
-
 package sqwak;
 
 service Model_Manager {
-  rpc GetFeatures (FeatureListRequest) returns (FeatureListResponse) {}
   rpc CreateModel (CreateModelRequest) returns (CreateModelResponse) {}
-}
-
-message FeatureListRequest {
-  string name = 1;
-}
-
-message FeatureListResponse {
-  string message = 1;
 }
 
 // CREATE MODEL ------------
 message AudioSample {
-  repeated int32 features = 2;
+  repeated float features = 2 [packed=true];
 }
 
 message MlClass {
