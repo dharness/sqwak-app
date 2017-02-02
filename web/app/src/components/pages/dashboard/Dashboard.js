@@ -7,7 +7,7 @@ import ModelView from './modelView/ModelView';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
 import * as actions from './../../../actions';
 import { loadApps } from './../../../actions/mlApps';
-
+import ClassUploadForm from './../../shared/ClassUploadForm'
 
 class DashboardPage extends Component {
 
@@ -15,6 +15,21 @@ class DashboardPage extends Component {
         const currentAppId = this.props.params.appId;
         this.props.setCurrentMlApp(currentAppId);
         this.props.loadApps();
+    }
+
+    onEditCardSelected(classId) {
+        const allClasses = [
+            ...this.props.currentMlApp.mlClasses,
+            ...this.props.currentMlApp.mlModel.mlClasses,
+        ]
+        const selectedClass = allClasses
+            .find(mlClass => classId === mlClass._id);
+
+        console.log(selectedClass)
+        
+        this.props.showModal((
+            <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp._id}/>
+        ))
     }
 
     render () {
@@ -26,12 +41,14 @@ class DashboardPage extends Component {
                         currentAppId={this.props.currentMlApp._id}
                         customMlClasses={this.props.currentMlApp.mlClasses}
                         premadeMlClasses={[]}
+                        onEditCardSelected={this.onEditCardSelected.bind(this)}
                     />
                     <div className="sq-dashboard--workspace">
                         <SubNav/>
                         <ModelView
                             currentAppId={this.props.currentMlApp._id}
                             mlModel={this.props.currentMlApp.mlModel}
+                            onEditCardSelected={this.onEditCardSelected.bind(this)}
                         />
                     </div>
                 </div>

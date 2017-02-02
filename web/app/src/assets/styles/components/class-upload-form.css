@@ -47,7 +47,7 @@
 }
 
 .sq-class-upload-form--icon {
-    width: 40%;
+    width: 50%;
     align-self: center;
     margin: 20px 0px;
 }
@@ -84,4 +84,9 @@
     height: 2px;
     border-radius: 1px;
     background: var(--blue-2);
+}
+
+.sq-class-upload-form--footer {
+    display: flex;
+    justify-content: flex-end;
 }
