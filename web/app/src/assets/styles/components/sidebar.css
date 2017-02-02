@@ -1,6 +1,6 @@
 .sq-side-bar {
-  min-width: 320px;
-  max-width: 320px;
+  min-width: 340px;
+  max-width: 340px;
   height: 100%;
   border-right: 1px solid var(--grey-3);
   display: flex;
