@@ -19,73 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ModelManager.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"\"\n\x12\x46\x65\x61tureListRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"&\n\x13\x46\x65\x61tureListResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"#\n\x0b\x41udioSample\x12\x14\n\x08\x66\x65\x61tures\x18\x02 \x03(\x02\x42\x02\x10\x01\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"&\n\x13\x43reateModelResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9f\x01\n\rModel_Manager\x12\x46\n\x0bGetFeatures\x12\x19.sqwak.FeatureListRequest\x1a\x1a.sqwak.FeatureListResponse\"\x00\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"#\n\x0b\x41udioSample\x12\x14\n\x08\x66\x65\x61tures\x18\x02 \x03(\x02\x42\x02\x10\x01\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"1\n\x13\x43reateModelResponse\x12\x1a\n\x12pickled_classifier\x18\x01 \x01(\t2W\n\rModel_Manager\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
-
-
-_FEATURELISTREQUEST = _descriptor.Descriptor(
-  name='FeatureListRequest',
-  full_name='sqwak.FeatureListRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='sqwak.FeatureListRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=29,
-  serialized_end=63,
-)
-
-
-_FEATURELISTRESPONSE = _descriptor.Descriptor(
-  name='FeatureListResponse',
-  full_name='sqwak.FeatureListResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='message', full_name='sqwak.FeatureListResponse.message', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=65,
-  serialized_end=103,
-)
 
 
 _AUDIOSAMPLE = _descriptor.Descriptor(
@@ -114,8 +52,8 @@ _AUDIOSAMPLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=105,
-  serialized_end=140,
+  serialized_start=29,
+  serialized_end=64,
 )
 
 
@@ -152,8 +90,8 @@ _MLCLASS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=203,
+  serialized_start=66,
+  serialized_end=127,
 )
 
 
@@ -190,8 +128,8 @@ _CREATEMODELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=205,
-  serialized_end=279,
+  serialized_start=129,
+  serialized_end=203,
 )
 
 
@@ -203,7 +141,7 @@ _CREATEMODELRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='sqwak.CreateModelResponse.message', index=0,
+      name='pickled_classifier', full_name='sqwak.CreateModelResponse.pickled_classifier', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -221,32 +159,16 @@ _CREATEMODELRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=281,
-  serialized_end=319,
+  serialized_start=205,
+  serialized_end=254,
 )
 
 _MLCLASS.fields_by_name['samples'].message_type = _AUDIOSAMPLE
 _CREATEMODELREQUEST.fields_by_name['ml_classes'].message_type = _MLCLASS
-DESCRIPTOR.message_types_by_name['FeatureListRequest'] = _FEATURELISTREQUEST
-DESCRIPTOR.message_types_by_name['FeatureListResponse'] = _FEATURELISTRESPONSE
 DESCRIPTOR.message_types_by_name['AudioSample'] = _AUDIOSAMPLE
 DESCRIPTOR.message_types_by_name['MlClass'] = _MLCLASS
 DESCRIPTOR.message_types_by_name['CreateModelRequest'] = _CREATEMODELREQUEST
 DESCRIPTOR.message_types_by_name['CreateModelResponse'] = _CREATEMODELRESPONSE
-
-FeatureListRequest = _reflection.GeneratedProtocolMessageType('FeatureListRequest', (_message.Message,), dict(
-  DESCRIPTOR = _FEATURELISTREQUEST,
-  __module__ = 'ModelManager_pb2'
-  # @@protoc_insertion_point(class_scope:sqwak.FeatureListRequest)
-  ))
-_sym_db.RegisterMessage(FeatureListRequest)
-
-FeatureListResponse = _reflection.GeneratedProtocolMessageType('FeatureListResponse', (_message.Message,), dict(
-  DESCRIPTOR = _FEATURELISTRESPONSE,
-  __module__ = 'ModelManager_pb2'
-  # @@protoc_insertion_point(class_scope:sqwak.FeatureListResponse)
-  ))
-_sym_db.RegisterMessage(FeatureListResponse)
 
 AudioSample = _reflection.GeneratedProtocolMessageType('AudioSample', (_message.Message,), dict(
   DESCRIPTOR = _AUDIOSAMPLE,
@@ -297,11 +219,6 @@ try:
       Args:
         channel: A grpc.Channel.
       """
-      self.GetFeatures = channel.unary_unary(
-          '/sqwak.Model_Manager/GetFeatures',
-          request_serializer=FeatureListRequest.SerializeToString,
-          response_deserializer=FeatureListResponse.FromString,
-          )
       self.CreateModel = channel.unary_unary(
           '/sqwak.Model_Manager/CreateModel',
           request_serializer=CreateModelRequest.SerializeToString,
@@ -311,11 +228,6 @@ try:
 
   class Model_ManagerServicer(object):
 
-    def GetFeatures(self, request, context):
-      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-      context.set_details('Method not implemented!')
-      raise NotImplementedError('Method not implemented!')
-
     def CreateModel(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
@@ -324,11 +236,6 @@ try:
 
   def add_Model_ManagerServicer_to_server(servicer, server):
     rpc_method_handlers = {
-        'GetFeatures': grpc.unary_unary_rpc_method_handler(
-            servicer.GetFeatures,
-            request_deserializer=FeatureListRequest.FromString,
-            response_serializer=FeatureListResponse.SerializeToString,
-        ),
         'CreateModel': grpc.unary_unary_rpc_method_handler(
             servicer.CreateModel,
             request_deserializer=CreateModelRequest.FromString,
@@ -346,8 +253,6 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetFeatures(self, request, context):
-      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def CreateModel(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
@@ -358,9 +263,6 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetFeatures(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
-      raise NotImplementedError()
-    GetFeatures.future = None
     def CreateModel(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     CreateModel.future = None
@@ -374,15 +276,12 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelRequest.FromString,
-      ('sqwak.Model_Manager', 'GetFeatures'): FeatureListRequest.FromString,
     }
     response_serializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelResponse.SerializeToString,
-      ('sqwak.Model_Manager', 'GetFeatures'): FeatureListResponse.SerializeToString,
     }
     method_implementations = {
       ('sqwak.Model_Manager', 'CreateModel'): face_utilities.unary_unary_inline(servicer.CreateModel),
-      ('sqwak.Model_Manager', 'GetFeatures'): face_utilities.unary_unary_inline(servicer.GetFeatures),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -396,15 +295,12 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelRequest.SerializeToString,
-      ('sqwak.Model_Manager', 'GetFeatures'): FeatureListRequest.SerializeToString,
     }
     response_deserializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelResponse.FromString,
-      ('sqwak.Model_Manager', 'GetFeatures'): FeatureListResponse.FromString,
     }
     cardinalities = {
       'CreateModel': cardinality.Cardinality.UNARY_UNARY,
-      'GetFeatures': cardinality.Cardinality.UNARY_UNARY,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
     return beta_implementations.dynamic_stub(channel, 'sqwak.Model_Manager', cardinalities, options=stub_options)

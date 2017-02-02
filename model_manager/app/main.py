@@ -4,6 +4,7 @@ import grpc
 import sys
 from generated import ModelManager_pb2
 import create_model
+import pickle
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
@@ -14,7 +15,8 @@ class Model_Manager(ModelManager_pb2.Model_ManagerServicer):
         # f = open('reqest.p', 'w')
         # f.write(request.SerializeToString())
         classifier = create_model.create_model(request.ml_classes)
-        return ModelManager_pb2.CreateModelResponse(message=classifier)
+        
+        return ModelManager_pb2.CreateModelResponse(pickled_classifier=pickle.dumps(classifier))
 
 
 

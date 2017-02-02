@@ -19,7 +19,6 @@ function createModel(mlClasses, cb) {
   }
 
   return sqwak.modelManager.createModel(mlModel, (err, response) => {
-    console.log('got response')
     cb(response);
   });
 }

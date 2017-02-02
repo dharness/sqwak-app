@@ -33,7 +33,7 @@ def create_model(ml_classes):
 
   count = (np.array(Y_test) == predictions).sum()
   results = str((count/float(len(Y_test))) * 100.) + "%"
-  return results
+  return clf
 
 if (__name__ == "__main__"):
   f = open('reqest.p', "r")
