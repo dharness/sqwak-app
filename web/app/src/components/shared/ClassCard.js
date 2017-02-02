@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import shapeIcon from './../../assets/images/shapes/blue/cube.svg';
+import shapeIcon1 from './../../assets/images/shapes/blue/triangle.svg';
+import shapeIcon2 from './../../assets/images/shapes/blue/cube.svg';
+import shapeIcon3 from './../../assets/images/shapes/blue/hex.svg';
+import shapeIcon4 from './../../assets/images/shapes/blue/diamond.svg';
 
 class ClassCard extends Component {
 
@@ -19,11 +22,11 @@ class ClassCard extends Component {
                     <div className="sq-class-card--status-indicator"></div>
                     <div
                         onClick={this.onEditClick.bind(this)}
-                        className="sq-class-card--edit sq-text__pale"
+                        className="sq-class-card--edit sq-text__sm__pale"
                     >edit</div>
                 </div>
                 <div className="sq-class-card--icon">
-                    <img src={shapeIcon} role="presentation"/>
+                    <img src={shapeIcon2} role="presentation"/>
                 </div>
                 <div className="sq-class-card--label sq-text__sm">
                     {this.props.mlClass.className}

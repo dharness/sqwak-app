@@ -2,15 +2,15 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="green" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="60px" height="55px" viewBox="160.5 -308 60 55" enable-background="new 160.5 -308 60 55" xml:space="preserve">
+	 width="45px" height="40px" viewBox="0 0 45 40" enable-background="new 0 0 45 40" xml:space="preserve">
 <g>
 	<polygon fill="#BBFFD0" stroke="#545454" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-		215.26,-295.068 194.375,-299.776 167.453,-296.396 167.453,-268.388 186.769,-258.127 215.26,-263.438 215.26,-279.857 	"/>
+		39.812,8.435 24.625,5.011 5.045,7.469 5.045,27.838 19.092,35.301 39.812,31.439 39.812,19.498 	"/>
 	
-		<line fill="none" stroke="#545454" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="186.769" y1="-290.723" x2="186.769" y2="-258.127"/>
+		<line fill="none" stroke="#545454" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="19.092" y1="11.595" x2="19.092" y2="35.301"/>
 	<polygon fill="#83F2A2" stroke="#545454" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-		186.769,-258.127 167.453,-268.388 167.453,-296.396 186.769,-290.723 	"/>
+		19.092,35.301 5.045,27.838 5.045,7.469 19.092,11.595 	"/>
 	<polygon fill="#83F2A2" stroke="#545454" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-		215.26,-295.068 194.375,-299.776 167.453,-296.396 186.769,-290.723 	"/>
+		39.812,8.435 24.625,5.011 5.045,7.469 19.092,11.595 	"/>
 </g>
 </svg>
