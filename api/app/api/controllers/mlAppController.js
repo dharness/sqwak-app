@@ -1,5 +1,6 @@
 const mlAppController = require('express').Router();
 const hasValidToken = require('./../policies/hasValidToken');
+const modelManager = require('./../services/modelManager');
 const loadUser = require('./../policies/loadUser');
 const validators = require('./../validators/mlApp');
 const MlApp = require('./../models/MlApp');
@@ -38,6 +39,16 @@ mlAppController.put('/:appId', validators.create,  (req, res) => {
     req.user.save((err, user) => {
         if (err) { return console.log(err);}
         res.send(user.apps);
+    });
+});
+
+mlAppController.post('/:appId/train',  (req, res) => {
+    const currentApp = req.user.apps.find(app => app._id.toString() === req.params.appId);
+    if (!currentApp) { return res.send(404); }
+    const mlClasses = currentApp.mlModel.mlClasses;
+    modelManager.createModel(mlClasses, (model) => {
+        console.log(model)
+        res.send(model)
     });
 });
 

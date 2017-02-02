@@ -3,6 +3,8 @@ import trainIcon from './../../../assets/images/icons/train.svg'
 import testIcon from './../../../assets/images/icons/predict.svg'
 import publishIcon from './../../../assets/images/icons/star.svg'
 import PublishForm from './PublishForm.js'
+import * as actions from './../../../actions';
+import { trainModel } from './../../../actions/mlApps';
 import { connect } from 'react-redux';
 
 
@@ -13,6 +15,10 @@ class SubNav extends Component {
       <PublishForm />
     ))
   }
+
+  onTrainButtonClicked() {
+    this.props.trainModel(this.props.currentMlAppId);
+  }
   
   render() {
     return (
@@ -22,7 +28,7 @@ class SubNav extends Component {
         </div>
 
         <div className="sq-subnav--buttons">
-          <div className="sq-subnav--button">
+          <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
             <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
             train
           </div>
@@ -42,22 +48,11 @@ class SubNav extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    showModal(component) {
-      dispatch({
-        type: 'SHOW_MODAL',
-        component
-      })
-    }
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  currentMlAppId: state.currentMlAppId
+})
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { ...actions, trainModel }
 )(SubNav)

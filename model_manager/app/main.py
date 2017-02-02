@@ -2,6 +2,7 @@
 from concurrent import futures
 import time
 import grpc
+import sys
 from generated import ModelManager_pb2
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -11,6 +12,10 @@ class Model_Manager(ModelManager_pb2.Model_ManagerServicer):
 
   def GetFeatures(self, request, context):
     return ModelManager_pb2.FeatureListResponse(message='I am the BEST <b>Madona on the Rocks</b>, %s!' % request.name)
+
+  def CreateModel(self, request, context):
+    print(request.ml_classes)
+    return ModelManager_pb2.CreateModelResponse(message='I am the BEST <b>Madona on the Rocks</b>, %s!' % request.model_id)
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

@@ -1,24 +1,37 @@
-var PROTO_PATH = __dirname + '/../protos/ModelManager.proto';
-var grpc = require('grpc');
-var sqwak = grpc.load(PROTO_PATH).sqwak;
+function createModel(mlClasses, cb) {
 
+  ml_classes = mlClasses.map((mlClass, i) => {
+    mlClass = mlClass.toObject();
+    let samples = mlClass.samples.map(sample => {
+        return {features: new Int32Array([1.0, 2.2, 3.2, 4.2])}
+    })
+    return {
+      label: i,
+      samples
+    };
+  });
 
-var client = new sqwak.Model_Manager('model_manager:50051', grpc.credentials.createInsecure());
+  console.log(ml_classes);
 
+  const mlModel = {
+    model_id: '19',
+    ml_classes: ml_classes
+    // ml_classes: [
+    //   {
+    //     label: 1,
+    //     samples: [
+    //       {
+    //         features: [1,2,2,3]
+    //       }
+    //     ]
+    //   }
+    // ]
+  }
 
-function main(cb) {
-
-  var user;
-  if (process.argv.length >= 3) {
-    user = process.argv[2];
-  } else { user = 'world'; }
-
-  client.getFeatures({name: user}, function(err, response) {
-    if (err) { return cb(err); }
-    cb(response.message);
+  return sqwak.modelManager.createModel(mlModel, (err, response) => {
+    console.log('got response')
+    cb(response);
   });
 }
 
-module.exports = {
-  extract: main
-};
+module.exports = { createModel };
