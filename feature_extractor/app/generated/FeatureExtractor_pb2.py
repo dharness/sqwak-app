@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='FeatureExtractor.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\x1e\n\x0e\x41udioFileChunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"-\n\x13\x46\x65\x61tureListResponse\x12\x16\n\x0e\x66\x65\x61ture_vector\x18\x04 \x03(\t2Y\n\x11\x46\x65\x61ture_Extractor\x12\x44\n\x0bGetFeatures\x12\x15.sqwak.AudioFileChunk\x1a\x1a.sqwak.FeatureListResponse\"\x00(\x01\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+  serialized_pb=_b('\n\x16\x46\x65\x61tureExtractor.proto\x12\x05sqwak\"\x1e\n\x0e\x41udioFileChunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\"-\n\x13\x46\x65\x61tureListResponse\x12\x16\n\x0e\x66\x65\x61ture_vector\x18\x04 \x03(\t2Y\n\x11\x46\x65\x61ture_Extractor\x12\x44\n\x0bGetFeatures\x12\x15.sqwak.AudioFileChunk\x1a\x1a.sqwak.FeatureListResponse\"\x00(\x01\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -105,8 +105,6 @@ FeatureListResponse = _reflection.GeneratedProtocolMessageType('FeatureListRespo
 _sym_db.RegisterMessage(FeatureListResponse)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW'))
 try:
   # THESE ELEMENTS WILL BE DEPRECATED.
   # Please use the generated *_pb2_grpc.py files instead.

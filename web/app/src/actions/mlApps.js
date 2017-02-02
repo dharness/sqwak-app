@@ -1,10 +1,10 @@
-import {fetchApps, deleteApp, createApp} from './../services/api';
+import * as api from './../services/api';
 
 
 export const loadApps = () => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
-    fetchApps().then(mlApps => {
+    api.fetchApps().then(mlApps => {
         mlApps.forEach(mlApp => {
             dispatch({
                 type: 'ADD_APP',
@@ -18,7 +18,7 @@ export const loadApps = () => {
 
 export const addApp = (mlAppData) => {
   return (dispatch) => {
-    createApp(mlAppData).then(mlApp => {
+    api.createApp(mlAppData).then(mlApp => {
       dispatch({
           type: 'ADD_APP',
           mlApp,
@@ -30,11 +30,22 @@ export const addApp = (mlAppData) => {
 
 export const removeApp = mlAppId => {
   return (dispatch) => {
-    deleteApp(mlAppId).then(() => {
+    api.deleteApp(mlAppId).then(() => {
       dispatch({
         type: 'REMOVE_APP',
         id: mlAppId
       });
+    });
+  };
+}
+
+export const trainModel = mlAppId => {
+  return (dispatch) => {
+    api.trainModel(mlAppId).then((res) => {
+      console.log(res);
+    }).catch(err => {
+      console.log('err');
+      console.log(err);
     });
   };
 }
