@@ -20,15 +20,6 @@ class Sidebar extends Component {
     ))
   }
 
-  onEditCardSelected(classId) {
-  
-    const selectedClass = this.props.customMlClasses
-      .find(mlClass => classId === mlClass._id);
-    this.props.showModal((
-      <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentAppId}/>
-    ))
-  }
-
   onCardSelected(classId) {
     this.props.moveMlClass({
       appId: this.props.currentAppId,
@@ -59,7 +50,7 @@ class Sidebar extends Component {
             <div className="sq-side-bar--tab-panel--content">
               <ClassCardGrid 
                 mlClasses={this.props.customMlClasses}
-                onEditCardSelected={this.onEditCardSelected.bind(this)}
+                onEditCardSelected={this.props.onEditCardSelected.bind(this)}
                 onCardSelected={this.onCardSelected.bind(this)}/>
             </div>
             <div className="sq-side-bar--footer">

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { moveMlClass } from './../../../../actions/mlClasses';
 import ClassCard from './../../../shared/ClassCard';
 
-
 class ModelView extends Component {
 
   onCardSelected(classId) {
@@ -15,7 +14,6 @@ class ModelView extends Component {
     });
   }
 
-
   render () {
     return (
       <div className="sq-model-view">
@@ -25,7 +23,7 @@ class ModelView extends Component {
                 <ClassCard
                     mlClass={mlClass}
                     onClick={this.onCardSelected.bind(this)}
-                    onEditClick={()=>{}}
+                    onEditClick={() => {this.props.onEditCardSelected(i)}}
                 />
             </div>)
         })}
