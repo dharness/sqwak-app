@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import shapeIcon from './../../assets/images/shapes/blue/cube.svg';
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css';
 
 class ClassCard extends Component {
 
@@ -16,7 +18,20 @@ class ClassCard extends Component {
         return (
             <div className="sq-class-card" onClick={this.onClick.bind(this)}>
                 <div className="sq-class-card--header">
-                    <div className="sq-class-card--status-indicator"></div>
+                    <Tooltip
+                        placement="top"
+                        mouseEnterDelay={0}
+                        mouseLeaveDelay={0.1}
+                        overlay={
+                            <div className="sq-class-card--status-tooltip">
+                                untrained samples
+                            </div>}
+                        align={{
+                            offset: [0, 0],
+                        }}
+                        >
+                        <div className="sq-class-card--status-indicator"></div>
+                    </Tooltip>
                     <div
                         onClick={this.onEditClick.bind(this)}
                         className="sq-class-card--edit sq-text__sm__pale"

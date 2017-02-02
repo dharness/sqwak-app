@@ -28,8 +28,27 @@
     align-self: center;
 }
 
-.sq-class-card--status-indicator:hover {
-    background: var(--green-2);
+.rc-tooltip-inner {
+    background-color: var(--yellow-2);
+    border: solid 1px var(--yellow-1);
+    padding: 0px;
+    width: 105px;
+    height: 25px;
+
+}
+
+.rc-tooltip-arrow {
+    border-top-color: var(--yellow-1)!important;
+}
+
+.sq-class-card--status-tooltip {
+    background-color: var(--yellow-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    font-size: 11px;
+    text-align: center;
 }
 
 .sq-class-card--header {
