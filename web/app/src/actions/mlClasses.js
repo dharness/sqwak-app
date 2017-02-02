@@ -3,6 +3,7 @@ import { createClass, deleteClass } from './../services/api';
 
 export const createMlClass = (mlClassData) => {
   return (dispatch) => {
+    dispatch({ type: 'FILES_UPLOADING' });
     createClass(mlClassData).then( res => {
       const mlClass = JSON.parse(res.srcElement.responseText);
       dispatch({
@@ -10,6 +11,7 @@ export const createMlClass = (mlClassData) => {
         mlAppId: mlClassData.appId,
         mlClass
       });
+      dispatch({ type: 'FILES_UPLOADED' });
       dispatch({ type: 'CLOSE_MODAL' });
     });
   };

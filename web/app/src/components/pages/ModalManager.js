@@ -6,12 +6,23 @@ import FullPageModal from './../shared/FullPageModal';
 
 class ModalManager extends Component {
 
+  onClose() {
+    if (this.props.statuses.areFilesUploading) {
+        this.props.showWarning({
+          message: `Are you sure you want to quit while your files are uploading?`,
+          onConfirm: () => { this.props.closeModal() }
+        })
+    } else {
+      this.props.closeModal();
+    }
+  }
+
   render() {
     return (
       <div>
         <FullPageModal
           isOpen={this.props.modal.component}
-          onCloseEvent={this.props.closeModal}
+          onCloseEvent={this.onClose.bind(this)}
           component={this.props.modal.component}
         />
       </div>
@@ -20,8 +31,8 @@ class ModalManager extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let {modal} = state;
-  return { modal }
+  let {modal, statuses} = state;
+  return { modal, statuses}
 };
 
 export default connect(
