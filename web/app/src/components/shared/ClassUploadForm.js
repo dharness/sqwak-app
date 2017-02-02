@@ -7,11 +7,11 @@ import { createMlClass, deleteMlClass } from './../../actions/mlClasses';
 
 class ClassUploadForm extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       files: [],
-      className: ""
+      className: this.props.mlClass.className
     };
   }
 
@@ -85,10 +85,12 @@ class ClassUploadForm extends Component {
             </div>
           </div>
 
-          <PlushButton 
-            buttonText="Create class" 
-            onClick={this.uploadAudio.bind(this)} 
-            disabled={!formIsValid}/>
+          <div className="sq-class-upload-form--footer">
+            <PlushButton 
+              buttonText= {this.props.editMode ? "Edit Class" : "Create Class"}
+              onClick={this.uploadAudio.bind(this)} 
+              disabled={!formIsValid}/>
+          </div>
         </div>
       </div>
     )

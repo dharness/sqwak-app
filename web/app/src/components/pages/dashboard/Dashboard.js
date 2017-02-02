@@ -25,6 +25,8 @@ class DashboardPage extends Component {
         const selectedClass = allClasses
             .find(mlClass => classId === mlClass._id);
 
+        console.log(selectedClass)
+        
         this.props.showModal((
             <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp._id}/>
         ))
