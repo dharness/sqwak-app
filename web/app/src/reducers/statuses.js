@@ -17,6 +17,18 @@ const statuses = (state = defaultStatuses, action) => {
       });
     }
 
+    case 'FILES_UPLOADING': {
+      return Object.assign({}, state, {
+        areFilesUploading: true
+      });
+    }
+
+    case 'FILES_UPLOADED': {
+      return Object.assign({}, state, {
+        areFilesUploading: false
+      });
+    }
+
     default:
       return state
   }

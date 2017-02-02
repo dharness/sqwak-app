@@ -14,7 +14,9 @@ class Sidebar extends Component {
 
   newClassButtonClicked() {
     this.props.showModal((
-      <ClassUploadForm currentAppId={this.props.currentAppId}/>
+      <ClassUploadForm 
+        currentAppId={this.props.currentAppId}
+      />
     ))
   }
 
