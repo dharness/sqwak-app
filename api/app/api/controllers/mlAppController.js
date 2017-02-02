@@ -47,8 +47,11 @@ mlAppController.post('/:appId/train',  (req, res) => {
     if (!currentApp) { return res.send(404); }
     const mlClasses = currentApp.mlModel.mlClasses;
     modelManager.createModel(mlClasses, (model) => {
-        console.log(model)
-        res.send(model)
+        currentApp.mlModel.modelFile = model.pickled_classifier;
+        req.user.save((err, user) => {
+            if (err) { return console.log(err);}
+            res.send(currentApp);
+        });
     });
 });
 
