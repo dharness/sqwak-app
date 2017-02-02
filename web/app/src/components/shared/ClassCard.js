@@ -19,7 +19,7 @@ class ClassCard extends Component {
                     <div className="sq-class-card--status-indicator"></div>
                     <div
                         onClick={this.onEditClick.bind(this)}
-                        className="sq-class-card--edit sq-text__pale"
+                        className="sq-class-card--edit sq-text__sm__pale"
                     >edit</div>
                 </div>
                 <div className="sq-class-card--icon">
