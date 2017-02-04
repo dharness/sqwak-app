@@ -1,9 +1,12 @@
 const mlAppController = require('express').Router();
 const hasValidToken = require('./../policies/hasValidToken');
-const modelManager = require('./../services/modelManager');
 const loadUser = require('./../policies/loadUser');
 const validators = require('./../validators/mlApp');
 const MlApp = require('./../models/MlApp');
+const multer  = require('multer');
+const featureExtractor = require('./../services/featureExtractor');
+const modelManager = require('./../services/modelManager');
+const fileStreamer = require('./../services/fileStreamer');
 
 
 mlAppController.use(hasValidToken);
@@ -54,6 +57,31 @@ mlAppController.post('/:appId/train',  (req, res) => {
         });
     });
 });
+
+
+function onFeaturesExtracted(req, res, next, featureVector) {
+    const currentApp = req.user.apps.find(app => app._id.toString() === req.params.appId);
+    modelManager.predict(featureVector, currentApp.mlModel.modelFile, (predictions) => {
+        res.send(predictions);
+    });
+}
+
+var middleware = {
+    initWriteStream: function(req, res, next) {
+      const writeStream = featureExtractor.extract(featureVector => {
+        onFeaturesExtracted(req, res, next, featureVector);
+      });
+      req.writeStream = writeStream;
+      next();
+    },
+    initMulter: function(req, res, next){
+      const storage = fileStreamer({ writeStream: req.writeStream });
+      const upload = multer({ storage });
+      upload.single('audio_file')(req, res, next);
+    }
+};
+
+mlAppController.post('/:appId/predict', [middleware.initWriteStream, middleware.initMulter], () => {});
 
 mlAppController.delete('/:appId', (req, res) => {
     const app = req.user.apps.find(app => app._id.toString() === req.params.appId);

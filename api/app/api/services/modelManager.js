@@ -11,8 +11,6 @@ function createModel(mlClasses, cb) {
     };
   });
 
-  console.log(ml_classes)
-
   const mlModel = {
     model_id: '19',
     ml_classes: ml_classes
@@ -23,4 +21,14 @@ function createModel(mlClasses, cb) {
   });
 }
 
-module.exports = { createModel };
+function predict(features, modelFile, cb) {
+  const predictionRequest = {
+    model_file: modelFile,
+    sample: { features }
+  };
+  sqwak.modelManager.predict(predictionRequest, (err, response) => {
+      cb(response);
+    });
+}
+
+module.exports = { createModel, predict };

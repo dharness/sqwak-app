@@ -2,6 +2,7 @@ from concurrent import futures
 import time
 import grpc
 import sys
+import numpy as np
 from generated import ModelManager_pb2
 import create_model
 import pickle
@@ -12,11 +13,13 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 class Model_Manager(ModelManager_pb2.Model_ManagerServicer):
 
     def CreateModel(self, request, context):
-        # f = open('reqest.p', 'w')
-        # f.write(request.SerializeToString())
         classifier = create_model.create_model(request.ml_classes)
-        
         return ModelManager_pb2.CreateModelResponse(pickled_classifier=pickle.dumps(classifier))
+
+    def Predict(self, request, context):
+        classifier = pickle.loads(request.model_file)
+        predictions = classifier.predict(request.sample.features)
+        return ModelManager_pb2.PredictionResponse(predictions=str(predictions))
 
 
 

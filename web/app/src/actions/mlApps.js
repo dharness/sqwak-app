@@ -49,3 +49,14 @@ export const trainModel = mlAppId => {
     });
   };
 }
+
+export const testModel = mlAppId => {
+  return (dispatch) => {
+    api.testModel(mlAppId).then((res) => {
+      console.log(res);
+    }).catch(err => {
+      console.log('err');
+      console.log(err);
+    });
+  };
+}
