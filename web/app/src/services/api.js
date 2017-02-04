@@ -67,6 +67,17 @@ function trainModel(appId) {
     .then((data) => data.json())
 }
 
+function testModel(appId) {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/predict`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((data) => data.json())
+}
+
 /*************************** CLASSES ***************************/
 
 function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
@@ -136,6 +147,7 @@ export {
     fetchApps,
     deleteApp,
     trainModel,
+    testModel,
     createClass,
     deleteClass,
     moveClass,

@@ -3,6 +3,7 @@ package sqwak;
 
 service Model_Manager {
   rpc CreateModel (CreateModelRequest) returns (CreateModelResponse) {}
+  rpc Predict (PredictionRequest) returns (PredictionResponse) {}
 }
 
 // CREATE MODEL ------------
@@ -22,4 +23,14 @@ message CreateModelRequest {
 
 message CreateModelResponse {
   string pickled_classifier = 1;
+}
+
+// USE MODEL ------------
+message PredictionRequest {
+  string model_file = 1;
+  AudioSample sample = 2;
+}
+
+message PredictionResponse {
+  string predictions = 1;
 }

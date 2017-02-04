@@ -5,8 +5,9 @@ const loadApp = require('./../policies/loadApp');
 const formidable = require('formidable');
 const validators = require('./../validators/mlClass');
 const featureExtractor = require('./../services/featureExtractor');
-const fileUploadHandler = require('./../services/fileUploadHandler');
 const { MlClass } = require('./../models/MlClass');
+const multer  = require('multer');
+const fileStreamer = require('./../services/fileStreamer');
 
 
 classController.use(hasValidToken);
@@ -17,60 +18,41 @@ classController.get('/', (req, res) => {
   res.send(req.currentApp.mlClasses);
 });
 
-classController.post('/', (req, res) => {
-  const form = new formidable.IncomingForm();
-  form.multiples = true;
-  let formParsed;
 
-  const writeStream = featureExtractor.extract((featureVector) => {
-    if (formParsed.then) {
-      return formParsed.then(className => {
+function onFeaturesExtracted(req, res, next, featureVector) {
+  const className = req.body.className;
+  let mlClass = new MlClass({
+    className,
+    packageName: `${req.user._id}.${req.currentApp.appName}`,
+    samples: [{features: featureVector}]
+  });
 
-        let mlClass = new MlClass({
-          className,
-          packageName: `${req.user._id}.${req.currentApp.appName}`,
-          samples: [{features: featureVector}]
-        });
+  mlClass = mlClass.toObject();
+  delete mlClass["_id"];
 
-        mlClass = mlClass.toObject();
-        delete mlClass["_id"];
+  req.currentApp.mlClasses.push(mlClass);
+  req.user.save((err, user) => {
+    res.send(req.currentApp.mlClasses.pop());
+  });
+}
 
-        req.currentApp.mlClasses.push(mlClass);
-        req.user.save((err, user)=>{
-          res.send(req.currentApp.mlClasses.pop());
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.send(err);
+var middleware = {
+    initWriteStream: function(req, res, next) {
+      const writeStream = featureExtractor.extract(featureVector => {
+        onFeaturesExtracted(req, res, next, featureVector);
       });
+      req.writeStream = writeStream;
+      next();
+    },
+    initMulter: function(req, res, next){
+      const storage = fileStreamer({ writeStream: req.writeStream });
+      const upload = multer({ storage });
+      upload.single('audio_file')(req, res, next);
     }
-    res.sendStatus(500);
-  });
+};
 
-  form.onPart = function(part) {
-    // let formidable handle all non-file parts
-    if (!part.filename) {
-      form.handlePart(part);
-      return;
-    }
-    part.on('data', (chunk) => writeStream.write({ data: new Uint8Array(chunk) }));
-    part.on('end', () => writeStream.end());
-    part.on('error', (err) => res.send(err));
-  };
+classController.post('/', [middleware.initWriteStream, middleware.initMulter], () => {});
 
-  form.parse(req, (err, fields, files) => {
-    formParsed = new Promise ((resolve, reject) => {
-      if (err) { return reject(err); }
-      if (fields.className) {
-        resolve(fields.className)
-      } else {
-        res.send(400);
-      }
-    });
-
-  });
-});
 
 classController.put('/:classId/move', validators.move, (req, res) => {
   const from = req.body.from;

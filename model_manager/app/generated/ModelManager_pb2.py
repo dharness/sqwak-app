@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='ModelManager.proto',
   package='sqwak',
   syntax='proto3',
-  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"#\n\x0b\x41udioSample\x12\x14\n\x08\x66\x65\x61tures\x18\x02 \x03(\x02\x42\x02\x10\x01\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"1\n\x13\x43reateModelResponse\x12\x1a\n\x12pickled_classifier\x18\x01 \x01(\t2W\n\rModel_Manager\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x12ModelManager.proto\x12\x05sqwak\"#\n\x0b\x41udioSample\x12\x14\n\x08\x66\x65\x61tures\x18\x02 \x03(\x02\x42\x02\x10\x01\"=\n\x07MlClass\x12\r\n\x05label\x18\x01 \x01(\x05\x12#\n\x07samples\x18\x02 \x03(\x0b\x32\x12.sqwak.AudioSample\"J\n\x12\x43reateModelRequest\x12\x10\n\x08model_id\x18\x01 \x01(\t\x12\"\n\nml_classes\x18\x02 \x03(\x0b\x32\x0e.sqwak.MlClass\"1\n\x13\x43reateModelResponse\x12\x1a\n\x12pickled_classifier\x18\x01 \x01(\t\"K\n\x11PredictionRequest\x12\x12\n\nmodel_file\x18\x01 \x01(\t\x12\"\n\x06sample\x18\x02 \x01(\x0b\x32\x12.sqwak.AudioSample\")\n\x12PredictionResponse\x12\x13\n\x0bpredictions\x18\x01 \x01(\t2\x99\x01\n\rModel_Manager\x12\x46\n\x0b\x43reateModel\x12\x19.sqwak.CreateModelRequest\x1a\x1a.sqwak.CreateModelResponse\"\x00\x12@\n\x07Predict\x12\x18.sqwak.PredictionRequest\x1a\x19.sqwak.PredictionResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -163,12 +163,84 @@ _CREATEMODELRESPONSE = _descriptor.Descriptor(
   serialized_end=254,
 )
 
+
+_PREDICTIONREQUEST = _descriptor.Descriptor(
+  name='PredictionRequest',
+  full_name='sqwak.PredictionRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='model_file', full_name='sqwak.PredictionRequest.model_file', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='sample', full_name='sqwak.PredictionRequest.sample', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=256,
+  serialized_end=331,
+)
+
+
+_PREDICTIONRESPONSE = _descriptor.Descriptor(
+  name='PredictionResponse',
+  full_name='sqwak.PredictionResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='predictions', full_name='sqwak.PredictionResponse.predictions', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=333,
+  serialized_end=374,
+)
+
 _MLCLASS.fields_by_name['samples'].message_type = _AUDIOSAMPLE
 _CREATEMODELREQUEST.fields_by_name['ml_classes'].message_type = _MLCLASS
+_PREDICTIONREQUEST.fields_by_name['sample'].message_type = _AUDIOSAMPLE
 DESCRIPTOR.message_types_by_name['AudioSample'] = _AUDIOSAMPLE
 DESCRIPTOR.message_types_by_name['MlClass'] = _MLCLASS
 DESCRIPTOR.message_types_by_name['CreateModelRequest'] = _CREATEMODELREQUEST
 DESCRIPTOR.message_types_by_name['CreateModelResponse'] = _CREATEMODELRESPONSE
+DESCRIPTOR.message_types_by_name['PredictionRequest'] = _PREDICTIONREQUEST
+DESCRIPTOR.message_types_by_name['PredictionResponse'] = _PREDICTIONRESPONSE
 
 AudioSample = _reflection.GeneratedProtocolMessageType('AudioSample', (_message.Message,), dict(
   DESCRIPTOR = _AUDIOSAMPLE,
@@ -198,6 +270,20 @@ CreateModelResponse = _reflection.GeneratedProtocolMessageType('CreateModelRespo
   ))
 _sym_db.RegisterMessage(CreateModelResponse)
 
+PredictionRequest = _reflection.GeneratedProtocolMessageType('PredictionRequest', (_message.Message,), dict(
+  DESCRIPTOR = _PREDICTIONREQUEST,
+  __module__ = 'ModelManager_pb2'
+  # @@protoc_insertion_point(class_scope:sqwak.PredictionRequest)
+  ))
+_sym_db.RegisterMessage(PredictionRequest)
+
+PredictionResponse = _reflection.GeneratedProtocolMessageType('PredictionResponse', (_message.Message,), dict(
+  DESCRIPTOR = _PREDICTIONRESPONSE,
+  __module__ = 'ModelManager_pb2'
+  # @@protoc_insertion_point(class_scope:sqwak.PredictionResponse)
+  ))
+_sym_db.RegisterMessage(PredictionResponse)
+
 
 _AUDIOSAMPLE.fields_by_name['features'].has_options = True
 _AUDIOSAMPLE.fields_by_name['features']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\020\001'))
@@ -224,11 +310,21 @@ try:
           request_serializer=CreateModelRequest.SerializeToString,
           response_deserializer=CreateModelResponse.FromString,
           )
+      self.Predict = channel.unary_unary(
+          '/sqwak.Model_Manager/Predict',
+          request_serializer=PredictionRequest.SerializeToString,
+          response_deserializer=PredictionResponse.FromString,
+          )
 
 
   class Model_ManagerServicer(object):
 
     def CreateModel(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def Predict(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -240,6 +336,11 @@ try:
             servicer.CreateModel,
             request_deserializer=CreateModelRequest.FromString,
             response_serializer=CreateModelResponse.SerializeToString,
+        ),
+        'Predict': grpc.unary_unary_rpc_method_handler(
+            servicer.Predict,
+            request_deserializer=PredictionRequest.FromString,
+            response_serializer=PredictionResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -255,6 +356,8 @@ try:
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
     def CreateModel(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def Predict(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
   class BetaModel_ManagerStub(object):
@@ -266,6 +369,9 @@ try:
     def CreateModel(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     CreateModel.future = None
+    def Predict(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    Predict.future = None
 
 
   def beta_create_Model_Manager_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -276,12 +382,15 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelRequest.FromString,
+      ('sqwak.Model_Manager', 'Predict'): PredictionRequest.FromString,
     }
     response_serializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelResponse.SerializeToString,
+      ('sqwak.Model_Manager', 'Predict'): PredictionResponse.SerializeToString,
     }
     method_implementations = {
       ('sqwak.Model_Manager', 'CreateModel'): face_utilities.unary_unary_inline(servicer.CreateModel),
+      ('sqwak.Model_Manager', 'Predict'): face_utilities.unary_unary_inline(servicer.Predict),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -295,12 +404,15 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelRequest.SerializeToString,
+      ('sqwak.Model_Manager', 'Predict'): PredictionRequest.SerializeToString,
     }
     response_deserializers = {
       ('sqwak.Model_Manager', 'CreateModel'): CreateModelResponse.FromString,
+      ('sqwak.Model_Manager', 'Predict'): PredictionResponse.FromString,
     }
     cardinalities = {
       'CreateModel': cardinality.Cardinality.UNARY_UNARY,
+      'Predict': cardinality.Cardinality.UNARY_UNARY,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
     return beta_implementations.dynamic_stub(channel, 'sqwak.Model_Manager', cardinalities, options=stub_options)

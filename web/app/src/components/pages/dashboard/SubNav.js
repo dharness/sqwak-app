@@ -3,6 +3,7 @@ import trainIcon from './../../../assets/images/icons/train.svg'
 import testIcon from './../../../assets/images/icons/predict.svg'
 import publishIcon from './../../../assets/images/icons/star.svg'
 import PublishForm from './PublishForm.js'
+import TestModel from './testModel/TestModel.js'
 import * as actions from './../../../actions';
 import { trainModel } from './../../../actions/mlApps';
 import { connect } from 'react-redux';
@@ -13,6 +14,18 @@ class SubNav extends Component {
   openPublishModal() {
     this.props.showModal((
       <PublishForm />
+    ))
+  }
+
+  openTestModal() {
+    this.props.showModal((
+      <TestModel />
+    ))
+  }
+
+  componentDidMount() {
+    this.props.showModal((
+      <TestModel />
     ))
   }
 
@@ -33,7 +46,7 @@ class SubNav extends Component {
             train
           </div>
 
-          <div className="sq-subnav--button">
+          <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
             <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
             test
            </div>
