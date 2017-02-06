@@ -23,12 +23,6 @@ class SubNav extends Component {
     ))
   }
 
-  componentDidMount() {
-    this.props.showModal((
-      <TestModel />
-    ))
-  }
-
   onTrainButtonClicked() {
     this.props.trainModel(this.props.currentMlAppId);
   }

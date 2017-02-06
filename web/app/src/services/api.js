@@ -78,6 +78,20 @@ function testModel(appId) {
     .then((data) => data.json())
 }
 
+/*************************** PREMADE-CLASSES ***************************/
+
+function fetchPremadeClasses(appId, userId='588f5c3dca643e00552f4fe1') {
+    const token = localStorage.getItem('id_token');
+    return fetch(`${process.env.REACT_APP_API_URL}/premade-class`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then((data) => data.json())
+}
+
 /*************************** CLASSES ***************************/
 
 function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
@@ -151,5 +165,6 @@ export {
     createClass,
     deleteClass,
     moveClass,
-    fetchClasses
+    fetchClasses,
+    fetchPremadeClasses
 }

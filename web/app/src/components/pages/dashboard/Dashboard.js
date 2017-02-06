@@ -7,7 +7,9 @@ import ModelView from './modelView/ModelView';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
 import * as actions from './../../../actions';
 import { loadApps } from './../../../actions/mlApps';
-import ClassUploadForm from './../../shared/ClassUploadForm'
+import { loadPremadeClasses } from './../../../actions/premadeClasses';
+import ClassUploadForm from './../../shared/ClassUploadForm';
+
 
 class DashboardPage extends Component {
 
@@ -15,6 +17,7 @@ class DashboardPage extends Component {
         const currentAppId = this.props.params.appId;
         this.props.setCurrentMlApp(currentAppId);
         this.props.loadApps();
+        this.props.loadPremadeClasses();
     }
 
     onEditCardSelected(classId) {
@@ -24,8 +27,6 @@ class DashboardPage extends Component {
         ]
         const selectedClass = allClasses
             .find(mlClass => classId === mlClass._id);
-
-        console.log(selectedClass)
         
         this.props.showModal((
             <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp._id}/>
@@ -40,7 +41,7 @@ class DashboardPage extends Component {
                     <Sidebar
                         currentAppId={this.props.currentMlApp._id}
                         customMlClasses={this.props.currentMlApp.mlClasses}
-                        premadeMlClasses={[]}
+                        premadeMlClasses={this.props.premadeClasses}
                         onEditCardSelected={this.onEditCardSelected.bind(this)}
                     />
                     <div className="sq-dashboard--workspace">
@@ -60,13 +61,15 @@ class DashboardPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     const currentMlApp = getCurrentMlApp(state);
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
+    const { premadeClasses } = state;
     return {
         mlApps,
-        currentMlApp
+        currentMlApp,
+        premadeClasses
     }
 }
 
 export default connect(
   mapStateToProps,
-  {...actions, loadApps}
+  {...actions, loadApps, loadPremadeClasses}
 )(DashboardPage)

@@ -39,7 +39,7 @@ class Sidebar extends Component {
             <Tab>Pre-made Classes</Tab>
           </TabList>
 
-          {/* PRE_MADE */}
+          {/* CUSTOME */}
           <TabPanel>
             <div className="sq-side-bar--header">
               <div className="sq-side-bar--search-wrapper">
@@ -60,6 +60,22 @@ class Sidebar extends Component {
 
             {/* PRE_MADE */}
           <TabPanel>
+            <div className="sq-side-bar--header">
+              <div className="sq-side-bar--search-wrapper">
+                <img src={searchIcon} role="presentation" className="sq-side-bar--search-icon"/>
+                <input type="text" className="sq-side-bar--search-field sq-text__lg"/>
+              </div>
+            </div>
+            <div className="sq-side-bar--tab-panel--content">
+              <ClassCardGrid 
+                mlClasses={this.props.premadeMlClasses}
+                isEditable={false}
+                onEditCardSelected={this.props.onEditCardSelected.bind(this)}
+                onCardSelected={this.onCardSelected.bind(this)}/>
+            </div>
+            <div className="sq-side-bar--footer">
+                <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />
+            </div>
           </TabPanel>
         </Tabs>
       </div>
