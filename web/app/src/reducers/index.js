@@ -4,6 +4,7 @@ import modal from './modal';
 import warnings from './warnings';
 import currentMlAppId from './currentMlAppId';
 import statuses from './statuses';
+import premadeClasses from './premadeClasses';
 
 
 const sqwakApp = combineReducers({
@@ -11,6 +12,7 @@ const sqwakApp = combineReducers({
   warnings,
   mlApps,
   statuses,
+  premadeClasses,
   modal
 });
 

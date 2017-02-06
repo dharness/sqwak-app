@@ -87,7 +87,7 @@ class ClassUploadForm extends Component {
 
           <div className="sq-class-upload-form--footer">
             <PlushButton 
-              buttonText= {this.props.editMode ? "Edit Class" : "Create Class"}
+              buttonText={this.props.editMode ? "Edit Class" : "Create Class"}
               onClick={this.uploadAudio.bind(this)} 
               disabled={!formIsValid}/>
           </div>

@@ -30,9 +30,12 @@ class ClassCard extends Component {
                             offset: [0, 0],
                         }}
                         >
-                        <div className="sq-class-card--status-indicator"></div>
+                        <div
+                            style={{display: (this.props.isEditable ? "" : "none")}}
+                            className="sq-class-card--status-indicator"></div>
                     </Tooltip>
                     <div
+                        style={{display: (this.props.isEditable ? "" : "none")}}
                         onClick={this.onEditClick.bind(this)}
                         className="sq-class-card--edit sq-text__sm__pale"
                     >edit</div>
