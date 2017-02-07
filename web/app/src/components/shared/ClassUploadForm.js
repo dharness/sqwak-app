@@ -9,9 +9,10 @@ class ClassUploadForm extends Component {
 
   constructor(props) {
     super(props);
+    let className = this.props.mlClass ? this.props.mlClass.className : "";
     this.state = {
       files: [],
-      className: this.props.mlClass.className
+      className
     };
   }
 

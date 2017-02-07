@@ -1,80 +1,43 @@
-.sq-side-bar {
-  min-width: 340px;
-  max-width: 340px;
+.sq-side-bar--wrapper {
   height: 100%;
-  border-right: 1px solid var(--grey-3);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sq-side-bar--tab-panel {
-  flex: 1;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__TabList {
-  background: var(--grey-4);
-  display: flex;
-  list-style: none;
-  padding: 0;
-  justify-content: space-between;
-  margin: 0;
-  height: 50px;
-  cursor: pointer;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__Tab {
-  flex: 1;
-  border-right: 1px solid var(--grey-3);
-  border-bottom: 1px solid var(--grey-3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__Tab:last-of-type {
-  border-right: 0;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__Tab.ReactTabs__Tab--selected {
-  background: white;
-  border-bottom: 1px solid white;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__Tab.ReactTabs__Tab--selected:after {
-  content: "";
+  width: 100%;
   position: relative;
-  width: 100%;
-  height: 5px;
-  margin-bottom: -5px;
-  background: var(--blue-2);
-  top: -37px;
-}
-
-.sq-side-bar--tab-panel .ReactTabs__TabPanel {
-  height: calc(100% - 50px);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.sq-side-bar--tab-panel--content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .sq-side-bar--header {
-  height: 50px;
+  height: 80px;
   width: 100%;
   display: flex;
+  flex-direction: column;
+}
+
+.sq-side-bar--content {
+  height: calc(100% - 90px - 80px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.sq-side-bar--content.no-footer {
+  height: calc(100% - 80px);
+}
+
+.sq-side-bar--content .sq-class-card {
+  margin-bottom: 30px;
+}
+
+.sq-side-bar--footer {
+  background: white;
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
   justify-content: center;
-  margin-bottom: 40px;
 }
 
 .sq-side-bar--search-wrapper {
   width: 60%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
 }
@@ -88,18 +51,14 @@
   height: 20px;
   width: 80%;
   border: none;
-  color: var(--grey-2);
+  color: var(--grey-1);
   border-bottom: solid 1.5px var(--grey-3);
   outline: none;
   align-self: flex-end;
 }
 
-.sq-side-bar--footer {
-  background: white;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.sq-side-bar--search-field::placeholder {
+  color: var(--grey-2);
 }
 
 .sq-side-bar--footer .sq-button {

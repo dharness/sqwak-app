@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import PlushButton from './../../../shared/PlushButton';
+import TabPanel from './../../../shared/TabPanel';
 import ClassCardGrid from './ClassCardGrid';
 import * as actions from './../../../../actions';
 import { moveMlClass } from './../../../../actions/mlClasses';
-import searchIcon from '../../../../assets/images/icons/search.svg';
-Tabs.setUseDefaultStyles(false);
+import searchIcon from '../../../../assets/images/icons/search-icon.svg';
+import SidebarPanel from './SidebarPanel';
 
 
 class Sidebar extends Component {
@@ -31,54 +31,26 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div className="sq-side-bar">
-        {/* TABS PANEL */}
-        <Tabs selectedIndex={0} className="sq-side-bar--tab-panel">
-          <TabList>
-            <Tab>Custom Classes</Tab>
-            <Tab>Pre-made Classes</Tab>
-          </TabList>
+      <TabPanel tabNames={["custom", "premade"]}>
 
-          {/* CUSTOME */}
-          <TabPanel>
-            <div className="sq-side-bar--header">
-              <div className="sq-side-bar--search-wrapper">
-                <img src={searchIcon} role="presentation" className="sq-side-bar--search-icon"/>
-                <input type="text" className="sq-side-bar--search-field sq-text__lg"/>
-              </div>
-            </div>
-            <div className="sq-side-bar--tab-panel--content">
-              <ClassCardGrid 
-                mlClasses={this.props.customMlClasses}
-                onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-                onCardSelected={this.onCardSelected.bind(this)}/>
-            </div>
-            <div className="sq-side-bar--footer">
-                <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />
-            </div>
-          </TabPanel>
+        {/* PANEL 1 */}
+        <SidebarPanel
+          mlClasses={this.props.customMlClasses}
+          onEditCardSelected={this.props.onEditCardSelected.bind(this)}
+          onCardSelected={this.onCardSelected.bind(this)}
+          onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
+        />
 
-            {/* PRE_MADE */}
-          <TabPanel>
-            <div className="sq-side-bar--header">
-              <div className="sq-side-bar--search-wrapper">
-                <img src={searchIcon} role="presentation" className="sq-side-bar--search-icon"/>
-                <input type="text" className="sq-side-bar--search-field sq-text__lg"/>
-              </div>
-            </div>
-            <div className="sq-side-bar--tab-panel--content">
-              <ClassCardGrid 
-                mlClasses={this.props.premadeMlClasses}
-                isEditable={false}
-                onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-                onCardSelected={this.onCardSelected.bind(this)}/>
-            </div>
-            <div className="sq-side-bar--footer">
-                <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />
-            </div>
-          </TabPanel>
-        </Tabs>
-      </div>
+        {/* PANEL 2 */}
+        <SidebarPanel
+          hideFooter={true}
+          mlClasses={this.props.premadeMlClasses}
+          onEditCardSelected={this.props.onEditCardSelected.bind(this)}
+          onCardSelected={this.onCardSelected.bind(this)}
+          onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
+        />
+
+      </TabPanel>
     )
   }
 }
