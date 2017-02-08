@@ -22,7 +22,7 @@
 
 .sq-record-button-ring.recording {
     background-color: var(--red-3);
-    animation: pulse 3s ease-in-out infinite;
+    animation: pulse 1s ease-in-out infinite;
 }
 
 .sq-record-button {
@@ -65,6 +65,6 @@
     transform: scale(1)
   }
   50% {
-   transform: scale(0.87)
+   transform: scale(0.9)
   }
 }

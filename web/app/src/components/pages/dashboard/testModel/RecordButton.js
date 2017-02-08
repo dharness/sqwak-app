@@ -8,7 +8,7 @@ export default (props) => {
             <div
                 onClick={props.onClick}
                 className={"sq-record-button" + (props.isRecording ? " recording" : "")}>
-                <div className={"sq-record-button-icon" + (props.isRecording ? " recording" : "")} />
+                <div className={"sq-record-button-icon"} />
             </div>
         </div>
     )

@@ -23,6 +23,7 @@
     display: flex;
     justify-content: center;
     margin-top: 25px;
+    color: var(--red-2);
 }
 
 .sq-test-record-button {
