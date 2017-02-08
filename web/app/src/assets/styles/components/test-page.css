@@ -1,0 +1,32 @@
+.sq-test-buttons--wrapper {
+    margin-bottom: 55px;
+}
+
+.sq-test-record-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;   
+}
+.sq-test-record-header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sq-test-record-subheader {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.sq-test-record-timer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.sq-test-record-button {
+    display: flex;
+    justify-content: center;
+}
+

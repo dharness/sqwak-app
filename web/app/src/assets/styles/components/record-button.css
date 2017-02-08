@@ -1,0 +1,70 @@
+.sq-record-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.sq-record-button-ring{
+    width: 100%;
+    border-radius: 150px;
+    background-color: #DBF4FF;
+    position: absolute;
+}
+
+.sq-record-button-ring:after {
+  padding-top: 100%;
+  display: block;
+  content: '';
+}
+
+.sq-record-button-ring.recording {
+    background-color: var(--red-3);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.sq-record-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 140px;
+    height: 140px;
+    border-radius: 150px;
+    border: solid 1px #545454;
+    position: absolute;
+    background-image: radial-gradient(
+        circle at top,
+        #F8F8F8, 
+        #FFE5E5);
+}
+
+.sq-record-button.recording {
+    cursor: default;
+    background-image: radial-gradient(
+        circle at bottom, 
+        #FFA9A9, 
+        #FF7373 100%);
+}
+
+.sq-record-button-icon {
+    width: 22px; 
+    height: 36px;
+    background-image: url(./../../images/icons/microphone.svg);
+    background-repeat: no-repeat;
+}
+
+.sq-record-button.recording .sq-record-button-icon {
+    background-image: url(./../../images/icons/microphone-white.svg);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1)
+  }
+  50% {
+   transform: scale(0.87)
+  }
+}
