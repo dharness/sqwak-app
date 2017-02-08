@@ -1,5 +1,5 @@
 .sq-test-buttons--wrapper {
-    margin-bottom: 55px;
+    margin-bottom: 35px;
 }
 
 .sq-test-record-wrapper {
@@ -15,14 +15,14 @@
 }
 
 .sq-test-record-subheader {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     text-align: center;
 }
 
 .sq-test-record-timer {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 15px;
     color: var(--red-2);
 }
 
@@ -31,3 +31,15 @@
     justify-content: center;
 }
 
+.sq-test-record-classify-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.sq-test-record-classify-text {
+    text-align: center;
+    padding-bottom: 10px;
+}

@@ -9,10 +9,11 @@ class PlushButton extends Component {
     }
 
     render () {
+        let buttonColorClass = this.props.colorClass ? this.props.colorClass : "sq-button__green"
         return (
             <button onClick={this.handleClick.bind(this)}
                 disabled={this.props.disabled}
-                className="sq-button sq-button__green sq-text__white">
+                className={`sq-button ${buttonColorClass} sq-text__white`}>
                 {this.props.buttonText}
             </button>
         )

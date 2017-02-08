@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import RecordButton from './RecordButton';
-
+import PlushButton from './../../../shared/PlushButton';
 
 class RecordSoundPanel extends Component {
 
@@ -44,8 +44,20 @@ class RecordSoundPanel extends Component {
             <div className="sq-test-record-button">
                 <RecordButton isRecording={this.state.isRecording} onClick={this.recordButtonClicked.bind(this)}/>
             </div>
-            <div className="sq-test-record-timer sq-text__lg">
-                {this.state.isRecording ? this.state.countdown : ""}
+            
+            <div className="sq-test-record-timer sq-text__lg" style={{
+                opacity: (this.state.isRecording ? 1 : 0)
+            }}>
+                {this.state.isRecording ? this.state.countdown.replace('.', ':') : "0:00"}
+            </div>
+
+            <div className="sq-test-record-classify-wrapper">
+                <div className="sq-test-record-classify-text">
+                    Record the sound again
+                    <br/>
+                    or
+                </div>
+                <PlushButton buttonText={"Classify it"} colorClass="sq-button__blue"/>
             </div>
 
         </div>

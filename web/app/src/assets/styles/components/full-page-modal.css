@@ -10,9 +10,6 @@
 }
 
 .sq-full-page-modal--header {
-    box-sizing: border-box;
-    width: 100%;
-    height: 55px;
     display: flex;
     justify-content: flex-end;
     padding-right: 40px;
