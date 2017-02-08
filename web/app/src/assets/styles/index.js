@@ -21,5 +21,7 @@ import './components/publish-form.css';
 import './components/record-button.css';
 import './components/subnav.css';
 import './components/sidebar.css';
+import './components/tab-panel.css';
 import './components/test-model.css';
 import './components/warning-panel.css';
+

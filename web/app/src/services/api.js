@@ -110,7 +110,7 @@ function createClass({appId, className, file}) {
     return new Promise((resolve, reject) => {
         const token = localStorage.getItem('id_token');
         const formData = new FormData();
-        formData.append('uploads[]', file, file.name);
+        formData.append('audio_file', file, file.name);
         formData.set("className", className);
         var xhr = new XMLHttpRequest();
         xhr.open('POST', `${process.env.REACT_APP_API_URL}/app/${appId}/class?access_token=${token}`, true);

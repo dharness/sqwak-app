@@ -1,10 +1,8 @@
 .sq-class-card-grid {
-    height: 0px;
-    flex: 1;
-    width: 100%;
-    overflow-y: auto;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 0px 11%;
     justify-content: space-between;
+    width: 80%;
+    margin: auto;
 }
