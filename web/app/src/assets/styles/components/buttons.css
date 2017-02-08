@@ -34,3 +34,7 @@
 .sq-button__green {
     background-color: var(--green-3);
 }
+
+.sq-button__blue {
+    background-color: var(--blue-1);
+}

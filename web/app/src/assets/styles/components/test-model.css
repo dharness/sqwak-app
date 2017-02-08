@@ -1,0 +1,45 @@
+.sq-test-buttons--wrapper {
+    margin-bottom: 35px;
+}
+
+.sq-test-record-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;   
+}
+.sq-test-record-header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.sq-test-record-subheader {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.sq-test-record-timer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    color: var(--red-2);
+}
+
+.sq-test-record-button {
+    display: flex;
+    justify-content: center;
+}
+
+.sq-test-record-classify-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.sq-test-record-classify-text {
+    text-align: center;
+    padding-bottom: 10px;
+}
