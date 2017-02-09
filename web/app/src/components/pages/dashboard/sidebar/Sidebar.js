@@ -20,12 +20,21 @@ class Sidebar extends Component {
     ))
   }
 
-  onCardSelected(classId) {
+  onCustomCardSelected(classId) {
     this.props.moveMlClass({
       appId: this.props.currentAppId,
       classId,
       from: 'mlClasses',
       to: 'mlModel'
+    });
+  }
+
+  onPremadeCardSelected(classId) {
+    this.props.moveMlClass({
+      appId: this.props.currentAppId,
+      classId,
+      from: 'premadeClasses',
+      to: 'mlClasses'
     });
   }
 
@@ -37,7 +46,7 @@ class Sidebar extends Component {
         <SidebarPanel
           mlClasses={this.props.customMlClasses}
           onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-          onCardSelected={this.onCardSelected.bind(this)}
+          onCardSelected={this.onCustomCardSelected.bind(this)}
           onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
         />
 
@@ -46,7 +55,7 @@ class Sidebar extends Component {
           hideFooter={true}
           mlClasses={this.props.premadeMlClasses}
           onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-          onCardSelected={this.onCardSelected.bind(this)}
+          onCardSelected={this.onPremadeCardSelected.bind(this)}
           onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
         />
 

@@ -3,7 +3,7 @@ import ClassUploadForm from './../../../shared/ClassUploadForm';
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
 import searchIcon from '../../../../assets/images/icons/search-icon.svg';
-import CustomScroll from 'react-custom-scroll';
+
 
 class SidebarPanel extends Component {
   render () {
@@ -28,5 +28,7 @@ class SidebarPanel extends Component {
     )
   }
 }
+
+SidebarPanel.PropTy
 
 export default SidebarPanel

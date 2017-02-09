@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const api = require('./api');
+// const api = require('./api');
+const api2 = require('./api.v1');
 const server = express();
 const cors = require('cors')
 const bodyParser = require('body-parser');
@@ -25,7 +26,7 @@ server.get('/', (req, res) => {
   });
 });
 
-server.use('/api/v0', api);
+server.use('/api/v1', api2);
 
 server.get('/model_manager', (req, res) => {
   modelManager.extract((message) => {
