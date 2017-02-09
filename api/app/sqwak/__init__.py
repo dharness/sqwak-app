@@ -8,7 +8,7 @@ from sqwak.database import db_session, init_db
 app = Flask(__name__)
 app.register_blueprint(ml_class_controller, url_prefix='/ml_class')
 app.register_blueprint(ml_app_controller, url_prefix='/ml_app')
-app.register_blueprint(user_controller, url_prefix='/user')
+app.register_blueprint(user_controller, url_prefix='/api/v0/user')
 
 init_db()
 

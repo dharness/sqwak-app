@@ -6,6 +6,7 @@ import './apps.css';
 import './loading.css';
 import './dashboard.css';
 import './landing.css';
+import './login.css';
 import './components/app-preview-card.css';
 import './components/basic-input.css';
 import './components/buttons.css';
