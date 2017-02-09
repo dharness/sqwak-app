@@ -2,15 +2,10 @@ version: '2'
 services:
   api:
     image: sqwak/api
-    command: npm start
-    volumes:
-      - ./protos:/usr/src/app/protos
-    environment:
-      - PORT=8080
-
-  mongo:
-    image: mongo:3
-
+    command: python run.py
+    ports:
+      - "5000:5000"
+      
   nginx:
     image: sqwak/nginx
     links:
@@ -18,17 +13,3 @@ services:
     ports:
       - "80:80"
       - "443:443"
-
-  feature_extractor:
-    image: sqwak/feature_extractor
-    command: python feature_extractor.py
-    volumes: 
-      - ./protos:/usr/src/app/protos
-    command: supervisord -c ./supervisord.conf
-    
-  model_manager:
-    image: sqwak/model_manager
-    command: python greeter_server.py
-    volumes: 
-      - ./protos:/usr/src/app/protos
-    command: supervisord -c ./supervisord.conf

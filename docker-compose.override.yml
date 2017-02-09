@@ -2,36 +2,25 @@ version: '2'
 services:
   api:
     build: ./api
-    volumes:
+    volumes: 
       - ./api/app:/usr/src/app
-      - ./protos:/usr/src/app/protos
-      - /usr/src/app/node_modules
+    command: supervisord -c ./supervisord.conf
+    ports:
+      - "5000:5000"
 
   web:
-    build: ./web
-    volumes:
-      - ./web/app:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - "3000:3000"
+      build: ./web
+      links:
+        - api:api
+      environment:
+        - REACT_APP_API_URL=http://localhost:8080/api/v0
+        - REACT_APP_BASE_URL=http://localhost:3000
+      volumes:
+        - ./web/app:/usr/src/app
+        - /usr/src/app/node_modules
+      command: npm start
+      ports:
+        - "3000:3000"
 
   nginx:
     build: ./nginx
-
-  mongo:
-    logging:
-      driver: "none"
-
-  feature_extractor:
-    build: ./feature_extractor
-    volumes: 
-      - ./feature_extractor/app:/usr/src/app
-      - ./protos:/usr/src/app/protos
-    command: supervisord -c ./supervisord.conf
-
-  model_manager:
-    build: ./model_manager
-    volumes: 
-      - ./model_manager/app:/usr/src/app
-      - ./protos:/usr/src/app/protos
-    command: supervisord -c ./supervisord.conf
