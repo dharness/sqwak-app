@@ -13,9 +13,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@db:5432/postgres'
 
 db.init_app(app)
 ma.init_app(app)
-app.register_blueprint(ml_class_controller, url_prefix='/api/v0/ml_class')
 app.register_blueprint(user_controller, url_prefix='/api/v0/user')
 app.register_blueprint(ml_app_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app')
+app.register_blueprint(ml_class_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app/<int:app_id>/ml_class')
 
 
 @app.errorhandler(404)
