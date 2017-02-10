@@ -18,6 +18,10 @@ class MlApp(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     query_url = db.Column(db.String)
+    ml_classes = db.relationship('MlClass', 
+        backref="ml_app", 
+        cascade="all, delete-orphan", 
+        lazy='dynamic')
 
 class MlClass(db.Model):
     __tablename__ = 'ml_class'
@@ -28,6 +32,10 @@ class MlClass(db.Model):
     is_edited = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    audio_samples = db.relationship('AudioSample', 
+        backref="ml_class", 
+        cascade="all, delete-orphan", 
+        lazy='dynamic')
 
 class AudioSample(db.Model):
     __tablename__ = 'audio_sample'
@@ -35,6 +43,7 @@ class AudioSample(db.Model):
     ml_class_id = db.Column(db.Integer, db.ForeignKey("ml_class.id"), nullable=False)
     features = db.Column(postgresql.ARRAY(db.Integer), nullable=False)
     extraction_method = db.Column(db.String, nullable=False)
+    label = db.Column(db.String, nullable=False)
     start = db.Column(db.Integer)
     end = db.Column(db.Integer)
     salience = db.Column(db.Integer)
