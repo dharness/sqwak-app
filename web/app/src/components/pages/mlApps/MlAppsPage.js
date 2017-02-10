@@ -21,8 +21,9 @@ class MlAppsPage extends Component {
     }
 
     openApp(mlAppId) {
+        const userId = this.props.params.userId;
         this.props.setCurrentMlApp(mlAppId);
-        browserHistory.push(`/dashboard/${mlAppId}`);
+        browserHistory.push(`/user/${userId}/apps/${mlAppId}/dashboard`);
     }
 
     showConfirmDeleteWarning(appName, id) {

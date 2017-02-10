@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/" component={LandingPage}/>
           <Route path="/login" component={() => (<LoginPage auth={auth} action={"login"} />)}/>
           <Route path="/signup" component={() => (<LoginPage auth={auth} action={"signup"} />)}/>
-          <Route path="/dashboard/:appId" component={DashboardPage} onEnter={requireAuth}/>
+          <Route path="/user/:userId/apps/:appId/dashboard" component={DashboardPage} onEnter={requireAuth}/>
           <Route path="/user/:userId/apps" component={MlAppsPage} onEnter={requireAuth}/>
           <Route path="*" component={NotFoundPage} />
         </Router>

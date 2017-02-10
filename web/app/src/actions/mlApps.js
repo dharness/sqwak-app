@@ -1,6 +1,22 @@
 import * as api from './../services/api';
 
 
+export const loadApp = (userId, appId) => {
+  console.log(userId, appId)
+  return (dispatch) => {
+    // dispatch({ type: 'FETCH_APPS_PENDING' });
+    // api.fetchApps(userId).then(mlApps => {
+    //     mlApps.forEach(mlApp => {
+    //         dispatch({
+    //             type: 'ADD_APP',
+    //             mlApp,
+    //         });
+    //     });
+    //     dispatch({ type: 'FETCH_APPS_RESOLVED' });
+    // });
+  }
+};
+
 export const loadApps = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
