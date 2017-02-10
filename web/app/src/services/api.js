@@ -29,9 +29,9 @@ function createApp(options) {
     }).then((data) => data.json())
 }
 
-function fetchApp(appId) {
+function fetchApp({userId, appId}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

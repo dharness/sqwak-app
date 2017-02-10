@@ -64,7 +64,6 @@ const mapStateToProps = (state, ownProps) => {
     const currentMlApp = getCurrentMlApp(state);
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const { premadeClasses } = state;
-    console.log(currentMlApp);
     return {
         mlApps,
         currentMlApp,
