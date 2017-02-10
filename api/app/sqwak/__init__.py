@@ -3,6 +3,7 @@ from sqwak.routes.user import user_controller
 from sqwak.routes.ml_class import ml_class_controller
 from sqwak.routes.ml_app import ml_app_controller
 from sqwak.models import db
+from sqwak.errors import InvalidUsage
 from sqwak.schemas import ma
 
 
@@ -33,6 +34,12 @@ def not_found(error):
 @app.errorhandler(405)
 def not_found(error):
     return make_response(jsonify({'error': 'Method not allowed'}), 405)
+
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
 
 with app.app_context():
     db.create_all()
