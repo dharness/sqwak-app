@@ -1,5 +1,5 @@
 from flask_marshmallow import Marshmallow
-from models import User, MlApp
+from models import User, MlApp, MlClass
 ma = Marshmallow()
 
 
@@ -16,3 +16,10 @@ class MlAppSchema(ma.ModelSchema):
 
 ml_app_schema = MlAppSchema()
 ml_apps_schema = MlAppSchema(many=True)
+
+class MlClassSchema(ma.ModelSchema):
+    class Meta:
+        model = MlClass
+
+ml_class_schema = MlClassSchema()
+ml_classes_schema = MlClassSchema(many=True)
