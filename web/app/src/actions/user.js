@@ -17,3 +17,12 @@ export const loginUser = ({email, password}) => {
     });
   }
 };
+
+export const setCurrentUser = ({userId}) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_CURRENT_USER',
+      id: userId
+    });
+  }
+};

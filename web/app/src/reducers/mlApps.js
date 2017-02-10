@@ -30,6 +30,16 @@ const mlApps = (state = {}, action) => {
       return nextState;
     }
 
+    case 'MOVE_ML_CLASS': {
+      const nextState = Object.assign({}, state);
+      const currentMlApp = nextState[action.mlAppId];
+      const mlClassIndex = currentMlApp.mlClasses
+        .findIndex(mlClass => mlClass.id === action.mlClassId);
+      const mlClassToMove = currentMlApp.mlClasses[mlClassIndex];
+      mlClassToMove.inModel = !mlClassToMove.inModel;
+      return nextState;
+    }
+
 
     default:
       return state

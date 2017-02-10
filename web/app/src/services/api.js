@@ -137,17 +137,17 @@ function createClass({appId, className, file}) {
     });
 }
 
-function moveClass({appId, classId, from, to}) {
+function moveClass({userId, appId, classId, from, to}) {
+    const inModel = (to === 'mlModel');
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}/move`, {
-        method: 'PUT',
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class/${classId}`, {
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            from,
-            to
+            in_model: inModel
         })
     })
     .then((data) => data.json())

@@ -45,18 +45,26 @@ def ml_class(user_id, app_id, class_id):
         return ml_class_schema.jsonify(ml_class)
     elif request.method == 'PATCH':
         ml_class = MlClass.query.filter_by(id=class_id, ml_app_id=app_id).first_or_404()
-        # Process the samples to add
-        f = request.files['file']
-        path = '/usr/src/app/sqwak/uploads/' + secure_filename(f.filename)
-        f.save(path)
-        features = feature_extractor.extract(path)
-        audio_sample = AudioSample(
-            ml_class_id=ml_class.id,
-            label=slugify(ml_class.class_name),
-            features=features,
-            extraction_method="urban_sound_1"
-        )
-        db.session.add(audio_sample)
+        json_data = request.get_json(force=True)
+        
+        if request.files:
+            f = request.files['file']
+            print(request.form)
+            # Process the samples to add
+            
+            path = '/usr/src/app/sqwak/uploads/' + secure_filename(f.filename)
+            f.save(path)
+            features = feature_extractor.extract(path)
+            audio_sample = AudioSample(
+                ml_class_id=ml_class.id,
+                label=slugify(ml_class.class_name),
+                features=features,
+                extraction_method="urban_sound_1"
+            )
+            db.session.add(audio_sample)
+        elif 'in_model' in json_data:
+            ml_class.in_model = json_data['in_model']
+            db.session.add(ml_class)
         db.session.commit()
         return ml_class_schema.jsonify(ml_class)
     else:

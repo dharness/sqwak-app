@@ -20,7 +20,7 @@ class MlApp(db.Model):
     query_url = db.Column(db.String)
     ml_classes = db.relationship('MlClass', 
         backref="ml_app", 
-        cascade="all, delete-orphan", 
+        cascade="all, delete-orphan",
         lazy='dynamic')
 
 class MlClass(db.Model):
@@ -30,11 +30,12 @@ class MlClass(db.Model):
     class_name = db.Column(db.String, nullable=False)
     package_name = db.Column(db.String, nullable=False)
     is_edited = db.Column(db.Boolean, default=False)
+    in_model = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     audio_samples = db.relationship('AudioSample', 
         backref="ml_class", 
-        cascade="all, delete-orphan", 
+        cascade="all, delete-orphan",
         lazy='dynamic')
 
 class AudioSample(db.Model):

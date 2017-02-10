@@ -7,10 +7,10 @@ class ModelView extends Component {
 
   onCardSelected(classId) {
     this.props.moveMlClass({
+      userId:  this.props.userId,
       appId: this.props.currentAppId,
       classId,
-      to: 'mlClasses',
-      from: 'mlModel'
+      to: 'mlClasses'
     });
   }
 
@@ -42,7 +42,9 @@ ModelView.PropTypes = {
   mlClasses: React.PropTypes.array
 };
 
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state, ownProps) => ({
+  userId: state.user.id
+});
 
 export default connect(
   mapStateToProps,
