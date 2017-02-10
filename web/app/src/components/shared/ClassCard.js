@@ -6,12 +6,12 @@ import 'rc-tooltip/assets/bootstrap.css';
 class ClassCard extends Component {
 
     onClick() {
-        this.props.onClick(this.props.mlClass._id);
+        this.props.onClick(this.props.mlClass.id);
     }
 
     onEditClick(event) {
         event.stopPropagation();
-        this.props.onEditClick(this.props.mlClass._id);
+        this.props.onEditClick(this.props.mlClass.id);
     }
 
     render () {
@@ -26,9 +26,7 @@ class ClassCard extends Component {
                             <div className="sq-class-card--status-tooltip">
                                 untrained samples
                             </div>}
-                        align={{
-                            offset: [0, 0],
-                        }}
+                        align={{ offset: [0, 0] }}
                         >
                         <div
                             style={{display: (this.props.isEditable ? "" : "none")}}

@@ -5,9 +5,12 @@ import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
 import ModelView from './modelView/ModelView';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
+import getMlModel from './../../../selectors/mlModel';
+import getCustomMlClasses from './../../../selectors/customMlClasses';
 import * as actions from './../../../actions';
 import { loadApp, loadApps } from './../../../actions/mlApps';
 import { loadPremadeClasses } from './../../../actions/premadeClasses';
+import { setCurrentUser } from './../../../actions/user';
 import ClassUploadForm from './../../shared/ClassUploadForm';
 
 
@@ -16,10 +19,10 @@ class DashboardPage extends Component {
     componentWillMount() {
         const currentAppId = this.props.params.appId;
         const userId = this.props.params.userId;
+        this.props.setCurrentUser({userId});
         this.props.setCurrentMlApp(currentAppId);
         this.props.loadApps(userId);
         this.props.loadApp(userId, currentAppId);
-        // this.props.loadPremadeClasses();
     }
 
     onEditCardSelected(classId) {
@@ -42,7 +45,7 @@ class DashboardPage extends Component {
                 <div className="sq-dashboard--content">
                     <Sidebar
                         currentAppId={this.props.currentMlApp.id}
-                        customMlClasses={this.props.currentMlApp.mlClasses}
+                        customMlClasses={this.props.customMlClasses}
                         premadeMlClasses={this.props.premadeClasses}
                         onEditCardSelected={this.onEditCardSelected.bind(this)}
                     />
@@ -50,7 +53,7 @@ class DashboardPage extends Component {
                         <SubNav appName={this.props.currentMlApp.app_name}/>
                         <ModelView
                             currentAppId={this.props.currentMlApp.id}
-                            mlModel={this.props.currentMlApp.mlModel}
+                            mlModel={this.props.mlModel}
                             onEditCardSelected={this.onEditCardSelected.bind(this)}
                         />
                     </div>
@@ -62,16 +65,21 @@ class DashboardPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const currentMlApp = getCurrentMlApp(state);
+    const mlModel = getMlModel(state);
+    const customMlClasses = getCustomMlClasses(state);
+
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const { premadeClasses } = state;
     return {
         mlApps,
         currentMlApp,
-        premadeClasses
+        premadeClasses,
+        mlModel,
+        customMlClasses
     }
 }
 
 export default connect(
   mapStateToProps,
-  {...actions, loadApp, loadApps, loadPremadeClasses}
+  {...actions, loadApp, loadApps, loadPremadeClasses, setCurrentUser}
 )(DashboardPage)

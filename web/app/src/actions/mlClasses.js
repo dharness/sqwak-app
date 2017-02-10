@@ -18,14 +18,14 @@ export const createMlClass = (mlClassData) => {
 }
 
 
-export const moveMlClass = ({appId, classId, to, from}) => {
+export const moveMlClass = ({userId, appId, classId, to, from}) => {
   return (dispatch) => {
-    moveClass({appId, classId, to, from}).then( mlApp => {
-      dispatch({
-        type: 'ADD_APP',
-        mlApp
-      });
+    dispatch({
+      type:'MOVE_ML_CLASS',
+      mlClassId: classId,
+      mlAppId: appId
     });
+    moveClass({userId, appId, classId, to, from}).then( mlApp => {});
   };
 }
 
