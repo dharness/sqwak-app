@@ -5,7 +5,21 @@ export const loadApp = (userId, appId) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
     api.fetchApp({userId, appId}).then(mlApp => {
-        console.log(mlApp);
+        mlApp.mlClasses = mlApp.ml_classes.map(mlClass => {
+            return {
+                className: mlClass.class_name,
+                createdAt: mlClass.created_at,
+                updatedAt: mlClass.updated_at,
+                id: mlClass.id,
+                isEdited: mlClass.is_edited,
+                packageName: mlClass.package_name
+            }
+        });
+        delete mlApp.ml_classes
+        dispatch({
+            type: 'ADD_APP',
+            mlApp,
+        });
         dispatch({ type: 'FETCH_APPS_RESOLVED' });
     });
   }
