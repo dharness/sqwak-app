@@ -12,10 +12,10 @@ class LandingPage extends Component {
                     <div className="sq-landing--nav">
                         <Link to="/login" className="sq-landing--login-link">
                             Login
-                        </Link>                    
-                        <a href="#" className="sq-button--squishy sq-button--squishy_red">
-                            <span>Signup</span>
-                        </a>
+                        </Link>
+                        <Link to="/signup" className="sq-landing--login-link">
+                            Signup
+                        </Link>
                     </div>
                     <div className="sq-landing--hero">
                         <img src={giantBird} role="presentation" />

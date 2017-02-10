@@ -1,0 +1,25 @@
+.sq-login-page {
+  width: 1000px;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sq-login-page--content {
+  margin-top: 200px;
+  width: 300px;
+  align-self: center;
+}
+
+.sq-login-page--footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sq-login-page input {
+  margin-top: 20px;
+  width: 100%;
+}
