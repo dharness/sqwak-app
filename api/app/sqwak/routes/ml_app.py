@@ -9,3 +9,4 @@ ml_app_controller = Blueprint('ml_app', __name__)
 def user():
     if request.method == 'POST':
         return 'ml_app_controller'
+    return "APPS"
