@@ -41,9 +41,9 @@ function fetchApp(appId) {
     .then((data) => data.json())
 }
 
-function fetchApps(user_id) {
+function fetchApps(userId) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${user_id}/ml_app`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

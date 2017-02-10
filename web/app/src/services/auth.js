@@ -5,10 +5,22 @@ function setToken(token) {
 }
 
 function getToken() {
-  localStorage.getItem(tokenStorageKey);
+  return localStorage.getItem(tokenStorageKey);
+}
+
+function removeToken() {
+  localStorage.removeItem(tokenStorageKey);
+}
+
+function requireAuth(nextState, replace) {
+  if (!getToken()) {
+    replace({ pathname: '/login' })
+  }
 }
 
 export {
     setToken,
-    getToken
+    getToken,
+    removeToken,
+    requireAuth
 }

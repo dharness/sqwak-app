@@ -11,10 +11,9 @@ export const loginUser = ({email, password}) => {
       dispatch({ type: 'LOGIN_USER_SUCCESS' });
       dispatch({
         type: 'SET_CURRENT_USER',
-        id: res.id,
-        ml_app_ids: res.ml_apps
+        id: res.id
       });
-      browserHistory.replace('/apps')
+      browserHistory.replace(`/user/${res.id}/apps`);
     });
   }
 };

@@ -1,10 +1,10 @@
 import * as api from './../services/api';
 
 
-export const loadApps = () => {
+export const loadApps = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
-    api.fetchApps().then(mlApps => {
+    api.fetchApps(userId).then(mlApps => {
         mlApps.forEach(mlApp => {
             dispatch({
                 type: 'ADD_APP',
