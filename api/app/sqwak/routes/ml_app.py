@@ -21,7 +21,13 @@ def all_apps(user_id):
         ml_app = MlApp.query.filter_by(owner_id=user_id).all()
         return ml_apps_schema.jsonify(ml_app)
 
-@ml_app_controller.route("/<int:app_id>", methods=['GET'])
+@ml_app_controller.route("/<int:app_id>", methods=['GET', 'DELETE'])
 def one_app(user_id, app_id):
-    ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
-    return ml_apps_schema.jsonify(ml_app)
+    if request.method == 'GET':
+        ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
+        return ml_app_schema.jsonify(ml_app)
+    else:
+        ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
+        db.session.delete(ml_app)
+        db.session.commit()
+        return jsonify({"status_code": 204})
