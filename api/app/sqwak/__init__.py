@@ -26,6 +26,14 @@ def not_found(error):
 def not_found(error):
     return make_response(jsonify({'error': 'Bad Request'}), 400)
 
+@app.errorhandler(500)
+def not_found(error):
+    return make_response(jsonify({'error': 'Internal Server Error'}), 500)
+
+@app.errorhandler(405)
+def not_found(error):
+    return make_response(jsonify({'error': 'Method not allowed'}), 405)
+
 with app.app_context():
     db.create_all()
     print("Database created!")
