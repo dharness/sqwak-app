@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort, jsonify, json
-from sqwak.models import db, MlApp
+from sqwak.models import db, MlApp, User
 from sqwak.schemas import ma, ml_app_schema, ml_apps_schema
 from sqwak.forms.MlApp import NewMlAppForm
 
@@ -11,6 +11,7 @@ def all_apps(user_id):
     form = NewMlAppForm(request.form)
     if request.method == 'POST' and form.validate():
         # CREATE THE APP IN THE DB
+        user = User.query.filter_by(id=user_id).first_or_404()
         ml_app = MlApp(app_name=form.app_name.data, owner_id=user_id)
         db.session.add(ml_app)
         db.session.commit()
