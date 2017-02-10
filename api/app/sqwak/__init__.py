@@ -2,7 +2,7 @@ from flask import Flask, request, make_response, jsonify
 from sqwak.routes.user import user_controller
 from sqwak.routes.ml_class import ml_class_controller
 from sqwak.routes.ml_app import ml_app_controller
-from sqwak.db import db
+from sqwak.models import db
 from sqwak.schemas import ma
 
 

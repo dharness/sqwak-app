@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort, jsonify, json
-from sqwak.db import User, db
+from sqwak.models import User, db
 from urllib import urlencode
 from sqwak.schemas import ma, user_schema, users_schema
 import requests
