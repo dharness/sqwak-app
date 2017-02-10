@@ -9,6 +9,11 @@ export const loginUser = ({email, password}) => {
     api.loginUser({email, password}).then((res)=> {
       auth.setToken(res.id_token);
       dispatch({ type: 'LOGIN_USER_SUCCESS' });
+      dispatch({
+        type: 'SET_CURRENT_USER',
+        id: res.id,
+        ml_app_ids: res.ml_apps
+      });
       browserHistory.replace('/apps')
     });
   }

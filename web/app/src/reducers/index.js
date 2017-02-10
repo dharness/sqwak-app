@@ -5,6 +5,7 @@ import warnings from './warnings';
 import currentMlAppId from './currentMlAppId';
 import statuses from './statuses';
 import premadeClasses from './premadeClasses';
+import user from './user';
 
 
 const sqwakApp = combineReducers({
@@ -13,7 +14,8 @@ const sqwakApp = combineReducers({
   mlApps,
   statuses,
   premadeClasses,
-  modal
+  modal,
+  user
 });
 
 export default sqwakApp
