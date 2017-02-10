@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ClassUploadForm from './../../../shared/ClassUploadForm';
 import PlushButton from './../../../shared/PlushButton';
 import ClassCardGrid from './ClassCardGrid';
 import searchIcon from '../../../../assets/images/icons/search-icon.svg';
