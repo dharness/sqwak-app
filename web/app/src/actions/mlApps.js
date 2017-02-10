@@ -41,9 +41,10 @@ export const loadApps = (userId) => {
   }
 };
 
-export const addApp = (mlAppData) => {
+export const addApp = ({userId, appName}) => {
   return (dispatch) => {
-    api.createApp(mlAppData).then(mlApp => {
+    api.createApp({userId, appName}).then(mlApp => {
+      console.log(mlApp)
       dispatch({
           type: 'ADD_APP',
           mlApp,
@@ -53,12 +54,12 @@ export const addApp = (mlAppData) => {
   }
 };
 
-export const removeApp = mlAppId => {
+export const removeApp = ({userId, appId}) => {
   return (dispatch) => {
-    api.deleteApp(mlAppId).then(() => {
+    api.deleteApp({userId, appId}).then(() => {
       dispatch({
         type: 'REMOVE_APP',
-        id: mlAppId
+        id: appId
       });
     });
   };

@@ -27,17 +27,19 @@ class MlAppsPage extends Component {
     }
 
     showConfirmDeleteWarning(appName, id) {
+        const userId = this.props.params.userId;
         const warning = {
             message: `Are you sure you want to delete the app ${appName}?`,
-            onConfirm: () => {this.props.removeApp(id);}
+            onConfirm: () => {this.props.removeApp({userId, appId: id});}
         }
         this.props.showWarning(warning);
     }
 
     showCreateAppModal() {
+        const userId = this.props.params.userId;
         this.props.showModal((
             <NewAppForm onSumbit={(appData) => {
-                this.props.addApp({ appName: appData.newAppName })
+                this.props.addApp({ appName: appData.newAppName, userId })
             }
         } />));
     }

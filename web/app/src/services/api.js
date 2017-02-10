@@ -15,16 +15,16 @@ function loginUser({email, password}) {
 
 /*************************** APPS ***************************/
 
-function createApp(options) {
+function createApp({userId, appName}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            appName: options.appName
+            app_name: appName
         })
     }).then((data) => data.json())
 }
@@ -53,9 +53,9 @@ function fetchApps(userId) {
     .then((data) => data.json())
 }
 
-function deleteApp(appId) {
+function deleteApp({userId, appId}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
