@@ -1,10 +1,34 @@
 import * as api from './../services/api';
 
 
-export const loadApps = () => {
+export const loadApp = (userId, appId) => {
   return (dispatch) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
-    api.fetchApps().then(mlApps => {
+    api.fetchApp({userId, appId}).then(mlApp => {
+        mlApp.mlClasses = mlApp.ml_classes.map(mlClass => {
+            return {
+                className: mlClass.class_name,
+                createdAt: mlClass.created_at,
+                updatedAt: mlClass.updated_at,
+                id: mlClass.id,
+                isEdited: mlClass.is_edited,
+                packageName: mlClass.package_name
+            }
+        });
+        delete mlApp.ml_classes
+        dispatch({
+            type: 'ADD_APP',
+            mlApp,
+        });
+        dispatch({ type: 'FETCH_APPS_RESOLVED' });
+    });
+  }
+};
+
+export const loadApps = (userId) => {
+  return (dispatch) => {
+    dispatch({ type: 'FETCH_APPS_PENDING' });
+    api.fetchApps(userId).then(mlApps => {
         mlApps.forEach(mlApp => {
             dispatch({
                 type: 'ADD_APP',

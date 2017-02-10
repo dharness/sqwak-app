@@ -1,12 +1,22 @@
-function getFeatures() {
-    return fetch(process.env.REACT_APP_API_URL)
-            .then(response => response.json())
+import * as auth from './auth';
+
+
+/*************************** USER ***************************/
+function loginUser({email, password}) {
+    const token = auth.getToken();
+    return fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }).then((data) => data.json())
 }
 
 /*************************** APPS ***************************/
 
 function createApp(options) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app`, {
         method: 'POST',
         headers: {
@@ -19,9 +29,9 @@ function createApp(options) {
     }).then((data) => data.json())
 }
 
-function fetchApp(appId) {
-    const token = localStorage.getItem('id_token');
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
+function fetchApp({userId, appId}) {
+    const token = auth.getToken();
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -31,9 +41,9 @@ function fetchApp(appId) {
     .then((data) => data.json())
 }
 
-function fetchApps() {
-    const token = localStorage.getItem('id_token');
-    return fetch(`${process.env.REACT_APP_API_URL}/app`, {
+function fetchApps(userId) {
+    const token = auth.getToken();
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -44,7 +54,7 @@ function fetchApps() {
 }
 
 function deleteApp(appId) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}`, {
         method: 'DELETE',
         headers: {
@@ -57,7 +67,7 @@ function deleteApp(appId) {
 /*************************** MODEL ***************************/
 
 function trainModel(appId) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/train`, {
         method: 'POST',
         headers: {
@@ -68,7 +78,7 @@ function trainModel(appId) {
 }
 
 function testModel(appId) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/predict`, {
         method: 'POST',
         headers: {
@@ -81,7 +91,7 @@ function testModel(appId) {
 /*************************** PREMADE-CLASSES ***************************/
 
 function fetchPremadeClasses(appId, userId='588f5c3dca643e00552f4fe1') {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/premade-class`, {
         method: 'GET',
         headers: {
@@ -95,7 +105,7 @@ function fetchPremadeClasses(appId, userId='588f5c3dca643e00552f4fe1') {
 /*************************** CLASSES ***************************/
 
 function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${userId}/class`, {
         method: 'GET',
         headers: {
@@ -108,7 +118,7 @@ function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
 
 function createClass({appId, className, file}) {
     return new Promise((resolve, reject) => {
-        const token = localStorage.getItem('id_token');
+        const token = auth.getToken();
         const formData = new FormData();
         formData.append('audio_file', file, file.name);
         formData.set("className", className);
@@ -128,7 +138,7 @@ function createClass({appId, className, file}) {
 }
 
 function moveClass({appId, classId, from, to}) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}/move`, {
         method: 'PUT',
         headers: {
@@ -144,7 +154,7 @@ function moveClass({appId, classId, from, to}) {
 }
 
 function deleteClass({appId, classId}) {
-    const token = localStorage.getItem('id_token');
+    const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}`, {
         method: 'DELETE',
         headers: {
@@ -155,7 +165,7 @@ function deleteClass({appId, classId}) {
 }
 
 export {
-    getFeatures,
+    loginUser,
     createApp,
     fetchApp,
     fetchApps,

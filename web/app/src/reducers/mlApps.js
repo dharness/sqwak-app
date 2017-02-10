@@ -3,7 +3,7 @@ const mlApps = (state = {}, action) => {
 
     case 'ADD_APP': {
       const nextState = Object.assign({}, state);
-      nextState[action.mlApp._id] = action.mlApp;
+      nextState[action.mlApp.id] = action.mlApp;
       return nextState;
     }
 

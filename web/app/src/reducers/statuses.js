@@ -1,5 +1,7 @@
 const defaultStatuses = {
-  isFetchingApps: true
+  isFetchingApps: true,
+  isLoginPending: false,
+  areFilesUploading: false
 };
 
 const statuses = (state = defaultStatuses, action) => {
@@ -26,6 +28,18 @@ const statuses = (state = defaultStatuses, action) => {
     case 'FILES_UPLOADED': {
       return Object.assign({}, state, {
         areFilesUploading: false
+      });
+    }
+
+    case 'LOGIN_USER_PENDING': {
+      return Object.assign({}, state, {
+        isLoginPending: true
+      });
+    }
+
+    case 'LOGIN_USER_SUCCESS': {
+      return Object.assign({}, state, {
+        isLoginPending: false
       });
     }
 

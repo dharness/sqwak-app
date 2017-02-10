@@ -21,4 +21,8 @@ class ClassCardGrid extends Component {
     }
 }
 
+ClassCardGrid.defaultProps = {
+  mlClasses: []
+};
+
 export default ClassCardGrid
