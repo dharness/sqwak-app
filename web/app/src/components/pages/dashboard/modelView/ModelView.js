@@ -32,6 +32,12 @@ class ModelView extends Component {
   }
 }
 
+ModelView.defaultProps = {
+  mlModel: {
+    mlClasses: []
+  }
+};
+
 ModelView.PropTypes = {
   mlClasses: React.PropTypes.array
 };

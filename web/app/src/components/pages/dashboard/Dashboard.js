@@ -6,7 +6,7 @@ import Sidebar from './sidebar/Sidebar';
 import ModelView from './modelView/ModelView';
 import getCurrentMlApp from './../../../selectors/currentMlApp';
 import * as actions from './../../../actions';
-import { loadApps } from './../../../actions/mlApps';
+import { loadApp, loadApps } from './../../../actions/mlApps';
 import { loadPremadeClasses } from './../../../actions/premadeClasses';
 import ClassUploadForm from './../../shared/ClassUploadForm';
 
@@ -15,9 +15,11 @@ class DashboardPage extends Component {
 
     componentWillMount() {
         const currentAppId = this.props.params.appId;
+        const userId = this.props.params.userId;
         this.props.setCurrentMlApp(currentAppId);
-        this.props.loadApps();
-        this.props.loadPremadeClasses();
+        this.props.loadApps(userId);
+        this.props.loadApp(userId, currentAppId);
+        // this.props.loadPremadeClasses();
     }
 
     onEditCardSelected(classId) {
@@ -39,15 +41,15 @@ class DashboardPage extends Component {
                 <Nav></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
-                        currentAppId={this.props.currentMlApp._id}
+                        currentAppId={this.props.currentMlApp.id}
                         customMlClasses={this.props.currentMlApp.mlClasses}
                         premadeMlClasses={this.props.premadeClasses}
                         onEditCardSelected={this.onEditCardSelected.bind(this)}
                     />
                     <div className="sq-dashboard--workspace">
-                        <SubNav/>
+                        <SubNav appName={this.props.currentMlApp.app_name}/>
                         <ModelView
-                            currentAppId={this.props.currentMlApp._id}
+                            currentAppId={this.props.currentMlApp.id}
                             mlModel={this.props.currentMlApp.mlModel}
                             onEditCardSelected={this.onEditCardSelected.bind(this)}
                         />
@@ -71,5 +73,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  {...actions, loadApps, loadPremadeClasses}
+  {...actions, loadApp, loadApps, loadPremadeClasses}
 )(DashboardPage)

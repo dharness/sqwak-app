@@ -1,4 +1,5 @@
 from flask import Flask, request, make_response, jsonify
+from flask_cors import CORS, cross_origin
 from sqwak.routes.user import user_controller
 from sqwak.routes.ml_class import ml_class_controller
 from sqwak.routes.ml_app import ml_app_controller
@@ -8,6 +9,7 @@ from sqwak.schemas import ma
 
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@db:5432/postgres'

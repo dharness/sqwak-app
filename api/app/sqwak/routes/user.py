@@ -5,6 +5,7 @@ from sqwak.schemas import ma, user_schema, users_schema
 from sqwak.forms.User import UserForm
 from sqwak.errors import InvalidUsage
 import requests
+import jwt
 
 user_controller = Blueprint('user', __name__)
 
@@ -64,12 +65,22 @@ def login():
 
         payload = urlencode(options)
         headers = { 'content-type': "application/x-www-form-urlencoded" }
-        response = requests.request("POST", url, data=payload, headers=headers)
+        login_response = requests.request("POST", url, data=payload, headers=headers).json()
 
-        if response.status_code != 200:
-                abort(response.status_code)
+        id_token = login_response['id_token']
 
-        return jsonify(response.json())
+        decoded = jwt.decode(
+            id_token,
+            'cr74a-kMRMx1zNbMGWSG8UYo95kow2whmuIhWSE2gR-uG7dsl5GPdBrKBGLn1EjH',
+            algorithms=['HS256'],
+            audience="l4pxejOXhTOV32BHrZxASIHHuNq4urwh"
+        )
+        user_id = decoded['sub'].split('|')[1]
+        user = User.query.filter_by(id=user_id).first_or_404()
+
+        res = user_schema.dump(user).data
+        res['id_token'] = id_token
+        return jsonify(res)
 
     elif form.errors.items():
         for fieldName, errorMessages in form.errors.iteritems():

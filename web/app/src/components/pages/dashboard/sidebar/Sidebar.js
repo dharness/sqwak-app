@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
-import PlushButton from './../../../shared/PlushButton';
 import TabPanel from './../../../shared/TabPanel';
-import ClassCardGrid from './ClassCardGrid';
 import * as actions from './../../../../actions';
 import { moveMlClass } from './../../../../actions/mlClasses';
-import searchIcon from '../../../../assets/images/icons/search-icon.svg';
 import SidebarPanel from './SidebarPanel';
 
 

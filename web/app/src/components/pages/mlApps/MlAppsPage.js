@@ -16,12 +16,14 @@ class MlAppsPage extends Component {
     }
 
     componentWillMount() {
-        this.props.loadApps();
+        const userId = this.props.params.userId;
+        this.props.loadApps(userId);
     }
 
     openApp(mlAppId) {
+        const userId = this.props.params.userId;
         this.props.setCurrentMlApp(mlAppId);
-        browserHistory.push(`/dashboard/${mlAppId}`);
+        browserHistory.push(`/user/${userId}/apps/${mlAppId}/dashboard`);
     }
 
     showConfirmDeleteWarning(appName, id) {
@@ -44,11 +46,11 @@ class MlAppsPage extends Component {
         return this.props.mlApps.map((userApp, i) => {
             return (
                 <AppPreviewCard
-                    onCardSelected={() => { this.openApp(userApp._id); } }
-                    key={userApp._id}
-                    appId={userApp._id}
-                    name={userApp.appName}
-                    onDeleteClicked={(id) => {this.showConfirmDeleteWarning(userApp.appName, id)}}
+                    onCardSelected={() => { this.openApp(userApp.id); } }
+                    key={userApp.id}
+                    appId={userApp.id}
+                    name={userApp.app_name}
+                    onDeleteClicked={(id) => {this.showConfirmDeleteWarning(userApp.app_name, id)}}
                     />)
         });
     }
