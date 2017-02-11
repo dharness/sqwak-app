@@ -65,9 +65,9 @@ function deleteApp({userId, appId}) {
 
 /*************************** MODEL ***************************/
 
-function trainModel(appId) {
+function trainModel({userId, appId}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/train`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/train`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`

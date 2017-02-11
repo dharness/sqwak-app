@@ -64,9 +64,9 @@ export const removeApp = ({userId, appId}) => {
   };
 }
 
-export const trainModel = mlAppId => {
+export const trainModel = ({userId, appId}) => {
   return (dispatch) => {
-    api.trainModel(mlAppId).then((res) => {
+    api.trainModel({userId, appId}).then((res) => {
       console.log(res);
     }).catch(err => {
       console.log('err');

@@ -11,6 +11,13 @@ import { connect } from 'react-redux';
 
 class SubNav extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      isTraining: false
+    };
+  }
+
   openPublishModal() {
     this.props.showModal((
       <PublishForm />
@@ -24,39 +31,49 @@ class SubNav extends Component {
   }
 
   onTrainButtonClicked() {
-    this.props.trainModel(this.props.currentMlAppId);
+    this.setState({isTraining: true});
+    setTimeout(()=> {
+      this.setState({isTraining: false});
+    }, 2000)
+    let appId = this.props.currentMlAppId;
+    let userId = this.props.userId;
+    this.props.trainModel({userId, appId});
   }
   
   render() {
     return (
       <div className="sq-subnav">
-        <div className="sq-subnav--app-name">
-          {this.props.appName}
-        </div>
-
-        <div className="sq-subnav--buttons">
-          <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
-            <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
-            train
+        <div className="sq-subnav--content">
+          <div className="sq-subnav--app-name">
+            {this.props.appName}
           </div>
 
-          <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
-            <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
-            test
-           </div>
-           
-          <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
-            <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
-            publish
+          <div className="sq-subnav--buttons">
+            <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
+              <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
+              train
+            </div>
+
+            <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
+              <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
+              test
+            </div>
+            
+            <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
+              <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
+              publish
+            </div>
           </div>
         </div>
+        <div className={"sq-subnav--progress-bar" + (this.state.isTraining ? " animate" : "")}></div>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  currentMlAppId: state.currentMlAppId
+  currentMlAppId: state.currentMlAppId,
+  userId: state.user.id
 })
 
 export default connect(

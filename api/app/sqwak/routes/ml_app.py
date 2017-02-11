@@ -1,8 +1,10 @@
 from flask import Blueprint, request, abort, jsonify, json
 from sqwak.models import db, MlApp, User
-from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_classes_schema
+from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_class_schema, ml_classes_schema, audio_samples_schema
 from sqwak.forms.MlApp import NewMlAppForm
 from sqwak.errors import InvalidUsage
+from sqwak.services import model_manager
+
 
 ml_app_controller = Blueprint('ml_app', __name__)
 
@@ -40,3 +42,21 @@ def one_app(user_id, app_id):
         db.session.delete(ml_app)
         db.session.commit()
         return jsonify({"status_code": 204})
+
+@ml_app_controller.route("/<int:app_id>/train", methods=['POST'])
+def train(user_id, app_id):
+    ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
+    ml_classes = ml_app.ml_classes.all()
+    formated_ml_classes = []
+    for ml_class in ml_classes:
+        audio_samples = ml_class.audio_samples.all()
+        if ml_class.in_model:
+            ml_class = ml_class_schema.dump(ml_class).data
+            ml_class['audio_samples'] = audio_samples_schema.dump(audio_samples).data
+            formated_ml_classes.append(ml_class)
+
+    pickled_model = model_manager.create_model(formated_ml_classes)
+    ml_app.working_model = pickled_model;
+    db.session.commit()
+
+    return ml_app_schema.jsonify(ml_app)
