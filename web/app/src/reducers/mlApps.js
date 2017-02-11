@@ -25,7 +25,7 @@ const mlApps = (state = {}, action) => {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
       currentMlApp.mlClasses = currentMlApp.mlClasses
-        .filter(mlClass => mlClass._id !== action.mlClassId);
+        .filter(mlClass => mlClass.id !== action.mlClassId);
       nextState[action.mlAppId] = currentMlApp;
       return nextState;
     }

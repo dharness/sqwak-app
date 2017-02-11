@@ -21,6 +21,7 @@ class ClassUploadForm extends Component {
     const mlClassData = {
       appId: this.props.currentMlAppId,
       className: this.state.className,
+      userId: this.props.userId,
       file
     };
     this.props.createMlClass(mlClassData);
@@ -40,8 +41,9 @@ class ClassUploadForm extends Component {
 
   removeClass() {
     this.props.deleteMlClass({
+      userId: this.props.userId,
       mlAppId: this.props.currentMlAppId,
-      mlClassId: this.props.mlClass._id
+      mlClassId: this.props.mlClass.id
     });
   }
 
@@ -58,6 +60,7 @@ class ClassUploadForm extends Component {
             type="text"
             className="sq-basic-input"
             value={this.state.className}
+            disabled={this.props.editMode}
             onChange={this.handleClassNameChange.bind(this)}
             placeholder="class name"
           />
@@ -100,7 +103,8 @@ class ClassUploadForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentMlAppId: state.currentMlAppId
+    currentMlAppId: state.currentMlAppId,
+    userId: state.user.id
   }
 }
 
