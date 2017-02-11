@@ -21,6 +21,7 @@ class ClassUploadForm extends Component {
     const mlClassData = {
       appId: this.props.currentMlAppId,
       className: this.state.className,
+      userId: this.props.userId,
       file
     };
     this.props.createMlClass(mlClassData);
@@ -100,7 +101,8 @@ class ClassUploadForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentMlAppId: state.currentMlAppId
+    currentMlAppId: state.currentMlAppId,
+    userId: state.user.id
   }
 }
 

@@ -115,7 +115,21 @@ function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
     .then((data) => data.json())
 }
 
-function createClass({appId, className, file}) {
+function createClass({userId, appId, className, file}) {
+    const token = auth.getToken();
+    const form = new FormData();
+    form.append('file', file, file.name);
+    form.set("className", className);
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: form
+    }).then((data) => data.json())
+}
+
+function createClass2({appId, className, file}) {
     return new Promise((resolve, reject) => {
         const token = auth.getToken();
         const formData = new FormData();
