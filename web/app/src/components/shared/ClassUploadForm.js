@@ -41,8 +41,9 @@ class ClassUploadForm extends Component {
 
   removeClass() {
     this.props.deleteMlClass({
+      userId: this.props.userId,
       mlAppId: this.props.currentMlAppId,
-      mlClassId: this.props.mlClass._id
+      mlClassId: this.props.mlClass.id
     });
   }
 
@@ -59,6 +60,7 @@ class ClassUploadForm extends Component {
             type="text"
             className="sq-basic-input"
             value={this.state.className}
+            disabled={this.props.editMode}
             onChange={this.handleClassNameChange.bind(this)}
             placeholder="class name"
           />

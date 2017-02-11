@@ -27,14 +27,14 @@ class DashboardPage extends Component {
 
     onEditCardSelected(classId) {
         const allClasses = [
-            ...this.props.currentMlApp.mlClasses,
-            ...this.props.currentMlApp.mlModel.mlClasses,
-        ]
+            ...this.props.customMlClasses,
+            ...this.props.mlModel.mlClasses,
+        ];
         const selectedClass = allClasses
-            .find(mlClass => classId === mlClass._id);
+            .find(mlClass => classId === mlClass.id);
         
         this.props.showModal((
-            <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp._id}/>
+            <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp.id}/>
         ))
     }
 

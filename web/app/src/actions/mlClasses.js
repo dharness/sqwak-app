@@ -14,7 +14,8 @@ export const createMlClass = (mlClassData) => {
         isEdited: mlClass.is_edited,
         packageName: mlClass.package_name,
         inModel: mlClass.in_model
-      }
+      };
+
       dispatch({
         type: 'ADD_ML_CLASS',
         mlAppId: mlClassData.appId,
@@ -38,11 +39,12 @@ export const moveMlClass = ({userId, appId, classId, to, from}) => {
   };
 }
 
-export const deleteMlClass = ({mlAppId, mlClassId}) => {
+export const deleteMlClass = ({userId, mlAppId, mlClassId}) => {
   return (dispatch) => {
     const mlClassData = {
       appId: mlAppId,
-      classId: mlClassId
+      classId: mlClassId,
+      userId
     };
     deleteClass(mlClassData).then( res => {
       dispatch({

@@ -122,32 +122,9 @@ function createClass({userId, appId, className, file}) {
     form.set("className", className);
     return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class`, {
         method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
+        headers: { 'Authorization': `Bearer ${token}` },
         body: form
     }).then((data) => data.json())
-}
-
-function createClass2({appId, className, file}) {
-    return new Promise((resolve, reject) => {
-        const token = auth.getToken();
-        const formData = new FormData();
-        formData.append('audio_file', file, file.name);
-        formData.set("className", className);
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', `${process.env.REACT_APP_API_URL}/app/${appId}/class?access_token=${token}`, true);
-        xhr.upload.onprogress = function(e) {
-            console.log(e);
-        };
-        xhr.addEventListener("load", (response) => {
-            resolve(response);
-        });
-        xhr.addEventListener("error", (err) => {
-            reject(err);
-        });
-        xhr.send(formData);
-    });
 }
 
 function moveClass({userId, appId, classId, from, to}) {
@@ -159,20 +136,16 @@ function moveClass({userId, appId, classId, from, to}) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-            in_model: inModel
-        })
+        body: JSON.stringify({ in_model: inModel })
     })
     .then((data) => data.json())
 }
 
-function deleteClass({appId, classId}) {
+function deleteClass({userId, appId, classId}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/class/${classId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class/${classId}`, {
         method: 'DELETE',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
+        headers: { 'Authorization': `Bearer ${token}` }
     })
     .then((data) => data.json())
 }
