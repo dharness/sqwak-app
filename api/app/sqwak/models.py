@@ -26,7 +26,7 @@ class MlApp(db.Model):
 class MlClass(db.Model):
     __tablename__ = 'ml_class'
     id = db.Column(db.Integer, primary_key=True)
-    ml_app_id = db.Column(db.Integer, db.ForeignKey("ml_app.id"), nullable=False)
+    ml_app_id = db.Column(db.Integer, db.ForeignKey("ml_app.id"))
     class_name = db.Column(db.String, nullable=False)
     package_name = db.Column(db.String, nullable=False)
     is_edited = db.Column(db.Boolean, default=False)
@@ -45,6 +45,6 @@ class AudioSample(db.Model):
     features = db.Column(postgresql.ARRAY(db.Integer), nullable=False)
     extraction_method = db.Column(db.String, nullable=False)
     label = db.Column(db.String, nullable=False)
-    start = db.Column(db.Integer)
-    end = db.Column(db.Integer)
+    in_point = db.Column(db.Integer)
+    out_point = db.Column(db.Integer)
     salience = db.Column(db.Integer)
