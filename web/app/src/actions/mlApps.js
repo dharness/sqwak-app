@@ -44,7 +44,6 @@ export const loadApps = (userId) => {
 export const addApp = ({userId, appName}) => {
   return (dispatch) => {
     api.createApp({userId, appName}).then(mlApp => {
-      console.log(mlApp)
       dispatch({
           type: 'ADD_APP',
           mlApp,

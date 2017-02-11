@@ -17,15 +17,14 @@ function loginUser({email, password}) {
 
 function createApp({userId, appName}) {
     const token = auth.getToken();
+    const form = new FormData();
+    form.append('app_name', appName);
     return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-            app_name: appName
-        })
+        body: form
     }).then((data) => data.json())
 }
 
