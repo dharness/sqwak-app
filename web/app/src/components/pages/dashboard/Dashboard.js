@@ -23,6 +23,7 @@ class DashboardPage extends Component {
         this.props.setCurrentMlApp(currentAppId);
         this.props.loadApps(userId);
         this.props.loadApp(userId, currentAppId);
+        this.props.loadPremadeClasses();
     }
 
     onEditCardSelected(classId) {
