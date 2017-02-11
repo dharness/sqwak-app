@@ -2,8 +2,12 @@
     min-height: 70px;
     background: white;
     border-bottom: 1px solid var(--grey-4);
+}
+
+.sq-subnav--content {
     display: flex;
     justify-content: space-between;
+    min-height: 70px;
 }
 
 .sq-subnav--app-name {
@@ -23,4 +27,24 @@
 
 .sq-subnav--icon {
     padding-right: 15px;
+}
+
+.sq-subnav--progress-bar {
+    width: 0;
+    height: 5px;
+    border-radius: 2px;
+    background: var(--green-4);
+}
+
+.sq-subnav--progress-bar.animate {
+    animation: expandWidth 2s linear;
+}
+
+@keyframes expandWidth {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 110%;
+    }
 }

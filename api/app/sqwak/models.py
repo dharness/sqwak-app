@@ -18,6 +18,8 @@ class MlApp(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     query_url = db.Column(db.String)
+    working_model = db.Column(db.String)
+    published_model = db.Column(db.String)
     ml_classes = db.relationship('MlClass', 
         backref="ml_app", 
         cascade="all, delete-orphan",
