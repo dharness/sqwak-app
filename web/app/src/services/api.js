@@ -101,6 +101,20 @@ function fetchPremadeClasses() {
     .then((data) => data.json())
 }
 
+function copyPremadeClass({appId, classId}) {
+    const token = auth.getToken();
+    let data = { 'to_app_id': appId} ;
+    return fetch(`${process.env.REACT_APP_API_URL}/premade/${classId}/copy`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data, null, '\t')
+    })
+    .then((data) => data.json())
+}
+
 /*************************** CLASSES ***************************/
 
 function fetchClasses(appId, userId) {
@@ -162,5 +176,6 @@ export {
     deleteClass,
     moveClass,
     fetchClasses,
-    fetchPremadeClasses
+    fetchPremadeClasses,
+    copyPremadeClass
 }
