@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
-import { moveMlClass } from './../../../../actions/mlClasses';
+import { moveMlClass, copyPremadeClass } from './../../../../actions/mlClasses';
 import SidebarPanel from './SidebarPanel';
 
 
@@ -26,6 +26,13 @@ class Sidebar extends Component {
     });
   }
 
+  copyPremadeClass(classId) {
+    this.props.copyPremadeClass({
+      appId: this.props.currentAppId,
+      classId
+    });
+  }
+
   render() {
     return (
       <TabPanel tabNames={["custom", "premade"]}>
@@ -42,9 +49,9 @@ class Sidebar extends Component {
         <SidebarPanel
           hideFooter={true}
           mlClasses={this.props.premadeMlClasses}
-          onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-          onCardSelected={this.onCardSelected.bind(this)}
-          onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
+          onEditCardSelected={()=>{}}
+          onCardSelected={this.copyPremadeClass.bind(this)}
+          onFooterButtonClicked={()=>{}}
         />
 
       </TabPanel>
@@ -61,5 +68,5 @@ const mapStateToProps = (state, ownProps) => ({});
 
 export default connect(
   mapStateToProps,
-  { ...actions, moveMlClass }
+  { ...actions, moveMlClass, copyPremadeClass }
 )(Sidebar)
