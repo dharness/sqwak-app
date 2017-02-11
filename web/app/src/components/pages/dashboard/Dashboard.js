@@ -41,7 +41,7 @@ class DashboardPage extends Component {
     render () {
         return (
             <div className="sq-full-page">
-                <Nav></Nav>
+                <Nav currentUserId={this.props.params.userId}></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
                         currentAppId={this.props.currentMlApp.id}
