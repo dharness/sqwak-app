@@ -89,9 +89,9 @@ function testModel(appId) {
 
 /*************************** PREMADE-CLASSES ***************************/
 
-function fetchPremadeClasses(appId, userId='588f5c3dca643e00552f4fe1') {
+function fetchPremadeClasses() {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/premade-class`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/premade`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ function fetchPremadeClasses(appId, userId='588f5c3dca643e00552f4fe1') {
 
 /*************************** CLASSES ***************************/
 
-function fetchClasses(appId, userId='588f5c3dca643e00552f4fe1') {
+function fetchClasses(appId, userId) {
     const token = auth.getToken();
     return fetch(`${process.env.REACT_APP_API_URL}/app/${userId}/class`, {
         method: 'GET',
