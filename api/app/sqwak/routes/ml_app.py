@@ -2,6 +2,7 @@ from flask import Blueprint, request, abort, jsonify, json
 from sqwak.models import db, MlApp, User
 from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_classes_schema
 from sqwak.forms.MlApp import NewMlAppForm
+from sqwak.errors import InvalidUsage
 
 ml_app_controller = Blueprint('ml_app', __name__)
 
@@ -16,8 +17,11 @@ def all_apps(user_id):
         db.session.add(ml_app)
         db.session.commit()
         return ml_app_schema.jsonify(ml_app)
+        
     elif form.errors.items():
-        return jsonify(form.errors.items())
+        for fieldName, errorMessages in form.errors.iteritems():
+            for err in errorMessages:
+                raise InvalidUsage(err, status_code=400)
     else:
         ml_app = MlApp.query.filter_by(owner_id=user_id).all()
         return ml_apps_schema.jsonify(ml_app)
