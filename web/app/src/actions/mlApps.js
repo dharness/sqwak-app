@@ -75,10 +75,10 @@ export const trainModel = ({userId, appId}) => {
   };
 }
 
-export const testModel = mlAppId => {
+export const testModel = ({userId, appId, file}) => {
   return (dispatch) => {
-    api.testModel(mlAppId).then((res) => {
-      console.log(res);
+    api.testModel(({userId, appId, file})).then((res) => {
+      alert(res.label);
     }).catch(err => {
       console.log('err');
       console.log(err);

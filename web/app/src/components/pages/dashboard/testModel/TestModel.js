@@ -20,7 +20,11 @@ class TestModel extends Component {
   }
 
   onSubmitTest(file) {
-    console.log(file);
+    this.props.testModel({
+      file,
+      appId: this.props.currentMlAppId,
+      userId: this.props.userId
+    })
   }
 
   testApp() {
@@ -47,7 +51,8 @@ class TestModel extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  currentMlAppId: state.currentMlAppId
+  currentMlAppId: state.currentMlAppId,
+  userId: state.user.id
 })
 
 export default connect(
