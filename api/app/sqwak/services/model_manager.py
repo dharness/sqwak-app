@@ -31,3 +31,10 @@ def create_model(ml_classes, pickled=True):
   clf = clf.fit(X_train, Y_train)
 
   return pickle.dumps(clf)
+
+
+def predict(working_model, features):
+  clf = pickle.loads(working_model)
+
+  predictions = clf.predict(features)
+  return predictions

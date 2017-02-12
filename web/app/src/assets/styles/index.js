@@ -25,4 +25,5 @@ import './components/sidebar.css';
 import './components/tab-panel.css';
 import './components/test-model.css';
 import './components/warning-panel.css';
+import './components/file-drop-zone.css';
 

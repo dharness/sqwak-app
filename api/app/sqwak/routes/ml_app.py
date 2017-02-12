@@ -1,9 +1,11 @@
 from flask import Blueprint, request, abort, jsonify, json
+from werkzeug import secure_filename
 from sqwak.models import db, MlApp, User
 from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_class_schema, ml_classes_schema, audio_samples_schema
 from sqwak.forms.MlApp import NewMlAppForm
 from sqwak.errors import InvalidUsage
 from sqwak.services import model_manager
+from sqwak.services import feature_extractor
 
 
 ml_app_controller = Blueprint('ml_app', __name__)
@@ -58,5 +60,16 @@ def train(user_id, app_id):
     pickled_model = model_manager.create_model(formated_ml_classes)
     ml_app.working_model = pickled_model;
     db.session.commit()
-
     return ml_app_schema.jsonify(ml_app)
+
+@ml_app_controller.route("/<int:app_id>/predict", methods=['POST'])
+def predict(user_id, app_id):
+    ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
+    file = request.files['file']
+    path = '/usr/src/app/sqwak/uploads/' + secure_filename(file.filename)
+    file.save(path)
+    features = feature_extractor.extract(path)
+    predictions = model_manager.predict(ml_app.working_model, features)
+    return jsonify({
+        'label': predictions[0]
+    })
