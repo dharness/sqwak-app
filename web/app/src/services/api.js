@@ -12,7 +12,14 @@ function loginUser({email, password}) {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(data, null, '\t')
-    }).then((data) => data.json())
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    })
+    .then((data) => data.json())
 }
 
 /*************************** APPS ***************************/

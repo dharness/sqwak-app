@@ -63,7 +63,11 @@ def login():
 
     payload = urlencode(options)
     headers = { 'content-type': "application/x-www-form-urlencoded" }
-    login_response = requests.request("POST", url, data=payload, headers=headers).json()
+    login_response = requests.request("POST", url, data=payload, headers=headers)
+    if login_response.status_code != 200:
+        abort(login_response.status_code)
+    
+    login_response = login_response.json()
     id_token = login_response['id_token']
 
     decoded = jwt.decode(
@@ -74,6 +78,13 @@ def login():
         options={'verify_iat': False}
     )
     user_id = decoded['sub'].split('|')[1]
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        new_user = User(
+            id=user_id,
+            email=request.json['email'])
+        db.session.add(new_user)
+        db.session.commit()
     user = User.query.filter_by(id=user_id).first_or_404()
 
     res = user_schema.dump(user).data
