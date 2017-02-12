@@ -184,7 +184,12 @@ function deleteClass({userId, appId, classId}) {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
     })
-    .then((data) => data.json())
+    .then((response) => {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    })
 }
 
 export {
