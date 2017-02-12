@@ -10,13 +10,17 @@ class TestModel extends Component {
   constructor(props) {
     super(props);
     this.panels = [
-      <RecordSoundPanel/>,
-      <UploadFilePanel/>
+      <RecordSoundPanel onSubmitTest={this.onSubmitTest.bind(this)}/>,
+      <UploadFilePanel onSubmitTest={this.onSubmitTest.bind(this)}/>
 
     ];
     this.state = {
       selectedPanel: 0
     };
+  }
+
+  onSubmitTest(file) {
+    console.log(file);
   }
 
   testApp() {
