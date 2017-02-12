@@ -52,6 +52,7 @@ class MlAppsPage extends Component {
                     key={userApp.id}
                     appId={userApp.id}
                     name={userApp.app_name}
+                    numClasses={userApp.mlClasses.length}
                     onDeleteClicked={(id) => {this.showConfirmDeleteWarning(userApp.app_name, id)}}
                     />)
         });
@@ -86,6 +87,7 @@ class MlAppsPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const isFetchingApps = state.statuses.isFetchingApps;
+
     return {
         mlApps,
         isFetchingApps

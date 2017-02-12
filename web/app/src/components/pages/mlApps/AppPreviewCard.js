@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import pluralize from 'pluralize';
 
 
 class AppPreviewCard extends Component {
@@ -19,7 +20,9 @@ class AppPreviewCard extends Component {
                     {this.props.name}
                 </div>
                 <div className="sq-app-preview-card--footer">
-                    <div className="sq-text__pale">10 classes</div>
+                    <div className="sq-text__pale">
+                        {this.props.numClasses} {pluralize('class', this.props.numClasses)}
+                    </div>
                     <div className="sq-text__pale">300 sounds</div>
                 </div>
             </div>

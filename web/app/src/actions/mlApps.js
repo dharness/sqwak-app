@@ -31,6 +31,8 @@ export const loadApps = (userId) => {
     dispatch({ type: 'FETCH_APPS_PENDING' });
     api.fetchApps(userId).then(mlApps => {
         mlApps.forEach(mlApp => {
+            mlApp.mlClasses = mlApp.ml_classes;
+            delete mlApp.ml_classes;
             dispatch({
                 type: 'ADD_APP',
                 mlApp,
