@@ -4,12 +4,14 @@ import * as auth from './auth';
 /*************************** USER ***************************/
 function loginUser({email, password}) {
     const token = auth.getToken();
+    const data = {email, password};
     return fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        }
+        },
+        body: JSON.stringify(data, null, '\t')
     }).then((data) => data.json())
 }
 
@@ -133,11 +135,25 @@ function createClass({userId, appId, className, file}) {
     const token = auth.getToken();
     const form = new FormData();
     form.append('file', file, file.name);
-    form.set("className", className);
+    form.set("class_name", className);
     return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: form
+    }).then((data) => data.json())
+}
+
+function renameClass({userId, appId, classId, className}) {
+    const token = auth.getToken();
+    const form = new FormData();
+    form.set("class_name", className);
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class/${classId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({class_name:className})
     }).then((data) => data.json())
 }
 
@@ -173,6 +189,7 @@ export {
     trainModel,
     testModel,
     createClass,
+    renameClass,
     deleteClass,
     moveClass,
     fetchClasses,

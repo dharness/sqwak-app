@@ -2,6 +2,7 @@ from flask import Flask, request, make_response, jsonify
 from flask_cors import CORS, cross_origin
 from sqwak.routes.user import user_controller
 from sqwak.routes.ml_class import ml_class_controller
+from sqwak.routes.audio_sample import audio_sample_controller
 from sqwak.routes.premade_ml_class import premade_ml_class_controller
 from sqwak.routes.ml_app import ml_app_controller
 from sqwak.models import db
@@ -21,6 +22,7 @@ app.register_blueprint(user_controller, url_prefix='/api/v0/user')
 app.register_blueprint(premade_ml_class_controller, url_prefix='/api/v0/premade')
 app.register_blueprint(ml_app_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app')
 app.register_blueprint(ml_class_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app/<int:app_id>/ml_class')
+app.register_blueprint(audio_sample_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app/<int:app_id>/ml_class/<int:class_id>/audio_sample')
 
 
 @app.errorhandler(404)

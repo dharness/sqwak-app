@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PlushButton from './PlushButton';
 import fileUploadImg from './../../assets/images/file-upload.svg';
-import { createMlClass, deleteMlClass } from './../../actions/mlClasses';
+import { createMlClass, deleteMlClass, renameMlClass } from './../../actions/mlClasses';
 
 
 class ClassUploadForm extends Component {
@@ -27,6 +27,16 @@ class ClassUploadForm extends Component {
     this.props.createMlClass(mlClassData);
   }
 
+  updateClass() {
+    const mlClassData = {
+      appId: this.props.currentMlAppId,
+      className: this.state.className,
+      userId: this.props.userId,
+      classId: this.props.mlClass.id
+    };
+    this.props.renameMlClass(mlClassData);
+  }
+
   onFilesChanged() {
     this.setState({files: [...this.state.files, this.fileInput.files]});
   }
@@ -49,6 +59,9 @@ class ClassUploadForm extends Component {
 
   render () {
     let formIsValid = (this.state.files.length > 0 && this.state.className !== "");
+    if (this.props.editMode) {
+      formIsValid = this.state.files.length > 0 || this.state.className !== ""
+    }
     return (
       <div className="sq-class-upload-form">
         <div className="sq-class-upload-form--container">
@@ -60,7 +73,6 @@ class ClassUploadForm extends Component {
             type="text"
             className="sq-basic-input"
             value={this.state.className}
-            disabled={this.props.editMode}
             onChange={this.handleClassNameChange.bind(this)}
             placeholder="class name"
           />
@@ -92,7 +104,7 @@ class ClassUploadForm extends Component {
           <div className="sq-class-upload-form--footer">
             <PlushButton 
               buttonText={this.props.editMode ? "Edit Class" : "Create Class"}
-              onClick={this.uploadAudio.bind(this)} 
+              onClick={this.props.editMode ? this.updateClass.bind(this) : this.uploadAudio.bind(this)} 
               disabled={!formIsValid}/>
           </div>
         </div>
@@ -110,5 +122,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { createMlClass, deleteMlClass }
+  { createMlClass, deleteMlClass, renameMlClass }
 )(ClassUploadForm)
