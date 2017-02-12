@@ -5,7 +5,6 @@ export const createMlClass = (mlClassData) => {
   return (dispatch) => {
     dispatch({ type: 'FILES_UPLOADING' });
     api.createClass(mlClassData).then( mlClass => {
-
       const formattedMlClass = {
         className: mlClass.class_name,
         createdAt: mlClass.created_at,
@@ -36,6 +35,20 @@ export const moveMlClass = ({userId, appId, classId, to, from}) => {
       mlAppId: appId
     });
     api.moveClass({userId, appId, classId, to, from}).then( mlApp => {});
+  };
+}
+
+export const renameMlClass = ({userId, appId, classId, className}) => {
+  return (dispatch) => {
+    dispatch({
+      type:'RENAME_ML_CLASS',
+      mlClassId: classId,
+      mlAppId: appId,
+      className: className
+    });
+    api.renameClass({userId, appId, classId, className}).then( () => {
+      dispatch({ type: 'CLOSE_MODAL' });
+    });
   };
 }
 

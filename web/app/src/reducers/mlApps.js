@@ -40,6 +40,18 @@ const mlApps = (state = {}, action) => {
       return nextState;
     }
 
+    case 'RENAME_ML_CLASS': {
+      const nextState = Object.assign({}, state);
+      const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.mlClasses.forEach((mlClass) => {
+        if (mlClass.id === action.mlClassId)
+          mlClass.className = action.className
+      });
+      
+      nextState[action.mlAppId] = currentMlApp;
+      return nextState
+    }
+
 
     default:
       return state

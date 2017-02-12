@@ -1,5 +1,5 @@
 from flask_marshmallow import Marshmallow
-from models import User, MlApp, MlClass
+from models import User, MlApp, MlClass, AudioSample
 ma = Marshmallow()
 
 
@@ -23,3 +23,10 @@ class MlClassSchema(ma.ModelSchema):
 
 ml_class_schema = MlClassSchema()
 ml_classes_schema = MlClassSchema(many=True)
+
+class AudioSampleSchema(ma.ModelSchema):
+    class Meta:
+        model = AudioSample
+
+audio_sample_schema = AudioSampleSchema()
+audio_samples_schema = AudioSampleSchema(many=True)

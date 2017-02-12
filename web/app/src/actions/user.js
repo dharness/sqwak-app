@@ -7,6 +7,7 @@ export const loginUser = ({email, password}) => {
   return (dispatch) => {
     dispatch({ type: 'LOGIN_USER_PENDING' });
     api.loginUser({email, password}).then((res)=> {
+      console.log(res)
       auth.setToken(res.id_token);
       dispatch({ type: 'LOGIN_USER_SUCCESS' });
       dispatch({
