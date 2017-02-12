@@ -76,15 +76,15 @@ function trainModel({userId, appId}) {
     .then((data) => data.json())
 }
 
-function testModel(appId) {
+function testModel({userId, appId, file}) {
     const token = auth.getToken();
-    return fetch(`${process.env.REACT_APP_API_URL}/app/${appId}/predict`, {
+    const form = new FormData();
+    form.append('file', file, file.name);
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/predict`, {
         method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then((data) => data.json())
+        headers: { 'Authorization': `Bearer ${token}` },
+        body: form
+    }).then((data) => data.json())
 }
 
 /*************************** PREMADE-CLASSES ***************************/
