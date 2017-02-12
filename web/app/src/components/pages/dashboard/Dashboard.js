@@ -21,7 +21,6 @@ class DashboardPage extends Component {
         const userId = this.props.params.userId;
         this.props.setCurrentUser({userId});
         this.props.setCurrentMlApp(currentAppId);
-        this.props.loadApps(userId);
         this.props.loadApp(userId, currentAppId);
         this.props.loadPremadeClasses();
     }
