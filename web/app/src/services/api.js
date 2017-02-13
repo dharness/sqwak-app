@@ -96,6 +96,14 @@ function testModel({userId, appId, file}) {
     }).then((data) => data.json())
 }
 
+function publishModel({userId, appId}) {
+    const token = auth.getToken();
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/publish`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+    }).then((data) => data.json())
+}
+
 /*************************** PREMADE-CLASSES ***************************/
 
 function fetchPremadeClasses() {
@@ -206,5 +214,6 @@ export {
     moveClass,
     fetchClasses,
     fetchPremadeClasses,
-    copyPremadeClass
+    copyPremadeClass,
+    publishModel
 }

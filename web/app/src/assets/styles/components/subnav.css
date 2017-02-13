@@ -37,7 +37,7 @@
 }
 
 .sq-subnav--progress-bar.animate {
-    animation: expandWidth 2s linear;
+    animation: expandWidth 2s ease-out;
 }
 
 @keyframes expandWidth {

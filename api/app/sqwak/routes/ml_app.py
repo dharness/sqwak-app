@@ -73,3 +73,11 @@ def predict(user_id, app_id):
     return jsonify({
         'label': predictions[0]
     })
+
+@ml_app_controller.route("/<int:app_id>/publish", methods=['POST'])
+def publish(user_id, app_id):
+    ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
+    if (ml_app.working_model):
+        ml_app.published_model = ml_app.working_model
+
+    return ml_app_schema.jsonify(ml_app)

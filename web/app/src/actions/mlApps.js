@@ -87,3 +87,15 @@ export const testModel = ({userId, appId, file}) => {
     });
   };
 }
+
+export const publishModel = ({userId, appId}) => {
+  return (dispatch) => {
+    api.publishModel(({userId, appId})).then((res) => {
+      console.log(res);
+      dispatch({ type: 'CLOSE_MODAL' });
+    }).catch(err => {
+      console.log('err');
+      console.log(err);
+    });
+  };
+}

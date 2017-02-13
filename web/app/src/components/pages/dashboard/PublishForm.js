@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import PlushButton from './../../shared/PlushButton';
+import { connect } from 'react-redux';
+import { publishModel } from './../../../actions/mlApps';
+
 
 class PublishForm extends Component {
+
+  onPublishModel() {
+    this.props.publishModel({
+      userId: this.props.userId,
+      appId: this.props.currentMlAppId
+    });
+  }
+
   render() {
     return (
       <div className="sq-publish-form">
@@ -37,7 +48,7 @@ class PublishForm extends Component {
         </div>
 
         <div className="sq-publish-form--button">
-          <PlushButton buttonText="Publish app"/>
+          <PlushButton buttonText="Publish app" onClick={this.onPublishModel.bind(this)}/>
          </div>
 
       </div>
@@ -45,4 +56,12 @@ class PublishForm extends Component {
   }
 }
 
-export default PublishForm
+const mapStateToProps = (state, ownProps) => ({
+  currentMlAppId: state.currentMlAppId,
+  userId: state.user.id
+})
+
+export default connect(
+  mapStateToProps,
+  { publishModel }
+)(PublishForm)
