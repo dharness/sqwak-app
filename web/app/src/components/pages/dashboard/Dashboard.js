@@ -41,6 +41,9 @@ class DashboardPage extends Component {
     render () {
         return (
             <div className="sq-full-page">
+                <div
+                    className={"sq-dashboard--loading" + (this.props.pageIsLoaded ? " hidden" : "")}>
+                </div>
                 <Nav currentUserId={this.props.params.userId}></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
@@ -75,7 +78,8 @@ const mapStateToProps = (state, ownProps) => {
         currentMlApp,
         premadeClasses,
         mlModel,
-        customMlClasses
+        customMlClasses,
+        pageIsLoaded: !state.statuses.isFetchingApps
     }
 }
 
