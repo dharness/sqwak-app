@@ -1,5 +1,6 @@
 from flask import Flask, request, make_response, jsonify
 from flask_cors import CORS, cross_origin
+from flask_migrate import Migrate
 from sqwak.routes.user import user_controller
 from sqwak.routes.ml_class import ml_class_controller
 from sqwak.routes.audio_sample import audio_sample_controller
@@ -11,13 +12,15 @@ from sqwak.schemas import ma
 
 
 app = Flask(__name__)
+app.config.from_object('config')
+
+
 CORS(app)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres@db:5432/postgres'
-
+migrate = Migrate(app, db)
 db.init_app(app)
 ma.init_app(app)
+
 app.register_blueprint(user_controller, url_prefix='/api/v0/user')
 app.register_blueprint(premade_ml_class_controller, url_prefix='/api/v0/premade')
 app.register_blueprint(ml_app_controller, url_prefix='/api/v0/user/<string:user_id>/ml_app')

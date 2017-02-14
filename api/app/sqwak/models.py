@@ -20,7 +20,8 @@ class MlApp(db.Model):
     query_url = db.Column(db.String)
     working_model = db.Column(db.String)
     published_model = db.Column(db.String)
-    ml_classes = db.relationship('MlClass', 
+    is_published = db.Column(db.Boolean, nullable=False, default=False)
+    ml_classes = db.relationship('MlClass',
         backref="ml_app", 
         cascade="all, delete-orphan",
         lazy='dynamic')
