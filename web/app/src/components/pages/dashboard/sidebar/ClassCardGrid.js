@@ -14,6 +14,7 @@ class ClassCardGrid extends Component {
                             mlClass={classInfo} 
                             onClick={this.props.onCardSelected}
                             onEditClick={this.props.onEditCardSelected}
+                            onDeleteClick={this.props.onDeleteClick}
                         />)
                 })}
             </div>

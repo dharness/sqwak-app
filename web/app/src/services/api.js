@@ -146,7 +146,7 @@ function fetchClasses(appId, userId) {
     .then((data) => data.json())
 }
 
-function createClass({userId, appId, className, file}) {
+function createClass({userId, appId, className, file, imgName}) {
     const token = auth.getToken();
     const form = new FormData();
     form.append('file', file, file.name);

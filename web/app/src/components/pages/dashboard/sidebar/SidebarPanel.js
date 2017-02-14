@@ -17,7 +17,9 @@ class SidebarPanel extends Component {
             <ClassCardGrid 
               mlClasses={this.props.mlClasses}
               onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-              onCardSelected={this.props.onCardSelected.bind(this)}/>
+              onCardSelected={this.props.onCardSelected.bind(this)}
+              onDeleteClick={this.props.onDeleteClick.bind(this)}
+            />
         </div>
         <div className="sq-side-bar--footer" style={{display: (this.props.hideFooter ? "none" : "")}}>
           <PlushButton buttonText={"New Class"} onClick={this.props.onFooterButtonClicked.bind(this)} />

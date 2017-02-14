@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
-import { moveMlClass, copyPremadeClass } from './../../../../actions/mlClasses';
+import { moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
 import SidebarPanel from './SidebarPanel';
 
 
@@ -26,6 +26,14 @@ class Sidebar extends Component {
     });
   }
 
+  onDeleteCardClick(classId) {
+    this.props.deleteMlClass({
+      userId: this.props.userId,
+      mlAppId: this.props.currentMlAppId,
+      mlClassId: classId
+    });
+  }
+
   copyPremadeClass(classId) {
     this.props.copyPremadeClass({
       appId: this.props.currentAppId,
@@ -42,6 +50,7 @@ class Sidebar extends Component {
           mlClasses={this.props.customMlClasses}
           onEditCardSelected={this.props.onEditCardSelected.bind(this)}
           onCardSelected={this.onCardSelected.bind(this)}
+          onDeleteClick={this.onDeleteCardClick.bind(this)}
           onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
         />
 
@@ -51,6 +60,7 @@ class Sidebar extends Component {
           mlClasses={this.props.premadeMlClasses}
           onEditCardSelected={()=>{}}
           onCardSelected={this.copyPremadeClass.bind(this)}
+          onDeleteClick={()=>{}}
           onFooterButtonClicked={()=>{}}
         />
 
@@ -64,9 +74,14 @@ Sidebar.propTypes = {
   premadeMlClasses: React.PropTypes.array
 };
 
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state, ownProps) => {
+  return {
+    currentMlAppId: state.currentMlAppId,
+    userId: state.user.id
+  }
+};
 
 export default connect(
   mapStateToProps,
-  { ...actions, moveMlClass, copyPremadeClass }
+  { ...actions, moveMlClass, copyPremadeClass, deleteMlClass}
 )(Sidebar)
