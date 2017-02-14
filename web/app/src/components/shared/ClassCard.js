@@ -13,6 +13,7 @@ class ClassCard extends Component {
     }
 
     onClick() {
+        this.dropDownButton.blur();
         this.props.onClick(this.props.mlClass.id);
     }
 
@@ -38,7 +39,7 @@ class ClassCard extends Component {
                         <div
                             className={"sq-class-card--status-indicator" + (this.props.mlClass.inModel ? "" : " hidden")}></div>
                     </Tooltip>
-                    <button className="sq-class-card--edit sq-text__sm__pale" >
+                    <button ref={(e)=>{this.dropDownButton = e;}} className="sq-class-card--edit sq-text__sm__pale" >
                         edit
                         <div className="sq-class-card--dropdown-menu">
                             <div className="sq-class-card--dropdown-menu-item" onClick={this.onEditClick.bind(this)}>Edit</div>

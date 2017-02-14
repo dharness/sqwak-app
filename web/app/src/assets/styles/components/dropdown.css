@@ -8,6 +8,7 @@
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 hsla(0,0%,88%,.5);
   display: none;
+  margin-top: 4px;
 }
 
 .sq-class-card--edit:focus .sq-class-card--dropdown-menu {
