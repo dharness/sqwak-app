@@ -3,6 +3,7 @@ import * as api from './../services/api';
 
 export const loadPremadeClasses = () => {
   return (dispatch) => {
+    dispatch({ type: 'LOAD_PREMADE_CLASSES_PENDING' });
     api.fetchPremadeClasses().then(premadeClasses => {
       premadeClasses = premadeClasses.map(premadeClass => {
         const formattedPremadeClass = {
@@ -19,7 +20,8 @@ export const loadPremadeClasses = () => {
       dispatch({
         type: 'SET_PREMADE_CLASSES',
         premadeClasses
-      })
+      });
+      dispatch({ type: 'LOAD_PREMADE_CLASSES_SUCCESS' });
     });
   }
 };
