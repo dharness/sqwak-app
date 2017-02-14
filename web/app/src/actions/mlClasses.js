@@ -45,7 +45,8 @@ export const renameMlClass = ({userId, appId, classId, className}) => {
       type:'RENAME_ML_CLASS',
       mlClassId: classId,
       mlAppId: appId,
-      className: className
+      className: className,
+      isEdited: true
     });
     api.renameClass({userId, appId, classId, className}).then( () => {
       dispatch({ type: 'CLOSE_MODAL' });

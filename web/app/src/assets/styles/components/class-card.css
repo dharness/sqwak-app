@@ -15,11 +15,15 @@
 }
 
 .sq-class-card--status-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
     background: var(--yellow-1);
     align-self: center;
+}
+
+.sq-class-card--status-indicator.published {
+    background: var(--green-2);   
 }
 
 .sq-class-card--status-indicator.hidden {
@@ -32,7 +36,6 @@
     padding: 0px;
     width: 105px;
     height: 25px;
-
 }
 
 .rc-tooltip-arrow {

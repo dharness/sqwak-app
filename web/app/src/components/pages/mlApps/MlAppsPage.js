@@ -45,21 +45,21 @@ class MlAppsPage extends Component {
     }
 
     renderAppPreviewCards() {
-        return this.props.mlApps.map((userApp, i) => {
+        return this.props.mlApps.map((mlApp, i) => {
             return (
                 <AppPreviewCard
-                    onCardSelected={() => { this.openApp(userApp.id); } }
-                    key={userApp.id}
-                    appId={userApp.id}
-                    name={userApp.app_name}
-                    numClasses={userApp.mlClasses.length}
-                    onDeleteClicked={(id) => {this.showConfirmDeleteWarning(userApp.app_name, id)}}
+                    onCardSelected={() => { this.openApp(mlApp.id); } }
+                    key={mlApp.id}
+                    appId={mlApp.id}
+                    name={mlApp.app_name}
+                    numClasses={mlApp.mlClasses.length}
+                    isPublished={mlApp.isPublished}
+                    onDeleteClicked={(id) => {this.showConfirmDeleteWarning(mlApp.app_name, id)}}
                     />)
         });
     }
 
     render() {
-        console.log(this.props);
         let shouldHideBgImg = (this.props.mlApps.length > 0) || this.props.isFetchingApps;
         return (
             <div className="sq-apps-page" style={{opacity: (this.props.isFetchingApps ? 0 : 1)}}>

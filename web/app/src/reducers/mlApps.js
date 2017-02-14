@@ -46,12 +46,23 @@ const mlApps = (state = {}, action) => {
       currentMlApp.mlClasses.forEach((mlClass) => {
         if (mlClass.id === action.mlClassId)
           mlClass.className = action.className
+          mlClass.isEdited = action.isEdited
       });
       
       nextState[action.mlAppId] = currentMlApp;
       return nextState
     }
 
+    case 'SET_CLASSES_EDITED': {
+      const nextState = Object.assign({}, state);
+      const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.mlClasses = currentMlApp.mlClasses.map(mlClass => {
+        mlClass.isEdited = action.isEdited;
+        return mlClass;
+      });
+      nextState[action.mlAppId] = currentMlApp;
+      return nextState
+    }
 
     default:
       return state

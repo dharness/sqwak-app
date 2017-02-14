@@ -45,7 +45,7 @@
 }
 
 .sq-app-preview-card--status-indicator.unpublished { background: var(--yellow-1);}
-.sq-app-preview-card--status-indicator.running { background: var(--green-2); }
+.sq-app-preview-card--status-indicator.published { background: var(--green-2); }
 .sq-app-preview-card--status-indicator.stopped { background: var(--red-2); }
 
 .sq-app-preview-card--delete {

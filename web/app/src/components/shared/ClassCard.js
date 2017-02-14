@@ -8,9 +8,7 @@ class ClassCard extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            dropdownOpen: false
-        };
+        this.state = { dropdownOpen: false };
     }
 
     onClick() {
@@ -21,6 +19,7 @@ class ClassCard extends Component {
     onEditClick(event) {
         event.stopPropagation();
         this.dropDownButton.blur();
+        console.log(this.props.mlClass)
         this.props.onEditClick(this.props.mlClass.id);
     }
 
@@ -28,6 +27,13 @@ class ClassCard extends Component {
         event.stopPropagation();
         this.dropDownButton.blur();
         this.props.onDeleteClick(this.props.mlClass.id);
+    }
+
+    renderIndicator() {
+        let classList = ["sq-class-card--status-indicator"];
+        !this.props.mlClass.inModel && classList.push("hidden");
+        !this.props.mlClass.isEdited && classList.push("published");
+        return ( <div className={classList.join(" ")}></div> )
     }
 
     render () {
@@ -49,8 +55,7 @@ class ClassCard extends Component {
                             </div>}
                         align={{ offset: [0, 0] }}
                         >
-                        <div
-                            className={"sq-class-card--status-indicator" + (this.props.mlClass.inModel ? "" : " hidden")}></div>
+                        {this.renderIndicator()}
                     </Tooltip>
                     <button ref={(e)=>{this.dropDownButton = e;}} className="sq-class-card--edit sq-text__sm__pale" >
                         <img src={optionsImg} role="presentation"/>

@@ -23,7 +23,7 @@ class ModelView extends Component {
                 <ClassCard
                     mlClass={mlClass}
                     onClick={this.onCardSelected.bind(this)}
-                    onEditClick={() => {this.props.onEditCardSelected(i)}}
+                    onEditClick={this.props.onEditCardSelected}
                 />
             </div>)
         })}
