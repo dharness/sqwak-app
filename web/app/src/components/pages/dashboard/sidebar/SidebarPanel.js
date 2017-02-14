@@ -13,7 +13,7 @@ class SidebarPanel extends Component {
             <input type="text" className="sq-side-bar--search-field sq-text__sm" placeholder="search..."/>
           </div>
         </div>
-        <div className={"sq-side-bar--content" + (this.props.hideFooter ? " no-footer" : "")}>
+        <div className={"sq-side-bar--content clearfix" + (this.props.hideFooter ? " no-footer" : "")}>
             <ClassCardGrid 
               mlClasses={this.props.mlClasses}
               onEditCardSelected={this.props.onEditCardSelected.bind(this)}

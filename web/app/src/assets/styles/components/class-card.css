@@ -8,24 +8,23 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 3px 0 rgba(225,225,225,0.50);
 }
 
 .sq-class-card:hover {
     border: solid 1px var(--blue-2);
 }
 
-.sq-class-card:hover .sq-class-card--edit,
-.sq-class-card:hover .sq-class-card--status-indicator {
-    opacity: 1;
-}
-
 .sq-class-card--status-indicator {
-    opacity: 0;
     width: 10px;
     height: 10px;
     border-radius: 10px;
     background: var(--yellow-1);
     align-self: center;
+}
+
+.sq-class-card--status-indicator.hidden {
+    visibility: hidden;
 }
 
 .rc-tooltip-inner {
@@ -61,11 +60,18 @@
 }
 
 .sq-class-card--edit {
-    opacity: 0;
+    opacity: 1;
+    text-align: right;
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
 }
 
-.sq-class-card--edit:hover {
-    color: var(--blue-1);
+.sq-class-card--edit:hover, .sq-class-card--edit:focus {
+    background: var(--grey-4);
 }
 
 .sq-class-card--icon {
@@ -82,3 +88,13 @@
     padding-top: 5px;
     text-align: center;
 }
+
+.clearfix:before,
+.clearfix:after {
+    content: ".";    
+    display: block;    
+    height: 0;    
+    overflow: hidden; 
+}
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; } /* IE < 8 */

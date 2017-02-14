@@ -67,7 +67,6 @@ class ClassUploadForm extends Component {
         <div className="sq-class-upload-form--container">
           <div className="sq-text__xl sq-class-upload-form--title">
             {this.props.editMode ? "Edit Class" : "Create Class"}
-            <div className="sq-class-upload-form--delete" onClick={this.removeClass.bind(this)}></div>
           </div>
           <input
             type="text"

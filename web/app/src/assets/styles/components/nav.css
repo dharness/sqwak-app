@@ -17,3 +17,7 @@
     color: var(--grey-2);
     text-decoration: none;
 }
+
+.sq-inner-nav--menu-item:hover {
+    color: var(--blue-1);
+}
