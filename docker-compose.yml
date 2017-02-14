@@ -5,6 +5,8 @@ services:
     command: supervisord -c ./supervisord.conf
     ports:
       - "8080:8080"
+    environment:
+      - FLASK_APP=/usr/src/app/run.py
 
   nginx:
     image: sqwak/nginx

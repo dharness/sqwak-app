@@ -32,6 +32,7 @@ class ClassCard extends Component {
         let {imgName} = this.props.mlClass;
         imgName = imgName || "blue-cube";
         const imgIcon = require(`./../../assets/images/class-icons/${imgName}.svg`);
+
         return (
             <div className="sq-class-card">
                 <div className="sq-class-card--header">
