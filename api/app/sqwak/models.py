@@ -30,7 +30,7 @@ class MlClass(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ml_app_id = db.Column(db.Integer, db.ForeignKey("ml_app.id"))
     class_name = db.Column(db.String, nullable=False)
-    img_name = db.Column(db.String, nullable=False)
+    img_name = db.Column(db.String, nullable=True)
     package_name = db.Column(db.String, nullable=False)
     is_edited = db.Column(db.Boolean, default=False)
     in_model = db.Column(db.Boolean, default=False)
