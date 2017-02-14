@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
+import optionsImg from './../../assets/images/icons/options.svg';
+
 
 class ClassCard extends Component {
 
@@ -32,6 +34,7 @@ class ClassCard extends Component {
         let {imgName} = this.props.mlClass;
         imgName = imgName || "blue-cube";
         const imgIcon = require(`./../../assets/images/class-icons/${imgName}.svg`);
+        let addRemoveText = this.props.mlClass.inModel ? "Remove" : "Add"
 
         return (
             <div className="sq-class-card">
@@ -50,10 +53,10 @@ class ClassCard extends Component {
                             className={"sq-class-card--status-indicator" + (this.props.mlClass.inModel ? "" : " hidden")}></div>
                     </Tooltip>
                     <button ref={(e)=>{this.dropDownButton = e;}} className="sq-class-card--edit sq-text__sm__pale" >
-                        . . .
+                        <img src={optionsImg} role="presentation"/>
                         <div className="sq-class-card--dropdown-menu">
                             <div className="sq-class-card--dropdown-menu-item" onClick={this.onEditClick.bind(this)}>Edit</div>
-                            <div className="sq-class-card--dropdown-menu-item" onClick={this.onClick.bind(this)}>Add</div>
+                            <div className="sq-class-card--dropdown-menu-item" onClick={this.onClick.bind(this)}>{addRemoveText}</div>
                             <div className="sq-class-card--dropdown-menu-item" onClick={this.onDeleteClick.bind(this)}>Delete</div>
                         </div>
                     </button>
