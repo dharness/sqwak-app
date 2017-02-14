@@ -27,6 +27,10 @@
   border-top: solid 1px var(--grey-4);
 }
 
+.sq-class-card--dropdown-menu-item:last-of-type:hover {
+  color: var(--red-1);
+}
+
 .sq-class-card--dropdown-menu-item:hover {
   color: var(--blue-1);
 }

@@ -6,12 +6,17 @@ from sqwak.schemas import ma, ml_class_schema, ml_classes_schema
 from slugify import slugify
 from sqwak.forms.MlClass import MlClassForm, MlClassFile
 from sqwak.errors import InvalidUsage
+import random
+
 
 ml_class_controller = Blueprint('ml_class', __name__)
 
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = set(['wav'])
+CLASS_IMG_SHAPES = ["cube", "diamond", "hex", "triangle"]
+CLASS_IMG_COLOURS = ["blue", "green", "purple", "red", "teal", "yellow"]
+    
 
 @ml_class_controller.route("", methods=['GET', 'POST'])
 def ml_class_collection(user_id, app_id):
@@ -23,10 +28,12 @@ def ml_class_collection(user_id, app_id):
         path = '/usr/src/app/sqwak/uploads/' + secure_filename(f.filename)
         f.save(path)
         features = feature_extractor.extract(path)
+        img_name = random.choice(CLASS_IMG_COLOURS) + "-" + random.choice(CLASS_IMG_SHAPES)
 
         ml_class = MlClass(
             ml_app_id=app_id,
             class_name=class_name,
+            img_name=img_name,
             package_name=str(app_id) + "." + class_name)
         db.session.add(ml_class)
         db.session.flush()

@@ -13,7 +13,8 @@ export const loadApp = (userId, appId) => {
                 id: mlClass.id,
                 isEdited: mlClass.is_edited,
                 packageName: mlClass.package_name,
-                inModel: mlClass.in_model
+                inModel: mlClass.in_model,
+                imgName: mlClass.img_name
             }
         });
         delete mlApp.ml_classes

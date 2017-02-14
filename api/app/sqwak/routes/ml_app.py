@@ -38,6 +38,7 @@ def one_app(user_id, app_id):
         res = ml_app_schema.dump(ml_app).data
         ml_classes_dict = ml_classes_schema.dump(ml_classes).data
         res['ml_classes'] = ml_classes_dict
+        res.pop('working_model', None)
         return jsonify(res)
     else:
         ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
