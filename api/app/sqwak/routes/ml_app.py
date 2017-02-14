@@ -27,8 +27,8 @@ def all_apps(user_id):
             for err in errorMessages:
                 raise InvalidUsage(err, status_code=400)
     else:
-        ml_app = MlApp.query.filter_by(owner_id=user_id).all()
-        return ml_apps_schema.jsonify(ml_app)
+        ml_apps = MlApp.query.filter_by(owner_id=user_id).all()
+        return ml_apps_schema.jsonify(ml_apps)
 
 @ml_app_controller.route("/<int:app_id>", methods=['GET', 'DELETE'])
 def one_app(user_id, app_id):
@@ -39,6 +39,7 @@ def one_app(user_id, app_id):
         ml_classes_dict = ml_classes_schema.dump(ml_classes).data
         res['ml_classes'] = ml_classes_dict
         res.pop('working_model', None)
+        res.pop('published_model', None)
         return jsonify(res)
     else:
         ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
@@ -54,14 +55,21 @@ def train(user_id, app_id):
     for ml_class in ml_classes:
         audio_samples = ml_class.audio_samples.all()
         if ml_class.in_model:
-            ml_class = ml_class_schema.dump(ml_class).data
-            ml_class['audio_samples'] = audio_samples_schema.dump(audio_samples).data
-            formated_ml_classes.append(ml_class)
+            ml_class.is_edited = False
+            ml_class_data = ml_class_schema.dump(ml_class).data
+            ml_class_data['audio_samples'] = audio_samples_schema.dump(audio_samples).data
+            formated_ml_classes.append(ml_class_data)
 
     pickled_model = model_manager.create_model(formated_ml_classes)
     ml_app.working_model = pickled_model;
+    ml_app.is_published = False
     db.session.commit()
-    return ml_app_schema.jsonify(ml_app)
+
+    res = ml_app_schema.dump(ml_app).data
+    res.pop('working_model', None)
+    res.pop('published_model', None)
+
+    return jsonify(res)
 
 @ml_app_controller.route("/<int:app_id>/predict", methods=['POST'])
 def predict(user_id, app_id):
@@ -80,5 +88,7 @@ def publish(user_id, app_id):
     ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
     if (ml_app.working_model):
         ml_app.published_model = ml_app.working_model
+        ml_app.is_published = True
+        db.session.commit()
 
     return ml_app_schema.jsonify(ml_app)

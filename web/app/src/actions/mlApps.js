@@ -17,6 +17,8 @@ export const loadApp = (userId, appId) => {
                 imgName: mlClass.img_name
             }
         });
+        mlApp.isPublished = mlApp.is_published;
+        delete mlApp.is_published
         delete mlApp.ml_classes
         dispatch({
             type: 'ADD_APP',
@@ -33,6 +35,8 @@ export const loadApps = (userId) => {
     api.fetchApps(userId).then(mlApps => {
         mlApps.forEach(mlApp => {
             mlApp.mlClasses = mlApp.ml_classes;
+            mlApp.isPublished = mlApp.is_published;
+            delete mlApp.is_published;
             delete mlApp.ml_classes;
             dispatch({
                 type: 'ADD_APP',
@@ -72,7 +76,11 @@ export const removeApp = ({userId, appId}) => {
 export const trainModel = ({userId, appId}) => {
   return (dispatch) => {
     api.trainModel({userId, appId}).then((res) => {
-      console.log(res);
+      dispatch({
+        type: 'SET_CLASSES_EDITED',
+        mlAppId: appId,
+        isEdited: false
+      });
     }).catch(err => {
       console.log('err');
       console.log(err);
