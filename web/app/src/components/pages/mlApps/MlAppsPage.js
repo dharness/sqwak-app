@@ -59,13 +59,14 @@ class MlAppsPage extends Component {
     }
 
     render() {
+        console.log(this.props);
         let shouldHideBgImg = (this.props.mlApps.length > 0) || this.props.isFetchingApps;
         return (
             <div className="sq-apps-page" style={{opacity: (this.props.isFetchingApps ? 0 : 1)}}>
                 <Nav currentUserId={this.props.params.userId} />
                 <div className="sq-apps-page--content">
-                    <div className="sq-apps-page--header sq-text__xlarge">
-                        <div>All apps</div>
+                    <div className="sq-apps-page--header">
+                        <div className="sq-text__xl">All apps</div>
                         <PlushButton buttonText="Create App" onClick={this.showCreateAppModal.bind(this)} />
                     </div>
                     <div className="sq-apps-page--app-grid">

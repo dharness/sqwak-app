@@ -46,6 +46,8 @@ export const loadApps = (userId) => {
 export const addApp = ({userId, appName}) => {
   return (dispatch) => {
     api.createApp({userId, appName}).then(mlApp => {
+      mlApp.mlClasses = mlApp.ml_classes;
+      delete mlApp.ml_classes;
       dispatch({
           type: 'ADD_APP',
           mlApp,

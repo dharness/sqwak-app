@@ -5,6 +5,13 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 class ClassCard extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            dropdownOpen: false
+        };
+    }
+
     onClick() {
         this.props.onClick(this.props.mlClass.id);
     }
@@ -16,7 +23,7 @@ class ClassCard extends Component {
 
     render () {
         return (
-            <div className="sq-class-card" onClick={this.onClick.bind(this)}>
+            <div className="sq-class-card">
                 <div className="sq-class-card--header">
                     <Tooltip
                         placement="top"
@@ -29,14 +36,16 @@ class ClassCard extends Component {
                         align={{ offset: [0, 0] }}
                         >
                         <div
-                            style={{display: (this.props.isEditable ? "" : "")}}
-                            className="sq-class-card--status-indicator"></div>
+                            className={"sq-class-card--status-indicator" + (this.props.mlClass.inModel ? "" : " hidden")}></div>
                     </Tooltip>
-                    <div
-                        style={{display: (this.props.isEditable ? "" : "")}}
-                        onClick={this.onEditClick.bind(this)}
-                        className="sq-class-card--edit sq-text__sm__pale"
-                    >edit</div>
+                    <button className="sq-class-card--edit sq-text__sm__pale" >
+                        edit
+                        <div className="sq-class-card--dropdown-menu">
+                            <div className="sq-class-card--dropdown-menu-item" onClick={this.onEditClick.bind(this)}>Edit</div>
+                            <div className="sq-class-card--dropdown-menu-item" onClick={this.onClick.bind(this)}>Add</div>
+                            <div className="sq-class-card--dropdown-menu-item">Delete</div>
+                        </div>
+                    </button>
                 </div>
                 <div className="sq-class-card--icon">
                     <img src={shapeIcon} role="presentation"/>
