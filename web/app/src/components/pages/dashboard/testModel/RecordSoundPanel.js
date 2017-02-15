@@ -39,7 +39,6 @@ class RecordSoundPanel extends Component {
         let subheader = this.state.isRecording ? "Recording..." : "Click to record a 4 second sound";
         return (
         <div className="sq-test-record-wrapper">
-            <div className="sq-test-record-header sq-text__xl"> Test your app </div>
             <div className="sq-test-record-subheader sq-text__md"> {subheader} </div>
             <div className="sq-test-record-button">
                 <RecordButton isRecording={this.state.isRecording} onClick={this.recordButtonClicked.bind(this)}/>

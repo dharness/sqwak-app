@@ -3,6 +3,7 @@ import { testModel } from './../../../../actions/mlApps';
 import ButtonGroup from './../../../shared/ButtonGroup';
 import RecordSoundPanel from './RecordSoundPanel';
 import UploadFilePanel from './UploadFilePanel';
+import ResultsPanel from './ResultsPanel';
 import { connect } from 'react-redux';
 
 class TestModel extends Component {
@@ -35,7 +36,7 @@ class TestModel extends Component {
 
   render () {
     return (
-      <div>
+      <div className="sq-test-modal">
           <div className="sq-test-buttons--wrapper">
             <ButtonGroup
               selectedId={this.state.selectedPanel}
@@ -43,7 +44,10 @@ class TestModel extends Component {
               onButtonSelected={this.switchPanel.bind(this)}
             />
           </div>
-          {this.panels[this.state.selectedPanel]}
+          <div className="sq-test-modal--wrapper">
+            {this.panels[this.state.selectedPanel]}
+            <ResultsPanel />
+          </div>
       </div>
     )
   }

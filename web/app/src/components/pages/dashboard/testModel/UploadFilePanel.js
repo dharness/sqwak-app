@@ -22,10 +22,6 @@ class UploadFilePanel extends Component {
     render () {
         return (
             <div>
-                <div className="sq-test-upload--header">
-                    <div className="sq-text sq-text__xl">Test your app</div>
-                    <div className="sq-text sq-text__md">Upload a .wav file</div>
-                </div>
                 <FileDropZone
                     onFilesChanged={this.onFilesChanged.bind(this)}
                 />

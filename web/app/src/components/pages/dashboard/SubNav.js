@@ -25,7 +25,15 @@ class SubNav extends Component {
   openTestModal() {
     this.props.showModal((
       <TestModel />
-    ))
+    ));
+  }
+
+  componentDidMount() {
+    if (this.props.openModal === "test") {
+      this.props.showModal((
+        <TestModel />
+      ));
+    }
   }
 
   onTrainButtonClicked() {
