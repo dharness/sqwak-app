@@ -15,6 +15,9 @@ Flask-PyMongo==0.4.1
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
 functools32==3.2.3.post2
+gevent==1.2.1
+greenlet==0.4.12
+gunicorn==19.6.0
 itsdangerous==0.24
 Jinja2==2.9.5
 joblib==0.10.3
@@ -45,7 +48,7 @@ SQLAlchemy==1.1.5
 subprocess32==3.2.7
 supervisor==3.3.1
 Unidecode==0.4.20
+uWSGI==2.0.14
 virtualenv==15.1.0
 Werkzeug==0.11.14
 WTForms==2.1
-gunicorn==19.6.0
