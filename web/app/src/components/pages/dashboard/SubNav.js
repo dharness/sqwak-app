@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import trainIcon from './../../../assets/images/icons/train.svg'
 import testIcon from './../../../assets/images/icons/predict.svg'
 import publishIcon from './../../../assets/images/icons/star.svg'
@@ -23,6 +24,10 @@ class SubNav extends Component {
   }
 
   openTestModal() {
+    browserHistory.push({
+      pathname: browserHistory.getCurrentLocation().pathname,
+      search: '?modal=test'
+    });
     this.props.showModal((
       <TestModel />
     ));
@@ -30,9 +35,7 @@ class SubNav extends Component {
 
   componentDidMount() {
     if (this.props.openModal === "test") {
-      this.props.showModal((
-        <TestModel />
-      ));
+      this.openTestModal();
     }
   }
 
