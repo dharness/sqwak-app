@@ -19,7 +19,6 @@ class FileDropZone extends Component {
 
   onFilesChanged(event, newFiles) {
     newFiles =  newFiles || this.fileInput.files;
-    console.log(newFiles);
     this.setState({files: [...this.state.files, ...newFiles]});
     this.props.onFilesChanged({
       files: [...this.state.files, ...newFiles]

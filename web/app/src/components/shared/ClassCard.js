@@ -19,7 +19,6 @@ class ClassCard extends Component {
     onEditClick(event) {
         event.stopPropagation();
         this.dropDownButton.blur();
-        console.log(this.props.mlClass)
         this.props.onEditClick(this.props.mlClass.id);
     }
 
@@ -34,10 +33,6 @@ class ClassCard extends Component {
         !this.props.mlClass.inModel && classList.push("hidden");
         !this.props.mlClass.isEdited && classList.push("published");
         return ( <div className={classList.join(" ")}></div> )
-    }
-
-    dropDownButtonClicked() {
-        console.log('OKOKOKOKOKO')
     }
 
     render () {
@@ -65,8 +60,7 @@ class ClassCard extends Component {
                     </Tooltip>
                     <button
                         ref={(e)=>{this.dropDownButton = e;}}
-                        className="sq-class-card--edit sq-text__sm__pale"
-                        onClick={this.dropDownButtonClicked.bind(this)}>
+                        className="sq-class-card--edit sq-text__sm__pale">
                         <img src={optionsImg} role="presentation"/>
                         <div className="sq-class-card--dropdown-menu">
                             <div className="sq-class-card--dropdown-menu-item" onClick={this.onEditClick.bind(this)}>Edit</div>

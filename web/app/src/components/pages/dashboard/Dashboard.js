@@ -9,9 +9,10 @@ import getMlModel from './../../../selectors/mlModel';
 import getCustomMlClasses from './../../../selectors/customMlClasses';
 import * as actions from './../../../actions';
 import { loadApp, loadApps } from './../../../actions/mlApps';
+import { renameMlClass } from './../../../actions/mlClasses';
 import { loadPremadeClasses } from './../../../actions/premadeClasses';
 import { setCurrentUser } from './../../../actions/user';
-import ClassUploadForm from './../../shared/ClassUploadForm';
+import EditClassForm from './EditClassForm';
 
 
 class DashboardPage extends Component {
@@ -34,8 +35,18 @@ class DashboardPage extends Component {
             .find(mlClass => classId === mlClass.id);
         
         this.props.showModal((
-            <ClassUploadForm editMode={true} mlClass={selectedClass} currentAppId={this.props.currentMlApp.id}/>
+            <EditClassForm mlClass={selectedClass} onSubmit={this.onEditClassFormSubmit.bind(this)}/>
         ))
+    }
+
+    onEditClassFormSubmit({className, files, classId}) {
+        const mlClassData = {
+            appId: this.props.currentMlApp.id,
+            userId: this.props.userId,
+            classId,
+            className
+        };
+        this.props.renameMlClass(mlClassData);
     }
 
     render () {
@@ -70,10 +81,12 @@ const mapStateToProps = (state, ownProps) => {
     const currentMlApp = getCurrentMlApp(state);
     const mlModel = getMlModel(state);
     const customMlClasses = getCustomMlClasses(state);
+    const userId = state.user.id;
 
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const { premadeClasses } = state;
     return {
+        userId,
         mlApps,
         currentMlApp,
         premadeClasses,
@@ -85,5 +98,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  {...actions, loadApp, loadApps, loadPremadeClasses, setCurrentUser}
+  {...actions, loadApp, loadApps, loadPremadeClasses, setCurrentUser, renameMlClass}
 )(DashboardPage)

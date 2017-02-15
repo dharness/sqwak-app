@@ -13,9 +13,7 @@ class SubNav extends Component {
 
   constructor() {
     super();
-    this.state = {
-      isTraining: false
-    };
+    this.state = { isTraining: false };
   }
 
   openPublishModal() {
@@ -30,17 +28,11 @@ class SubNav extends Component {
     ))
   }
 
-  componentDidMount() {
-    this.props.showModal((
-      <TestModel />
-    ))
-  }
-
   onTrainButtonClicked() {
     this.setState({isTraining: true});
     setTimeout(()=> {
       this.setState({isTraining: false});
-    }, 2000)
+    }, 2000);
     let appId = this.props.currentMlAppId;
     let userId = this.props.userId;
     this.props.trainModel({userId, appId});
