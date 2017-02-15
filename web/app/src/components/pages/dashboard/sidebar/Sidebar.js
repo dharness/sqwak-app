@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ClassUploadForm from './../../../shared/ClassUploadForm'
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
 import { createMlClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';

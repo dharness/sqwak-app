@@ -85,6 +85,7 @@ const mapStateToProps = (state, ownProps) => {
 
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const { premadeClasses } = state;
+
     return {
         userId,
         mlApps,
