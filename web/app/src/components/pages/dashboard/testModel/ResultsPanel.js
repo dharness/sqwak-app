@@ -4,7 +4,7 @@ import hljs from 'highlight.js'
 class ResultsPanel extends Component {
 
   componentDidMount() {
-    hljs.initHighlightingOnLoad();
+    hljs.highlightBlock(this.codeBlock);
   }
 
   render () {
@@ -14,7 +14,7 @@ class ResultsPanel extends Component {
           JSON Response
         </div>
         <pre className="sq-json-results-panel--body json">
-          <code>
+          <code ref={(e)=> {this.codeBlock = e; }}>
           {JSON.stringify({
             query: "Lemmons",
             topScoringIntent: {
