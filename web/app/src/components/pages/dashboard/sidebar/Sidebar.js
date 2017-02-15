@@ -3,17 +3,16 @@ import { connect } from 'react-redux';
 import ClassUploadForm from './../../../shared/ClassUploadForm'
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
-import { moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
+import { createMlClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
 import SidebarPanel from './SidebarPanel';
+import CreateClassForm from './CreateClassForm';
 
 
 class Sidebar extends Component {
 
   newClassButtonClicked() {
     this.props.showModal((
-      <ClassUploadForm 
-        currentAppId={this.props.currentAppId}
-      />
+      <CreateClassForm onSubmit={this.onSubmitCreateClassForm.bind(this)}/>
     ))
   }
 
@@ -24,6 +23,17 @@ class Sidebar extends Component {
       from: 'mlClasses',
       to: 'mlModel'
     });
+  }
+
+  onSubmitCreateClassForm({className, files}) {
+    const file = files[0];
+    const mlClassData = {
+      appId: this.props.currentMlAppId,
+      userId: this.props.userId,
+      className,
+      file
+    };
+    this.props.createMlClass(mlClassData);
   }
 
   onDeleteCardClick(classId) {
@@ -83,5 +93,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { ...actions, moveMlClass, copyPremadeClass, deleteMlClass}
+  { ...actions, moveMlClass, copyPremadeClass, deleteMlClass, createMlClass}
 )(Sidebar)

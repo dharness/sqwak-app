@@ -1,0 +1,10 @@
+.sq-create-class-form--header {
+  width: 350px;
+  text-align: left;
+  margin: auto;
+}
+
+.sq-create-class-form--header .sq-basic-input {
+  width: 100%;
+  margin-top: 10px;
+}

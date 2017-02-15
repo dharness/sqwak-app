@@ -16,7 +16,6 @@ class UploadFilePanel extends Component {
     }
 
     onFilesChanged({files}) {
-        console.log(files);
         this.setState({files: [...this.state.files, ...files]});
     }
 
