@@ -6,8 +6,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 80%;
-    margin: auto;   
+    width: 350px;
 }
 .sq-test-record-header {
     margin-bottom: 10px;
@@ -53,6 +52,16 @@
 }
 
 .sq-test-upload--footer {
+    display: flex;
+    justify-content: center;
+}
+
+.sq-test-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.sq-test-modal--wrapper {
     display: flex;
     justify-content: center;
 }
