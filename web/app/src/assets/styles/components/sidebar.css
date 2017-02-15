@@ -14,7 +14,7 @@
 .sq-side-bar--content {
   height: calc(100% - 90px - 80px);
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: visible;
 }
 
 .sq-side-bar--content.no-footer {
