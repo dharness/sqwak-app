@@ -48,7 +48,5 @@ SQLAlchemy==1.1.5
 subprocess32==3.2.7
 supervisor==3.3.1
 Unidecode==0.4.20
-uWSGI==2.0.14
-virtualenv==15.1.0
 Werkzeug==0.11.14
 WTForms==2.1
