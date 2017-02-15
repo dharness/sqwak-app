@@ -6,3 +6,8 @@
     width: 80%;
     margin: auto;
 }
+
+.sq-side-bar--content .sq-class-card-grid .sq-class-card:nth-child(2n) .sq-class-card--dropdown-menu {
+    right: 0px;
+    left: inherit;
+}

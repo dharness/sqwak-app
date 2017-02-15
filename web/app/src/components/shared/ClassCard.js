@@ -36,28 +36,37 @@ class ClassCard extends Component {
         return ( <div className={classList.join(" ")}></div> )
     }
 
+    dropDownButtonClicked() {
+        console.log('OKOKOKOKOKO')
+    }
+
     render () {
         let {imgName} = this.props.mlClass;
         imgName = imgName || "blue-cube";
         const imgIcon = require(`./../../assets/images/class-icons/${imgName}.svg`);
-        let addRemoveText = this.props.mlClass.inModel ? "Remove" : "Add"
+        let addRemoveText = this.props.mlClass.inModel ? "Remove" : "Add";
 
         return (
             <div className="sq-class-card">
                 <div className="sq-class-card--header">
                     <Tooltip
+                        overlayClassName={"sq-tooltip-overlay" + (this.props.mlClass.isEdited ? "" : " trained")}
                         placement="top"
                         mouseEnterDelay={0}
                         mouseLeaveDelay={0.1}
                         overlay={
-                            <div className="sq-class-card--status-tooltip">
-                                untrained samples
+                            <div
+                                className={"sq-class-card--status-tooltip" + (this.props.mlClass.isEdited ? "" : " trained")}>
+                                {this.props.mlClass.isEdited ? "untrained samples" : "all trained"}
                             </div>}
                         align={{ offset: [0, 0] }}
                         >
                         {this.renderIndicator()}
                     </Tooltip>
-                    <button ref={(e)=>{this.dropDownButton = e;}} className="sq-class-card--edit sq-text__sm__pale" >
+                    <button
+                        ref={(e)=>{this.dropDownButton = e;}}
+                        className="sq-class-card--edit sq-text__sm__pale"
+                        onClick={this.dropDownButtonClicked.bind(this)}>
                         <img src={optionsImg} role="presentation"/>
                         <div className="sq-class-card--dropdown-menu">
                             <div className="sq-class-card--dropdown-menu-item" onClick={this.onEditClick.bind(this)}>Edit</div>
