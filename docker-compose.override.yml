@@ -13,7 +13,7 @@ services:
       links:
         - api:api
       environment:
-        - REACT_APP_API_URL=http://localhost:8080/api/v0
+        - REACT_APP_API_URL=https://dev.sqwak.com/api/v0
         - REACT_APP_BASE_URL=http://localhost:3000
       volumes:
         - ./web/app:/usr/src/app
