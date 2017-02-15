@@ -14,9 +14,7 @@ class TestModel extends Component {
       <UploadFilePanel onSubmitTest={this.onSubmitTest.bind(this)}/>
 
     ];
-    this.state = {
-      selectedPanel: 0
-    };
+    this.state = { selectedPanel: 1 };
   }
 
   onSubmitTest(file) {
@@ -40,6 +38,7 @@ class TestModel extends Component {
       <div>
           <div className="sq-test-buttons--wrapper">
             <ButtonGroup
+              selectedId={this.state.selectedPanel}
               buttonTexts={['Record', 'Upload']}
               onButtonSelected={this.switchPanel.bind(this)}
             />

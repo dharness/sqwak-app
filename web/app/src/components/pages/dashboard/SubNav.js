@@ -30,6 +30,12 @@ class SubNav extends Component {
     ))
   }
 
+  componentDidMount() {
+    this.props.showModal((
+      <TestModel />
+    ))
+  }
+
   onTrainButtonClicked() {
     this.setState({isTraining: true});
     setTimeout(()=> {
