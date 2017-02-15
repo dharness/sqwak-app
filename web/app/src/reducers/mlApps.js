@@ -44,9 +44,10 @@ const mlApps = (state = {}, action) => {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
       currentMlApp.mlClasses.forEach((mlClass) => {
-        if (mlClass.id === action.mlClassId)
+        if (mlClass.id === action.mlClassId) {
           mlClass.className = action.className
           mlClass.isEdited = action.isEdited
+        }
       });
       
       nextState[action.mlAppId] = currentMlApp;
