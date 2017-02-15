@@ -45,7 +45,7 @@
 
 .sq-tooltip-overlay.trained .rc-tooltip-inner {
     background-color: #D7FFE4;
-    border: solid 1px #88E9BC;
+    border: none;
     border-radius: 3px;
     padding: 0px;
     width: 105px;
@@ -68,7 +68,8 @@
 
 .sq-class-card--status-tooltip.trained {
     background-color: #D7FFE4;
-    border: solid 1px #88E9BC;
+    border: solid 1px#88E9BC;
+    border-radius: 4px;
 }
 
 .sq-class-card--header {

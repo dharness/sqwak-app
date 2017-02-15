@@ -52,7 +52,7 @@ class ClassCard extends Component {
                         overlay={
                             <div
                                 className={"sq-class-card--status-tooltip" + (this.props.mlClass.isEdited ? "" : " trained")}>
-                                {this.props.mlClass.isEdited ? "untrained samples" : "all trained"}
+                                {this.props.mlClass.isEdited ? "untrained samples" : "All trained!"}
                             </div>}
                         align={{ offset: [0, 0] }}
                         >
