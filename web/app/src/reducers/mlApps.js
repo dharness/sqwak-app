@@ -65,6 +65,14 @@ const mlApps = (state = {}, action) => {
       return nextState
     }
 
+    case 'SET_JSON_RESPONSE': {
+      const nextState = Object.assign({}, state);
+      const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.jsonResponse = action.jsonResponse;
+      nextState[action.mlAppId] = currentMlApp;
+      return nextState
+    }
+
     default:
       return state
   }

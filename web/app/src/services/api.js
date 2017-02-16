@@ -1,4 +1,5 @@
 import * as auth from './auth';
+import axios from 'axios';
 
 
 /*************************** USER ***************************/
@@ -89,11 +90,11 @@ function testModel({userId, appId, file}) {
     const token = auth.getToken();
     const form = new FormData();
     form.append('file', file, file.name);
-    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/predict`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` },
-        body: form
-    }).then((data) => data.json())
+    return axios.post(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/predict`, form)
+        .then((res) => res.data)
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 function publishModel({userId, appId}) {

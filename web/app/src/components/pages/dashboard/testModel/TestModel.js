@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { testModel } from './../../../../actions/mlApps';
 import ButtonGroup from './../../../shared/ButtonGroup';
+import getCurrentMlApp from './../../../../selectors/currentMlApp';
 import RecordSoundPanel from './RecordSoundPanel';
 import UploadFilePanel from './UploadFilePanel';
 import ResultsPanel from './ResultsPanel';
@@ -46,17 +47,21 @@ class TestModel extends Component {
           </div>
           <div className="sq-test-modal--wrapper">
             {this.panels[this.state.selectedPanel]}
-            <ResultsPanel />
+            <ResultsPanel jsonResponse={this.props.jsonResponse}/>
           </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  currentMlAppId: state.currentMlAppId,
-  userId: state.user.id
-})
+const mapStateToProps = (state, ownProps) => {
+  const currentMlApp = getCurrentMlApp(state);
+  return {
+    jsonResponse: currentMlApp.jsonResponse || {},
+    currentMlAppId: state.currentMlAppId,
+    userId: state.user.id
+  }
+}
 
 export default connect(
   mapStateToProps,

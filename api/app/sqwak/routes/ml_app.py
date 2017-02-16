@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort, jsonify, json
+from flask import Blueprint, request, abort, jsonify, json, Response, make_response
 from werkzeug import secure_filename
 from sqwak.models import db, MlApp, User
 from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_class_schema, ml_classes_schema, audio_samples_schema
@@ -79,9 +79,8 @@ def predict(user_id, app_id):
     file.save(path)
     features = feature_extractor.extract(path)
     predictions = model_manager.predict(ml_app.working_model, features)
-    return jsonify({
-        'label': predictions[0]
-    })
+
+    return jsonify(predictions)
 
 @ml_app_controller.route("/<int:app_id>/publish", methods=['POST'])
 def publish(user_id, app_id):
