@@ -90,8 +90,12 @@ export const trainModel = ({userId, appId}) => {
 
 export const testModel = ({userId, appId, file}) => {
   return (dispatch) => {
-    api.testModel(({userId, appId, file})).then((res) => {
-      alert(res.label);
+    api.testModel(({userId, appId, file})).then(res => {
+      dispatch({
+        type: 'SET_JSON_RESPONSE',
+        mlAppId: appId,
+        jsonResponse: res
+      });
     }).catch(err => {
       console.log('err');
       console.log(err);

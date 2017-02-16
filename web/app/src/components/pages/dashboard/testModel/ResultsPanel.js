@@ -7,6 +7,10 @@ class ResultsPanel extends Component {
     hljs.highlightBlock(this.codeBlock);
   }
 
+  componentDidUpdate() {
+    hljs.highlightBlock(this.codeBlock);
+  }
+
   render () {
     return (
       <div className="sq-json-results-panel">
@@ -15,18 +19,7 @@ class ResultsPanel extends Component {
         </div>
         <pre className="sq-json-results-panel--body json">
           <code ref={(e)=> {this.codeBlock = e; }}>
-          {JSON.stringify({
-            query: "Lemmons",
-            topScoringIntent: {
-              intent: "None",
-              score: 0.9898
-            },
-            intents: [{
-              intent: "None",
-              score: 0.222
-            }],
-            entities: []
-          }, null, "  ")}
+          {JSON.stringify(this.props.jsonResponse, null, "  ")}
           </code>
         </pre>
       </div>
