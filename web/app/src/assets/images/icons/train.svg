@@ -1,14 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="21px" height="23px" viewBox="0 0 21 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-    <title>train</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="new-app---multiple-classes-selected" transform="translate(-800.000000, -92.000000)" stroke-width="0.7" stroke="#545454" fill="#3ADE8D">
-            <g id="train" transform="translate(801.000000, 92.000000)">
-                <path d="M16.8648933,8.5524087 C19.2812545,9.87964535 19.3177234,12.1076359 16.9546322,13.5238008 L4.2854701,21.1162383 C1.91867032,22.5346257 0,21.4548515 0,18.6888063 L0,4.28466488 C0,1.52564383 1.96014616,0.365666392 4.37520903,1.69218989 L16.8648933,8.5524087 Z"></path>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="21px" height="23px" viewBox="0 0 21 23" enable-background="new 0 0 21 23" xml:space="preserve">
+<title>train</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1">
+	<g id="new-app---multiple-classes-selected" transform="translate(-800.000000, -92.000000)">
+		<g id="train" transform="translate(801.000000, 92.000000)">
+			<path fill="#25D68A" d="M17.063,7.523c2.416,1.328,2.255,5.024-0.108,6.44L4.286,21.557C1.918,22.976,0,21.896,0,19.13V4.725
+				c0-2.759,1.96-3.919,4.375-2.592L17.063,7.523z"/>
+		</g>
+	</g>
+</g>
+<g id="Page-1_1_">
+	<g id="new-app---multiple-classes-selected_1_" transform="translate(-800.000000, -92.000000)">
+		<g id="train_1_" transform="translate(801.000000, 92.000000)">
+			<path fill="#3BEA8E" d="M16.865,7.409c2.416,1.328,2.453,3.555,0.09,4.971L4.286,19.973C1.919,21.392,0,20.312,0,17.546V3.141
+				c0-2.759,1.96-3.919,4.375-2.592L16.865,7.409z"/>
+		</g>
+	</g>
+</g>
 </svg>
