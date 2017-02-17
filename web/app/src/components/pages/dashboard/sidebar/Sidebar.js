@@ -52,7 +52,7 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <TabPanel tabNames={["custom", "premade"]}>
+      <TabPanel tabNames={["Your Classes", "Pre-made Classes"]}>
 
         {/* PANEL 1 */}
         <SidebarPanel

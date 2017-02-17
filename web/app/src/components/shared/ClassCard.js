@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import optionsImg from './../../assets/images/icons/options.svg';
 
@@ -28,13 +27,6 @@ class ClassCard extends Component {
         this.props.onDeleteClick(this.props.mlClass.id);
     }
 
-    renderIndicator() {
-        let classList = ["sq-class-card--status-indicator"];
-        !this.props.mlClass.inModel && classList.push("hidden");
-        !this.props.mlClass.isEdited && classList.push("published");
-        return ( <div className={classList.join(" ")}></div> )
-    }
-
     render () {
         let {imgName} = this.props.mlClass;
         imgName = imgName || "blue-cube";
@@ -44,20 +36,6 @@ class ClassCard extends Component {
         return (
             <div className="sq-class-card">
                 <div className="sq-class-card--header">
-                    <Tooltip
-                        overlayClassName={"sq-tooltip-overlay" + (this.props.mlClass.isEdited ? "" : " trained")}
-                        placement="top"
-                        mouseEnterDelay={0}
-                        mouseLeaveDelay={0.1}
-                        overlay={
-                            <div
-                                className={"sq-class-card--status-tooltip" + (this.props.mlClass.isEdited ? "" : " trained")}>
-                                {this.props.mlClass.isEdited ? "untrained samples" : "All trained!"}
-                            </div>}
-                        align={{ offset: [0, 0] }}
-                        >
-                        {this.renderIndicator()}
-                    </Tooltip>
                     <button
                         ref={(e)=>{this.dropDownButton = e;}}
                         className="sq-class-card--edit sq-text__sm__pale">

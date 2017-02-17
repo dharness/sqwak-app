@@ -8,6 +8,7 @@ import TestModel from './testModel/TestModel.js'
 import * as actions from './../../../actions';
 import { trainModel } from './../../../actions/mlApps';
 import { connect } from 'react-redux';
+import Tooltip from 'rc-tooltip';
 
 
 class SubNav extends Component {
@@ -53,24 +54,40 @@ class SubNav extends Component {
     return (
       <div className="sq-subnav">
         <div className="sq-subnav--content">
-          <div className="sq-subnav--app-name">
-            {this.props.appName}
+          <div className="sq-subnav-left-wrapper">
+            <Tooltip
+                overlayClassName={"sq-tooltip-overlay" + (true ? "" : " trained")}
+                placement="top"
+                mouseEnterDelay={0}
+                mouseLeaveDelay={0.1}
+                overlay={
+                    <div
+                        className={"sq-subnav--status-tooltip" + (true ? "" : " trained")}>
+                        {true ? "Model edited" : "All trained!"}
+                    </div>}
+                align={{ offset: [0, 0] }}
+                >
+                <div className="sq-subnav--status-indicator"></div> 
+            </Tooltip>
+            <div className="sq-subnav--app-name">
+              {this.props.appName}              
+            </div>
           </div>
 
           <div className="sq-subnav--buttons">
             <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
               <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
-              train
+              Train
             </div>
 
             <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
               <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
-              test
+              Test
             </div>
             
             <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
               <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
-              publish
+              Publish
             </div>
           </div>
         </div>
