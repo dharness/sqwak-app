@@ -6,6 +6,7 @@ from sqwak.forms.MlApp import NewMlAppForm
 from sqwak.errors import InvalidUsage
 from sqwak.services import model_manager
 from sqwak.services import feature_extractor
+import ffmpy
 
 
 ml_app_controller = Blueprint('ml_app', __name__)
@@ -76,8 +77,16 @@ def predict(user_id, app_id):
     ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
     file = request.files['file']
     path = '/usr/src/app/sqwak/uploads/' + secure_filename(file.filename)
+    out_path = '/usr/src/app/sqwak/uploads2/' + secure_filename(file.filename)
     file.save(path)
-    features = feature_extractor.extract(path)
+
+    ff = ffmpy.FFmpeg(
+        inputs={path: None},
+        outputs={out_path: None},
+        global_options=['-y']
+    )
+    ff.run()
+    features = feature_extractor.extract(out_path)
     predictions = model_manager.predict(ml_app.working_model, features)
 
     return jsonify(predictions)

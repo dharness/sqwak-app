@@ -71,6 +71,7 @@ def ml_class(user_id, app_id, class_id):
             db.session.add(ml_class)
         elif 'in_model' in json_data:
             ml_class.in_model = json_data['in_model']
+            ml_class.is_edited = True
             ml_app.is_published = False
             db.session.add(ml_class)
         db.session.commit()

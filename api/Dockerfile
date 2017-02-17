@@ -1,5 +1,10 @@
 FROM python:2.7.13
 
+RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+RUN apt-get update
+
+RUN apt-get install ffmpeg -y
+
 RUN mkdir -p /usr/src/app /var/log/supervisor
 
 WORKDIR /usr/src/app

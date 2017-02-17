@@ -7,6 +7,7 @@ Cython==0.25.2
 decorator==4.0.11
 Eve==0.7
 Events==0.2.2
+ffmpy==0.2.2
 Flask==0.12
 Flask-Cors==3.0.2
 flask-marshmallow==0.7.0
@@ -48,5 +49,6 @@ SQLAlchemy==1.1.5
 subprocess32==3.2.7
 supervisor==3.3.1
 Unidecode==0.4.20
+virtualenv==15.1.0
 Werkzeug==0.11.14
 WTForms==2.1
