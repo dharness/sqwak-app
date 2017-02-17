@@ -19,7 +19,50 @@
     color: var(--font-color-primary-dark);
 }
 
+.sq-landing--signup-link {
+    background: var(--red-2);
+    padding: 10px 20px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: white;
+    cursor: white;
+}
+
+.sq-landing--hero-info {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sq-landing--hero-info .sq-landing--signup-link {
+    align-self: center;
+}
+
+.sq-landing--title {
+    width: 400px;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.sq-landing--prompt {
+    width: 400px;
+    display: block;
+    text-align: center;
+}
+
 .sq-landing--hero {
     display: flex;
     justify-content: center;
+}
+
+.sq-landing--body {
+    background: white;
+    text-align: center;
+}
+
+.sq-landing--ruffles {
+    width: 100%;
+    height: 10px;
+    background: red;
 }

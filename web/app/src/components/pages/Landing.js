@@ -8,29 +8,37 @@ class LandingPage extends Component {
     render () {
         return (
             <div className="sq-landing">
+
+                {/* HEADING */}
                 <div className="sq-landing--above-fold">
                     <div className="sq-landing--nav">
                         <Link to="/login" className="sq-landing--login-link">
                             Login
                         </Link>
-                        <Link to="/signup" className="sq-landing--login-link">
+                        <Link to="/signup" className="sq-landing--signup-link">
                             Signup
                         </Link>
                     </div>
                     <div className="sq-landing--hero">
-                        <img src={giantBird} role="presentation" />
-                        <div>
-                            <img src={sqwakWord} role="presentation"/>
-                            <p>Teach your apps to listen with your personal machine learning dashboard</p>
-                            <a href="#" className="sq-button--squishy sq-button--squishy_red">
-                                <span>Try it free!</span>
-                            </a>
+                        <img src={giantBird} role="presentation"/>
+                        <div className="sq-landing--hero-info">
+                            <img src={sqwakWord} role="presentation" className="sq-landing--title"/>
+                            <p className="sq-landing--prompt">Teach your apps to listen with your personal machine learning dashboard</p>
+                            <Link to="/signup" className="sq-landing--signup-link">
+                                Try it free!
+                            </Link>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h5>From the team that brought you The Mars Rover</h5>
+
+                {/* BODY */}
+
+                <div className="sq-landing--body">
+                    <div className="sq-landing--ruffles"></div>
+                    <div className="sq-text sq-text__xl">Audio clasification has never been easier!</div>
+                    <div className="sq-text sq-text__lg">The latest from the team that brought you the mars rover.</div>
                 </div>
+
                 <div className="sq-landing--footer">
                     <p>🇨🇦 made with Canadian maple syrup</p>
                 </div>
