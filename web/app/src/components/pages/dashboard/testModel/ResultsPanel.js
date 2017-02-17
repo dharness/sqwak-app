@@ -19,7 +19,7 @@ class ResultsPanel extends Component {
         </div>
         <pre className="sq-json-results-panel--body json">
           <code ref={(e)=> {this.codeBlock = e; }}>
-          {JSON.stringify(this.props.jsonResponse, null, "  ")}
+          {(this.props.isLoading ? "" : JSON.stringify(this.props.jsonResponse, null, "  "))}
           </code>
         </pre>
       </div>

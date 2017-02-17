@@ -90,12 +90,14 @@ export const trainModel = ({userId, appId}) => {
 
 export const testModel = ({userId, appId, file}) => {
   return (dispatch) => {
+    dispatch({ type: 'TEST_MODEL_PENDING' });
     api.testModel(({userId, appId, file})).then(res => {
       dispatch({
         type: 'SET_JSON_RESPONSE',
         mlAppId: appId,
         jsonResponse: res
       });
+      dispatch({ type: 'TEST_MODEL_SUCCESS' });
     }).catch(err => {
       console.log('err');
       console.log(err);

@@ -11,11 +11,6 @@ class TestModel extends Component {
 
   constructor(props) {
     super(props);
-    this.panels = [
-      <RecordSoundPanel onSubmitTest={this.onSubmitTest.bind(this)}/>,
-      <UploadFilePanel onSubmitTest={this.onSubmitTest.bind(this)}/>
-
-    ];
     this.state = { selectedPanel: 1 };
   }
 
@@ -35,6 +30,13 @@ class TestModel extends Component {
     this.setState({selectedPanel: buttonIndex});
   }
 
+  renderSelectedPanel(index) {
+    return [
+      <RecordSoundPanel onSubmitTest={this.onSubmitTest.bind(this)} isLoading={this.props.testModelPending}/>,
+      <UploadFilePanel onSubmitTest={this.onSubmitTest.bind(this)} isLoading={this.props.testModelPending}/>
+    ][index]
+  }
+
   render () {
     return (
       <div className="sq-test-modal">
@@ -46,8 +48,8 @@ class TestModel extends Component {
             />
           </div>
           <div className="sq-test-modal--wrapper">
-            {this.panels[this.state.selectedPanel]}
-            <ResultsPanel jsonResponse={this.props.jsonResponse}/>
+            {this.renderSelectedPanel(this.state.selectedPanel)}
+            <ResultsPanel jsonResponse={this.props.jsonResponse} isLoading={this.props.testModelPending}/>
           </div>
       </div>
     )
@@ -56,7 +58,9 @@ class TestModel extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const currentMlApp = getCurrentMlApp(state);
+  let testModelPending = state.statuses.testModelPending;
   return {
+    testModelPending,
     jsonResponse: currentMlApp.jsonResponse || {},
     currentMlAppId: state.currentMlAppId,
     userId: state.user.id
