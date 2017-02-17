@@ -6,8 +6,8 @@ var RecordRTC = require('recordrtc');
 
 class RecordSoundPanel extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isRecording: false,
             countdown: "0",
@@ -81,12 +81,11 @@ class RecordSoundPanel extends Component {
             </div>
 
             <div className="sq-test-record-classify-wrapper">
-                <div className="sq-test-record-classify-text">
-                    Record the sound again
-                    <br/>
-                    or
-                </div>
-                <PlushButton buttonText={"Classify it"} colorClass="sq-button__blue"/>
+                <PlushButton
+                    buttonText={"Classify it"}
+                    colorClass="sq-button__blue"
+                    isLoading={this.props.isLoading}
+                />
             </div>
 
         </div>

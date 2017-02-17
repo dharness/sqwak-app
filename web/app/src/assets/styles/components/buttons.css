@@ -70,7 +70,6 @@
     box-shadow: none;
 }
 
-
 .sq-button:active {
     transform: translate(0px, 1px);
     box-shadow: none;

@@ -8,6 +8,7 @@ class UploadFilePanel extends Component {
     constructor(props) {
         super(props);
         this.state = { files: [] };
+        console.log(props)
     }
 
     submitForm() {
@@ -28,6 +29,7 @@ class UploadFilePanel extends Component {
                 <div className="sq-test-upload--footer">
                     <PlushButton 
                         disabled={this.state.files.length <= 0}
+                        isLoading={this.props.isLoading}
                         onClick={this.submitForm.bind(this)}
                         buttonText={"Classify it"} 
                         colorClass="sq-button__blue"/>
