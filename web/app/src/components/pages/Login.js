@@ -45,6 +45,7 @@ class LoginPage extends Component {
                     placeholder="password"/>
                 <div className="sq-login-page--footer">
                     <PlushButton
+                        isLoading={true}
                         buttonText={(this.props.isLoginPending ? "..." : this.props.action)} 
                         onClick={this.submitLogin.bind(this)}
                     />
