@@ -29,4 +29,5 @@ import './components/file-drop-zone.css';
 import './components/dropdown.css';
 import './components/create-class-form.css';
 import './components/json-results-panel.css';
+import './components/landing-preview-slider.css';
 

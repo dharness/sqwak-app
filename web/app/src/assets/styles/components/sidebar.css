@@ -12,6 +12,7 @@
 }
 
 .sq-side-bar--content {
+  margin-top: 10px;
   height: calc(100% - 90px - 80px);
   overflow-y: scroll;
   overflow-x: visible;
@@ -40,6 +41,7 @@
   margin: auto;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 .sq-side-bar--search-icon {
@@ -48,7 +50,7 @@
 }
 
 .sq-side-bar--search-field {
-  height: 20px;
+  height: 30px;
   width: 80%;
   border: none;
   color: var(--grey-1);

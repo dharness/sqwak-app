@@ -40,6 +40,14 @@ class SubNav extends Component {
     }
   }
 
+  renderIndicator() {
+    let className = 'sq-subnav--status-indicator';
+    
+    return (
+      <div className={className}></div> 
+    )
+  }
+
   onTrainButtonClicked() {
     this.setState({isTraining: true});
     setTimeout(()=> {
@@ -67,7 +75,7 @@ class SubNav extends Component {
                     </div>}
                 align={{ offset: [0, 0] }}
                 >
-                <div className="sq-subnav--status-indicator"></div> 
+                {this.renderIndicator()}
             </Tooltip>
             <div className="sq-subnav--app-name">
               {this.props.appName}              
@@ -77,17 +85,23 @@ class SubNav extends Component {
           <div className="sq-subnav--buttons">
             <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
               <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
-              Train
+              <div className="sq-subnav--button-text">
+                Train
+              </div>
             </div>
 
             <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
               <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
-              Test
+              <div className="sq-subnav--button-text">
+                Test
+              </div>
             </div>
             
             <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
               <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
-              Publish
+              <div className="sq-subnav--button-text">
+                Publish
+              </div>
             </div>
           </div>
         </div>
