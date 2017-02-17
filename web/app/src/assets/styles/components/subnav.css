@@ -93,6 +93,12 @@
 .sq-subnav--icon {
     padding-right: 15px;
 }
+.sq-subnav--button-text {
+    opacity: 0.85;
+}
+.sq-subnav--button-text:hover {
+    opacity: 1;
+}
 
 .sq-subnav--button:hover {
     filter: brightness(95%);
