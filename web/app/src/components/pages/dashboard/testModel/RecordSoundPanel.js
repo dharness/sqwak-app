@@ -26,6 +26,10 @@ class RecordSoundPanel extends Component {
         }, e => console.log(e));
     }
 
+    componentWillUnmount() {
+        delete this.recordRTC;
+    }
+
     onAudioDataAvailable(blob) {
         this.audioChunks.push(blob);
     }

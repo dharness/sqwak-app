@@ -7,6 +7,11 @@ import FullPageModal from './../shared/FullPageModal';
 
 class ModalManager extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {remountKey: 0}
+  }
+
   onClose() {
     if (this.props.statuses.areFilesUploading) {
         this.props.showWarning({
@@ -19,6 +24,9 @@ class ModalManager extends Component {
         search: ""
       })
       this.props.closeModal();
+      this.setState({
+        remountKey: ++this.state.remountKey
+      })
     }
   }
 
@@ -26,6 +34,7 @@ class ModalManager extends Component {
     return (
       <div>
         <FullPageModal
+           key={this.state.remountKey}
           isOpen={this.props.modal.component}
           onCloseEvent={this.onClose.bind(this)}
           component={this.props.modal.component}
