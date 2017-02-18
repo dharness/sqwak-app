@@ -26,6 +26,10 @@ class ClassCard extends Component {
         this.dropDownButton.blur();
         this.props.onDeleteClick(this.props.mlClass.id);
     }
+    
+    optionsClicked() {
+        this.dropDownButton.focus();
+    }
 
     render () {
         let {imgName} = this.props.mlClass;
@@ -37,6 +41,7 @@ class ClassCard extends Component {
             <div className="sq-class-card">
                 <div className="sq-class-card--header">
                     <button
+                        onClick={this.optionsClicked.bind(this)}
                         ref={(e)=>{this.dropDownButton = e;}}
                         className="sq-class-card--edit sq-text__sm__pale">
                         <img src={optionsImg} role="presentation"/>
