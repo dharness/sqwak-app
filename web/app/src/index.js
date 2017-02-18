@@ -10,10 +10,19 @@ import './assets/styles/index';
 
 const middleware = applyMiddleware(thunk);
 
-const store = createStore(
-  reducer, 
-  compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-);
+let store;
+if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+   store = createStore(
+    reducer, 
+    compose(middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  );
+} else {
+    store = createStore(
+    reducer, 
+    compose(middleware)
+  );
+}
+
 
 ReactDOM.render((
   <Provider store={store}>
