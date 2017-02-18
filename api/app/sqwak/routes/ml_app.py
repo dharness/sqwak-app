@@ -64,6 +64,7 @@ def train(user_id, app_id):
     pickled_model = model_manager.create_model(formated_ml_classes)
     ml_app.working_model = pickled_model;
     ml_app.is_published = False
+    ml_app.working_model_dirty = False
     db.session.commit()
 
     res = ml_app_schema.dump(ml_app).data

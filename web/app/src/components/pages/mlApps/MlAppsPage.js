@@ -53,7 +53,7 @@ class MlAppsPage extends Component {
                     appId={mlApp.id}
                     name={mlApp.app_name}
                     numClasses={mlApp.mlClasses.length}
-                    isPublished={mlApp.isPublished}
+                    isWorkingModelDirty={mlApp.workingModelDirty}
                     onDeleteClicked={(id) => {this.showConfirmDeleteWarning(mlApp.app_name, id)}}
                     />)
         });

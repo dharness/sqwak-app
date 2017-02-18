@@ -33,6 +33,7 @@ const mlApps = (state = {}, action) => {
     case 'MOVE_ML_CLASS': {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.workingModelDirty = true;
       const mlClassIndex = currentMlApp.mlClasses
         .findIndex(mlClass => mlClass.id === action.mlClassId);
       const mlClassToMove = currentMlApp.mlClasses[mlClassIndex];
@@ -43,6 +44,7 @@ const mlApps = (state = {}, action) => {
     case 'RENAME_ML_CLASS': {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
+      currentMlApp.workingModelDirty = true;
       currentMlApp.mlClasses.forEach((mlClass) => {
         if (mlClass.id === action.mlClassId) {
           mlClass.className = action.className
@@ -61,6 +63,7 @@ const mlApps = (state = {}, action) => {
         mlClass.isEdited = action.isEdited;
         return mlClass;
       });
+      currentMlApp.workingModelDirty = action.isEdited;
       nextState[action.mlAppId] = currentMlApp;
       return nextState
     }
