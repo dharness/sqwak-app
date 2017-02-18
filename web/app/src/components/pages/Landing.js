@@ -56,7 +56,7 @@ class LandingPage extends Component {
                 <div className="sq-landing--body">
                     <div className="sq-landing--body--main-header">
                         <div className="sq-text">Audio clasification has never been easier!</div>
-                        <div className="sq-text">The latest from the team that brought you the mars rover.</div>
+                        <div className="sq-text">The latest from the team that brought you the Mars rover.</div>
                     </div>
                     <div className="sq-landing--slider-wrapper">
                         <LandingPreviewSlider />
@@ -64,7 +64,7 @@ class LandingPage extends Component {
                     <div className="sq-landing--partners">
                         <div className="sq-landing--partners--header">
                             <div className="sq-text sq-text__xl">Partners and clients</div>
-                            <div className="sq-text sq-text__lg">we wish we had</div>
+                            <div className="sq-text sq-text__lg">that we wish we had</div>
                         </div>
                         <div className="sq-landing--partner-list">
                             <div className="sq-landing--partner-list-content">

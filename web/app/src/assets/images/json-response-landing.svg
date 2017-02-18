@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="307px" height="282px" viewBox="0 0 307 282" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="307" height="282" rx="5"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="307" height="282" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="0" y="44" width="307" height="238" rx="5"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="307" height="238" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-206.000000, -1001.000000)">
+            <g id="jsonresponse" transform="translate(206.000000, 1001.000000)">
+                <use id="Rectangle-16" stroke="#D3DCE6" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                <use id="Rectangle-16" stroke="#D3DCE6" mask="url(#mask-4)" stroke-width="2" fill="#F8FCFF" xlink:href="#path-3"></use>
+                <text id="JSON-Response" font-family="FaktSoftPro-Blond, Fakt Soft Pro" font-size="14" font-weight="normal" fill="#545454">
+                    <tspan x="22" y="28">JSON Response</tspan>
+                </text>
+                <text id="[-{-&quot;label&quot;:-“Snorti" font-family="FaktSoftPro-Normal, Fakt Soft Pro" font-size="14" font-weight="normal" letter-spacing="1.46999991">
+                    <tspan x="26" y="75" fill="#545454">[</tspan>
+                    <tspan x="26" y="93" fill="#545454">	{</tspan>
+                    <tspan x="26" y="111" fill="#545454">    		"label": </tspan>
+                    <tspan x="142.549999" y="111" fill="#4EC9F0">“Snorting”</tspan>
+                    <tspan x="221.537998" y="111" fill="#545454">,</tspan>
+                    <tspan x="26" y="129" fill="#545454">    		"probability": 22.4</tspan>
+                    <tspan x="26" y="147" fill="#545454">  	},</tspan>
+                    <tspan x="26" y="165" fill="#545454">  	</tspan>
+                    <tspan x="26" y="183" fill="#545454">	{</tspan>
+                    <tspan x="26" y="201" fill="#545454">    		"label": </tspan>
+                    <tspan x="142.549999" y="201" fill="#4EC9F0">“Sqwaking”</tspan>
+                    <tspan x="227.977998" y="201" fill="#545454">,</tspan>
+                    <tspan x="26" y="219" fill="#545454">    		"probability": 77.6</tspan>
+                    <tspan x="26" y="237" fill="#545454">  	}</tspan>
+                    <tspan x="26" y="255" fill="#545454">]</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

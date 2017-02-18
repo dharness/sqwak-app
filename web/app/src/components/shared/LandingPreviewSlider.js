@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import fileUploadImg from './../../assets/images/file-upload-landing.svg'
 import trainModelImg from './../../assets/images/train-model-landing.svg'
+import jsonResponseImg from './../../assets/images/json-response-landing.svg'
 
 class LandingPreviewSldier extends Component {
 
@@ -20,7 +21,7 @@ class LandingPreviewSldier extends Component {
     }, {
       cardTitle: 'Get results right away!',
       cardBody: 'Test your model with different sounds, and when you\'re ready, publish your app. Now you can classify sounds from anywhere just by sending a POST request to the URL we provide.',
-      cardImg: trainModelImg
+      cardImg: jsonResponseImg
     }]
   }
 

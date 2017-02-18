@@ -16,7 +16,7 @@
     cursor: pointer;
     text-decoration: none;
     color: var(--font-color-primary-dark);
-    padding: 7px 22px;
+    padding: 7px 26px;
     border: 1px solid #9FDED7;
     border-radius: 5px;
 }
@@ -195,7 +195,6 @@
     height: 60px;
     align-self: flex-start;
     margin-bottom: 20px;
-    transform: rotateZ(10deg);
 }
 
 .sq-landing--footer-sqwak-description {
