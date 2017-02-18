@@ -41,7 +41,7 @@ class SubNav extends Component {
   }
 
   renderIndicator() {
-    let className = 'sq-subnav--status-indicator';
+    let className = 'sq-subnav--status-indicator' + (this.props.modelIsEdited ? "" : " published");
     
     return (
       <div className={className}></div> 
@@ -64,14 +64,14 @@ class SubNav extends Component {
         <div className="sq-subnav--content">
           <div className="sq-subnav-left-wrapper">
             <Tooltip
-                overlayClassName={"sq-tooltip-overlay" + (true ? "" : " trained")}
+                overlayClassName={"sq-tooltip-overlay" + (this.props.modelIsEdited ? "" : " trained")}
                 placement="top"
                 mouseEnterDelay={0}
                 mouseLeaveDelay={0.1}
                 overlay={
                     <div
-                        className={"sq-subnav--status-tooltip" + (true ? "" : " trained")}>
-                        {true ? "Model edited" : "All trained!"}
+                        className={"sq-subnav--status-tooltip" + (this.props.modelIsEdited ? "" : " trained")}>
+                        {this.props.modelIsEdited ? "Model edited" : "All trained!"}
                     </div>}
                 align={{ offset: [0, 0] }}
                 >

@@ -18,6 +18,7 @@ export const loadApp = (userId, appId) => {
             }
         });
         mlApp.isPublished = mlApp.is_published;
+        mlApp.workingModelDirty = mlApp.working_model_dirty;
         delete mlApp.is_published
         delete mlApp.ml_classes
         dispatch({
@@ -36,6 +37,7 @@ export const loadApps = (userId) => {
         mlApps.forEach(mlApp => {
             mlApp.mlClasses = mlApp.ml_classes;
             mlApp.isPublished = mlApp.is_published;
+            mlApp.workingModelDirty = mlApp.working_model_dirty;
             delete mlApp.is_published;
             delete mlApp.ml_classes;
             dispatch({
@@ -52,6 +54,7 @@ export const addApp = ({userId, appName}) => {
   return (dispatch) => {
     api.createApp({userId, appName}).then(mlApp => {
       mlApp.mlClasses = mlApp.ml_classes;
+      mlApp.workingModelDirty = mlApp.working_model_dirty;
       delete mlApp.ml_classes;
       dispatch({
           type: 'ADD_APP',
@@ -90,12 +93,14 @@ export const trainModel = ({userId, appId}) => {
 
 export const testModel = ({userId, appId, file}) => {
   return (dispatch) => {
+    dispatch({ type: 'TEST_MODEL_PENDING' });
     api.testModel(({userId, appId, file})).then(res => {
       dispatch({
         type: 'SET_JSON_RESPONSE',
         mlAppId: appId,
         jsonResponse: res
       });
+      dispatch({ type: 'TEST_MODEL_SUCCESS' });
     }).catch(err => {
       console.log('err');
       console.log(err);

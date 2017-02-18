@@ -19,6 +19,7 @@ class MlApp(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     query_url = db.Column(db.String)
     working_model = db.Column(db.String)
+    working_model_dirty = db.Column(db.Boolean, default=True)
     published_model = db.Column(db.String)
     is_published = db.Column(db.Boolean, nullable=False, default=False)
     ml_classes = db.relationship('MlClass',

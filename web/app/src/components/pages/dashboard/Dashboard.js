@@ -65,6 +65,7 @@ class DashboardPage extends Component {
                     />
                     <div className="sq-dashboard--workspace">
                         <SubNav 
+                            modelIsEdited={this.props.currentMlApp.workingModelDirty}
                             appName={this.props.currentMlApp.app_name} 
                             openModal={this.props.location.query.modal}/>
                         <ModelView
