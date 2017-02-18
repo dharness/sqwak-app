@@ -135,7 +135,7 @@ class LandingPage extends Component {
                         <p> 
                             Privacy Policy & Terms of Service 
                             <br/>
-                            🇨🇦 made with Canadian maple syrup
+                            🇨🇦 Made with Canadian maple syrup
                         </p>
                             
                     </div>
