@@ -185,6 +185,7 @@
 
 .sq-landing--footer-header {
     padding-bottom: 20px;
+    letter-spacing: 1px;
 }
 .sq-landing--footer-sqwak {
     display: flex;
@@ -192,7 +193,7 @@
 }
 
 .sq-landing--footer-sqwak img {
-    height: 60px;
+    height: 35px;
     align-self: flex-start;
     margin-bottom: 20px;
 }
@@ -273,6 +274,9 @@
     margin-bottom: 30px;
 }
 
+.sq-landing--footer-kots a:hover {
+    color: var(--blue-1);
+}
 .sq-landing--footer-footer {
     display: flex;
     justify-content: space-between;
