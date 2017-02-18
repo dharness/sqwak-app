@@ -25,7 +25,7 @@ class AppPreviewCard extends Component {
                     <div className="sq-text__pale">
                         {this.props.numClasses} {pluralize('class', this.props.numClasses)}
                     </div>
-                    <div className="sq-text__pale">300 sounds</div>
+                    <div className="sq-text__pale">{this.props.numSamples} {pluralize('sound', this.props.numSamples)}</div>
                 </div>
             </div>
         )

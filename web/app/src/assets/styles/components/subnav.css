@@ -90,6 +90,16 @@
     cursor: pointer;
 }
 
+.sq-subnav--button.disabled, .sq-subnav--button.disabled:hover {
+    opacity: 0.5;
+    filter: none;
+    cursor: default;
+}
+
+.sq-subnav--button.disabled:hover .sq-subnav--button-text {
+    opacity: 0.85;
+}
+
 .sq-subnav--icon {
     padding-right: 15px;
 }

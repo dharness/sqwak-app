@@ -14,6 +14,9 @@ class MlAppSchema(ma.ModelSchema):
     class Meta:
         model = MlApp
 
+    def num_samples(self, obj):
+        return 100
+
 ml_app_schema = MlAppSchema()
 ml_apps_schema = MlAppSchema(many=True)
 
