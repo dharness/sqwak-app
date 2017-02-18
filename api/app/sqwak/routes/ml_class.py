@@ -66,6 +66,7 @@ def ml_class(user_id, app_id, class_id):
             ml_class.class_name = class_name
             ml_class.package_name = str(app_id) + "." + class_name
             ml_class.is_edited = True
+            ml_app.working_model_dirty = True
             if (ml_class.in_model):
                 ml_app.is_published = False
             db.session.add(ml_class)
@@ -73,6 +74,7 @@ def ml_class(user_id, app_id, class_id):
             ml_class.in_model = json_data['in_model']
             ml_class.is_edited = True
             ml_app.is_published = False
+            ml_app.working_model_dirty = True
             db.session.add(ml_class)
         db.session.commit()
         return ml_class_schema.jsonify(ml_class)

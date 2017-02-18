@@ -8,9 +8,9 @@ class AppPreviewCard extends Component {
             <div className="sq-app-preview-card" onClick={this.props.onCardSelected}>
                 <div className="sq-app-preview-card--header">
                     <div className="sq-app-preview-card--status">
-                        <div className={"sq-app-preview-card--status-indicator" + (this.props.isPublished ? " published" : " unpublished")}></div>
+                        <div className={"sq-app-preview-card--status-indicator" + (this.props.isWorkingModelDirty ? " unpublished" : " published")}></div>
                         <div className="sq-app-preview-card--status-message sq-text__pale">
-                            {this.props.isPublished ? "pubished" : "edited"}
+                            {this.props.isWorkingModelDirty ? "edited" : "pubished"}
                         </div>
                     </div>
                     <div className="sq-app-preview-card--delete" onClick={event => {
