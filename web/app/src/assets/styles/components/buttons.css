@@ -35,6 +35,14 @@
     background-color: var(--green-3);
 }
 
+.sq-button__red {
+    background-color: var(--red-2);
+}
+
+.sq-button__red:hover {
+    background-color: var(--red-1);
+}
+
 .sq-button__blue {
     background-color: var(--blue-1);
 }

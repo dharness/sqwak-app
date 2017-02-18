@@ -4,6 +4,9 @@
 .sq-text__xl {
     font-size: 24px;
 }
+.sq-text__larger {
+    font-size: 20px;
+}
 
 .sq-text__lg {
     font-size: 16px;
@@ -15,6 +18,10 @@
 
 .sq-text__sm {
     font-size: 12px;
+}
+
+.sq-text__thick {
+    font-family: 'FaktSoft-Medium';
 }
 
 .sq-text__white {
