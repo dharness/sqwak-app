@@ -1,4 +1,5 @@
 import datetime
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.dialects import postgresql
 from flask_sqlalchemy import SQLAlchemy
 
@@ -26,6 +27,11 @@ class MlApp(db.Model):
         backref="ml_app", 
         cascade="all, delete-orphan",
         lazy='dynamic')
+
+    @hybrid_property
+    def num_samples(self):
+        row = db.session.execute("""SELECT COUNT(*) FROM (ml_app INNER JOIN ml_class ON (ml_app.id = ml_class.ml_app_id) INNER JOIN audio_sample ON (audio_sample.ml_class_id = ml_class.id)) WHERE ml_app.id = 2;""")
+        return row.fetchone()[0]
 
 class MlClass(db.Model):
     __tablename__ = 'ml_class'

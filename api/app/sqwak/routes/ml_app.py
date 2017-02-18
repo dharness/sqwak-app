@@ -1,6 +1,6 @@
 from flask import Blueprint, request, abort, jsonify, json, Response, make_response
 from werkzeug import secure_filename
-from sqwak.models import db, MlApp, User
+from sqwak.models import db, MlApp, User, AudioSample, MlClass
 from sqwak.schemas import ma, ml_app_schema, ml_apps_schema, ml_class_schema, ml_classes_schema, audio_samples_schema
 from sqwak.forms.MlApp import NewMlAppForm
 from sqwak.errors import InvalidUsage
@@ -29,7 +29,13 @@ def all_apps(user_id):
                 raise InvalidUsage(err, status_code=400)
     else:
         ml_apps = MlApp.query.filter_by(owner_id=user_id).all()
-        return ml_apps_schema.jsonify(ml_apps)
+        res = []
+        for ml_app in ml_apps:
+            num_samples = ml_app.num_samples
+            raw_ml_app = ml_app_schema.dump(ml_app).data
+            raw_ml_app['num_samples'] = num_samples
+            res.append(raw_ml_app)
+        return jsonify(res)
 
 @ml_app_controller.route("/<int:app_id>", methods=['GET', 'DELETE'])
 def one_app(user_id, app_id):

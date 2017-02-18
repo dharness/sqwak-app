@@ -19,8 +19,11 @@ export const loadApp = (userId, appId) => {
         });
         mlApp.isPublished = mlApp.is_published;
         mlApp.workingModelDirty = mlApp.working_model_dirty;
-        delete mlApp.is_published
-        delete mlApp.ml_classes
+        delete mlApp.is_published;
+        delete mlApp.ml_classes;
+        delete mlApp.working_model_dirty;
+        delete mlApp.working_model;
+        delete mlApp.published_model;
         dispatch({
             type: 'ADD_APP',
             mlApp,
@@ -38,8 +41,13 @@ export const loadApps = (userId) => {
             mlApp.mlClasses = mlApp.ml_classes;
             mlApp.isPublished = mlApp.is_published;
             mlApp.workingModelDirty = mlApp.working_model_dirty;
+            mlApp.numSamples = mlApp.num_samples;
             delete mlApp.is_published;
             delete mlApp.ml_classes;
+            delete mlApp.working_model_dirty;
+            delete mlApp.working_model;
+            delete mlApp.published_model;
+            delete mlApp.num_samples;
             dispatch({
                 type: 'ADD_APP',
                 mlApp,

@@ -57,8 +57,17 @@ class SubNav extends Component {
     let userId = this.props.userId;
     this.props.trainModel({userId, appId});
   }
+
+  handleNavButtonClick(clickable, fn) {
+    if (clickable) { fn.bind(this).call(); }
+  }
   
   render() {
+
+    let canTrain = this.props.modelIsEdited && (this.props.mlModel.mlClasses.length > 0);
+    let canTest = true;
+    let canPublish = true;
+
     return (
       <div className="sq-subnav">
         <div className="sq-subnav--content">
@@ -83,21 +92,27 @@ class SubNav extends Component {
           </div>
 
           <div className="sq-subnav--buttons">
-            <div className="sq-subnav--button" onClick={this.onTrainButtonClicked.bind(this)}>
+            <div
+              className={"sq-subnav--button" + (canTrain ? "" : " disabled")}
+              onClick={()=>{this.handleNavButtonClick(canTrain, this.onTrainButtonClicked)}}>
               <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
               <div className="sq-subnav--button-text">
                 Train
               </div>
             </div>
 
-            <div className="sq-subnav--button" onClick={this.openTestModal.bind(this)}>
+            <div
+              className={"sq-subnav--button" + (canTest ? "" : " disabled")}
+              onClick={()=>{this.handleNavButtonClick(canTest, this.openTestModal)}}>
               <img className="sq-subnav--icon" src={testIcon} role="presentation"/>
               <div className="sq-subnav--button-text">
                 Test
               </div>
             </div>
             
-            <div className="sq-subnav--button" onClick={this.openPublishModal.bind(this)}>
+            <div
+              className={"sq-subnav--button" + (canPublish ? "" : " disabled")}
+              onClick={()=>{this.handleNavButtonClick(canPublish, this.openPublishModal)}}>
               <img className="sq-subnav--icon" src={publishIcon} role="presentation"/>
               <div className="sq-subnav--button-text">
                 Publish
