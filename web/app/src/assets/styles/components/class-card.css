@@ -16,7 +16,7 @@
     padding: 2px 2px 2px 8px;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .sq-class-card--edit {
@@ -53,4 +53,9 @@
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.sq-class-card--num-samples {
+    text-align: center;
+    color: var(--grey-2);
 }
