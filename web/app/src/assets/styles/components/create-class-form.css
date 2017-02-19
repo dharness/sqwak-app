@@ -1,3 +1,10 @@
+.sq-create-class-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .sq-create-class-form--header {
   width: 350px;
   text-align: left;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
 import { createMlClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
@@ -10,6 +11,10 @@ import CreateClassForm from './CreateClassForm';
 class Sidebar extends Component {
 
   newClassButtonClicked() {
+    browserHistory.push({
+      pathname: browserHistory.getCurrentLocation().pathname,
+      search: '?modal=create-class'
+    });
     this.props.showModal((
       <CreateClassForm onSubmit={this.onSubmitCreateClassForm.bind(this)}/>
     ))
@@ -48,6 +53,14 @@ class Sidebar extends Component {
       appId: this.props.currentAppId,
       classId
     });
+  }
+  
+  componentDidMount() {
+    if(this.props.openModal === 'create-class') {
+      this.props.showModal((
+        <CreateClassForm onSubmit={this.onSubmitCreateClassForm.bind(this)}/>
+      ))
+    }
   }
 
   render() {

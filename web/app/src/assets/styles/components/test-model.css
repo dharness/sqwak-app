@@ -52,8 +52,10 @@
 }
 
 .sq-test-upload--footer {
+    width: 350px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin: auto;
 }
 
 .sq-test-modal {

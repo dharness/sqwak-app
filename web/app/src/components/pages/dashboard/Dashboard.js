@@ -62,6 +62,7 @@ class DashboardPage extends Component {
                         customMlClasses={this.props.customMlClasses}
                         premadeMlClasses={this.props.premadeClasses}
                         onEditCardSelected={this.onEditCardSelected.bind(this)}
+                        openModal={this.props.location.query.modal}
                     />
                     <div className="sq-dashboard--workspace">
                         <SubNav 

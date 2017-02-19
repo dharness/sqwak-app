@@ -30,4 +30,5 @@ import './components/dropdown.css';
 import './components/create-class-form.css';
 import './components/json-results-panel.css';
 import './components/landing-preview-slider.css';
+import './components/confirm-delete-form.css';
 

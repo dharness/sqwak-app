@@ -5,7 +5,7 @@
     transition: box-shadow .1s ease-in-out, transform .1s ease-in-out;
     cursor: pointer;
     height: 50px;
-    width: 130px;
+    padding: 0px 20px;
 }
 
 .sq-button.loading {
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 @keyframes spinner {

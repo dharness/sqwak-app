@@ -2,7 +2,8 @@ const defaultStatuses = {
   isFetchingApps: true,
   isLoginPending: false,
   areFilesUploading: false,
-  testModelPending: false
+  testModelPending: false,
+  removeAppPending: false
 };
 
 const statuses = (state = defaultStatuses, action) => {
@@ -53,6 +54,18 @@ const statuses = (state = defaultStatuses, action) => {
     case 'TEST_MODEL_SUCCESS': {
       return Object.assign({}, state, {
         testModelPending: false
+      });
+    }
+
+    case 'REMOVE_APP_PENDING': {
+      return Object.assign({}, state, {
+        removeAppPending: true
+      });
+    }
+
+    case 'REMOVE_APP_SUCCESS': {
+      return Object.assign({}, state, {
+        removeAppPending: false
       });
     }
 

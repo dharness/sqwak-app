@@ -76,11 +76,14 @@ export const addApp = ({userId, appName}) => {
 
 export const removeApp = ({userId, appId}) => {
   return (dispatch) => {
+    dispatch({ type: 'REMOVE_APP_PENDING' });
     api.deleteApp({userId, appId}).then(() => {
       dispatch({
         type: 'REMOVE_APP',
         id: appId
       });
+      dispatch({ type: 'REMOVE_APP_SUCCESS' });
+      dispatch({ type: 'CLOSE_MODAL' });
     });
   };
 }

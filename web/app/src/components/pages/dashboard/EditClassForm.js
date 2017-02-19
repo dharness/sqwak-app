@@ -38,7 +38,8 @@ class EditClassForm extends Component {
   render () {
     let canSubmit = this.state.dirty;
     return (
-      <div>
+      <div className="sq-create-class-form">
+        <div className="sq-create-class-form--contents">
           <div className="sq-create-class-form--header">
             <div className="sq-text sq-text__xl">Edit class</div>
             <input
@@ -58,6 +59,7 @@ class EditClassForm extends Component {
                   onClick={this.onSubmit.bind(this)}
                   buttonText={"Save Changes"} />
           </div>
+        </div>
       </div>
     )
   }
