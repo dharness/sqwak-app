@@ -14,10 +14,10 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    color: var(--grey-2);
+    color: var(--grey-1);
     text-decoration: none;
 }
 
 .sq-inner-nav--menu-item:hover {
-    color: var(--blue-1);
+    color: #3DC6F2;
 }

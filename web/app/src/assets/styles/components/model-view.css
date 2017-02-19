@@ -2,8 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
+  padding-left: 10px;
+}
+
+.sq-model-header {
+  padding-left: 40px;
+  padding-top: 20px;
+  color: #A8BECE;
 }
 
 .sq-model-view--card-wrapper {
-  margin: 30px;
+  margin: 20px 30px 30px 30px;
 }

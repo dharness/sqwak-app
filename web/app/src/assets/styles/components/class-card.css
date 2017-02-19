@@ -42,6 +42,7 @@
 
 .sq-class-card--icon img {
     user-drag: none; -moz-user-select: none; -webkit-user-drag: none;
+    height: 39px;
 }
 
 .sq-class-card--label {
@@ -58,4 +59,5 @@
 .sq-class-card--num-samples {
     text-align: center;
     color: var(--grey-2);
+    padding-bottom: 5px;
 }

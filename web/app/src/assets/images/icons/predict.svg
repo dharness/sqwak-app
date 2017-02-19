@@ -2,10 +2,23 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16.835px" height="24.75px" viewBox="10 -1.5 16.835 24.75" enable-background="new 10 -1.5 16.835 24.75"
-	 xml:space="preserve">
-<path fill="#53D0E5" d="M24.5,18.306c0,2.73-2.852,4.944-6,4.944l0,0c-3.151,0-6-2.214-6-4.944V2.5c0-3,12-3,12,0V18.306z"/>
-<path fill="#66E5F2" d="M24.5,17.306c0,2.73-2.516,4.944-5.5,4.944l0,0c-2.987,0-5.5-2.214-5.5-4.944V1.5c0-3,11-3,11,0V17.306z"/>
-<path fill="#82F1F4" d="M26.835,0.928c0,1.242-1.008,2.248-2.25,2.248H12.25C11.007,3.176,10,2.17,10,0.928v-0.18
-	C10-0.494,11.007-1.5,12.25-1.5h12.335c1.242,0,2.25,1.006,2.25,2.248V0.928z"/>
+	 width="21px" height="23px" viewBox="0 0 21 23" enable-background="new 0 0 21 23" xml:space="preserve">
+<title>train</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1">
+	<g id="new-app---multiple-classes-selected" transform="translate(-800.000000, -92.000000)">
+		<g id="train" transform="translate(801.000000, 92.000000)">
+			<path fill="#10D385" d="M17.063,7.523c2.416,1.328,2.255,5.024-0.108,6.44L4.286,21.557C1.918,22.976,0,21.896,0,19.13V4.725
+				c0-2.759,1.96-3.919,4.375-2.592L17.063,7.523z"/>
+		</g>
+	</g>
+</g>
+<g id="Page-1_1_">
+	<g id="new-app---multiple-classes-selected_1_" transform="translate(-800.000000, -92.000000)">
+		<g id="train_1_" transform="translate(801.000000, 92.000000)">
+			<path fill="#3ADE8D" d="M16.865,7.409c2.416,1.328,2.453,3.555,0.09,4.971L4.286,19.973C1.919,21.392,0,20.312,0,17.546V3.141
+				c0-2.759,1.96-3.919,4.375-2.592L16.865,7.409z"/>
+		</g>
+	</g>
+</g>
 </svg>

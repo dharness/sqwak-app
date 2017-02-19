@@ -16,17 +16,22 @@ class ModelView extends Component {
 
   render () {
     return (
-      <div className="sq-model-view">
-        {this.props.mlModel.mlClasses.map((mlClass, i) => {
-          return (
-            <div className="sq-model-view--card-wrapper" key={i}>
-                <ClassCard
-                    mlClass={mlClass}
-                    onClick={this.onCardSelected.bind(this)}
-                    onEditClick={this.props.onEditCardSelected}
-                />
-            </div>)
-        })}
+      <div>
+        <div className="sq-model-header">
+          Model Workspace
+        </div>
+        <div className="sq-model-view">
+          {this.props.mlModel.mlClasses.map((mlClass, i) => {
+            return (
+              <div className="sq-model-view--card-wrapper" key={i}>
+                  <ClassCard
+                      mlClass={mlClass}
+                      onClick={this.onCardSelected.bind(this)}
+                      onEditClick={this.props.onEditCardSelected}
+                  />
+              </div>)
+          })}
+        </div>
       </div>
     )
   }
