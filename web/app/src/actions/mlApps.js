@@ -14,7 +14,8 @@ export const loadApp = (userId, appId) => {
                 isEdited: mlClass.is_edited,
                 packageName: mlClass.package_name,
                 inModel: mlClass.in_model,
-                imgName: mlClass.img_name
+                imgName: mlClass.img_name,
+                numSamples: mlClass.audio_samples.length
             }
         });
         mlApp.isPublished = mlApp.is_published;

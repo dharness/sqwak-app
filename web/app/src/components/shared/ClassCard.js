@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'rc-tooltip/assets/bootstrap.css';
 import optionsImg from './../../assets/images/icons/options.svg';
+import pluralize from 'pluralize';
 
 
 class ClassCard extends Component {
@@ -57,6 +58,9 @@ class ClassCard extends Component {
                 </div>
                 <div className="sq-class-card--label sq-text__sm">
                     {this.props.mlClass.className}
+                </div>
+                <div className="sq-class-card--num-samples sq-text__sm">
+                    {this.props.mlClass.numSamples}  {pluralize('sample', this.props.mlClass.numSamples)}
                 </div>
             </div>
         )
