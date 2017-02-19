@@ -8,7 +8,8 @@ class CreateClassForm extends Component {
     super();
     this.state = {
       className: "",
-      files: []
+      files: [],
+      uploadProgress: -1
     }
   }
 
@@ -21,16 +22,21 @@ class CreateClassForm extends Component {
   }
 
   onSubmit() {
-    this.props.onSubmit({
-      files: this.state.files,
-      className: this.state.className
-    });
+    this.setState({uploadProgress: ++this.state.uploadProgress})
+    setInterval(()=> {
+      this.setState({uploadProgress: ++this.state.uploadProgress})
+    }, 100)
+    // this.props.onSubmit({
+    //   files: this.state.files,
+    //   className: this.state.className
+    // });
   }
 
   render () {
     let canSubmit = this.state.className.length > 0 && this.state.files.length > 0;
     return (
-      <div>
+      <div className="sq-create-class-form">
+        <div className="sq-create-class-form--contents">
           <div className="sq-create-class-form--header">
             <div className="sq-text sq-text__xl">Create a class</div>
             <input
@@ -42,14 +48,16 @@ class CreateClassForm extends Component {
           />
           </div>
           <FileDropZone
+              uploadProgress={this.state.uploadProgress}
               onFilesChanged={this.onFilesChanged.bind(this)}
           />
           <div className="sq-test-upload--footer">
               <PlushButton 
                   disabled={!canSubmit}
                   onClick={this.onSubmit.bind(this)}
-                  buttonText={"Classify it"} />
+                  buttonText={"Create class"} />
           </div>
+        </div>
       </div>
     )
   }

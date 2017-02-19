@@ -3,17 +3,16 @@
     width: 100%;
     height: 100%;
     background: white;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     display: block;
     transition: opacity 250ms;
 }
 
 .sq-full-page-modal--header {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 40px;
-    margin-top: 35px;
+    position: fixed;
+    right: 40px;
+    top: 30px;
 }
 
 .sq-full-page-modal--cancel-button {

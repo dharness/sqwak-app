@@ -5,6 +5,7 @@ import Nav from './../../shared/Nav';
 import PlushButton from './../../shared/PlushButton';
 import AppPreviewCard from './AppPreviewCard';
 import NewAppForm from './NewAppForm';
+import ConfirmDelete from './ConfirmDelete';
 import * as actions from './../../../actions';
 import { loadApps, removeApp, addApp } from './../../../actions/mlApps';
 
@@ -28,11 +29,9 @@ class MlAppsPage extends Component {
 
     showConfirmDeleteWarning(appName, id) {
         const userId = this.props.params.userId;
-        const warning = {
-            message: `Are you sure you want to delete the app ${appName}?`,
-            onConfirm: () => {this.props.removeApp({userId, appId: id});}
-        }
-        this.props.showWarning(warning);
+        this.props.showModal(( <ConfirmDelete onSubmit={()=> {
+            this.props.removeApp({userId, appId: id})
+        }} removeAppPending={this.props.removeAppPending}/>));
     }
 
     showCreateAppModal() {
@@ -89,10 +88,13 @@ class MlAppsPage extends Component {
 const mapStateToProps = (state, ownProps) => {
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const isFetchingApps = state.statuses.isFetchingApps;
+    const removeAppPending = state.statuses.removeAppPending;
+    console.log(removeAppPending)
 
     return {
         mlApps,
-        isFetchingApps
+        isFetchingApps,
+        removeAppPending
     };
 }
 

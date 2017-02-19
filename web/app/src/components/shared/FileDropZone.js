@@ -25,13 +25,32 @@ class FileDropZone extends Component {
     });
   }
 
+  renderFooter() {
+    if (this.props.uploadProgress < 0) {
+      return (<div style={{display: (this.state.files.length <= 0) ? "none" : "block"}}
+        className="sq-class-upload-form--upload-message sq-text__lg">
+        {this.state.files.length} file ready to upload!
+      </div>)
+    } else {
+      return (
+        <div className="sq-class-upload-form--progress-bar">
+          <div
+            style={{
+              width: `${Math.min(this.props.uploadProgress, 100)}%`
+            }}
+            className="sq-class-upload-form--progress-bar-filling"></div>
+        </div>
+      )
+    }
+  }
+
   render () {
     return (
       <div className="sq-file-drop-zone">
           <Dropzone
             onDrop={(files)=> {this.onFilesChanged(null, files)}} 
             ref="dropzone" 
-            className="sq-class-upload-form--drop-zone"
+            className={"sq-class-upload-form--drop-zone" + (this.state.files.length > 0 ? " active" : "")}
             activeClassName="sq-class-upload-form--drop-zone active">
 
             <img src={fileUploadImg} role="presentation" className="sq-class-upload-form--icon"/>
@@ -42,11 +61,7 @@ class FileDropZone extends Component {
                 onClick={this.browse.bind(this)}
                 className="sq-class-upload-form--underline-text sq-text"> browse</pre>
             </div>
-            <div
-                style={{display: (this.state.files.length <= 0) ? "none" : "block"}}
-              className="sq-class-upload-form--upload-message sq-text__lg">
-              {this.state.files.length} file ready to upload!
-            </div>
+            {this.renderFooter()}
           </Dropzone>
       </div>
     )
