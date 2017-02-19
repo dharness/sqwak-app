@@ -19,8 +19,12 @@ class SubNav extends Component {
   }
 
   openPublishModal() {
+    browserHistory.push({
+      pathname: browserHistory.getCurrentLocation().pathname,
+      search: '?modal=publish'
+    });
     this.props.showModal((
-      <PublishForm />
+      <PublishForm mlAppName={this.props.appName}/>
     ))
   }
 
@@ -37,6 +41,8 @@ class SubNav extends Component {
   componentDidMount() {
     if (this.props.openModal === "test") {
       this.openTestModal();
+    } else if (this.props.openModal === "publish") {
+      this.openPublishModal();
     }
   }
 

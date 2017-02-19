@@ -22,7 +22,7 @@ class MlApp(db.Model):
     working_model = db.Column(db.String)
     working_model_dirty = db.Column(db.Boolean, default=True)
     published_model = db.Column(db.String)
-    is_published = db.Column(db.Boolean, nullable=False, default=False)
+    last_published = db.Column(db.DateTime)
     ml_classes = db.relationship('MlClass',
         backref="ml_app", 
         cascade="all, delete-orphan",
