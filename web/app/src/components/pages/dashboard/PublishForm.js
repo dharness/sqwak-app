@@ -19,13 +19,23 @@ class PublishForm extends Component {
     });
   }
 
+  renderFormattedDate() {
+    if (this.props.lastPublished) {
+      let parts = this.props.lastPublished.split('-')
+      let year = parts[0];
+      let month = parts[1];
+      let day = parts[2].split('T')[0];
+      return [year, month, day].join('/')
+    }
+  }
+
   render() {
     return (
       <div className="sq-publish-form">
         <div className="sq-publish-form--contents">
           <div className="sq-publish-form--header">
             <div className="sq-text__xl sq-publish-form--title">Publish App</div>
-            <div className="sq-text__sm__pale sq-publish-form--status">Status: published<br/> 03/04/2017</div>
+            <div className="sq-text__sm__pale sq-publish-form--status">Status: published<br/> {this.renderFormattedDate()}</div>
           </div>
 
           <div className="sq-text__md sq-publish-form--description">
@@ -74,7 +84,7 @@ class PublishForm extends Component {
           </div>
 
           <div className="sq-publish-form--button">
-            <PlushButton buttonText="Publish app" onClick={this.onPublishModel.bind(this)} isLoading={true}/>
+            <PlushButton buttonText="Publish app" onClick={this.onPublishModel.bind(this)} isLoading={this.props.isLoading}/>
           </div>
 
         </div>
@@ -84,6 +94,7 @@ class PublishForm extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+  isLoading: state.statuses.publishModelPending,
   currentMlAppId: state.currentMlAppId,
   userId: state.user.id
 })

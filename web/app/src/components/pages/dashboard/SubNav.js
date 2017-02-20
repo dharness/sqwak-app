@@ -7,6 +7,7 @@ import PublishForm from './PublishForm.js'
 import TestModel from './testModel/TestModel.js'
 import * as actions from './../../../actions';
 import { trainModel } from './../../../actions/mlApps';
+import getCurrentMlApp from './../../../selectors/currentMlApp';
 import { connect } from 'react-redux';
 import Tooltip from 'rc-tooltip';
 
@@ -24,7 +25,7 @@ class SubNav extends Component {
       search: '?modal=publish'
     });
     this.props.showModal((
-      <PublishForm mlAppName={this.props.appName}/>
+      <PublishForm mlAppName={this.props.appName} lastPublished={this.props.currentMlApp.lastPublished}/>
     ))
   }
 
@@ -132,10 +133,15 @@ class SubNav extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  currentMlAppId: state.currentMlAppId,
-  userId: state.user.id
-})
+const mapStateToProps = (state, ownProps) => {
+  const currentMlApp = getCurrentMlApp(state);
+
+  return {
+    currentMlApp,
+    currentMlAppId: state.currentMlAppId,
+    userId: state.user.id
+  }
+}
 
 export default connect(
   mapStateToProps,

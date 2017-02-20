@@ -69,7 +69,6 @@ def train(user_id, app_id):
 
     pickled_model = model_manager.create_model(formated_ml_classes)
     ml_app.working_model = pickled_model;
-    ml_app.is_published = False
     ml_app.working_model_dirty = False
     db.session.commit()
 
@@ -126,7 +125,7 @@ def publish(user_id, app_id):
     ml_app = MlApp.query.filter_by(owner_id=user_id, id=app_id).first_or_404()
     if (ml_app.working_model):
         ml_app.published_model = ml_app.working_model
-        ml_app.is_published = True
+        ml_app.last_published = 'now'
         db.session.commit()
 
     return ml_app_schema.jsonify(ml_app)
