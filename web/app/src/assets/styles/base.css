@@ -42,6 +42,7 @@ html, body, div[data-reactroot], #root {
     margin: 0;
     font-family: 'FaktSoft';
     display: none;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 

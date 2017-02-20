@@ -18,9 +18,9 @@ export const loadApp = (userId, appId) => {
                 numSamples: mlClass.audio_samples.length
             }
         });
-        mlApp.isPublished = mlApp.is_published;
+        mlApp.lastPublished = mlApp.last_published;
         mlApp.workingModelDirty = mlApp.working_model_dirty;
-        delete mlApp.is_published;
+        delete mlApp.last_published;
         delete mlApp.ml_classes;
         delete mlApp.working_model_dirty;
         delete mlApp.working_model;
@@ -40,10 +40,10 @@ export const loadApps = (userId) => {
     api.fetchApps(userId).then(mlApps => {
         mlApps.forEach(mlApp => {
             mlApp.mlClasses = mlApp.ml_classes;
-            mlApp.isPublished = mlApp.is_published;
+            mlApp.lastPublished = mlApp.last_published;
             mlApp.workingModelDirty = mlApp.working_model_dirty;
             mlApp.numSamples = mlApp.num_samples;
-            delete mlApp.is_published;
+            delete mlApp.last_published;
             delete mlApp.ml_classes;
             delete mlApp.working_model_dirty;
             delete mlApp.working_model;
@@ -122,9 +122,10 @@ export const testModel = ({userId, appId, file}) => {
 
 export const publishModel = ({userId, appId}) => {
   return (dispatch) => {
+    dispatch({ type: 'PUBLISH_MODEL_PENDING' });
     api.publishModel(({userId, appId})).then((res) => {
       console.log(res);
-      dispatch({ type: 'CLOSE_MODAL' });
+      dispatch({ type: 'PUBLISH_MODEL_SUCCESS' });
     }).catch(err => {
       console.log('err');
       console.log(err);

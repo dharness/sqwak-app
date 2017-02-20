@@ -90,7 +90,7 @@ function testModel({userId, appId, file}) {
     const token = auth.getToken();
     const form = new FormData();
     form.append('file', file, file.name);
-    return axios.post(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/predict`, form)
+    return axios.post(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/test`, form)
         .then((res) => res.data)
         .catch((error) => {
             console.log(error);

@@ -3,7 +3,8 @@ const defaultStatuses = {
   isLoginPending: false,
   areFilesUploading: false,
   testModelPending: false,
-  removeAppPending: false
+  removeAppPending: false,
+  publishModelPending: false
 };
 
 const statuses = (state = defaultStatuses, action) => {
@@ -54,6 +55,18 @@ const statuses = (state = defaultStatuses, action) => {
     case 'TEST_MODEL_SUCCESS': {
       return Object.assign({}, state, {
         testModelPending: false
+      });
+    }
+
+    case 'PUBLISH_MODEL_PENDING': {
+      return Object.assign({}, state, {
+        publishModelPending: true
+      });
+    }
+
+    case 'PUBLISH_MODEL_SUCCESS': {
+      return Object.assign({}, state, {
+        publishModelPending: false
       });
     }
 
