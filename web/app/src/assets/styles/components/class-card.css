@@ -56,7 +56,12 @@
     margin-right: auto;
 }
 
+.sq-class-card:hover .sq-class-card--num-samples {
+    visibility: visible;
+}
+
 .sq-class-card--num-samples {
+    visibility: hidden;
     text-align: center;
     color: var(--grey-2);
     padding-bottom: 5px;

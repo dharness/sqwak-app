@@ -13,7 +13,8 @@ export const loadPremadeClasses = () => {
           id: premadeClass.id,
           isEdited: premadeClass.is_edited,
           packageName: premadeClass.package_name,
-          inModel: premadeClass.in_model
+          inModel: premadeClass.in_model,
+          numSamples: premadeClass.audio_samples.length,
         };
         return formattedPremadeClass;
       })
