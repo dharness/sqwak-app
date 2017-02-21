@@ -21,13 +21,7 @@ CLASS_IMG_COLOURS = ["blue", "green", "purple", "red", "teal", "yellow"]
 @ml_class_controller.route("", methods=['GET', 'POST'])
 def ml_class_collection(user_id, app_id):
     if request.method == 'POST':
-        f = request.files['file']
-        print(request.form)
         class_name = request.form['class_name']
-        
-        path = '/usr/src/app/sqwak/uploads/' + secure_filename(f.filename)
-        f.save(path)
-        features = feature_extractor.extract(path)
         img_name = random.choice(CLASS_IMG_COLOURS) + "-" + random.choice(CLASS_IMG_SHAPES)
 
         ml_class = MlClass(
@@ -35,15 +29,8 @@ def ml_class_collection(user_id, app_id):
             class_name=class_name,
             img_name=img_name,
             package_name=str(app_id) + "." + class_name)
+
         db.session.add(ml_class)
-        db.session.flush()
-        audio_sample = AudioSample(
-            ml_class_id=ml_class.id,
-            label=slugify(class_name),
-            features=features,
-            extraction_method="urban_sound_1"
-        )
-        db.session.add(audio_sample)
         db.session.commit()
         return ml_class_schema.jsonify(ml_class)
 

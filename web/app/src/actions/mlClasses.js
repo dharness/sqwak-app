@@ -2,27 +2,57 @@ import * as api from './../services/api';
 
 
 export const createMlClass = (mlClassData) => {
+  let { userId, appId, className, files } = mlClassData;
   return (dispatch) => {
     dispatch({ type: 'FILES_UPLOADING' });
-    api.createClass(mlClassData).then( mlClass => {
-      const formattedMlClass = {
-        className: mlClass.class_name,
-        createdAt: mlClass.created_at,
-        updatedAt: mlClass.updated_at,
-        id: mlClass.id,
-        isEdited: mlClass.is_edited,
-        packageName: mlClass.package_name,
-        inModel: mlClass.in_model,
-        imgName: mlClass.img_name
-      };
-
-      dispatch({
-        type: 'ADD_ML_CLASS',
-        mlAppId: mlClassData.appId,
-        mlClass: formattedMlClass
+    dispatch({ type: 'UPLOAD_PROGESS', progress: 0 });
+    api.createClass({ userId, appId, className}).then( mlClass => {
+      let filesUploaded = 0;
+      let reqs = files.map(file => {
+        return api.addSampleToClass({ userId, appId, classId: mlClass.id, file }).then(res => {
+          let progress = ++filesUploaded /files.length;
+          dispatch({
+            type: 'UPLOAD_PROGESS',
+            progress
+          });
+          return res;
+        });
       });
-      dispatch({ type: 'FILES_UPLOADED' });
-      dispatch({ type: 'CLOSE_MODAL' });
+
+      Promise.all(reqs).then(res => {
+        const formattedMlClass = {
+          className: mlClass.class_name,
+          createdAt: mlClass.created_at,
+          updatedAt: mlClass.updated_at,
+          id: mlClass.id,
+          isEdited: mlClass.is_edited,
+          packageName: mlClass.package_name,
+          inModel: mlClass.in_model,
+          imgName: mlClass.img_name,
+          numSamples: res.pop().audio_samples.length
+        };
+        dispatch({
+          type: 'ADD_ML_CLASS',
+          mlAppId: appId,
+          mlClass: formattedMlClass
+        });
+        dispatch({ type: 'FILES_UPLOADED' });
+        dispatch({ type: 'CLOSE_MODAL' });
+        dispatch({
+          type: 'UPLOAD_PROGESS',
+          progress: -1
+        });
+      })
+
+    });
+  };
+}
+
+export const addSampleToClass = ({ userId, appId, classId, file }) => {
+  return (dispatch) => {
+    dispatch({ type: 'ADD_SAMPLE_PENDING' });
+    api.addSampleToClass({ userId, appId, classId, file }).then( res => {
+      console.log(res)
     });
   };
 }
@@ -39,18 +69,38 @@ export const moveMlClass = ({userId, appId, classId, to, from}) => {
   };
 }
 
-export const renameMlClass = ({userId, appId, classId, className}) => {
+export const updateMlClass = ({userId, appId, classId, className, files}) => {
   return (dispatch) => {
-    dispatch({
-      type:'RENAME_ML_CLASS',
-      mlClassId: classId,
-      mlAppId: appId,
-      className: className,
-      isEdited: true
+    if (files.length > 0) {
+      dispatch({ type: 'UPLOAD_PROGESS', progress: 0 });
+    }
+
+    
+    let filesUploaded = 0;
+    let reqs = files.map(file => {
+      return api.addSampleToClass({ userId, appId, classId, file }).then(res => {
+        let progress = ++filesUploaded /files.length;
+        dispatch({
+          type: 'UPLOAD_PROGESS',
+          progress
+        });
+        return res;
+      });
     });
-    api.renameClass({userId, appId, classId, className}).then( () => {
+    reqs.push(api.renameClass({userId, appId, classId, className}))
+    Promise.all(reqs).then(res => {
+      let numSamples = Math.max.apply(Math, res.map(r => r.audio_samples.length));
+      dispatch({
+        type:'UPDATE_ML_CLASS',
+        mlClassId: classId,
+        mlAppId: appId,
+        className: className,
+        isEdited: true,
+        numSamples
+      });
       dispatch({ type: 'CLOSE_MODAL' });
-    });
+      dispatch({ type: 'UPLOAD_PROGESS', progress: -1 });
+    })
   };
 }
 

@@ -2,12 +2,14 @@ import numpy as np
 import librosa
 import os
 import scipy.io.wavfile
+import soundfile as sf
 import scipy.stats
 from math import floor
 
 
 def extract(file_name):
-    sample_rate, amps = scipy.io.wavfile.read(file_name)
+    amps, sample_rate = sf.read(file_name)
+
     if amps.ndim is 2:
         amps = amps[:,0]
     else:

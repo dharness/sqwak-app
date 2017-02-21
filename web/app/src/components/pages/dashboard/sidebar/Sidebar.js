@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
-import { createMlClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
+import { createMlClass, addSampleToClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
 import SidebarPanel from './SidebarPanel';
 import CreateClassForm from './CreateClassForm';
 
@@ -30,12 +30,11 @@ class Sidebar extends Component {
   }
 
   onSubmitCreateClassForm({className, files}) {
-    const file = files[0];
     const mlClassData = {
       appId: this.props.currentMlAppId,
       userId: this.props.userId,
       className,
-      file
+      files
     };
     this.props.createMlClass(mlClassData);
   }
@@ -105,5 +104,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { ...actions, moveMlClass, copyPremadeClass, deleteMlClass, createMlClass}
+  { ...actions, moveMlClass, copyPremadeClass, deleteMlClass, createMlClass, addSampleToClass }
 )(Sidebar)
