@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import FileDropZone from './../../../shared/FileDropZone';
 import PlushButton from './../../../shared/PlushButton';
 
@@ -8,8 +9,7 @@ class CreateClassForm extends Component {
     super();
     this.state = {
       className: "",
-      files: [],
-      uploadProgress: -1
+      files: []
     }
   }
 
@@ -22,14 +22,10 @@ class CreateClassForm extends Component {
   }
 
   onSubmit() {
-    this.setState({uploadProgress: ++this.state.uploadProgress})
-    setInterval(()=> {
-      this.setState({uploadProgress: ++this.state.uploadProgress})
-    }, 100)
-    // this.props.onSubmit({
-    //   files: this.state.files,
-    //   className: this.state.className
-    // });
+    this.props.onSubmit({
+      files: this.state.files,
+      className: this.state.className
+    });
   }
 
   render () {
@@ -48,11 +44,12 @@ class CreateClassForm extends Component {
           />
           </div>
           <FileDropZone
-              uploadProgress={this.state.uploadProgress}
+              uploadProgress={this.props.fileUploadProgress * 100}
               onFilesChanged={this.onFilesChanged.bind(this)}
           />
           <div className="sq-test-upload--footer">
-              <PlushButton 
+              <PlushButton
+                  isLoading={this.props.fileUploadProgress >= 0}
                   disabled={!canSubmit}
                   onClick={this.onSubmit.bind(this)}
                   buttonText={"Create class"} />
@@ -63,4 +60,12 @@ class CreateClassForm extends Component {
   }
 }
 
-export default CreateClassForm
+const mapStateToProps = (state, ownProps) => {
+  let { fileUploadProgress } = state.statuses;
+  return { fileUploadProgress }
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(CreateClassForm)

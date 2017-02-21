@@ -38,7 +38,10 @@ def not_found(error):
 
 @app.errorhandler(500)
 def not_found(error):
-    return make_response(jsonify({'error': 'Internal Server Error'}), 500)
+    return make_response(jsonify({
+        'error': 'Internal Server Error',
+        'message': str(error)
+        }), 500)
 
 @app.errorhandler(405)
 def not_found(error):

@@ -4,7 +4,8 @@ const defaultStatuses = {
   areFilesUploading: false,
   testModelPending: false,
   removeAppPending: false,
-  publishModelPending: false
+  publishModelPending: false,
+  fileUploadProgress: -1
 };
 
 const statuses = (state = defaultStatuses, action) => {
@@ -19,6 +20,12 @@ const statuses = (state = defaultStatuses, action) => {
     case 'FETCH_APPS_RESOLVED': {
       return Object.assign({}, state, {
         isFetchingApps: false
+      });
+    }
+
+    case 'UPLOAD_PROGESS': {
+      return Object.assign({}, state, {
+        fileUploadProgress: action.progress
       });
     }
 

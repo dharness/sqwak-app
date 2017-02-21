@@ -147,10 +147,20 @@ function fetchClasses(appId, userId) {
     .then((data) => data.json())
 }
 
-function createClass({userId, appId, className, file, imgName}) {
+function addSampleToClass({ userId, appId, classId, file }) {
     const token = auth.getToken();
     const form = new FormData();
     form.append('file', file, file.name);
+    return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class/${classId}/audio_sample`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+        body: form
+    }).then((data) => data.json())
+}
+
+function createClass({ userId, appId, className }) {
+    const token = auth.getToken();
+    const form = new FormData();
     form.set("class_name", className);
     return fetch(`${process.env.REACT_APP_API_URL}/user/${userId}/ml_app/${appId}/ml_class`, {
         method: 'POST',
@@ -210,6 +220,7 @@ export {
     trainModel,
     testModel,
     createClass,
+    addSampleToClass,
     renameClass,
     deleteClass,
     moveClass,
