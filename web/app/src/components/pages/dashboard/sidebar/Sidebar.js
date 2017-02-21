@@ -75,17 +75,6 @@ class Sidebar extends Component {
           </div>
           <div className="sq-sidebar--card-grid" onScroll={this.handleScroll.bind(this)}>
             {this.props.customMlClasses.map((classInfo, i) => {
-              if (i === (this.props.customMlClasses.length-1) && (this.props.customMlClasses.length%2) !== 0) {
-              return (
-                <div className="sq-sidebar--card-wrapper" key={i} style={{marginLeft: 25}}>
-                  <ClassCard
-                    mlClass={classInfo}
-                    onEditClick={this.props.onEditCardSelected}
-                    onMoveClick={this.onMoveClick.bind(this)}
-                    onDeleteClick={this.onDeleteCardClick.bind(this)}
-                  />
-                </div>)
-              }
               return (
                 <div className="sq-sidebar--card-wrapper" key={i}>
                   <ClassCard
