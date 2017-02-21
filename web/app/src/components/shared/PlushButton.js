@@ -27,11 +27,12 @@ class PlushButton extends Component {
     render () {
         let buttonColorClass = this.props.colorClass ? this.props.colorClass : "sq-button__green"
         let isLoading = this.state.isDelaying || this.props.isLoading;
+        let loadingText = this.props.loadingText || "Loading..."
         return (
             <button onClick={this.handleClick.bind(this)}
                 disabled={this.props.disabled || isLoading}
                 className={`sq-button ${buttonColorClass} sq-text__lg sq-text__white` + (isLoading ? " loading" : "")}>
-                <div className="sq-button--spinner">Loading...</div>
+                <div className="sq-button--spinner">{loadingText}</div>
                 {isLoading ? "" : this.props.buttonText}
             </button>
         )

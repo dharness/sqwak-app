@@ -5,7 +5,8 @@ const defaultStatuses = {
   testModelPending: false,
   removeAppPending: false,
   publishModelPending: false,
-  fileUploadProgress: -1
+  fileUploadProgress: -1,
+  premadeClassesCopying: {}
 };
 
 const statuses = (state = defaultStatuses, action) => {
@@ -86,6 +87,22 @@ const statuses = (state = defaultStatuses, action) => {
     case 'REMOVE_APP_SUCCESS': {
       return Object.assign({}, state, {
         removeAppPending: false
+      });
+    }
+
+    case 'COPY_PREMADE_CLASS_PENDING': {
+      const updates = {};
+      updates[action.classId] = true;
+      return Object.assign({}, state, {
+        premadeClassesCopying: Object.assign({}, state.premadeClassesCopying, updates)
+      });
+    }
+
+    case 'COPY_PREMADE_CLASS_SUCCESS': {
+      const updates = {};
+      updates[action.classId] = false;
+      return Object.assign({}, state, {
+        premadeClassesCopying: Object.assign({}, state.premadeClassesCopying, updates)
       });
     }
 
