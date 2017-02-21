@@ -1,6 +1,7 @@
 .sq-button-group--wrapper {
     display: flex;
     justify-content: center;
+    min-height: 40px;
 }
 
 .sq-button-group--button {

@@ -1,0 +1,100 @@
+.sq-explore-form {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sq-explore-form--contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.sq-explore-form--card-grid {
+  max-width: 600px;
+  width: 600px;
+  height: 500px;
+  margin: auto;
+}
+
+.sq-explore-form--card-wrapper {
+  height: auto;
+  flex: 0;
+}
+
+.sq-class-card__explore {
+  box-sizing: content-box;
+  margin: 15px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sq-class-card__explore:hover {
+  border: solid 1px var(--blue-2);
+}
+
+.sq-class-card__explore.loading .sq-class-card--num-samples,
+.sq-class-card__explore.loading .sq-class-card--label,
+.sq-class-card__explore.loading .sq-class-card--icon,
+.sq-class-card__explore:hover .sq-class-card--num-samples,
+.sq-class-card__explore:hover .sq-class-card--label,
+.sq-class-card__explore:hover .sq-class-card--icon {
+  display: none;
+}
+
+.sq-class-card__explore:hover .sq-class-card__explore--copy-button {
+  display: block;
+}
+
+.sq-class-card__explore .sq-class-card--num-samples {
+  visibility: visible;
+}
+
+.sq-class-card__explore--copy-button {
+  display: none;
+}
+
+.sq-class-card__explore--copy-button.loading {
+  display: block;
+}
+
+.sq-class-card__explore--copy-button button {
+  font-size: 14px;
+  padding: 10px 20px;
+  height: auto;
+}
+
+.sq-class-card__explore--copy-button button:disabled {
+  height: 40px;
+}
+
+.sq-explore-form--search-wrapper {
+  min-width: 600px;
+  margin: 30px auto;
+}
+
+.sq-explore-form--search-wrapper input {
+  width: 350px;
+}
+
+.sq-explore-form .react-scrollbar-default .-reactjs-scrollbar-thumb {
+  background: var(--blue-2);
+  width: 7px;
+  border-radius: 7px;
+}
+
+.sq-explore-form .react-scrollbar-default .-reactjs-scrollbar-track {
+  background: var(--blue-4);
+  width: 7px;
+}
+
+/*The Scrollbar Root*/
+.react-scrollbar-default {
+  width: 35%;
+  min-width: 300px;
+  max-height: 600px;
+  margin: auto;
+}

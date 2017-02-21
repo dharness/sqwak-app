@@ -106,6 +106,7 @@ export const updateMlClass = ({userId, appId, classId, className, files}) => {
 
 export const copyPremadeClass = ({ appId, classId }) => {
   return (dispatch) => {
+    dispatch({ type: 'COPY_PREMADE_CLASS_PENDING', classId});
     api.copyPremadeClass({ appId, classId }).then((mlClass) => {
       const formattedMlClass = {
         className: mlClass.class_name,
@@ -122,6 +123,7 @@ export const copyPremadeClass = ({ appId, classId }) => {
         mlAppId: appId,
         mlClass: formattedMlClass
       });
+      dispatch({ type: 'COPY_PREMADE_CLASS_SUCCESS', classId});
     });
   };
 }
