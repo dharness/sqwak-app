@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import FileDropZone from './../../../shared/FileDropZone';
-import PlushButton from './../../../shared/PlushButton';
 import ButtonGroup from './../../../shared/ButtonGroup';
 import CustomClassForm from './CustomClassForm';
 import ExploreClassForm from './ExploreClassForm';

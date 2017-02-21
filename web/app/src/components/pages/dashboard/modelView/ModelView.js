@@ -1,33 +1,43 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { moveMlClass } from './../../../../actions/mlClasses';
+import { moveMlClass, deleteMlClass } from './../../../../actions/mlClasses';
 import ClassCard from './../../../shared/ClassCard';
 
 class ModelView extends Component {
 
-  onCardSelected(classId) {
+  onMoveClick(classId) {
     this.props.moveMlClass({
       userId:  this.props.userId,
-      appId: this.props.currentAppId,
+      appId: this.props.currentMlAppId,
       classId,
       to: 'mlClasses'
     });
   }
 
+  onDeleteCardClick(classId) {
+    this.props.deleteMlClass({
+      userId: this.props.userId,
+      mlAppId: this.props.currentMlAppId,
+      mlClassId: classId
+    });
+  }
+
+
   render () {
     return (
-      <div>
+      <div className="sq-model-view">
         <div className="sq-model-header">
           Model Workspace
         </div>
-        <div className="sq-model-view">
-          {this.props.mlModel.mlClasses.map((mlClass, i) => {
+        <div className="sq-model-view--card-grid">
+          {this.props.mlModel.mlClasses.map((classInfo, i) => {
             return (
               <div className="sq-model-view--card-wrapper" key={i}>
                   <ClassCard
-                      mlClass={mlClass}
-                      onClick={this.onCardSelected.bind(this)}
-                      onEditClick={this.props.onEditCardSelected}
+                    mlClass={classInfo}
+                    onEditClick={this.props.onEditCardSelected}
+                    onMoveClick={this.onMoveClick.bind(this)}
+                    onDeleteClick={this.onDeleteCardClick.bind(this)}
                   />
               </div>)
           })}
@@ -53,5 +63,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  {moveMlClass}
+  { moveMlClass, deleteMlClass }
 )(ModelView)
