@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import TabPanel from './../../../shared/TabPanel';
 import * as actions from './../../../../actions';
 import { createMlClass, addSampleToClass, moveMlClass, copyPremadeClass, deleteMlClass } from './../../../../actions/mlClasses';
-import SidebarPanel from './SidebarPanel';
 import CreateClassForm from './CreateClassForm';
+import ClassCard from './../../../shared/ClassCard';
+import PlushButton from './../../../shared/PlushButton';
 
 
 class Sidebar extends Component {
@@ -20,9 +20,9 @@ class Sidebar extends Component {
     ))
   }
 
-  onCardSelected(classId) {
+  onMoveClick(classId) {
     this.props.moveMlClass({
-      appId: this.props.currentAppId,
+      appId: this.props.currentMlAppId,
       classId,
       from: 'mlClasses',
       to: 'mlModel'
@@ -49,7 +49,7 @@ class Sidebar extends Component {
 
   copyPremadeClass(classId) {
     this.props.copyPremadeClass({
-      appId: this.props.currentAppId,
+      appId: this.props.currentMlAppId,
       classId
     });
   }
@@ -62,30 +62,34 @@ class Sidebar extends Component {
     }
   }
 
+  handleScroll() {
+    document.activeElement.blur();
+  }
+
   render() {
     return (
-      <TabPanel tabNames={["Your Classes", "Pre-made Classes"]}>
-
-        {/* PANEL 1 */}
-        <SidebarPanel
-          mlClasses={this.props.customMlClasses}
-          onEditCardSelected={this.props.onEditCardSelected.bind(this)}
-          onCardSelected={this.onCardSelected.bind(this)}
-          onDeleteClick={this.onDeleteCardClick.bind(this)}
-          onFooterButtonClicked={this.newClassButtonClicked.bind(this)}
-        />
-
-        {/* PANEL 2 */}
-        <SidebarPanel
-          hideFooter={true}
-          mlClasses={this.props.premadeMlClasses}
-          onEditCardSelected={()=>{}}
-          onCardSelected={this.copyPremadeClass.bind(this)}
-          onDeleteClick={()=>{}}
-          onFooterButtonClicked={()=>{}}
-        />
-
-      </TabPanel>
+      <div className="sq-sidebar">
+          <div className="sq-sidebar--header">
+            <div className="sq-text__lg">Your Classes</div>
+            <div className="sq-text__sm">All your classes are kept here. Click “Add” to add them to your model.</div>
+          </div>
+          <div className="sq-sidebar--card-grid" onScroll={this.handleScroll.bind(this)}>
+            {this.props.customMlClasses.map((classInfo, i) => {
+              return (
+                <div className="sq-sidebar--card-wrapper" key={i}>
+                  <ClassCard
+                    mlClass={classInfo}
+                    onEditClick={this.props.onEditCardSelected}
+                    onMoveClick={this.onMoveClick.bind(this)}
+                    onDeleteClick={this.onDeleteCardClick.bind(this)}
+                  />
+                </div>)
+            })}
+          </div>
+          <div className="sq-sidebar--footer">
+            <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />
+          </div>
+      </div>
     )
   }
 }

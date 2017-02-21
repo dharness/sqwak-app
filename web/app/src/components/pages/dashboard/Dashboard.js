@@ -59,7 +59,7 @@ class DashboardPage extends Component {
                 <Nav currentUserId={this.props.params.userId}></Nav>
                 <div className="sq-dashboard--content">
                     <Sidebar
-                        currentAppId={this.props.currentMlApp.id}
+                        currentMlAppId={this.props.currentMlApp.id}
                         customMlClasses={this.props.customMlClasses}
                         premadeMlClasses={this.props.premadeClasses}
                         onEditCardSelected={this.onEditCardSelected.bind(this)}
@@ -72,7 +72,7 @@ class DashboardPage extends Component {
                             appName={this.props.currentMlApp.app_name} 
                             openModal={this.props.location.query.modal}/>
                         <ModelView
-                            currentAppId={this.props.currentMlApp.id}
+                            currentMlAppId={this.props.currentMlApp.id}
                             mlModel={this.props.mlModel}
                             onEditCardSelected={this.onEditCardSelected.bind(this)}
                         />

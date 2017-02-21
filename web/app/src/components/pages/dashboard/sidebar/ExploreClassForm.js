@@ -15,7 +15,7 @@ class ExploreClassForm extends Component {
   }
 
   render () {
-    const myScrollbar = {
+    const scrollbarConfig = {
       width: 600,
       height: 300,
     };
@@ -27,7 +27,7 @@ class ExploreClassForm extends Component {
           <div className="sq-explore-form--search-wrapper">
             <input className="sq-basic-input" placeholder="search" />
           </div>
-          <ReactScrollbar style={myScrollbar}>
+          <ReactScrollbar style={scrollbarConfig}>
             <div className="sq-explore-form--card-grid">
               {this.props.premadeClasses.map((classInfo, i) => {
                 let isBeingCopied = (this.props.premadeClassesCopying[classInfo.id] === true);
