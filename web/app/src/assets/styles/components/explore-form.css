@@ -57,6 +57,10 @@
   display: none;
 }
 
+.sq-class-card__explore.is-copied {
+   border: solid 1px var(--blue-2);
+}
+
 .sq-class-card__explore--copy-button.loading {
   display: block;
 }

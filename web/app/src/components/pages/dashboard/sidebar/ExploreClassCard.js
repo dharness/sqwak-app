@@ -7,6 +7,7 @@ class ExploreClassCard extends Component {
 
   onCopyClicked() {
     this.props.onCopyClicked(this.props.mlClass.id);
+    this.isCopied = true;
   }
 
   render () {
@@ -15,7 +16,7 @@ class ExploreClassCard extends Component {
     const imgIcon = require(`./../../../../assets/images/class-icons/${imgName}.svg`);
 
     return (
-      <div className={"sq-class-card sq-class-card__explore" + (this.props.isBeingCopied ? " loading" : "")}>
+      <div className={"sq-class-card sq-class-card__explore" + (this.props.isBeingCopied ? " loading" : "") + (this.isCopied ? " is-copied" : "")}>
           <div className="sq-class-card--icon">
               <img src={imgIcon} role="presentation"/>
           </div>

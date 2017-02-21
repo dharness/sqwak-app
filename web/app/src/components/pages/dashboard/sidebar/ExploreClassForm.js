@@ -22,8 +22,8 @@ class ExploreClassForm extends Component {
     return (
       <div className="sq-explore-form">
         <div className="sq-explore-form--contents">
-          <div className="sq-text sq-text__xl">Select from our pre-made classes</div>
-          <div className="sq-text sq-text__md">Select any number of pre-made classes to copy to an app</div>
+          <div className="sq-text sq-text__xl">Choose from our pre-made classes</div>
+          <div className="sq-text__pale">Select any number of pre-made classes to copy to an app</div>
           <div className="sq-explore-form--search-wrapper">
             <input className="sq-basic-input" placeholder="search" />
           </div>
