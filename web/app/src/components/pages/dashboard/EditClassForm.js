@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import FileDropZone from './../../shared/FileDropZone';
 import PlushButton from './../../shared/PlushButton';
 
@@ -51,6 +52,7 @@ class EditClassForm extends Component {
           />
           </div>
           <FileDropZone
+              uploadProgress={this.props.fileUploadProgress * 100}
               onFilesChanged={this.onFilesChanged.bind(this)}
           />
           <div className="sq-test-upload--footer">
@@ -65,4 +67,12 @@ class EditClassForm extends Component {
   }
 }
 
-export default EditClassForm
+const mapStateToProps = (state, ownProps) => {
+  let { fileUploadProgress } = state.statuses;
+  return { fileUploadProgress }
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(EditClassForm)

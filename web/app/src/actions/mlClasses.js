@@ -69,18 +69,38 @@ export const moveMlClass = ({userId, appId, classId, to, from}) => {
   };
 }
 
-export const renameMlClass = ({userId, appId, classId, className}) => {
+export const updateMlClass = ({userId, appId, classId, className, files}) => {
   return (dispatch) => {
-    dispatch({
-      type:'RENAME_ML_CLASS',
-      mlClassId: classId,
-      mlAppId: appId,
-      className: className,
-      isEdited: true
+    if (files.length > 0) {
+      dispatch({ type: 'UPLOAD_PROGESS', progress: 0 });
+    }
+
+    
+    let filesUploaded = 0;
+    let reqs = files.map(file => {
+      return api.addSampleToClass({ userId, appId, classId, file }).then(res => {
+        let progress = ++filesUploaded /files.length;
+        dispatch({
+          type: 'UPLOAD_PROGESS',
+          progress
+        });
+        return res;
+      });
     });
-    api.renameClass({userId, appId, classId, className}).then( () => {
+    reqs.push(api.renameClass({userId, appId, classId, className}))
+    Promise.all(reqs).then(res => {
+      let numSamples = Math.max.apply(Math, res.map(r => r.audio_samples.length));
+      dispatch({
+        type:'UPDATE_ML_CLASS',
+        mlClassId: classId,
+        mlAppId: appId,
+        className: className,
+        isEdited: true,
+        numSamples
+      });
       dispatch({ type: 'CLOSE_MODAL' });
-    });
+      dispatch({ type: 'UPLOAD_PROGESS', progress: -1 });
+    })
   };
 }
 

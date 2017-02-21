@@ -41,7 +41,7 @@ const mlApps = (state = {}, action) => {
       return nextState;
     }
 
-    case 'RENAME_ML_CLASS': {
+    case 'UPDATE_ML_CLASS': {
       const nextState = Object.assign({}, state);
       const currentMlApp = nextState[action.mlAppId];
       currentMlApp.workingModelDirty = true;
@@ -49,6 +49,7 @@ const mlApps = (state = {}, action) => {
         if (mlClass.id === action.mlClassId) {
           mlClass.className = action.className
           mlClass.isEdited = action.isEdited
+          mlClass.numSamples = action.numSamples
         }
       });
       

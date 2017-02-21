@@ -9,7 +9,7 @@ import getMlModel from './../../../selectors/mlModel';
 import getCustomMlClasses from './../../../selectors/customMlClasses';
 import * as actions from './../../../actions';
 import { loadApp, loadApps } from './../../../actions/mlApps';
-import { renameMlClass } from './../../../actions/mlClasses';
+import { updateMlClass } from './../../../actions/mlClasses';
 import { loadPremadeClasses } from './../../../actions/premadeClasses';
 import { setCurrentUser } from './../../../actions/user';
 import EditClassForm from './EditClassForm';
@@ -44,9 +44,10 @@ class DashboardPage extends Component {
             appId: this.props.currentMlApp.id,
             userId: this.props.userId,
             classId,
-            className
+            className,
+            files
         };
-        this.props.renameMlClass(mlClassData);
+        this.props.updateMlClass(mlClassData);
     }
 
     render () {
@@ -104,5 +105,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  {...actions, loadApp, loadApps, loadPremadeClasses, setCurrentUser, renameMlClass}
+  {...actions, loadApp, loadApps, loadPremadeClasses, setCurrentUser, updateMlClass}
 )(DashboardPage)
