@@ -42,7 +42,9 @@ class EditClassForm extends Component {
       <div className="sq-create-class-form">
         <div className="sq-create-class-form--contents">
           <div className="sq-create-class-form--header">
-            <div className="sq-text sq-text__xl">Edit class</div>
+            <div className="sq-text__xl">Edit class</div>
+            <div className="sq-text__pale">Add more samples to your class</div>
+            
             <input
               type="text"
               className="sq-basic-input"

@@ -6,6 +6,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     display: flex;
+    align-items: center;
     flex-direction: column;
     box-shadow: 0 1px 3px 0 rgba(225,225,225,0.50);
 }
@@ -51,7 +52,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }

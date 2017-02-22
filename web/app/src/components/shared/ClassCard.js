@@ -62,9 +62,9 @@ class ClassCard extends Component {
             <div className="sq-class-card">
                 <div className="sq-class-card--header">
                     <DropdownMenu position={this.state.dropwdownPosition} isOpen={this.state.dropdownOpen}>
-                        <div className="sq-class-card--dropdown-menu-item" onMouseDown={this.onEditClick.bind(this)}>Edit</div>
-                        <div className="sq-class-card--dropdown-menu-item" onMouseDown={this.onMoveClick.bind(this)}>{addRemoveText}</div>
-                        <div className="sq-class-card--dropdown-menu-item" onMouseDown={this.onDeleteClick.bind(this)}>Delete</div>
+                        <div className="sq-class-card--dropdown-menu-item sq-text__md" onMouseDown={this.onEditClick.bind(this)}>Edit</div>
+                        <div className="sq-class-card--dropdown-menu-item sq-text__md" onMouseDown={this.onMoveClick.bind(this)}>{addRemoveText}</div>
+                        <div className="sq-class-card--dropdown-menu-item sq-text__md" onMouseDown={this.onDeleteClick.bind(this)}>Delete</div>
                     </DropdownMenu>
                     <button
                         onBlur={this.handleBlur.bind(this)}
