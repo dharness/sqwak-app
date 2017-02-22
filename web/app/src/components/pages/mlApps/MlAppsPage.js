@@ -89,8 +89,6 @@ const mapStateToProps = (state, ownProps) => {
     const mlApps = Object.keys(state.mlApps).map(key => state.mlApps[key]);
     const isFetchingApps = state.statuses.isFetchingApps;
     const removeAppPending = state.statuses.removeAppPending;
-    console.log(removeAppPending)
-
     return {
         mlApps,
         isFetchingApps,

@@ -12,14 +12,33 @@ import emailIcon from './../../assets/images/mail.svg'
 import fbIcon from './../../assets/images/fblittle.svg'
 import LandingPreviewSlider from './../shared/LandingPreviewSlider';
 import PlushButton from './../shared/PlushButton';
-
+import fileUploadImg from './../../assets/images/file-upload-landing.svg'
+import trainModelImg from './../../assets/images/train-model-landing.svg'
+import jsonResponseImg from './../../assets/images/json-response-landing.svg'
 
 
 class LandingPage extends Component {
 
-      go(route) {
-        browserHistory.push(route);
-      }
+    constructor(props) {
+        super(props);
+        this.steps = [{
+            title: 'Create classes and add sounds',
+            body: 'All you have to do is upload sounds into your classes and you\'re good to go. The hardest part of machine learning is now done!',
+            imgUrl: fileUploadImg
+        }, {
+            title: 'Train your model',
+            body: 'Change the sounds in your classes all you want. When you\'re satisfied,  just click \'train\' button.',
+            imgUrl: trainModelImg
+        }, {
+            title: 'Get results right away!',
+            body: 'Test your model with different sounds, and when you\'re ready, publish your app. Now you can classify sounds from anywhere just by sending a POST request to the URL we provide.',
+            imgUrl: jsonResponseImg
+        }]
+    }
+
+    go(route) {
+    browserHistory.push(route);
+    }
 
     render () {
         return (
@@ -58,9 +77,23 @@ class LandingPage extends Component {
                         <div className="sq-text">Audio clasification has never been easier!</div>
                         <div className="sq-text">The latest from the team that brought you the Mars rover.</div>
                     </div>
+
                     <div className="sq-landing--slider-wrapper">
                         <LandingPreviewSlider />
                     </div>
+                    <div className="sq-landing--steps-mobile">
+                        {this.steps.map((step, i) => {
+                            return (
+                                <div className="sq-landing--steps-mobile--step" key={i}>
+                                    <div className="sq-landing-preview--description-number">{i+1}</div>
+                                    <img src={step.imgUrl} />
+                                    <div className="sq-text sq-text__xl">{step.title}</div>
+                                    <div className="sq-text sq-text__md">{step.body}</div>
+                                </div>
+                                )
+                        })}
+                    </div>
+
                     <div className="sq-landing--partners">
                         <div className="sq-landing--partners--header">
                             <div className="sq-text sq-text__xl">Partners and clients</div>
@@ -90,6 +123,22 @@ class LandingPage extends Component {
                             <img src={sqwakWord} role="presentation"/>
                             <div className="sq-landing--footer-sqwak-description">Doing machine learning <br/> so you don't have to.</div>
                             <hr/>
+                        </div>
+                        <div className="sq-landing--footer-mobile">
+                            <a href="https://kingofthestack.com/" className="sq-text__xl">A King of the Stack Product</a>
+                            <div className="sq-text__xl sq-landing--footer-mobile-contact">Contact</div>
+                            <div className="sq-landing--footer-mobile-icons">
+                                <div className="sq-landing--contact-icon-wrapper">
+                                    <img src={emailIcon} role="presentation" onClick={()=> {
+                                        window.open('mailto:hello@kingofthestack.com')
+                                    }}/>
+                                </div>
+                                <div className="sq-landing--contact-icon-wrapper">
+                                    <img src={fbIcon} role="presentation" onClick={()=> {
+                                        window.open('https://www.facebook.com/kingofthestack/')
+                                    }}/>
+                                </div>
+                            </div>
                         </div>
                         <div className="sq-landing--footer-company">
                             <div className="sq-landing--footer-header sq-text__thick">Company</div>
