@@ -14,7 +14,8 @@
 
 .sq-inner-nav--logo:hover {
     align-self: center;
-    animation: jiggle 0.2s ease-in infinite;
+    animation: jiggle 0.2s ease-in;
+    animation-iteration-count: 3;
 }
 
 @keyframes jiggle {
