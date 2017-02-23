@@ -1,26 +1,4 @@
 version: '2'
 services:
-  api:
-    build: ./api
-    volumes: 
-      - ./api/app:/usr/src/app
-    command: supervisord -c ./supervisord.conf
-    ports:
-      - "5000:5000"
-
-  web:
-      build: ./web
-      links:
-        - api:api
-      environment:
-        - REACT_APP_API_URL=http://localhost:8080/api/v0
-        - REACT_APP_BASE_URL=http://localhost:3000
-      volumes:
-        - ./web/app:/usr/src/app
-        - /usr/src/app/node_modules
-      command: npm start
-      ports:
-        - "3000:3000"
-
   nginx:
     build: ./nginx
