@@ -1,4 +1,4 @@
-docker-compose exec web bash -c "export REACT_APP_BASE_URL=https://sqwak.kingofthestack.com && export REACT_APP_API_URL=https://sqwak.kingofthestack.com/api/v0 && npm run build"
+(cd ./web/app/ && export REACT_APP_BASE_URL=https://sqwak.kingofthestack.com && export REACT_APP_API_URL=https://sqwak-api-flask.herokuapp.com/api/v0 && npm run build)
 rm -rf ./nginx/www
 mkdir ./nginx/www
 cp -r ./web/app/build/ ./nginx/www/
@@ -12,5 +12,4 @@ docker push sqwak/nginx
 
 ssh root@sqwak.kingofthestack.com "cd /usr/src/app && 
     docker pull sqwak/nginx &&
-    docker pull sqwak/api &&
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
