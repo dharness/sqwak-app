@@ -74,17 +74,19 @@ class Sidebar extends Component {
             <div className="sq-text__sm">All your classes are kept here. Click “Add” to add them to your model.</div>
           </div>
           <div className="sq-sidebar--card-grid" onScroll={this.handleScroll.bind(this)}>
-            {this.props.customMlClasses.map((classInfo, i) => {
-              return (
-                <div className="sq-sidebar--card-wrapper" key={i}>
-                  <ClassCard
-                    mlClass={classInfo}
-                    onEditClick={this.props.onEditCardSelected}
-                    onMoveClick={this.onMoveClick.bind(this)}
-                    onDeleteClick={this.onDeleteCardClick.bind(this)}
-                  />
-                </div>)
-            })}
+            <div className="sq-sidebar--card-grid-contents">
+              {this.props.customMlClasses.map((classInfo, i) => {
+                return (
+                  <div className="sq-sidebar--card-wrapper" key={i}>
+                    <ClassCard
+                      mlClass={classInfo}
+                      onEditClick={this.props.onEditCardSelected}
+                      onMoveClick={this.onMoveClick.bind(this)}
+                      onDeleteClick={this.onDeleteCardClick.bind(this)}
+                    />
+                  </div>)
+              })}
+            </div>
           </div>
           <div className="sq-sidebar--footer">
             <PlushButton buttonText={"New Class"} onClick={this.newClassButtonClicked.bind(this)} />

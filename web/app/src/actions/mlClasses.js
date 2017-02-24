@@ -116,7 +116,8 @@ export const copyPremadeClass = ({ appId, classId }) => {
         isEdited: mlClass.is_edited,
         packageName: mlClass.package_name,
         inModel: mlClass.in_model,
-        imgName: mlClass.img_name
+        imgName: mlClass.img_name,
+        numSamples: mlClass.audio_samples.length
       };
       dispatch({
         type: 'ADD_ML_CLASS',

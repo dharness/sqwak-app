@@ -7,6 +7,14 @@
     margin: auto;
 }
 
+.sq-sidebar--card-grid-contents {
+    width: 250px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .sq-side-bar--content .sq-class-card-grid .sq-class-card:nth-child(2n) .sq-class-card--dropdown-menu {
     right: 0px;
     left: inherit;
