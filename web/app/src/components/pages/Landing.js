@@ -37,7 +37,7 @@ class LandingPage extends Component {
     }
 
     go(route) {
-    browserHistory.push(route);
+        browserHistory.push(route);
     }
 
     render () {

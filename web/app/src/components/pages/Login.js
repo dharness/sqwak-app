@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import PlushButton from './../shared/PlushButton';
+import ButtonGroup from './../shared/ButtonGroup';
 import AuthService from './../../services/AuthService';
 import { loginUser } from './../../actions/user';
 import inputMailIcon from './../../assets/images/icons/input-mail.svg'
@@ -30,10 +32,17 @@ class LoginPage extends Component {
         this.setState(nextState);
     }
 
+    go(route) {
+        browserHistory.push(route);
+    }
+
     render () {
-        let isLogin = this.props.action == "Login" ? true : false
+        let isLogin = this.props.action == "Login" ? true : false;
         return (
         <div className="sq-login-page">
+            <div className="sq-full-page-modal--header">
+                <div className="sq-full-page-modal--cancel-button" onClick={()=>{this.go('/')}}/>
+            </div>
             <div className="sq-login-page--content">
                 <div className="sq-login-page-top-icon-wrapper">
                     <img src={isLogin ? tealDiamondIcon : greenCubeIcon} role="presentation" className="sq-login-top-icon"/>
@@ -41,6 +50,7 @@ class LoginPage extends Component {
                 </div>
 
                 <div className="sq-text__xl">{this.props.action}</div>
+                <div className="sq-text__pale">{isLogin ? "Welcome back!" : "Welcome to Sqwak!"}</div>
                     <div className="sq-input-wrapper">
                         <img src={inputMailIcon} role="presentation" className="sq-login-icon"/>
                         <input 
