@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import PlushButton from './../shared/PlushButton';
 import AuthService from './../../services/AuthService';
 import { loginUser } from './../../actions/user';
+import inputMailIcon from './../../assets/images/icons/input-mail.svg'
+import inputLockIcon from './../../assets/images/icons/input-lock.svg'
+import tealDiamondIcon from './../../assets/images/class-icons/teal-diamond.svg'
+import greenCubeIcon from './../../assets/images/class-icons/green-cube.svg'
 
 class LoginPage extends Component {
 
@@ -27,27 +31,43 @@ class LoginPage extends Component {
     }
 
     render () {
+        let isLogin = this.props.action == "Login" ? true : false
         return (
         <div className="sq-login-page">
             <div className="sq-login-page--content">
-                <h1>{this.props.action}</h1>
-                <input 
-                    type="email"
-                    value={this.state.email}
-                    onChange={(e)=>{ this.onInputChange(e, 'email'); }}
-                    className="sq-basic-input"
-                    placeholder="email"/>
-                <input 
-                    type="password"
-                    value={this.state.password}
-                    onChange={(e)=>{ this.onInputChange(e, 'password'); }}
-                    className="sq-basic-input"
-                    placeholder="password"/>
+                <div className="sq-login-page-top-icon-wrapper">
+                    <img src={isLogin ? tealDiamondIcon : greenCubeIcon} role="presentation" className="sq-login-top-icon"/>
+                    <div className="sq-login-top-icon-shadow"> </div>
+                </div>
+
+                <div className="sq-text__xl">{this.props.action}</div>
+                    <div className="sq-input-wrapper">
+                        <img src={inputMailIcon} role="presentation" className="sq-login-icon"/>
+                        <input 
+                            type="email"
+                            value={this.state.email}
+                            onChange={(e)=>{ this.onInputChange(e, 'email'); }}
+                            className="sq-basic-input email"
+                            placeholder="Email Address"/>
+                    </div>
+
+                    <div className="sq-input-wrapper">
+                        <img src={inputLockIcon} role="presentation" className="sq-login-icon"/>
+                        <input 
+                            type="password"
+                            value={this.state.password}
+                            onChange={(e)=>{ this.onInputChange(e, 'password'); }}
+                            className="sq-basic-input password"
+                            placeholder="Password"/>
+                    </div>
+
                 <div className="sq-login-page--footer">
                     <PlushButton
                         isLoading={this.props.isLoginPending}
                         buttonText={this.props.action} 
                         onClick={this.submitLogin.bind(this)}
+                        className="sq-login-button"
+                        colorClass={isLogin ? "sq-button__blue" : ""}
                     />
                 </div>
             </div>

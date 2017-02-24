@@ -8,18 +8,47 @@
 }
 
 .sq-login-page--content {
-  margin-top: 200px;
-  width: 300px;
+  margin-top: 130px;
+  width: 340px;
   align-self: center;
 }
 
 .sq-login-page--footer {
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   justify-content: flex-end;
 }
 
 .sq-login-page input {
-  margin-top: 20px;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.sq-login-icon {
+  position: absolute;
+  margin: 18px 15px;
+}
+
+.sq-input-wrapper {
+  position: relative;
+  height: 49px;
+  display: flex;
+  margin-top: 25px;
+}
+
+.sq-login-page-top-icon-wrapper {
+  margin-bottom: 20px;
+}
+.sq-login-top-icon-shadow {
+  width: 18px;
+  height: 7px;
+  background-color: var(--grey-3);
+  border-radius: 100px / 50px;
+  align-self: center;
+  margin: auto;
+}
+
+
+.sq-login-page--footer button {
   width: 100%;
 }
