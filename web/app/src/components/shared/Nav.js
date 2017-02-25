@@ -10,7 +10,7 @@ const Nav = (props) => {
                 <img src={logoImg} role="presentation"/>
             </div>
             <div className="sq-inner-nav--left">
-                <Link to={`/user/${props.currentUserId}/apps`} className="sq-inner-nav--left-menu-item">Apps</Link>
+                <Link to={`/user/${props.currentUserId}/apps`} className={"sq-inner-nav--left-menu-item" + (props.isAppsPage ? " current" : "")}>Apps</Link>
                 <Link to="/" className="sq-inner-nav--left-menu-item">Sign Out</Link>
             </div>
         </div>

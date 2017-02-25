@@ -48,7 +48,7 @@ const statuses = (state = defaultStatuses, action) => {
       });
     }
 
-    case 'LOGIN_USER_SUCCESS': {
+    case 'AFTER_LOGIN_USER': {
       return Object.assign({}, state, {
         isLoginPending: false
       });

@@ -86,7 +86,7 @@ class LandingPage extends Component {
                             return (
                                 <div className="sq-landing--steps-mobile--step" key={i}>
                                     <div className="sq-landing-preview--description-number">{i+1}</div>
-                                    <img src={step.imgUrl} />
+                                    <img src={step.imgUrl} role="presentation"/>
                                     <div className="sq-text sq-text__xl">{step.title}</div>
                                     <div className="sq-text sq-text__md">{step.body}</div>
                                 </div>

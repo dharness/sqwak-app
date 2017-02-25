@@ -40,6 +40,10 @@
     text-decoration: none;
 }
 
+.sq-inner-nav--left-menu-item.current {
+    color: #3DC6F2;
+}
+
 
 .sq-inner-nav--left-menu-item:hover {
     color: #3DC6F2;

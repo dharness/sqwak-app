@@ -85,6 +85,7 @@
 
 .sq-button__red {
     background-color: var(--red-2);
+    color: white;
 }
 
 .sq-button__red:hover {

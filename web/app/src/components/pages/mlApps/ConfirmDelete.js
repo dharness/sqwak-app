@@ -9,8 +9,8 @@ class ConfirmDelete extends Component {
       <div className="sq-confirm-delete-form">
         <div className="sq-confirm-delete-form--content">
           <div className="sq-text sq-text__xl">Delete app</div>
-          <div className="sq-text sq-text__lg">Woa woa, deleting this app will remove all classes and samples forever.. You sure pal?</div>
-          <PlushButton buttonText={"Yes, delete this app"} onClick={this.props.onSubmit} colorClass="sq-button__red" isLoading={this.props.removeAppPending}/>
+          <div className="sq-text__pale">Woa woa, deleting this app will remove all classes and samples forever... You sure you want to do this, pal?</div>
+          <PlushButton buttonText="Yes, delete this app!" onClick={this.props.onSubmit} colorClass="sq-button__red" isLoading={this.props.removeAppPending}/>
         </div>
       </div>
     )

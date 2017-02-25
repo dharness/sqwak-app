@@ -63,7 +63,7 @@ class MlAppsPage extends Component {
         let shouldHideBgImg = (this.props.mlApps.length > 0) || this.props.isFetchingApps;
         return (
             <div className="sq-apps-page" style={{opacity: (this.props.isFetchingApps ? 0 : 1)}}>
-                <Nav currentUserId={this.props.params.userId} />
+                <Nav currentUserId={this.props.params.userId} isAppsPage={true}/>
                 <div className="sq-apps-page--content">
                     <div className="sq-apps-page--header">
                         <div className="sq-text__xl">All apps</div>

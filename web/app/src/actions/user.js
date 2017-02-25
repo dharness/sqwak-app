@@ -8,14 +8,14 @@ export const loginUser = ({email, password}) => {
     dispatch({ type: 'LOGIN_USER_PENDING' });
     api.loginUser({email, password}).then((res)=> {
       auth.setToken(res.id_token);
-      dispatch({ type: 'LOGIN_USER_SUCCESS' });
+      dispatch({ type: 'AFTER_LOGIN_USER' });
       dispatch({
         type: 'SET_CURRENT_USER',
         id: res.id
       });
       browserHistory.replace(`/user/${res.id}/apps`);
     }).catch(err => {
-      console.log(err);
+      dispatch({ type: 'AFTER_LOGIN_USER' });
     });
   }
 };
