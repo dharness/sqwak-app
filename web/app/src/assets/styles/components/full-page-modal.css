@@ -22,6 +22,12 @@
     width: 39px;
     height: 39px;
 }
+
+.sq-full-page-modal--cancel-button:active {
+    filter: brightness(95%);
+}
+
+
 /* loads the image to be shown on hover, to get rid of flickering */
 .sq-full-page-modal--cancel-button:after {
     content: "";

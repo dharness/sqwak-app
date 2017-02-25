@@ -22,6 +22,10 @@ class ModelView extends Component {
     });
   }
 
+  onCardDropped() {
+    console.log('drop')
+  }
+
 
   render () {
     return (
@@ -29,11 +33,12 @@ class ModelView extends Component {
         <div className="sq-model-header">
           Model Workspace
         </div>
-        <div className="sq-model-view--card-grid">
+        <div className="sq-model-view--card-grid" onDrop={this.onCardDropped.bind(this)}>
           {this.props.mlModel.mlClasses.map((classInfo, i) => {
             return (
               <div className="sq-model-view--card-wrapper" key={i}>
                   <ClassCard
+                    scrollTop={0}
                     mlClass={classInfo}
                     onEditClick={this.props.onEditCardSelected}
                     onMoveClick={this.onMoveClick.bind(this)}

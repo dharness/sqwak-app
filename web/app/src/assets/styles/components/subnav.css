@@ -86,8 +86,15 @@
 
 .sq-subnav--button {
     display: flex;
-    margin: 0px 40px;
+    margin: 0px 30px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.sq-subnav--button:active {
+    background: var(--grey-5);
+    filter: none!important;
 }
 
 .sq-subnav--button.disabled, .sq-subnav--button.disabled:hover {

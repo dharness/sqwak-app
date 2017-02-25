@@ -14,7 +14,7 @@ export const loadPremadeClasses = () => {
           isEdited: premadeClass.is_edited,
           packageName: premadeClass.package_name,
           inModel: premadeClass.in_model,
-          numSamples: premadeClass.audio_samples.length,
+          numSamples: premadeClass.num_samples,
         };
         return formattedPremadeClass;
       })
