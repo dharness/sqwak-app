@@ -8,8 +8,7 @@
   max-width: 300px;
   width: 300px;
   height: calc(100% - 90px - 120px);
-  text-align: center;
-  text-align-last: left;
+  text-align: left;
   overflow: auto;
 }
 
@@ -28,7 +27,7 @@
 
 .sq-sidebar--card-wrapper {
   display: inline-block;
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
 .sq-sidebar--wrapper {

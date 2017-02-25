@@ -101,10 +101,10 @@ class LandingPage extends Component {
                         </div>
                         <div className="sq-landing--partner-list">
                             <div className="sq-landing--partner-list-content">
-                                <img src={googleImg} alt=""/>
-                                <img src={facebookImg} alt=""/>
-                                <img src={microsoftImg} alt=""/>
-                                <img src={amazonImg} alt=""/>
+                                <img src={googleImg} alt="" role="presentation"/>
+                                <img src={facebookImg} alt="" role="presentation"/>
+                                <img src={microsoftImg} alt="" role="presentation"/>
+                                <img src={amazonImg} alt="" role="presentation"/>
                             </div>
                         </div>
                         <div className="sq-landing--partners--footer">

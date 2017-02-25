@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "postcss-cli": "3.0.0-beta",
+    "postcss-custom-properties": "5.0.2",
     "react-scripts": "0.8.5"
   },
   "dependencies": {
@@ -37,8 +39,9 @@
     "superagent": "^3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_API_URL=http://127.0.0.1:5000/api/v0 react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "postcss --use postcss-custom-properties --replace build/**/*.css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

@@ -52,7 +52,7 @@ class DashboardPage extends Component {
 
     render () {
         return (
-            <div className="sq-full-page">
+            <div className="sq-dashboard">
                 <div
                     className={"sq-dashboard--loading" + (this.props.pageIsLoaded ? " hidden" : "")}>
                 </div>
