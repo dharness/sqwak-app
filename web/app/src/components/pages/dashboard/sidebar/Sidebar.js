@@ -10,6 +10,11 @@ import PlushButton from './../../../shared/PlushButton';
 
 class Sidebar extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {scrollTop: 0};
+  }
+
   newClassButtonClicked() {
     browserHistory.push({
       pathname: browserHistory.getCurrentLocation().pathname,
@@ -62,7 +67,9 @@ class Sidebar extends Component {
     }
   }
 
-  handleScroll() {
+  handleScroll(e) {
+    const {scrollTop} = e.target;
+    this.setState({scrollTop});
     document.activeElement.blur();
   }
 
@@ -79,6 +86,7 @@ class Sidebar extends Component {
                 return (
                   <div className="sq-sidebar--card-wrapper" key={i}>
                     <ClassCard
+                      scrollTop={this.state.scrollTop}
                       mlClass={classInfo}
                       onEditClick={this.props.onEditCardSelected}
                       onMoveClick={this.onMoveClick.bind(this)}

@@ -47,7 +47,7 @@ class ClassCard extends Component {
             dropdownOpen: true,
             dropwdownPosition: {
                 left: left,
-                top: top + 20,
+                top: top + 20 - this.props.scrollTop,
             }
         })
     }
