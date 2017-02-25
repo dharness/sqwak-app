@@ -115,7 +115,8 @@ function fetchPremadeClasses() {
             'Authorization': `Bearer ${token}`
         }
     })
-    .then((data) => data.json())
+    .then(data => data.json())
+    .then(data => data['data'])
 }
 
 function copyPremadeClass({appId, classId}) {

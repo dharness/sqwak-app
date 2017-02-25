@@ -8,8 +8,12 @@ import App from './components/App';
 import './assets/styles/index';
 
 
-const middleware = applyMiddleware(thunk);
+if (process.env.NODE_ENV !== 'development' && window.Raven) {
+  window.Raven.config('https://815d967b437e4f3b8119e6f51b8208a4@sentry.io/142675').install()
+}
 
+
+const middleware = applyMiddleware(thunk);
 let store;
 if (window.__REDUX_DEVTOOLS_EXTENSION__) {
    store = createStore(

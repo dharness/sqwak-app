@@ -48,6 +48,8 @@ class FileDropZone extends Component {
     return (
       <div className="sq-file-drop-zone">
           <Dropzone
+            disableClick={true}
+            accept='.wav,audio/*'
             onDrop={(files)=> {this.onFilesChanged(null, files)}} 
             ref="dropzone" 
             className={"sq-class-upload-form--drop-zone" + (this.state.files.length > 0 ? " active" : "")}

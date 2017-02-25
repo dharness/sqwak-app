@@ -8,7 +8,6 @@ class UploadFilePanel extends Component {
     constructor(props) {
         super(props);
         this.state = { files: [] };
-        console.log(props)
     }
 
     submitForm() {
