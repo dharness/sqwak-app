@@ -25,14 +25,6 @@ class UploadFilePanel extends Component {
                 <FileDropZone
                     onFilesChanged={this.onFilesChanged.bind(this)}
                 />
-                <div className="sq-test-upload--footer">
-                    <PlushButton 
-                        disabled={this.state.files.length <= 0}
-                        isLoading={this.props.isLoading}
-                        onClick={this.submitForm.bind(this)}
-                        buttonText={"Classify it"} 
-                        colorClass="sq-button__blue"/>
-                </div>
             </div>
         )
     }

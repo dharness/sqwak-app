@@ -11,7 +11,7 @@ class TestModel extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { selectedPanel: 1 };
+    this.state = { selectedPanel: 0 };
   }
 
   onSubmitTest(file) {
@@ -40,15 +40,19 @@ class TestModel extends Component {
   render () {
     return (
       <div className="sq-test-modal">
-          <div className="sq-test-buttons--wrapper">
-            <ButtonGroup
-              selectedId={this.state.selectedPanel}
-              buttonTexts={['Record', 'Upload']}
-              onButtonSelected={this.switchPanel.bind(this)}
-            />
-          </div>
+          <div className="sq-text__xl sq-test-modal--title"> Test your app </div>
           <div className="sq-test-modal--wrapper">
-            {this.renderSelectedPanel(this.state.selectedPanel)}
+            <div className="sq-test-modal--input">
+              <div className="sq-test-buttons--wrapper">
+                <button
+                  className={"sq-test--button" + (this.state.selectedPanel == 0 ? " active" : "")}
+                  onClick={()=> {this.switchPanel(0)}}>Record</button>
+                <button
+                  className={"sq-test--button" + (this.state.selectedPanel == 1 ? " active" : "")}
+                  onClick={()=> {this.switchPanel(1)}}>Upload</button>
+              </div>
+              {this.renderSelectedPanel(this.state.selectedPanel)}
+            </div>
             <ResultsPanel jsonResponse={this.props.jsonResponse} isLoading={this.props.testModelPending}/>
           </div>
       </div>

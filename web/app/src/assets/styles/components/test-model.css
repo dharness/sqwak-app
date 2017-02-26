@@ -1,5 +1,41 @@
 .sq-test-buttons--wrapper {
-    margin: 35px 0px;
+    display: flex;
+    margin-left: -1px;
+    width: calc(100% + 2px);
+    margin-top: -1px;
+}
+
+.sq-test--button {
+    flex: 1;
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--grey-3);
+    box-sizing: border-box;
+    padding: 10px 20px;
+    height: 45px;
+    background: white;
+    border-bottom: solid 1px var(--grey-3);
+    outline: none;
+    cursor: pointer;
+}
+
+.sq-test--button.active {
+    background: var(--grey-4);
+    border-color: var(--blue-2);
+    z-index: 2;
+}
+
+.sq-test--button:first-of-type {
+    border-radius: 5px 0px 0px 0px;
+    border-right: solid 1px var(--blue-2);
+}
+
+.sq-test--button:last-of-type {
+    border-radius: 0px 5px 0px 0px;
+    border-left: solid 1px var(--blue-3);
+    margin-left: -1px;
 }
 
 .sq-test-record-wrapper {
@@ -61,6 +97,28 @@
 .sq-test-modal {
   display: flex;
   flex-direction: column;
+}
+
+.sq-test-modal--title {
+    margin: 70px 0px;
+    text-align: center;
+}
+
+.sq-test-modal--input {
+  min-width: 350px;
+  min-height: 300px;
+  max-height: 300px;
+  border: solid 1px var(--grey-3);
+  border-radius: 7px;
+}
+
+.sq-test-modal--input .sq-class-upload-form--icon {
+    width: 100px;
+}
+
+.sq-test-modal--input .sq-class-upload-form--drop-zone {
+    height: 90%;
+    width: 80%;
 }
 
 .sq-test-modal--wrapper {
