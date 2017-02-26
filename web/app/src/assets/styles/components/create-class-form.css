@@ -7,7 +7,7 @@
 }
 
 .sq-create-class-form .sq-button-group--wrapper {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .sq-create-class-form--header {
@@ -19,4 +19,5 @@
 .sq-create-class-form--header .sq-basic-input {
   width: 100%;
   margin-top: 10px;
+  margin-bottom: 30px;
 }
