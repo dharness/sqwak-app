@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
 }
 
 .sq-record-button-ring{
@@ -30,9 +30,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 140px;
-    height: 140px;
-    border-radius: 150px;
+    width: 120px;
+    height: 120px;
+    border-radius: 130px;
     border: solid 1px #545454;
     position: absolute;
     background-image: radial-gradient(

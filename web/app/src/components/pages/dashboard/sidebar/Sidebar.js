@@ -84,7 +84,7 @@ class Sidebar extends Component {
             <div className="sq-sidebar--card-grid-contents">
               {this.props.customMlClasses.map((classInfo, i) => {
                 return (
-                  <div className="sq-sidebar--card-wrapper" key={i}>
+                  <div className="sq-sidebar--card-wrapper" key={i} draggable={true}>
                     <ClassCard
                       scrollTop={this.state.scrollTop}
                       mlClass={classInfo}

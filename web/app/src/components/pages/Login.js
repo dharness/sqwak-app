@@ -40,7 +40,7 @@ class LoginPage extends Component {
     }
 
     render () {
-        let isLogin = this.props.path === "/login" ? true : false;
+        let isLogin = this.props.isLogin;
         return (
         <div className="sq-login-page">
             <div className="sq-full-page-modal--header">
