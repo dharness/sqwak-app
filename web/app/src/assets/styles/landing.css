@@ -409,13 +409,14 @@
     }
     .sq-landing--footer-content {
         flex-direction: column;
+        padding-bottom: 50px;
     }
     .sq-landing--footer-sqwak {
         width: 80%;
         margin: auto;
     }
     .sq-landing--footer-sqwak img {
-        height: 55px;
+        height: 40px;
         margin: auto;
     }
     .sq-landing--footer-kots {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { testModel } from './../../../../actions/mlApps';
-import ButtonGroup from './../../../shared/ButtonGroup';
+import PlushButton from './../../../shared/PlushButton';
 import getCurrentMlApp from './../../../../selectors/currentMlApp';
 import RecordSoundPanel from './RecordSoundPanel';
 import UploadFilePanel from './UploadFilePanel';
@@ -11,7 +11,7 @@ class TestModel extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { selectedPanel: 0 };
+    this.state = { selectedPanel: 0, files: [] };
   }
 
   onSubmitTest(file) {
@@ -30,10 +30,14 @@ class TestModel extends Component {
     this.setState({selectedPanel: buttonIndex});
   }
 
+  onFilesChanged({files}) {
+      this.setState({files: [...this.state.files, ...files]});
+  }
+
   renderSelectedPanel(index) {
     return [
       <RecordSoundPanel onSubmitTest={this.onSubmitTest.bind(this)} isLoading={this.props.testModelPending}/>,
-      <UploadFilePanel onSubmitTest={this.onSubmitTest.bind(this)} isLoading={this.props.testModelPending}/>
+      <UploadFilePanel onFilesChanged={this.onFilesChanged.bind(this)} isLoading={this.props.testModelPending}/>
     ][index]
   }
 
@@ -45,13 +49,24 @@ class TestModel extends Component {
             <div className="sq-test-modal--input">
               <div className="sq-test-buttons--wrapper">
                 <button
-                  className={"sq-test--button" + (this.state.selectedPanel == 0 ? " active" : "")}
+                  className={"sq-test--button sq-text__md" + (this.state.selectedPanel === 0 ? " active" : "")}
                   onClick={()=> {this.switchPanel(0)}}>Record</button>
                 <button
-                  className={"sq-test--button" + (this.state.selectedPanel == 1 ? " active" : "")}
+                  className={"sq-test--button sq-text__md" + (this.state.selectedPanel === 1 ? " active" : "")}
                   onClick={()=> {this.switchPanel(1)}}>Upload</button>
               </div>
-              {this.renderSelectedPanel(this.state.selectedPanel)}
+              <div className="sq-test-modal--input-contents">
+                {this.renderSelectedPanel(this.state.selectedPanel)}
+              </div>
+              <div className="sq-test-modal--input-button">
+                <PlushButton
+                  onClick={()=> {this.onSubmitTest(this.state.files[0])}}
+                  disabled={this.state.files.length <= 0}
+                  isLoading={this.props.testModelPending}
+                  colorClass={"sq-button__blue"}
+                  buttonText={"Predict"}
+                />
+              </div>
             </div>
             <ResultsPanel jsonResponse={this.props.jsonResponse} isLoading={this.props.testModelPending}/>
           </div>

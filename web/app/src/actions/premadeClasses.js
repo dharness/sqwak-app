@@ -13,6 +13,7 @@ export const loadPremadeClasses = () => {
           id: premadeClass.id,
           isEdited: premadeClass.is_edited,
           packageName: premadeClass.package_name,
+          imgName: premadeClass.img_name,
           inModel: premadeClass.in_model,
           numSamples: premadeClass.num_samples,
         };

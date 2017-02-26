@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import RecordButton from './RecordButton';
-import PlushButton from './../../../shared/PlushButton';
 var RecordRTC = require('recordrtc');
 
 
@@ -28,6 +27,7 @@ class RecordSoundPanel extends Component {
 
     componentWillUnmount() {
         delete this.recordRTC;
+        clearInterval(this.interval);
     }
 
     onAudioDataAvailable(blob) {
@@ -78,14 +78,6 @@ class RecordSoundPanel extends Component {
                 opacity: (this.state.isRecording ? 1 : 0)
             }}>
                 {this.state.isRecording ? this.state.countdown.replace('.', ':') : "0:00"}
-            </div>
-
-            <div className="sq-test-record-classify-wrapper">
-                <PlushButton
-                    buttonText={"Classify it"}
-                    colorClass="sq-button__blue"
-                    isLoading={this.props.isLoading}
-                />
             </div>
 
         </div>
