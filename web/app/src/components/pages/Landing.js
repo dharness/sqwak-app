@@ -87,8 +87,8 @@ class LandingPage extends Component {
                                 <div className="sq-landing--steps-mobile--step" key={i}>
                                     <div className="sq-landing-preview--description-number">{i+1}</div>
                                     <img src={step.imgUrl} role="presentation"/>
-                                    <div className="sq-text sq-text__xl">{step.title}</div>
-                                    <div className="sq-text sq-text__md">{step.body}</div>
+                                    <div className="sq-text__lg">{step.title}</div>
+                                    <div className="sq-text__pale">{step.body}</div>
                                 </div>
                                 )
                         })}
@@ -121,12 +121,12 @@ class LandingPage extends Component {
                     <div className="sq-landing--footer-content">
                         <div className="sq-landing--footer-sqwak">
                             <img src={sqwakWord} role="presentation"/>
-                            <div className="sq-landing--footer-sqwak-description">Doing machine learning <br/> so you don't have to.</div>
+                            <div className="sq-text__md sq-landing--footer-sqwak-description">Doing machine learning <br/> so you don't have to.</div>
                             <hr/>
                         </div>
                         <div className="sq-landing--footer-mobile">
-                            <a href="https://kingofthestack.com/" className="sq-text__xl">A King of the Stack Product</a>
-                            <div className="sq-text__xl sq-landing--footer-mobile-contact">Contact</div>
+                            <a href="https://kingofthestack.com/" className="sq-text__md">A King of the Stack Product</a>
+                            <div className="sq-text__lg sq-landing--footer-mobile-contact">Contact</div>
                             <div className="sq-landing--footer-mobile-icons">
                                 <div className="sq-landing--contact-icon-wrapper">
                                     <img src={emailIcon} role="presentation" onClick={()=> {

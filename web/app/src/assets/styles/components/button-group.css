@@ -7,7 +7,7 @@
 .sq-button-group--button {
     cursor: pointer;
     border: 1px solid var(--grey-3);
-    padding: 10px 34px 10px 34px;
+    padding: 12px 34px 17px 34px;
     margin-right: -1px;
 }
 

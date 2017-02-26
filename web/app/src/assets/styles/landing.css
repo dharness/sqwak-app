@@ -292,6 +292,7 @@
 @media only screen and (max-width : 480px) {
     .sq-landing--nav {
         justify-content: space-between;
+        margin-bottom: 10px;
     }
 
     .sq-landing--login-link {
@@ -300,10 +301,17 @@
 
     .sq-landing--hero {
         flex-direction: column-reverse;
+        height: 498px;
     }
 
     .sq-landing--hero-info {
-        margin-top: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 107%;
+    }
+
+    .sq-landing--prompt {
+        display: none;
     }
 
     .sq-landing--hero-info button {
@@ -341,6 +349,19 @@
     
     .sq-landing--steps-mobile--step {
         margin-bottom: 70px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sq-landing--steps-mobile--step .sq-text__pale{
+        text-align: justify;
+        margin-top: 10px;
+    }
+
+    .sq-landing--steps-mobile--step .sq-text__lg{
+        margin-top: 40px;
     }
     
     .sq-landing--steps-mobile .sq-landing-preview--description-number {
@@ -356,7 +377,7 @@
     }
 
     .sq-landing--partner-list-content {
-        width: 90%;
+        width: 77%;
         flex-wrap: wrap;
         margin: auto;
     }
@@ -401,7 +422,6 @@
         display: none;
     }
     .sq-landing--footer-sqwak-description {
-        font-size: 20px;
         text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -424,7 +444,7 @@
     }
     .sq-landing--footer-mobile {
         text-align: center;
-        margin-top: 30px;
+        margin-top: 25px;
         display: block;
     }
     .sq-landing--footer-mobile a {
@@ -442,7 +462,7 @@
         justify-content: center;
     }
     .sq-landing--footer-mobile-contact {
-        margin-top: 100px;
+        margin-top: 50px;
         margin-bottom: 30px;
     }
 }
