@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import PlushButton from './../shared/PlushButton';
 import AuthService from './../../services/AuthService';
-import { loginUser } from './../../actions/user';
+import { loginUser, signupUser } from './../../actions/user';
 import inputMailIcon from './../../assets/images/icons/input-mail.svg'
 import inputLockIcon from './../../assets/images/icons/input-lock.svg'
 import tealDiamondIcon from './../../assets/images/class-icons/teal-diamond.svg'
@@ -22,7 +22,11 @@ class LoginPage extends Component {
 
     submitLogin() {
         let {email, password} = this.state;
-        this.props.loginUser({email, password});
+        if (this.props.isLogin) {
+            this.props.loginUser({email, password});
+        } else {
+            this.props.signupUser({email, password});
+        }
     }
 
     onInputChange(event, key) {
@@ -93,5 +97,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
     mapStateToProps,
-    { loginUser }
+    { loginUser, signupUser }
 )(LoginPage)

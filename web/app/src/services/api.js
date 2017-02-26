@@ -1,26 +1,30 @@
 import * as auth from './auth';
 import axios from 'axios';
 
+var axiosInstance = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}`,
+  timeout: 1000,
+  headers: {'Content-Type': 'application/json'}
+});
+
 
 /*************************** USER ***************************/
 function loginUser({email, password}) {
-    const token = auth.getToken();
     const data = {email, password};
-    return fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
+    return axiosInstance({
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(data, null, '\t')
-    })
-    .then((response) => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response;
-    })
-    .then((data) => data.json())
+        url: '/user/login',
+        data
+    }).then(response => response.data);
+}
+
+function signupUser({email, password}) {
+    const data = {email, password};
+    return axiosInstance({
+        method: 'POST',
+        url: '/user',
+        data
+    }).then(response => response.data);
 }
 
 /*************************** APPS ***************************/
@@ -213,6 +217,7 @@ function deleteClass({userId, appId, classId}) {
 
 export {
     loginUser,
+    signupUser,
     createApp,
     fetchApp,
     fetchApps,
