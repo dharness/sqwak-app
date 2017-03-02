@@ -102,7 +102,9 @@ class SubNav extends Component {
             <div
               className={"sq-subnav--button" + (canTrain ? "" : " disabled")}
               onClick={()=>{this.handleNavButtonClick(canTrain, this.onTrainButtonClicked)}}>
-              <img className="sq-subnav--icon" src={trainIcon} role="presentation"/>
+              <div className="sq-subnav--icon">
+                <img className={"sq-subnav--icon-train" + (this.state.isTraining ? " animate" : "")} src={trainIcon} role="presentation"/>
+              </div>
               <div className="sq-subnav--button-text">
                 Train
               </div>

@@ -126,11 +126,15 @@
     width: 0;
     height: 5px;
     border-radius: 2px;
-    background: var(--green-4);
+    background: #7AEEFA;
 }
 
 .sq-subnav--progress-bar.animate {
     animation: expandWidth 2s ease-out;
+}
+
+.sq-subnav--icon-train.animate {
+    animation: spin 2s linear infinite;
 }
 
 @keyframes expandWidth {
@@ -140,4 +144,10 @@
     100% {
         width: 110%;
     }
+}
+
+@keyframes spin { 
+    100% { 
+        transform:rotate(360deg); 
+    } 
 }
