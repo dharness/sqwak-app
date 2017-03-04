@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import PlushButton from './../shared/PlushButton';
-import AuthService from './../../services/AuthService';
 import { loginUser, signupUser } from './../../actions/user';
 import inputMailIcon from './../../assets/images/icons/input-mail.svg'
 import inputLockIcon from './../../assets/images/icons/input-lock.svg'
@@ -11,10 +10,6 @@ import greenCubeIcon from './../../assets/images/class-icons/green-cube.svg'
 
 class LoginPage extends Component {
 
-    static propTypes = {
-        action: PropTypes.string,
-        auth: PropTypes.instanceOf(AuthService)
-    }
     constructor(props) {
         super(props);
         this.state = {email: '', password: ''};
