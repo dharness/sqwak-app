@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-right: 23px;
 }
 
 .sq-landing--hero-bird img {
@@ -65,6 +66,7 @@
     align-items: center;
     padding: 50px 0px;
     justify-content: center;
+    margin-left: 30px;
 }
 
 .sq-landing--hero-info .sq-landing--signup-link {
@@ -72,7 +74,7 @@
 }
 
 .sq-landing--title {
-    width: 400px;
+    width: 300px;
     display: block;
     margin: 0px auto;
 }
@@ -193,7 +195,7 @@
 }
 
 .sq-landing--footer-sqwak img {
-    height: 35px;
+    height: 45px;
     align-self: flex-start;
     margin-bottom: 20px;
 }
@@ -291,12 +293,19 @@
 
 @media only screen and (max-width : 480px) {
     .sq-landing--nav {
-        justify-content: space-between;
-        margin-bottom: 10px;
+        display: none;
     }
 
     .sq-landing--login-link {
-        border: none;
+        display: none
+    }
+
+    .sq-landing--signup-link {
+        align-self: flex-end;
+    }
+
+    .sq-landing--hero-bird {
+        margin-right: -5px;
     }
 
     .sq-landing--hero {
@@ -305,9 +314,11 @@
     }
 
     .sq-landing--hero-info {
-        margin-top: 10px;
+        margin-top: 30px;
         margin-bottom: 10px;
         width: 107%;
+        margin-left: 0px;
+        padding: 0px;
     }
 
     .sq-landing--prompt {

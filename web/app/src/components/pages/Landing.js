@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { browserHistory } from 'react-router';
 import giantBird from './../../assets/images/giant-bird.svg'
 import sqwakWord from './../../assets/images/sqwak-word.svg'
+import sqwakWord1 from './../../assets/images/sqwak-word-1.svg'
 import googleImg from './../../assets/images/google.svg'
 import facebookImg from './../../assets/images/facebook.svg'
 import microsoftImg from './../../assets/images/microsoft.svg'
@@ -120,7 +121,7 @@ class LandingPage extends Component {
                 <div className="sq-landing--footer">
                     <div className="sq-landing--footer-content">
                         <div className="sq-landing--footer-sqwak">
-                            <img src={sqwakWord} role="presentation"/>
+                            <img src={sqwakWord1} role="presentation"/>
                             <div className="sq-text__md sq-landing--footer-sqwak-description">Doing machine learning <br/> so you don't have to.</div>
                             <hr/>
                         </div>
