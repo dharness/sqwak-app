@@ -1,7 +1,0 @@
-version: '2'
-services:
-  nginx:
-    image: sqwak/nginx
-    ports:
-      - "80:80"
-      - "443:443"
