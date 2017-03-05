@@ -5,6 +5,7 @@
 }
 
 .sq-apps-page--bg-img {
+    background-color: var(--grey-5);
     position: fixed;
     z-index: 1;
     left: 0px;
