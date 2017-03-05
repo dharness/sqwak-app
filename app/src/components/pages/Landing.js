@@ -28,7 +28,7 @@ class LandingPage extends Component {
             imgUrl: fileUploadImg
         }, {
             title: 'Train your model',
-            body: 'Change the sounds in your classes all you want. When you\'re satisfied,  just click \'train\' button.',
+            body: 'Change the sounds in your classes all you want. When you\'re satisfied,  just click the \'train\' button.',
             imgUrl: trainModelImg
         }, {
             title: 'Get results right away!',
