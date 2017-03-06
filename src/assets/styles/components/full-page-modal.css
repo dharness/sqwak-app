@@ -1,0 +1,39 @@
+
+.sq-full-page-modal {
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: fixed;
+    z-index: 101;
+    display: block;
+    transition: opacity 250ms;
+}
+
+.sq-full-page-modal--header {
+    position: fixed;
+    right: 40px;
+    top: 30px;
+}
+
+.sq-full-page-modal--cancel-button {
+    cursor: pointer;
+    background-image: url(./../../images/icons/cancel-grey.svg);
+    background-repeat: no-repeat;
+    width: 39px;
+    height: 39px;
+}
+
+.sq-full-page-modal--cancel-button:active {
+    filter: brightness(95%);
+}
+
+
+/* loads the image to be shown on hover, to get rid of flickering */
+.sq-full-page-modal--cancel-button:after {
+    content: "";
+    background-image: url(./../../images/icons/cancel.svg);
+}
+
+.sq-full-page-modal--cancel-button:hover {
+    background-image: url(./../../images/icons/cancel.svg);
+}

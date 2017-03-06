@@ -1,0 +1,25 @@
+.sq-model-view {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  height: calc(100% - 70px);
+  position: relative;
+}
+
+.sq-model-view--card-grid {
+  text-align: center;
+  overflow: auto;
+  display: flex;
+  margin-left: 40px;
+}
+
+.sq-model-header {
+  padding-left: 40px;
+  padding-top: 20px;
+  color: #A8BECE;
+}
+
+.sq-model-view--card-wrapper {
+  margin-top: 30px;
+  margin-right: 35px;
+}

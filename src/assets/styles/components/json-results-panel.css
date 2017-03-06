@@ -1,0 +1,92 @@
+.sq-json-results-panel {
+  min-width: 370px;
+  min-height: 330px;
+  max-height: 330px;
+  margin-left: 50px;
+  border: solid 1px var(--grey-3);
+  border-radius: 5px;
+}
+
+.sq-json-results-panel--header {
+  padding: 10px 20px;
+  border-bottom: solid 1px var(--grey-3);
+  height: 45px;
+}
+
+.sq-json-results-panel--body {
+  padding: 10px 20px;
+  height: calc(100% - 45px);
+  background: var(--grey-4);
+  overflow: scroll;
+  margin: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: black;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: var(--blue-1);
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
+}
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: var(--grey-1);
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}

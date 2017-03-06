@@ -1,0 +1,33 @@
+.sq-class-card--dropdown-menu {
+  flex-direction: column;
+  position: absolute;
+  left: 0px;
+  text-align: left;
+  background: white;
+  border: solid 1px var(--grey-3);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px 0 hsla(0,0%,88%,.5);
+  margin-top: 4px;
+  display: none;
+  z-index: 99;
+}
+
+.sq-class-card--dropdown-menu-item {
+  padding-left: 15px;
+  padding-right: 35px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.sq-class-card--dropdown-menu-item:last-of-type {
+  border-top: solid 1px var(--grey-4);
+}
+
+.sq-class-card--dropdown-menu-item:last-of-type:hover {
+  color: var(--red-1);
+}
+
+.sq-class-card--dropdown-menu-item:hover {
+  color: var(--blue-1);
+}

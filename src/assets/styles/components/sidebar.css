@@ -1,0 +1,120 @@
+.sq-sidebar {
+  width: 450px;
+  position: relative;
+  border-right: solid 1px var(--grey-3);
+}
+
+.sq-sidebar--card-grid {
+  max-width: 300px;
+  width: 300px;
+  height: calc(100% - 90px - 120px);
+  text-align: left;
+  overflow: auto;
+  margin: auto;
+}
+
+.sq-sidebar--card-grid::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sq-sidebar--card-grid::-webkit-scrollbar-track {
+  background: white;
+}
+
+.sq-sidebar--card-grid::-webkit-scrollbar-thumb {
+  background: var(--blue-4);
+  border-radius: 7px;
+}
+
+.sq-sidebar--card-wrapper {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.sq-sidebar--wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  float: left;
+}
+
+.sq-sidebar--header {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px 15px;
+  align-items: center;
+}
+
+.sq-sidebar--header .sq-text__lg {
+  margin-bottom: 20px;
+}
+
+.sq-sidebar--header .sq-text__sm {
+  color: var(--grey-2);
+  width: 90%;
+}
+
+.sq-sidebar--content {
+  margin-top: 10px;
+  height: calc(100% - 90px - 80px);
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
+.sq-sidebar--content::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+.sq-sidebar--content.no-footer {
+  height: calc(100% - 80px);
+}
+
+.sq-sidebar--content .sq-class-card {
+  margin-bottom: 30px;
+}
+
+.sq-sidebar--footer {
+  background: white;
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.sq-sidebar--search-wrapper {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.sq-sidebar--search-icon {
+  width: 10%;
+  align-self: flex-end;
+}
+
+.sq-sidebar--search-field {
+  height: 30px;
+  width: 80%;
+  border: none;
+  color: var(--grey-1);
+  border-bottom: solid 1.5px var(--grey-3);
+  outline: none;
+  align-self: flex-end;
+}
+
+.sq-sidebar--search-field::placeholder {
+  color: var(--grey-2);
+}
+
+.sq-sidebar--footer .sq-button {
+  align-self: center;
+}

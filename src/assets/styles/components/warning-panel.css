@@ -1,0 +1,101 @@
+.sq-warning-panel {
+    background: var(--red-3);
+    position: absolute;
+    top: 0;
+    left: calc(50% - 160px);
+    border: solid 1px var(--red-2);
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    padding-bottom: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: transform 0.3s ease-out;
+}
+
+.sq-warning-panel.slide {
+    transform: translate(0,-130px);
+}
+
+.sq-warning-panel.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.sq-warning-panel--wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 200;
+    background-color: rgba(255,255,255,0.6);
+}
+
+.sq-warning-panel--header {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.sq-warning-panel--close-icon {
+    cursor: pointer;
+    height: 15px;
+    align-self: center;
+}
+
+.sq-warning-panel--message {
+    color: var(--red-2);
+    font-size: 14px;
+    padding: 0px 20px 20px 20px;
+}
+
+.sq-warning-panel--footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+.sq-warning-panel--button-bar button {
+    border: solid 1px var(--red-2);
+    background: none;
+    color: var(--red-2);
+    cursor: pointer;
+    padding: 2.3px 0px;
+    width: 50px;
+}
+
+.sq-warning-panel--button-bar button {
+    outline: none;
+}
+
+.sq-warning-panel--button-bar button:first-of-type {
+    background: var(--red-2);
+    color: white;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.sq-warning-panel--button-bar button:last-of-type {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

@@ -1,0 +1,54 @@
+:root {
+  --grey-1: #545454;
+  --grey-2: #959FA9;
+  --grey-3: #D3DCE6;
+  --grey-4: #F5F9FC;
+  --grey-5: #F8FCFF;
+
+  --blue-1: #5CD5FD;
+  --blue-2: #9DE5FE;
+  --blue-3: #C1ECFD;
+  --blue-4: #DBF4FF;
+
+  --green-1: #2CC494;
+  --green-2: #16E586;
+  --green-3: #3ADE8D;
+  --green-4: #8AF0BE;
+
+  --yellow-1: #FFE664;
+  --yellow-2: #FFF1A6;
+
+  --red-1: #FF5B5F;
+  --red-2: #FF7373;
+  --red-3: #FFE5E5;
+
+  --inner-nav-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, div[data-reactroot], #root {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'FaktSoft';
+    display: none;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+p, div, h1, h2, h3, h4, h5, span {
+    font-family: 'FaktSoft';
+    color: var(--grey-1);
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

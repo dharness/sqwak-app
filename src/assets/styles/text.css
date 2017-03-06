@@ -1,0 +1,47 @@
+.sq-text {
+    font-family: 'FaktSoft';
+}
+.sq-text__xl {
+    font-size: 24px;
+}
+.sq-text__larger {
+    font-size: 20px;
+}
+
+.sq-text__lg {
+    font-size: 16px;
+}
+
+.sq-text__md {
+    font-size: 14px;
+}
+
+.sq-text__sm {
+    font-size: 12px;
+}
+
+.sq-text__thick {
+    font-family: 'FaktSoft-Medium';
+}
+
+.sq-text__white {
+    font-family: 'FaktSoft-Medium';
+    color: white;
+}
+
+.sq-text__warning {
+    font-size: 12px;
+    color: var(--red-2);
+}
+
+.sq-text__sm__pale {
+    font-family: 'FaktSoft-Blond';
+    font-size: 12px;
+    color: var(--grey-2);
+}
+
+.sq-text__pale {
+    font-family: 'FaktSoft-Blond';
+    font-size: 14px;
+    color: var(--grey-2);
+}

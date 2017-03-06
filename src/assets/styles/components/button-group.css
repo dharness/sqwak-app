@@ -1,0 +1,26 @@
+.sq-button-group--wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 40px;
+}
+
+.sq-button-group--button {
+    cursor: pointer;
+    border: 1px solid var(--grey-3);
+    padding: 12px 34px 17px 34px;
+    margin-right: -1px;
+}
+
+.sq-button-group--button:first-of-type {
+    border-radius: 5px 0 0px 5px;
+}
+
+.sq-button-group--button:last-of-type {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.sq-button-group--button.selected {
+    border: 1px solid var(--blue-2);
+    z-index: 2;
+    background-color: var(--grey-5);
+}
