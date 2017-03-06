@@ -28,7 +28,7 @@ class LandingPage extends Component {
             imgUrl: fileUploadImg
         }, {
             title: 'Train your model',
-            body: 'Change the sounds in your classes all you want. When you\'re satisfied,  just click \'train\' button.',
+            body: 'Change the sounds in your classes all you want. When you\'re satisfied,  just click the \'train\' button.',
             imgUrl: trainModelImg
         }, {
             title: 'Get results right away!',
@@ -75,7 +75,7 @@ class LandingPage extends Component {
                 <div className="sq-landing--ruffles"></div>
                 <div className="sq-landing--body">
                     <div className="sq-landing--body--main-header">
-                        <div className="sq-text">Audio clasification has never been easier!</div>
+                        <div className="sq-text">Audio classification has never been easier!</div>
                         <div className="sq-text">The latest from the team that brought you the Mars rover.</div>
                     </div>
 
