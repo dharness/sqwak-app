@@ -46,6 +46,7 @@
   color: var(--grey-2);
   text-align: left;
   margin-top: 20px;
+  height: 75px;
 }
 
 .sq-landing-preview--navigation {

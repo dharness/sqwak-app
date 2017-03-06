@@ -9,6 +9,7 @@ import './assets/styles/index';
 
 
 if (process.env.NODE_ENV !== 'development' && window.Raven) {
+  console.log('Production mode')
   window.Raven.config('https://815d967b437e4f3b8119e6f51b8208a4@sentry.io/142675').install()
 }
 

@@ -2,6 +2,7 @@
     background-color: var(--grey-5);
     height: 100%;
     transition: opacity 500ms ease-in-out;
+    overflow: scroll;
 }
 
 .sq-apps-page--bg-img {
@@ -26,6 +27,7 @@
     width: 1020px;
     height: 100%;
     margin: auto;
+    padding-top: 70px;
 }
 
 .sq-apps-page--header {
