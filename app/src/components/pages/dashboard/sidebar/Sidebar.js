@@ -77,8 +77,8 @@ class Sidebar extends Component {
     return (
       <div className="sq-sidebar">
           <div className="sq-sidebar--header">
-            <div className="sq-text__lg">Your Classes</div>
-            <div className="sq-text__sm">All your classes are kept here. Click “Add” to add them to your model.</div>
+            <div className="sq-text__lg">Your Inactive Classes</div>
+            <div className="sq-text__sm">All your inactive classes are kept here. Click “Add” to add them to your model.</div>
           </div>
           <div className="sq-sidebar--card-grid" onScroll={this.handleScroll.bind(this)}>
             <div className="sq-sidebar--card-grid-contents">
