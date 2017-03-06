@@ -1,7 +1,6 @@
 .sq-inner-nav {
     width: 100%;
     height: 70px;
-    position: fixed;
     background: white;
     border-bottom: 1px solid var(--grey-3);
     display: flex;
