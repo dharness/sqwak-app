@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Nav from './../../shared/Nav';
+import LoadingScreen from './../../shared/LoadingScreen';
 import SubNav from './SubNav';
 import Sidebar from './sidebar/Sidebar';
 import ModelView from './modelView/ModelView';
@@ -51,13 +52,15 @@ class DashboardPage extends Component {
     }
 
     render () {
+        if (!this.props.pageIsLoaded) {
+            return (
+                <LoadingScreen/>
+            )
+        }
         return (
             <div className="sq-dashboard">
-                <div
-                    className={"sq-dashboard--loading" + (this.props.pageIsLoaded ? " hidden" : "")}>
-                </div>
                 <Nav currentUserId={this.props.params.userId}></Nav>
-                <div className="sq-dashboard--content">
+                <div className={"sq-dashboard--content"}>
                     <Sidebar
                         currentMlAppId={this.props.currentMlApp.id}
                         customMlClasses={this.props.customMlClasses}

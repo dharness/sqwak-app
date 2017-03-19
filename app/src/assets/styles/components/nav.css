@@ -20,10 +20,10 @@
 
 @keyframes jiggle {
   0% {
-    transform: rotate(-1.5deg);
+    transform: rotate(-2.5deg);
   }
   50% {
-    transform: rotate(1.5deg);
+    transform: rotate(2.5deg);
   }
 }
 
