@@ -1,0 +1,16 @@
+.sq-confirm-delete-form {
+  width: 390px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+}
+
+.sq-confirm-delete-form--content .sq-text__xl {
+  margin-bottom: 20px;
+}
+
+.sq-confirm-delete-form--content .sq-text__pale {
+  margin-bottom: 30px;
+}

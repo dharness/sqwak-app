@@ -1,0 +1,103 @@
+.sq-publish-form {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.sq-publish-form--header {
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 30px;
+}
+
+.sq-publish-form--status {
+    align-self: center;
+    text-align: right;
+}
+
+.sq-publish-form--description {
+    text-align: justify;
+}
+
+.sq-publish-form--table {
+   width: 100%;
+   margin-top: 30px;
+   margin-bottom: 30px;
+
+}
+.sq-publish-form--table td {
+    border: 1px solid var(--grey-3);
+    padding: 10px;
+    text-align: left;
+}
+
+/* Rounded corner trick without using border collapse */
+.sq-publish-form--table tr:first-child td:first-child {
+    border-top-left-radius: 5px;
+    border-bottom: 0.5px;
+}
+
+.sq-publish-form--table tr:first-child td:last-child {
+    border-top-right-radius: 5px;
+    border-bottom: 0.5px;
+}
+
+.sq-publish-form--table tr td:first-child {
+    border-right: 0.5px;
+}
+
+.sq-publish-form--table tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+    border-top: 0.5px;
+}
+
+.sq-publish-form--table tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+    border-top: 0.5px;
+}
+
+.sq-publish-form--route {
+    border: 1px solid var(--blue-2);
+    border-radius: 5px;
+    width: 100%;
+    align-self: center;
+    padding: 23px 10px 17px 10px;
+    margin-bottom: 30px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.sq-publish-form--route--content {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 100px;
+}
+
+.sq-publish-form--button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sq-publish-form--copy {
+    color: var(--blue-1);
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    background: none;
+    position: relative;
+    outline: none;
+}
+
+.sq-publish-form--copy:after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    height: 0.5px;
+    width: 100%;
+    background: var(--blue-1);
+}
