@@ -16,7 +16,10 @@ class SubNav extends Component {
 
   constructor() {
     super();
-    this.state = { isTraining: false };
+    this.state = { 
+      isTraining: false,
+      isTrained: false
+    };
   }
 
   openPublishModal() {
@@ -59,6 +62,7 @@ class SubNav extends Component {
     this.setState({isTraining: true});
     setTimeout(()=> {
       this.setState({isTraining: false});
+      !this.state.isTrained && this.setState({isTrained: true})
     }, 2000);
     let appId = this.props.currentMlAppId;
     let userId = this.props.userId;
@@ -72,8 +76,8 @@ class SubNav extends Component {
   render() {
 
     let canTrain = this.props.modelIsEdited && (this.props.mlModel.mlClasses.length > 0);
-    let canTest = true;
-    let canPublish = true;
+    let canTest = this.state.isTrained && (this.props.mlModel.mlClasses.length > 0);
+    let canPublish = canTest;
 
     return (
       <div className="sq-subnav">

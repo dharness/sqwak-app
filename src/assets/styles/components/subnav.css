@@ -109,6 +109,7 @@
 
 .sq-subnav--icon {
     padding-right: 15px;
+    user-drag: none; -moz-user-select: none; -webkit-user-drag: none;
 }
 .sq-subnav--button-text {
     opacity: 0.85;
