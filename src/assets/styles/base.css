@@ -1,54 +1,64 @@
 :root {
   --grey-1: #545454;
-  --grey-2: #959FA9;
-  --grey-3: #D3DCE6;
-  --grey-4: #F5F9FC;
-  --grey-5: #F8FCFF;
+  --grey-2: #959fa9;
+  --grey-3: #d3dce6;
+  --grey-4: #f5f9fc;
+  --grey-5: #f8fcff;
 
-  --blue-1: #5CD5FD;
-  --blue-2: #9DE5FE;
-  --blue-3: #C1ECFD;
-  --blue-4: #DBF4FF;
+  --blue-1: #5cd5fd;
+  --blue-2: #9de5fe;
+  --blue-3: #c1ecfd;
+  --blue-4: #dbf4ff;
 
-  --green-1: #2CC494;
-  --green-2: #16E586;
-  --green-3: #3ADE8D;
-  --green-4: #8AF0BE;
+  --green-1: #2cc494;
+  --green-2: #16e586;
+  --green-3: #3ade8d;
+  --green-4: #8af0be;
 
-  --yellow-1: #FFE664;
-  --yellow-2: #FFF1A6;
+  --yellow-1: #ffe664;
+  --yellow-2: #fff1a6;
 
-  --red-1: #FF5B5F;
-  --red-2: #FF7373;
-  --red-3: #FFE5E5;
+  --red-1: #ff5b5f;
+  --red-2: #ff7373;
+  --red-3: #ffe5e5;
 
   --inner-nav-height: 70px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body, div[data-reactroot], #root {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    font-family: 'FaktSoft';
-    display: none;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+html,
+body,
+div[data-reactroot],
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "FaktSoft";
+  display: none;
+  /* overflow-x: hidden; */
+  -webkit-font-smoothing: antialiased;
 }
 
-p, div, h1, h2, h3, h4, h5, span {
-    font-family: 'FaktSoft';
-    color: var(--grey-1);
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+  font-family: "FaktSoft";
+  color: var(--grey-1);
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }

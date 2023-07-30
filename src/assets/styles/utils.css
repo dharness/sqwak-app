@@ -1,6 +1,5 @@
 .sq-full-page {
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+  height: 100%;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
 }

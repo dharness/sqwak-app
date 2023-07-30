@@ -1,88 +1,93 @@
 .sq-app-preview-card {
-    background: white;
-    width: 210px;
-    min-width: 210px;
-    height: 150px;
-    border-radius: 3px;
-    border: solid 1px var(--grey-3);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px 20px;
-    padding-bottom: 20px;
-    box-shadow: 0 1px 3px 0 rgba(225,225,225,0.50);
-    cursor: pointer;
-    transition: transform 0.04s ease-in-out;
-    margin: 40px;
-    box-sizing: content-box;
+  background: white;
+  width: 210px;
+  min-width: 210px;
+  height: 150px;
+  border-radius: 3px;
+  border: solid 1px var(--grey-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 1px 3px 0 rgba(225, 225, 225, 0.5);
+  cursor: pointer;
+  transition: transform 0.04s ease-in-out;
+  box-sizing: content-box;
 }
 
 .sq-app-preview-card:hover {
-    border: solid 1px var(--blue-2);
+  border: solid 1px var(--blue-2);
 }
 
 .sq-app-preview-card--header {
-    display: flex;
-    justify-content: space-between;
-    height: 20px;
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
 }
 
 .sq-app-preview-card--status {
-    display: flex;
+  display: flex;
 }
 
 .sq-app-preview-card--status-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 12px;
-    margin-right: 10px;
-    align-self: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  margin-right: 10px;
+  align-self: center;
 }
 
 .sq-app-preview-card--status-message {
-    align-self: center;
-    color: var(--grey-2);
+  align-self: center;
+  color: var(--grey-2);
 }
 
-.sq-app-preview-card--status-indicator.unpublished { background: var(--yellow-1);}
-.sq-app-preview-card--status-indicator.published { background: var(--green-2); }
-.sq-app-preview-card--status-indicator.stopped { background: var(--red-2); }
+.sq-app-preview-card--status-indicator.unpublished {
+  background: var(--yellow-1);
+}
+.sq-app-preview-card--status-indicator.published {
+  background: var(--green-2);
+}
+.sq-app-preview-card--status-indicator.stopped {
+  background: var(--red-2);
+}
 
 .sq-app-preview-card--delete {
-    display: none;
-    height: 20px;
+  display: none;
+  height: 20px;
 }
 
 .sq-app-preview-card:hover .sq-app-preview-card--delete {
-    display: flex;
-    background-image: url('./../../../assets/images/icons/delete.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 20px;
-    height: 20px;
+  display: flex;
+  background-image: url("./../../../assets/images/icons/delete.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
 }
 
 /* loads the image to be shown on hover, to get rid of flickering */
 .sq-app-preview-card:hover .sq-app-preview-card--delete:after {
-    content: "";
-    background-image: url('./../../../assets/images/icons/red-delete.svg');
+  content: "";
+  background-image: url("./../../../assets/images/icons/red-delete.svg");
 }
 
 .sq-app-preview-card:hover .sq-app-preview-card--delete:hover {
-    background-image: url('./../../../assets/images/icons/red-delete.svg');
+  background-image: url("./../../../assets/images/icons/red-delete.svg");
 }
 
 .sq-app-preview-card--content {
-    font-size: 18px;
-    text-align: center;
+  font-size: 18px;
+  text-align: center;
 }
 
 .sq-app-preview-card--footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .sq-app-preview-card--footer * {
-    color: var(--grey-2);
+  color: var(--grey-2);
 }
