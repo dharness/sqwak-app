@@ -5,6 +5,7 @@ class PlushButton extends Component {
     super();
     this.state = {
       isDelaying: false,
+      timeoiutId: null,
     };
   }
 
@@ -14,12 +15,16 @@ class PlushButton extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.state.timeoutId);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.isLoading === true && this.props.isLoading === false) {
-      this.setState({ isDelaying: true });
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         this.setState({ isDelaying: false });
       }, 300);
+      this.setState({ isDelaying: true, timeoutId });
     }
   }
 
