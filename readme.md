@@ -20,27 +20,32 @@ You can now POST to that endpoint with completely new sounds your classifier has
 
 ### Screenshots
 
-<style>
-  .sqwak-screenshots {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-  .sqwak-screenshots img {
-    max-width: 45%;
-    flex-basis: 100%;
-  }
-</style>
-<div class="sqwak-screenshots">
-  <img src="README/video-poster.png"/>
-  <img src="README/screenshot_app_view.png"/>
-  <img src="README/screenshot_upload_files.png"/>
-  <img src="README/screenshot_train_model.png"/>
-  <img src="README/screenshot_predict.png"/>
-  <img src="README/screenshot_publish.png"/>
-</div>
+<table>
+  <tr>
+    <td>
+      <img src="README/video-poster.png" alt="Video Poster">
+    </td>
+    <td>
+      <img src="README/screenshot_app_view.png" alt="App View">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="README/screenshot_upload_files.png" alt="Upload Files">
+    </td>
+    <td>
+      <img src="README/screenshot_train_model.png" alt="Train Model">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="README/screenshot_predict.png" alt="Predict">
+    </td>
+    <td>
+      <img src="README/screenshot_publish.png" alt="Publish">
+    </td>
+  </tr>
+</table>
 
 ### How it Works
 
