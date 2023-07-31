@@ -24,25 +24,31 @@ You can now POST to that endpoint with completely new sounds your classifier has
   <tr>
     <td>
       <img src="README/video-poster.png" alt="Video Poster">
+      <p align="center">Video Poster</p>
     </td>
     <td>
       <img src="README/screenshot_app_view.png" alt="App View">
+      <p align="center">App View</p>
     </td>
   </tr>
   <tr>
     <td>
       <img src="README/screenshot_upload_files.png" alt="Upload Files">
+      <p align="center">Upload Files</p>
     </td>
     <td>
       <img src="README/screenshot_train_model.png" alt="Train Model">
+      <p align="center">Train Model</p>
     </td>
   </tr>
   <tr>
     <td>
       <img src="README/screenshot_predict.png" alt="Predict">
+      <p align="center">Predict</p>
     </td>
     <td>
       <img src="README/screenshot_publish.png" alt="Publish">
+      <p align="center">Publish</p>
     </td>
   </tr>
 </table>
