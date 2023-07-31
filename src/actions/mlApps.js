@@ -5,9 +5,7 @@ export const loadApp = (userId, appId) => {
     dispatch({ type: "FETCH_APPS_PENDING" });
     api.fetchApp({ userId, appId }).then((mlApp) => {
       mlApp.mlClasses = mlApp.ml_classes.map((mlClass) => {
-        const numSamples = mlClass.audio_samples
-          ? mlClass.audio_samples.length
-          : 0;
+        const numSamples = mlClass.num_samples || 0;
         return {
           className: mlClass.class_name,
           createdAt: mlClass.created_at,
