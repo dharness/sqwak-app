@@ -6,7 +6,7 @@
   </p>
 </div>
 
-[Demo Video](https://vimeo.com/850298237)
+## [Demo Video](https://vimeo.com/850298237)
 
 [![Watch the video](README/video-poster.png)](https://vimeo.com/850298237)
 
