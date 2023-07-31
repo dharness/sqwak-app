@@ -6,7 +6,7 @@
   </p>
 </div>
 
-[![Watch the video](video-poster.png)](sqwak-demo.mp4)
+[![Watch the video](video-poster.png)](https://vimeo.com/850298237)
 
 <!-- <video width="80%" controls poster="video-poster.png">
   <source src="./sqwak-demo.mp4" type="video/mp4">
