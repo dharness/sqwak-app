@@ -6,12 +6,14 @@
   </p>
 </div>
 
-<video width="80%" controls poster="video-poster.png">
+[![Watch the video](video-poster.png)](sqwak-demo.mp4)
+
+<!-- <video width="80%" controls poster="video-poster.png">
   <source src="./sqwak-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <br/>
-<br/>
+<br/> -->
 
 ### Description
 
