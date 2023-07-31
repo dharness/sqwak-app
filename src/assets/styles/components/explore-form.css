@@ -3,7 +3,6 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .sq-explore-form--contents {
@@ -12,7 +11,7 @@
 }
 
 .sq-explore-form--contents .sq-text__xl {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .sq-explore-form--contents .sq-text__pale {
@@ -66,7 +65,7 @@
 }
 
 .sq-class-card__explore.is-copied {
-   border: solid 1px var(--blue-2);
+  border: solid 1px var(--blue-2);
 }
 
 .sq-class-card__explore--copy-button.loading {

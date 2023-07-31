@@ -37,7 +37,7 @@
     "superagent": "^3.3.2"
   },
   "scripts": {
-    "start": "REACT_APP_API_URL=http://127.0.0.1:5000/api/v0 react-scripts start",
+    "start": "REACT_APP_API_URL=http://127.0.0.1:8000/api/v0 react-scripts start",
     "build": "react-scripts build",
     "postbuild": "postcss --use postcss-custom-properties cssnano --replace build/**/*.css",
     "test": "react-scripts test --env=jsdom",

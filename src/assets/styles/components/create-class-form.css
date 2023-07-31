@@ -1,9 +1,12 @@
 .sq-create-class-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
   min-height: 500px;
+}
+
+.sq-create-class-form--contents {
+  margin-top: 50px;
 }
 
 .sq-create-class-form .sq-button-group--wrapper {
