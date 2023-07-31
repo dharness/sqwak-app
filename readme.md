@@ -6,14 +6,9 @@
   </p>
 </div>
 
-[![Watch the video](video-poster.png)](https://vimeo.com/850298237)
+[Demo Video](https://vimeo.com/850298237)
 
-<!-- <video width="80%" controls poster="video-poster.png">
-  <source src="./sqwak-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<br/>
-<br/> -->
+[![Watch the video](README/video-poster.png)](https://vimeo.com/850298237)
 
 ### Description
 
@@ -22,6 +17,30 @@ To train your classifier, create some bins (such as 'clanking' 'quacking' and 'r
 After that, click the train button and voila, your classifier is now available at an api endpoint.
 You can now POST to that endpoint with completely new sounds your classifier has never seen before, and it'll attempt to label it.
 <br/>
+
+### Screenshots
+
+<style>
+  .sqwak-screenshots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  .sqwak-screenshots img {
+    max-width: 45%;
+    flex-basis: 100%;
+  }
+</style>
+<div class="sqwak-screenshots">
+  <img src="README/video-poster.png"/>
+  <img src="README/screenshot_app_view.png"/>
+  <img src="README/screenshot_upload_files.png"/>
+  <img src="README/screenshot_train_model.png"/>
+  <img src="README/screenshot_predict.png"/>
+  <img src="README/screenshot_publish.png"/>
+</div>
 
 ### How it Works
 
