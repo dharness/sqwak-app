@@ -25,7 +25,7 @@
 
 .sq-apps-page--content {
   margin: auto;
-  padding: 70px;
+  padding: 30px 70px;
   display: flex;
   flex-direction: column;
   max-width: 1400px;

@@ -30,7 +30,7 @@ export const createMlClass = (mlClassData) => {
           packageName: mlClass.package_name,
           inModel: mlClass.in_model,
           imgName: mlClass.img_name,
-          numSamples: 0,
+          numSamples: files.length,
         };
         dispatch({
           type: "ADD_ML_CLASS",
@@ -91,7 +91,9 @@ export const updateMlClass = ({ userId, appId, classId, className, files }) => {
     Promise.all(reqs).then((res) => {
       let numSamples = Math.max.apply(
         Math,
-        res.map((r) => (r.audio_samples ? r.audio_samples.length : 0))
+        res.map((r) =>
+          r.audio_samples ? r.audio_samples.length : reqs.length - 1
+        )
       );
       dispatch({
         type: "UPDATE_ML_CLASS",
